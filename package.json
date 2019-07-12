@@ -1,24 +1,49 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "A JSON, CSS, and HTML minifier.",
-	"version": "0.1.0",
+	"description": "A VSCode minifier for JSON, CSS, and HTML, you will love its simplicity!",
+	"version": "0.1.1",
+	"license": "SEE LICENSE IN LICENSE",
+	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
+	"publisher": "josee9988",
 	"engines": {
 		"vscode": "^1.36.0"
 	},
 	"categories": [
-		"Other"
+		"Other",
+		"Formatters",
+		"Programming Languages"
 	],
+	"keywords": [
+		"minifier",
+		"formatter",
+		"format",
+		"compresser",
+		"compress",
+		"minify",
+		"css",
+		"json",
+		"html"
+	],
+	"galleryBanner": {
+		"color": "#1b1a1a",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Josee9988/MinifyAll.git"
+	},
 	"activationEvents": [
 		"onCommand:extension.MinifyAll"
 	],
-	"main": "./extension.js",
+	"main": "./main.js",
 	"contributes": {
 		"commands": [{
 			"command": "extension.MinifyAll",
 			"title": "Minify this document"
 		}]
 	},
+	"homepage": "https://github.com/Josee9988/MinifyAll",
 	"scripts": {
 		"test": "node ./test/runTest.js"
 	},

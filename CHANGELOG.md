@@ -1,6 +1,22 @@
+<!-- markdownlint-disable MD024-->
 # Change Log
 
 All notable changes to the "minifyall" extension will be documented in this file.
+
+## [0.1.1] - 2019-07-12
+
+### Changed
+
+- Name of the get function of css: from endWork to getCssMinified
+- Name of extension.js to main.js
+
+### Added
+
+- Info in the package.json
+- Css minify now removes a space after a ':'
+- Css minify now removes a space after a '{'
+- Comments in cssMinifier.js
+- Comment in main.js
 
 ## [0.1.0] - 2019-07-12
 
