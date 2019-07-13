@@ -3,6 +3,17 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.3.0] - 2019-07-13
+
+### Added
+
+- Support for html
+- Html minify removes single line and multiline comments and doesn't care if its set on the same line or not.
+
+### Removed
+
+- jsonMinifier.js removed lines minifier because its already in lineRemover.js
+
 ## [0.2.3] - 2019-07-13
 
 ### Added

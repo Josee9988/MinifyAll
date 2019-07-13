@@ -82,6 +82,16 @@ function activate(context) {
 				break;
 
 			case "html":
+				let htmlMinifier = require('./Minifiers/htmlMinifier.js');
+				let htmlContent = document.getText().split('\n');
+				let minifierhtml = new htmlMinifier(htmlContent);
+				minifierhtml.removeMultipleLineComments();
+				//Get the minified code and replace it
+				let modifiedHtmlText = minifierhtml.gethtmlMinified();
+				editor.edit(builder => {
+					builder.replace(textRange, modifiedHtmlText);
+				});
+
 				break;
 
 			default:
