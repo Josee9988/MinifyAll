@@ -3,6 +3,17 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.2.1] - 2019-07-13
+
+### Changed
+
+- Hex code is now in hexMinifier.js and all the languages will use this module instead of having the same code in each one.
+
+### Fixed
+
+- Several bugs with css minify, hex and spaces with selectors.
+- Bug that removed a space when a tab was after
+
 ## [0.2.0] - 2019-07-13
 
 ### Added
