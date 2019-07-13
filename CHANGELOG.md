@@ -3,6 +3,16 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.2.0] - 2019-07-13
+
+### Added
+
+- JSON minify support
+- JSON single line comment support
+- JSON multiline comment support
+- JSON Multiline if its placed between code it will only remove the comment
+- Now minifiers also remove tabs
+
 ## [0.1.2] - 2019-07-13
 
 ### Added

@@ -31,28 +31,39 @@ function activate(context) {
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
 		switch (window.activeTextEditor.document.languageId) {
 			case "css":
-				//Import the cssMinifier document
-				const cssMinifier = require('./Minifiers/cssMinifier.js');
+				let cssMinifier = require('./Minifiers/cssMinifier.js');
+				let cssContent = document.getText().split('\n');
+				let minifiercss = new cssMinifier(cssContent);
 
-				const content = document.getText().split('\n');
+				//Minifier processes
+				minifiercss.shortHexMain();
+				minifiercss.shortRGBMain();
 
-				// Iniitialices the cssMinifier file
-				const minifier = new cssMinifier(content);
-
-				//Shorts all the 6digit hexadecimal to 3digit
-				minifier.shortHexMain();
-
-				minifier.shortRGBMain();
-
-				let modifiedText = minifier.getCssMinified();
+				//Get the minified code and replace it
+				let modifiedCssText = minifiercss.getCssMinified();
 				editor.edit(builder => {
-					builder.replace(textRange, modifiedText);
+					builder.replace(textRange, modifiedCssText);
 				});
 
 				break;
 
 			case "json":
+			case "jsonc":
+				let jsonMinifier = require('./Minifiers/jsonMinifier.js');
+				let jsonContent = document.getText().split('\n');
+				let minifierjson = new jsonMinifier(jsonContent);
 
+				//Minifier processes
+				minifierjson.removeMultipleLineComments();
+				minifierjson.removeSingleLineComments();
+				minifierjson.shortHexMain();
+				minifierjson.shortRGBMain();
+
+				//Get the minified code and replace it
+				let modifiedJsonText = minifierjson.getJSONMinified();
+				editor.edit(builder => {
+					builder.replace(textRange, modifiedJsonText);
+				});
 				break;
 
 			case "html":
