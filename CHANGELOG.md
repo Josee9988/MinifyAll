@@ -3,6 +3,16 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.1.2] - 2019-07-13
+
+### Added
+
+- RGB values will now be converted into short hexadecimal.
+
+### Removed
+
+- Unnecesary if.
+
 ## [0.1.1] - 2019-07-12
 
 ### Changed

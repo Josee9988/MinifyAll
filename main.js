@@ -40,7 +40,9 @@ function activate(context) {
 				const minifier = new cssMinifier(content);
 
 				//Shorts all the 6digit hexadecimal to 3digit
-				minifier.shortHex();
+				minifier.shortHexMain();
+
+				minifier.shortRGBMain();
 
 				let modifiedText = minifier.getCssMinified();
 				editor.edit(builder => {

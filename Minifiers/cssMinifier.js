@@ -27,20 +27,54 @@ class Minifier {
      * shortHex function that checks every line of the original content, 
      * and looks for hexadecimal 6 digits and calls getShortHexColorCode
      * for getting a 3 digit hexadecimal value. Then it replaces the
-     * original line with the shortened line
+     * original line with the shortened one.
      */
-    shortHex() {
+    shortHexMain() {
         for (let i = 0; i < this.cssContent.length; i++) {
             let hexadecimal = this.cssContent[i].match(/#[a-f\d]{6}/ig);
             if (hexadecimal != null) {
                 let hexadecimalString = hexadecimal.toString();
-                if (hexadecimalString.length == 7) {
-                    const shortHex = this.getShortHexColorCode(hexadecimalString);
-                    let newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
-                    this.cssContent[i] = newShortString;
-                }
+                const shortHex = this.getShortHexColorCode(hexadecimalString);
+                let newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
+                this.cssContent[i] = newShortString;
             }
         }
+    }
+
+    /**
+     * shortRGBMain function that checks every line of the original content
+     * and looks for rgb values and calls rgbToShortHex
+     * for getting a 3 digit hexadecimal value.
+     * Then it replaces the original line with the shortened one.
+     */
+    shortRGBMain() {
+        for (let i = 0; i < this.cssContent.length; i++) {
+            let rgb = this.cssContent[i].match(/((rgb)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
+            if (rgb != null) {
+                let rgbString = rgb.toString();
+                let result = this.rgbArrayToObject(rgbString);
+                const shortHex = this.rgbToShortHex(result);
+                let newShortString = this.cssContent[i].replace(rgbString, shortHex);
+                this.cssContent[i] = newShortString;
+
+            }
+        }
+    }
+
+    /**
+     * rgbArrayToObject receives a String with the rgb and turns it into
+     * an object with r, g, and b value.
+     * @param {String} rgbString a string with the rgb and its values
+     * @return {Object} rgb
+     */
+    rgbArrayToObject(rgbString) {
+        let matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
+        let match = matchColors.exec(rgbString);
+        return match ? {
+            r: parseInt(match[1], 16),
+            g: parseInt(match[2], 16),
+            b: parseInt(match[3], 16)
+        } : null;
     }
 
     /**
