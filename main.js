@@ -26,6 +26,7 @@ var textRange = new vscode.Range(0,
 	editor.document.lineCount - 1,
 	lastLine.range.end.character);
 let HexMinifier = require('./Minifiers/hexMinifier');
+let LineRemover = require('./Minifiers/lineRemover');
 
 
 
@@ -33,9 +34,14 @@ function activate(context) {
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
 		switch (window.activeTextEditor.document.languageId) {
 			case "css":
+			case "scss":
 				let cssMinifier = require('./Minifiers/cssMinifier.js');
 				let cssContent = document.getText().split('\n');
-				let MinifierHex4Css = new HexMinifier(cssContent);
+				let RemoverLine4Css = new LineRemover(cssContent);
+
+				RemoverLine4Css.removeMultipleLineComments();
+				RemoverLine4Css.removeSingleLineComments();
+				let MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
 				//Minifier processes
 				MinifierHex4Css.shortHexMain();
@@ -56,14 +62,16 @@ function activate(context) {
 				let jsonContent = document.getText().split('\n');
 				let MinifierHex4Json = new HexMinifier(jsonContent);
 
-
 				//Minifier processes
 				MinifierHex4Json.shortHexMain();
 				MinifierHex4Json.shortRGBMain();
-				let minifierjson = new jsonMinifier(MinifierHex4Json.getHexMinified());
 
-				minifierjson.removeMultipleLineComments();
-				minifierjson.removeSingleLineComments();
+				let RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
+
+				RemoverLine4Json.removeMultipleLineComments();
+				RemoverLine4Json.removeSingleLineComments();
+
+				let minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
 
 
 				//Get the minified code and replace it

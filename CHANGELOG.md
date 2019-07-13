@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.2.2] - 2019-07-13
+
+### Added
+
+- Optimization, removed lines will be on a different module so all languages will use this module instead of having the same code in each one.
+
 ## [0.2.1] - 2019-07-13
 
 ### Changed

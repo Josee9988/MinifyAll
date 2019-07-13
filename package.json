@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "A VSCode minifier for JSON, CSS, and HTML, you will love its simplicity!",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
 	"publisher": "josee9988",
