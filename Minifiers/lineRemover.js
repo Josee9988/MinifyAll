@@ -46,7 +46,6 @@ class lineRemover {
      * with usefull code it will not be replaced.
      */
     removeMultipleLineComments() {
-        console.log("Multi line comments;");
         for (let i = 0; i < this.lineContent.length; i++) {
             let begin = this.lineContent[i].match(/(\/\*)/ig); // first /* found
             if (begin != null) {

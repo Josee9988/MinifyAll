@@ -33,7 +33,6 @@ class htmlMinifier {
      * with usefull code it will not be replaced.
      */
     removeMultipleLineComments() {
-        console.log("Multi line comments;");
         for (let i = 0; i < this.htmlContent.length; i++) {
             let begin = this.htmlContent[i].match(/(<!--)/ig); // first <!-- found
             if (begin != null) {

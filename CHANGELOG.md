@@ -3,6 +3,15 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.4.0] - 2019-07-14
+
+### Added
+
+- Added emojis to the titles of the commands
+- Added other command that the minified content don't replace the original and creates other document with the new minified content.
+- Removed debug comments that I forgot to remove.
+- Donate button in readme.md
+
 ## [0.3.0] - 2019-07-13
 
 ### Added

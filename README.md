@@ -2,6 +2,8 @@
 
 VSCode **minifier** for **JSON**, **JSONC**, **CSS**, **SCSS**, and **HTML**, you will love its simplicity!
 
+You can minify the file and replace all the content with the new minified text, or you can preserve the original document and get the minified text in other document!
+
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
 Want to help us improve the theme or you found a mistake?
@@ -48,6 +50,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 Did you enjoyed the minifier? Help us raise these numbers up!
 
+[![Donate](https://img.shields.io/badge/Donate-Patreon-green.svg)](https://www.patreon.com/bePatron?u=22162331)
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#languages-primarily-tested)
 [![Github stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 [![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)

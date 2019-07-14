@@ -1,8 +1,8 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, JSONC, CSS, SCSS, and HTML, you will love its simplicity!",
-	"version": "0.3.0",
+	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
+	"version": "0.4.0",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
 	"publisher": "josee9988",
@@ -36,32 +36,39 @@
 		"url": "https://github.com/Josee9988/MinifyAll.git"
 	},
 	"activationEvents": [
-		"onCommand:extension.MinifyAll"
+		"onCommand:extension.MinifyAll",
+		"onCommand:extension.MinifyAll2OtherDoc"
 	],
 	"main": "./main.js",
 	"contributes": {
 		"commands": [{
-			"command": "extension.MinifyAll",
-			"title": "Minify this document"
-		}]
-	},
-	"bugs": {
-		"url": "https://github.com/Josee9988/MinifyAll/issues",
-		"email": "jgracia9988@gmail.com"
-	},
-	"homepage": "https://github.com/Josee9988/MinifyAll",
-	"scripts": {
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.36.0",
-		"eslint": "^5.13.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"vscode-test": "^1.0.0-next.0"
+				"command": "extension.MinifyAll",
+				"title": "Minify this document ⚡"
+			},
+			{
+				"command": "extension.MinifyAll2OtherDoc",
+				"title": "Minify this document and preserve the original ⛏"
+			}
+
+		],
+		"bugs": {
+			"url": "https://github.com/Josee9988/MinifyAll/issues",
+			"email": "jgracia9988@gmail.com"
+		},
+		"homepage": "https://github.com/Josee9988/MinifyAll",
+		"scripts": {
+			"test": "node ./test/runTest.js"
+		},
+		"devDependencies": {
+			"@types/glob": "^7.1.1",
+			"@types/mocha": "^5.2.6",
+			"@types/node": "^10.12.21",
+			"@types/vscode": "^1.36.0",
+			"eslint": "^5.13.0",
+			"glob": "^7.1.4",
+			"mocha": "^6.1.4",
+			"typescript": "^3.3.1",
+			"vscode-test": "^1.0.0-next.0"
+		}
 	}
 }
