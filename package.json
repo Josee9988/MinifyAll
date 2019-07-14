@@ -2,10 +2,11 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
 	"publisher": "josee9988",
+	"icon": "icon-min.png",
 	"engines": {
 		"vscode": "^1.36.0"
 	},

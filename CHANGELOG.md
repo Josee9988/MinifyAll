@@ -3,6 +3,13 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.4.1] - 2019-07-14
+
+### Added
+
+- An icon to the project.
+- Icon to the readme.md file.
+
 ## [0.4.0] - 2019-07-14
 
 ### Added
