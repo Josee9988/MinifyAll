@@ -132,6 +132,9 @@ function activate(context) {
 				//Get the minified code and replace it in a new file
 				FileSaver.writeFile(path2NewFile, modifiedCssText, () => {
 					window.showInformationMessage(`The minified file has been saved in: ${path2NewFile}`);
+					vscode.workspace.openTextDocument(path2NewFile).then(doc => {
+						vscode.window.showTextDocument(doc);
+					});
 				});
 
 				break;
@@ -159,6 +162,9 @@ function activate(context) {
 				let modifiedJsonText = minifierjson.getJSONMinified();
 				FileSaver.writeFile(path2NewFilejson, modifiedJsonText, () => {
 					window.showInformationMessage(`The minified file has been saved in: ${path2NewFilejson}`);
+					vscode.workspace.openTextDocument(path2NewFilejson).then(doc => {
+						vscode.window.showTextDocument(doc);
+					});
 				});
 
 				break;
@@ -176,6 +182,9 @@ function activate(context) {
 				//Get the minified code and replace it in a new file
 				FileSaver.writeFile(path2NewFilehtml, modifiedHtmlText, () => {
 					window.showInformationMessage(`The minified file has been saved in: ${path2NewFilehtml}`);
+					vscode.workspace.openTextDocument(path2NewFilehtml).then(doc => {
+						vscode.window.showTextDocument(doc);
+					});
 				});
 
 				break;

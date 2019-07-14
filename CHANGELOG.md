@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.4.2] - 2019-07-14
+
+### Added
+
+- When a file is formatted in other document preserving the original one; now this new document is automatically opened after saving it.
+
 ## [0.4.1] - 2019-07-14
 
 ### Added
