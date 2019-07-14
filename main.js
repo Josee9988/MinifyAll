@@ -41,11 +41,14 @@ function activate(context) {
 
 				RemoverLine4Css.removeMultipleLineComments();
 				RemoverLine4Css.removeSingleLineComments();
+
 				let MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
 				//Minifier processes
 				MinifierHex4Css.shortHexMain();
 				MinifierHex4Css.shortRGBMain();
+				MinifierHex4Css.shortRGBAMain();
+
 				let minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
 
 				//Get the minified code and replace it
@@ -65,6 +68,7 @@ function activate(context) {
 				//Minifier processes
 				MinifierHex4Json.shortHexMain();
 				MinifierHex4Json.shortRGBMain();
+				MinifierHex4Css.shortRGBAMain();
 
 				let RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
@@ -85,6 +89,7 @@ function activate(context) {
 				let htmlContent = document.getText().split('\n');
 				let minifierhtml = new htmlMinifier(htmlContent);
 				minifierhtml.removeMultipleLineComments();
+
 				//Get the minified code and replace it
 				let modifiedHtmlText = minifierhtml.gethtmlMinified();
 				editor.edit(builder => {
@@ -110,6 +115,7 @@ function activate(context) {
 		} = document;
 		const filePath = path.dirname(fileName);
 		switch (window.activeTextEditor.document.languageId) {
+
 			case "css":
 			case "scss":
 				const newName = path.basename(fileName).replace('.css', '-min.css');
@@ -120,11 +126,14 @@ function activate(context) {
 
 				RemoverLine4Css.removeMultipleLineComments();
 				RemoverLine4Css.removeSingleLineComments();
+
 				let MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
 				//Minifier processes
 				MinifierHex4Css.shortHexMain();
 				MinifierHex4Css.shortRGBMain();
+				MinifierHex4Css.shortRGBAMain();
+
 				let minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
 
 				let modifiedCssText = minifiercss.getCssMinified();
@@ -141,6 +150,7 @@ function activate(context) {
 
 			case "json":
 			case "jsonc":
+
 				const newNamejson = path.basename(fileName).replace('.json', '-min.json');
 				const path2NewFilejson = path.join(filePath, newNamejson);
 
@@ -151,6 +161,7 @@ function activate(context) {
 				//Minifier processes
 				MinifierHex4Json.shortHexMain();
 				MinifierHex4Json.shortRGBMain();
+				MinifierHex4Css.shortRGBAMain();
 
 				let RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
@@ -158,8 +169,10 @@ function activate(context) {
 				RemoverLine4Json.removeSingleLineComments();
 
 				let minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
-				//Get the minified code and replace it in a new file
+
 				let modifiedJsonText = minifierjson.getJSONMinified();
+
+				//Get the minified code and replace it in a new file
 				FileSaver.writeFile(path2NewFilejson, modifiedJsonText, () => {
 					window.showInformationMessage(`The minified file has been saved in: ${path2NewFilejson}`);
 					vscode.workspace.openTextDocument(path2NewFilejson).then(doc => {
@@ -170,6 +183,7 @@ function activate(context) {
 				break;
 
 			case "html":
+
 				const newNamehtml = path.basename(fileName).replace('.html', '-min.html');
 				const path2NewFilehtml = path.join(filePath, newNamehtml);
 				let htmlMinifier = require('./Minifiers/htmlMinifier.js');

@@ -52,6 +52,52 @@ class HexMinifier {
     }
 
     /**
+     * shortRGBAMain function that checks every line of the original content
+     * and looks for rgba values and calls rgba2hex
+     * for getting a 8 digit hexadecimal value.
+     * Then it replaces the original line with the shortened one.
+     */
+    shortRGBAMain() {
+        for (let i = 0; i < this.cssContent.length; i++) {
+            let rgb = this.cssContent[i].match(/((rgba)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
+            if (rgb != null) {
+                let rgbaString = rgb.toString();
+                let percent = rgbaString.match(/[%]/g);
+                if (percent == null) {
+                    let result = this.rgba2hex(rgbaString);
+                    let newShortString = this.cssContent[i].replace(rgbaString, result.toString().toUpperCase());
+                    this.cssContent[i] = newShortString;
+                }
+            }
+        }
+    }
+
+    /**
+     * rgba2hex function that receives a rgba non % based
+     * and transforms it into a hexadecimal 8 digit value
+     * @param {*} rgba original rgba number
+     * @return {String} the hexadecimal value
+     */
+    rgba2hex(rgba) {
+        var a,
+            rgb = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
+            alpha = (rgb && rgb[4] || "").trim(),
+            hex = rgb ?
+            (rgb[1] | 1 << 8).toString(16).slice(1) +
+            (rgb[2] | 1 << 8).toString(16).slice(1) +
+            (rgb[3] | 1 << 8).toString(16).slice(1) : rgba;
+
+        if (alpha !== "") {
+            a = alpha;
+        } else {
+            a = 0o1;
+        }
+        a = ((a * 255) | 1 << 8).toString(16).slice(1)
+        hex = hex + a;
+        return "#" + hex.toString().toUpperCase();
+    }
+
+    /**
      * rgbArrayToObject receives a String with the rgb and turns it into
      * an object with r, g, and b value.
      * @param {String} rgbString a string with the rgb and its values

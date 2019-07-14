@@ -7,6 +7,16 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 ### Added
 
+- Support for RGBA colors. rgba colors will be formatted to hex but rgba with alpha(transparency) color in percentajes or rgba with a 0 value in transparency.
+
+### Changed
+
+- Hex colors will always be formatted in uppercase.
+
+## [0.4.2] - 2019-07-14
+
+### Added
+
 - When a file is formatted in other document preserving the original one; now this new document is automatically opened after saving it.
 
 ## [0.4.1] - 2019-07-14

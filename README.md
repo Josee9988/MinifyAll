@@ -4,6 +4,8 @@ VSCode **minifier** for **JSON**, **JSONC**, **CSS**, **SCSS**, and **HTML**, yo
 
 You can minify the file and replace all the content with the new minified text, or you can preserve the original document and get the minified text in other document!
 
+Not based in any minifier, made from scratch!
+
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
 Want to help us improve the theme or you found a mistake?
