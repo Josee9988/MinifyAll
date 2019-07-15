@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.4] - 2019-07-15
+
+### Fixed
+
+- Fixed some fails with uppercasing json attributes
+
 ## [0.5.3] - 2019-07-15
 
 ### Changed

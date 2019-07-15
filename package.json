@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.5.3",
+	"version": "0.5.4",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
 	"publisher": "josee9988",

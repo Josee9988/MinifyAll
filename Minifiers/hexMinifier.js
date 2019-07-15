@@ -27,7 +27,7 @@ class HexMinifier {
                 let hexadecimalString = hexadecimal.toString();
                 let shortHex = this.getShortHexColorCode(hexadecimalString);
                 let newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
-                this.cssContent[i] = newShortString.toUpperCase();
+                this.cssContent[i] = newShortString;
             }
         }
     }
@@ -121,7 +121,7 @@ class HexMinifier {
      */
     getShortHexColorCode(code) {
         var rgb = this.hexToRgb(code);
-        return this.rgbToShortHex(rgb);
+        return this.rgbToShortHex(rgb).toUpperCase();;
     }
 
     /**

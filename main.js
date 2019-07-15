@@ -15,21 +15,14 @@ let {
 	commands,
 	window
 } = require('vscode');
-
-
-
-
 let FileSaver = require('fs');
 let vscode = require('vscode');
-
 let HexMinifier = require('./Minifiers/hexMinifier');
 let LineRemover = require('./Minifiers/lineRemover');
-
 let originalFilepath = vscode.window.activeTextEditor.document.fileName
 let originalSize = FileSaver.statSync(originalFilepath).size
 
 vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
-
 vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
 function getNewSize() {
@@ -37,7 +30,6 @@ function getNewSize() {
 	let newSize = FileSaver.statSync(newFilepath).size
 	createStatusBar(originalSize, newSize);
 }
-
 
 function createStatusBar(originalSize, newSize) {
 	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
@@ -49,7 +41,6 @@ function createStatusBar(originalSize, newSize) {
 	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
 	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
 }
-
 
 function statusBarInfo() {
 	let oc = window.createOutputChannel('Minify output');
@@ -91,7 +82,6 @@ function activate(context) {
 				let cssMinifier = require('./Minifiers/cssMinifier.js');
 				let cssContent = document.getText().split('\n');
 				let RemoverLine4Css = new LineRemover(cssContent);
-				console.log(cssContent);
 				RemoverLine4Css.removeMultipleLineComments();
 				RemoverLine4Css.removeSingleLineComments();
 
@@ -140,6 +130,7 @@ function activate(context) {
 
 				//Get the minified code and replace it
 				let modifiedJsonText = minifierjson.getJSONMinified();
+
 				editorJson.edit(builder => {
 					builder.replace(textRangeJson, modifiedJsonText);
 				});
@@ -226,7 +217,6 @@ function activate(context) {
 
 				let newNamejson = path.basename(fileName).replace('.json', '-min.json');
 				let path2NewFilejson = path.join(filePath, newNamejson);
-
 				let jsonMinifier = require('./Minifiers/jsonMinifier.js');
 				let jsonContent = document.getText().split('\n');
 				let MinifierHex4Json = new HexMinifier(jsonContent);
@@ -234,7 +224,7 @@ function activate(context) {
 				//Minifier processes
 				MinifierHex4Json.shortHexMain();
 				MinifierHex4Json.shortRGBMain();
-				MinifierHex4Css.shortRGBAMain();
+				MinifierHex4Json.shortRGBAMain();
 
 				let RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
@@ -243,6 +233,7 @@ function activate(context) {
 
 				let minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
 
+				//Get the minified code and replace it
 				let modifiedJsonText = minifierjson.getJSONMinified();
 
 				//Get the minified code and replace it in a new file
