@@ -8,19 +8,19 @@
  * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
-const {
+
+"use strict";
+
+let {
 	commands,
 	window
 } = require('vscode');
-const {
-	document
-} = window.activeTextEditor;
 
 
 
-const FileSaver = require('fs');
-const vscode = require('vscode');
-const editor = vscode.window.activeTextEditor;
+
+let FileSaver = require('fs');
+let vscode = require('vscode');
 
 let HexMinifier = require('./Minifiers/hexMinifier');
 let LineRemover = require('./Minifiers/lineRemover');
@@ -40,7 +40,7 @@ function getNewSize() {
 
 
 function createStatusBar(originalSize, newSize) {
-	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+	let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
 	statusBarItem.tooltip = 'New file size, click for more info!';
 	statusBarItem.command = 'extension.MinifyAllStatus';
 	statusBarItem.text = transformSize(originalSize) + " --> " + transformSize(newSize);
@@ -52,7 +52,7 @@ function createStatusBar(originalSize, newSize) {
 
 
 function statusBarInfo() {
-	const oc = window.createOutputChannel('Minify output');
+	let oc = window.createOutputChannel('Minify output');
 	oc.appendLine("╔══════════════════════════════╗");
 	oc.appendLine("║      Extension MinifyAll     ║	")
 	oc.appendLine("╠═══════════════════╦══════════╣");
@@ -72,20 +72,26 @@ function transformSize(size) {
 
 function activate(context) {
 	//Command MinifyAll default one.
-	const disposable = commands.registerCommand('extension.MinifyAll', () => {
-		const firstLine = editor.document.lineAt(0);
-		const lastLine = editor.document.lineAt(editor.document.lineCount - 1);
-		var textRange = new vscode.Range(0,
-			firstLine.range.start.character,
-			editor.document.lineCount - 1,
-			lastLine.range.end.character);
+	let disposable = commands.registerCommand('extension.MinifyAll', () => {
+		let {
+			document
+		} = window.activeTextEditor;
 		switch (window.activeTextEditor.document.languageId) {
 			case "css":
 			case "scss":
+
+				let editorCss = vscode.window.activeTextEditor;
+				let firstLineCss = editorCss.document.lineAt(0);
+				let lastLineCss = editorCss.document.lineAt(editorCss.document.lineCount - 1);
+				let textRangeCss = new vscode.Range(0,
+					firstLineCss.range.start.character,
+					editorCss.document.lineCount - 1,
+					lastLineCss.range.end.character);
+
 				let cssMinifier = require('./Minifiers/cssMinifier.js');
 				let cssContent = document.getText().split('\n');
 				let RemoverLine4Css = new LineRemover(cssContent);
-
+				console.log(cssContent);
 				RemoverLine4Css.removeMultipleLineComments();
 				RemoverLine4Css.removeSingleLineComments();
 
@@ -100,14 +106,22 @@ function activate(context) {
 
 				//Get the minified code and replace it
 				let modifiedCssText = minifiercss.getCssMinified();
-				editor.edit(builder => {
-					builder.replace(textRange, modifiedCssText);
+				editorCss.edit(builder => {
+					builder.replace(textRangeCss, modifiedCssText);
 				});
 
 				break;
 
 			case "json":
 			case "jsonc":
+				let editorJson = vscode.window.activeTextEditor;
+				let firstLineJson = editorJson.document.lineAt(0);
+				let lastLineJson = editorJson.document.lineAt(editorJson.document.lineCount - 1);
+				let textRangeJson = new vscode.Range(0,
+					firstLineJson.range.start.character,
+					editorJson.document.lineCount - 1,
+					lastLineJson.range.end.character);
+
 				let jsonMinifier = require('./Minifiers/jsonMinifier.js');
 				let jsonContent = document.getText().split('\n');
 				let MinifierHex4Json = new HexMinifier(jsonContent);
@@ -115,7 +129,7 @@ function activate(context) {
 				//Minifier processes
 				MinifierHex4Json.shortHexMain();
 				MinifierHex4Json.shortRGBMain();
-				MinifierHex4Css.shortRGBAMain();
+				MinifierHex4Json.shortRGBAMain();
 
 				let RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
@@ -126,21 +140,30 @@ function activate(context) {
 
 				//Get the minified code and replace it
 				let modifiedJsonText = minifierjson.getJSONMinified();
-				editor.edit(builder => {
-					builder.replace(textRange, modifiedJsonText);
+				editorJson.edit(builder => {
+					builder.replace(textRangeJson, modifiedJsonText);
 				});
 				break;
 
 			case "html":
+				let editorHtml = vscode.window.activeTextEditor;
+
+				let firstLineHtml = editorHtml.document.lineAt(0);
+				let lastLineHtml = editorHtml.document.lineAt(editorHtml.document.lineCount - 1);
+				let textRangeHtml = new vscode.Range(0,
+					firstLineHtml.range.start.character,
+					editorHtml.document.lineCount - 1,
+					lastLineHtml.range.end.character);
+
 				let htmlMinifier = require('./Minifiers/htmlMinifier.js');
 				let htmlContent = document.getText().split('\n');
 				let minifierhtml = new htmlMinifier(htmlContent);
 				minifierhtml.removeMultipleLineComments();
-
 				//Get the minified code and replace it
 				let modifiedHtmlText = minifierhtml.gethtmlMinified();
-				editor.edit(builder => {
-					builder.replace(textRange, modifiedHtmlText);
+
+				editorHtml.edit(builder => {
+					builder.replace(textRangeHtml, modifiedHtmlText);
 				});
 
 				break;
@@ -149,23 +172,27 @@ function activate(context) {
 				window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
 				break;
 		}
-
 		context.subscriptions.push(disposable);
+
 	});
 
 	//Command MinifyAll and writes the result in other file.
-	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		const path = require('path');
-		const {
+	let disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+		let path = require('path');
+		let {
+			document
+		} = window.activeTextEditor;
+		let {
 			fileName
 		} = document;
-		const filePath = path.dirname(fileName);
+
+		let filePath = path.dirname(fileName);
 		switch (window.activeTextEditor.document.languageId) {
 
 			case "css":
 			case "scss":
-				const newName = path.basename(fileName).replace('.css', '-min.css');
-				const path2NewFile = path.join(filePath, newName);
+				let newName = path.basename(fileName).replace('.css', '-min.css');
+				let path2NewFile = path.join(filePath, newName);
 				let cssMinifier = require('./Minifiers/cssMinifier.js');
 				let cssContent = document.getText().split('\n');
 				let RemoverLine4Css = new LineRemover(cssContent);
@@ -197,8 +224,8 @@ function activate(context) {
 			case "json":
 			case "jsonc":
 
-				const newNamejson = path.basename(fileName).replace('.json', '-min.json');
-				const path2NewFilejson = path.join(filePath, newNamejson);
+				let newNamejson = path.basename(fileName).replace('.json', '-min.json');
+				let path2NewFilejson = path.join(filePath, newNamejson);
 
 				let jsonMinifier = require('./Minifiers/jsonMinifier.js');
 				let jsonContent = document.getText().split('\n');
@@ -230,8 +257,8 @@ function activate(context) {
 
 			case "html":
 
-				const newNamehtml = path.basename(fileName).replace('.html', '-min.html');
-				const path2NewFilehtml = path.join(filePath, newNamehtml);
+				let newNamehtml = path.basename(fileName).replace('.html', '-min.html');
+				let path2NewFilehtml = path.join(filePath, newNamehtml);
 				let htmlMinifier = require('./Minifiers/htmlMinifier.js');
 				let htmlContent = document.getText().split('\n');
 				let minifierhtml = new htmlMinifier(htmlContent);

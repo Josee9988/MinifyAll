@@ -3,6 +3,16 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.3] - 2019-07-15
+
+### Changed
+
+- Now the screenshots are minified
+
+### Fixed
+
+- Bug supper annoying that didn't let minify two different files in main.js . Not optimiced at all yet, just fixed.
+
 ## [0.5.2] - 2019-07-15
 
 ### Fixed
