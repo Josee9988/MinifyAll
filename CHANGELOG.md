@@ -3,6 +3,14 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.0] - 2019-07-15
+
+### Added
+
+- When saving a file without wanting to get the new modified text in other document (default MinifyAll command). After you save the new minified text it will display in the status bar the original value --> the new value
+- When you click in the status bar item it will display a table with information about the path, and the new and original size
+- The status bar will dissapear when you change document or when you click to see the output!
+
 ## [0.4.2] - 2019-07-14
 
 ### Added

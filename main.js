@@ -16,12 +16,58 @@ const {
 	document
 } = window.activeTextEditor;
 
+
+
+const FileSaver = require('fs');
 const vscode = require('vscode');
 const editor = vscode.window.activeTextEditor;
 
 let HexMinifier = require('./Minifiers/hexMinifier');
 let LineRemover = require('./Minifiers/lineRemover');
 
+let originalFilepath = vscode.window.activeTextEditor.document.fileName
+let originalSize = FileSaver.statSync(originalFilepath).size
+
+vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
+
+vscode.workspace.onDidSaveTextDocument(() => getNewSize());
+
+function getNewSize() {
+	let newFilepath = vscode.window.activeTextEditor.document.fileName
+	let newSize = FileSaver.statSync(newFilepath).size
+	createStatusBar(originalSize, newSize);
+}
+
+
+function createStatusBar(originalSize, newSize) {
+	const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+	statusBarItem.tooltip = 'New file size, click for more info!';
+	statusBarItem.command = 'extension.MinifyAllStatus';
+	statusBarItem.text = transformSize(originalSize) + " --> " + transformSize(newSize);
+	statusBarItem.show();
+	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
+	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+}
+
+
+function statusBarInfo() {
+	const oc = window.createOutputChannel('Minify output');
+	oc.appendLine("╔══════════════════════════════╗");
+	oc.appendLine("║      Extension MinifyAll     ║	")
+	oc.appendLine("╠═══════════════════╦══════════╣");
+	oc.appendLine("║ Original size     ║ " + transformSize(originalSize) + " ║");
+	oc.appendLine("╠═══════════════════╬══════════║");
+	oc.appendLine("║ New minified size ║ " + transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + " ║");
+	oc.appendLine("╚═══════════════════╩══════════╝");
+	oc.appendLine("File path:\t" + window.activeTextEditor.document.fileName);
+	oc.show();
+}
+
+function transformSize(size) {
+	if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} MB`;
+	else if (size >= 1024) return `${Math.floor(size / 10.24) / 100} KB`;
+	else return `${size} B`;
+}
 
 function activate(context) {
 	//Command MinifyAll default one.
@@ -109,7 +155,6 @@ function activate(context) {
 	//Command MinifyAll and writes the result in other file.
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
-		const FileSaver = require('fs');
 		const {
 			fileName
 		} = document;
