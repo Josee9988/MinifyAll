@@ -22,12 +22,12 @@ class HexMinifier {
      */
     shortHexMain() {
         for (let i = 0; i < this.cssContent.length; i++) {
-            let hexadecimal = this.cssContent[i].match(/#[a-f\d]{6}/ig);
-            if (hexadecimal != null && hexadecimal.length == 7) {
+            let hexadecimal = this.cssContent[i].match(/#[0-9a-fA-F]+/ig);
+            if (hexadecimal != null && hexadecimal.toString().length == 7) {
                 let hexadecimalString = hexadecimal.toString();
                 let shortHex = this.getShortHexColorCode(hexadecimalString);
                 let newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
-                this.cssContent[i] = newShortString;
+                this.cssContent[i] = newShortString.toUpperCase();
             }
         }
     }

@@ -46,6 +46,49 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ---
 
+## Examples
+
+From:
+
+```css
+.myClass {
+    background-color: rgba(12, 12, 12, 0.8);
+    background-color: rgb(12, 12, 12);
+    background-color: #FAFAFA;
+}
+```
+
+To:
+
+```css
+.myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
+```
+
+- rgba is formatted to a hexadecimal.
+- rgb is formatted to a 3 digit value hexadecimal.
+- 6 digit hexadimal is formatted to a 3 digit value hexadecimal
+- There is no spaces
+- There is only one line
+
+---
+
+## Known bugs: 🛑
+
+- Css classes or ids don't support px or keyframes as a name.
+
+Don't do this
+
+``` css
+.myPxClass{
+    margin-left:0px;
+}
+#myPxId{
+    margin-left:0px;
+}
+```
+
+---
+
 ## **Built with** 🛠️🔧
 
 - [Virtual Studio Code](https://code.visualstudio.com/)
@@ -54,7 +97,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ---
 
-Did you enjoyed the minifier? Help us raise these numbers up!
+### Did you enjoyed the minifier? Help us raise these numbers up
 
 [![Donate](https://img.shields.io/badge/Donate-Patreon-green.svg)](https://www.patreon.com/bePatron?u=22162331)
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#languages-primarily-tested)

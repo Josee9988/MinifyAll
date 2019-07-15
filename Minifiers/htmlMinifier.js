@@ -21,7 +21,7 @@ class htmlMinifier {
      * @return {String} the line compressed
      */
     gethtmlMinified() {
-        return this.htmlContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/\s\s/g, '').replace(/(\>)\1+/g, '');
+        return this.htmlContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/(\>)\1+/g, '');
     }
 
 

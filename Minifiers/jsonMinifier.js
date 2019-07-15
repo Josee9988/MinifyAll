@@ -21,7 +21,7 @@ class jsonMinifier {
      * @return {String} the line compressed
      */
     getJSONMinified() {
-        return this.jsonContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{').replace(/[\t]/g, '');
+        return this.jsonContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/\s{2}/g, '').replace(/ {/g, '{').replace(/[\t]/g, '');
     }
 
 }

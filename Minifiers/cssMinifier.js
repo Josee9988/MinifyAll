@@ -20,7 +20,7 @@ class cssMinifier {
      * @return {String} the line compressed
      */
     getCssMinified() {
-        return this.cssContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/#/g, ' #').replace(/px/ig, 'px ').replace(/keyframes/g, 'keyframes ');
+        return this.cssContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '').replace(/px/ig, 'px ').replace(/keyframes/g, 'keyframes ');
     }
 
 }

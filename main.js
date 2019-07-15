@@ -45,6 +45,7 @@ function createStatusBar(originalSize, newSize) {
 	statusBarItem.command = 'extension.MinifyAllStatus';
 	statusBarItem.text = transformSize(originalSize) + " --> " + transformSize(newSize);
 	statusBarItem.show();
+	vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
 	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
 	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
 }

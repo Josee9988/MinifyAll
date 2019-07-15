@@ -3,6 +3,19 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.2] - 2019-07-15
+
+### Fixed
+
+- Bugs that let multiple spaces exist.
+- Bug that didn't let 6 digit hexadecimal be formatted
+- Bug that didn't uppercase the hexadecimal values
+
+### Added
+
+- Readme.md section with known bugs.
+- Improved status bar
+
 ## [0.5.1] - 2019-07-15
 
 ### Fixed
