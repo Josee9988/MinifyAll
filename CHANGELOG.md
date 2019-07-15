@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.1] - 2019-07-15
+
+### Fixed
+
+- Bug from the single line remover that removed a false line from an http: // link. It looked for the double '/' and removed it all to the next line.
+
 ## [0.5.0] - 2019-07-15
 
 ### Added

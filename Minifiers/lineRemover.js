@@ -30,9 +30,9 @@ class lineRemover {
      */
     removeSingleLineComments() {
         for (let i = 0; i < this.lineContent.length; i++) {
-            let hexadecimal = this.lineContent[i].replace(/[/]+.*/g, '');
+            let hexadecimal = this.lineContent[i].replace(/^((?!:).)*\/\/.*/g, '');
             if (hexadecimal != null) {
-                this.lineContent[i].replace(/[/]+.*/g, '');
+                this.lineContent[i].replace(/^((?!:).)*\/\/.*/g, '');
                 this.lineContent[i] = hexadecimal;
             }
         }
