@@ -2,7 +2,7 @@
 
 VSCode **minifier** for **JSON**, **JSONC**, **CSS**, **SCSS**, and **HTML**, you will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, or you can preserve the original document and get the minified text in other document!
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
 Not based in any minifier, made from scratch!
 
@@ -15,9 +15,11 @@ Or contact **[me](jgracia9988@gmail.com)**.
 
 Check our **[changelog](CHANGELOG.md)**.
 
+How does it look? Look at our **[Screenshots](Screenshots/)**
+
 ---
 
-<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:45%;"/>
 
 ---
 
@@ -34,19 +36,44 @@ Check our **[changelog](CHANGELOG.md)**.
 - And type:➡️
 **```ext install josee9988.minifyall```**
 
+### **Commands** 📐
+
+- **```Minify this document ⚡```**
+- **```Minify this document and preserve the original ⛏```**
+
 ---
 
-## Languages available 🧪🔥
+## **How does it looks with real code?** 📸 😁
 
-- JSON
-- JSONC
+- The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
+
+<img src="https://i.imgur.com/wsqAcGS.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+
+- The output that you will find after you save your document:
+
+<img src="https://i.imgur.com/vRF9IUQ.png" alt="output" title="output" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+
+- The first and default command that replaces the actual code with the minified one:
+
+<img src="https://i.imgur.com/bbAhxJj.gif" alt="Preview" title="preview" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+- The second command that saves the minfied text to other file and preserves the original text:
+
+<img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+---
+
+## **Languages available** 🧪🔥
+
 - CSS
 - SCSS
 - HTML
+- JSON
+- JSONC
 
 ---
 
-## Examples
+## **Examples**
 
 From:
 
@@ -64,19 +91,19 @@ To:
 .myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
 ```
 
-- rgba is formatted to a hexadecimal.
-- rgb is formatted to a 3 digit value hexadecimal.
-- 6 digit hexadimal is formatted to a 3 digit value hexadecimal
+- rgba is formatted to hexadecimal.
+- rgb is formatted to 3 digit value hexadecimal.
+- 6 digit hexadimal is formatted to 3 digit value hexadecimal
 - There is no spaces
 - There is only one line
 
 ---
 
-## Known bugs: 🛑
+## **Known bugs:** 🛑
 
-- Css classes or ids don't support px or keyframes as a name.
+- Css classes or ids don't support *px* or *keyframes* as a **name**.
 
-Don't do this
+**Don't** do this
 
 ``` css
 .myPxClass{
@@ -86,6 +113,8 @@ Don't do this
     margin-left:0px;
 }
 ```
+
+- Save minified text to other file using json (second command in a json file) may cause some errors that may not be errors.
 
 ---
 

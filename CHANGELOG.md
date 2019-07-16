@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.6] - 2019-07-16
+
+### Added
+
+- Readme added much more documentation
+
 ## [0.5.5] - 2019-07-16
 
 ### Added
