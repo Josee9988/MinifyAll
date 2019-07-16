@@ -3,6 +3,23 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.5] - 2019-07-16
+
+### Added
+
+- Comments in main.js
+- File type in output of statusbar
+
+### Changed
+
+- Name of folder from Minifier to src as there is more things than just minifiers.
+- From let to const in main.js
+- Now the function transform size is in src/sizeTransform.js to improve main.js readability
+
+### Fixed
+
+- Bug with the status bar that displayed the size of the last minify created
+
 ## [0.5.4] - 2019-07-15
 
 ### Fixed
