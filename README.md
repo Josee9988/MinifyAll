@@ -75,17 +75,20 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ## **Examples**
 
-From:
+### **Css**
+
+*From:*
 
 ```css
 .myClass {
     background-color: rgba(12, 12, 12, 0.8);
-    background-color: rgb(12, 12, 12);
+    background-color: rgb(12, 12, 12); /* my comment
+    */
     background-color: #FAFAFA;
 }
 ```
 
-To:
+*To:*
 
 ```css
 .myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
@@ -94,8 +97,82 @@ To:
 - rgba is formatted to hexadecimal.
 - rgb is formatted to 3 digit value hexadecimal.
 - 6 digit hexadimal is formatted to 3 digit value hexadecimal
-- There is no spaces
+- There are no spaces
 - There is only one line
+- No single line comments
+- No multiline comments
+
+---
+
+### **Json**
+
+*From:*
+
+``` json
+{
+"contributes": {
+"commands": [{
+"title": "Minify this document ⚡"
+},
+{
+"color": "#FAFAFA", // comments
+}/* multiline comment
+*/
+]
+}
+}
+```
+
+*To:*
+
+``` json
+{"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FFF",}]}}
+```
+
+- Only one line
+- No unnecesary spaces
+- 6 Digit hex to 3 digit hex
+- No single line comments
+- No multiline comments
+
+---
+
+### **Html**
+
+*From:*
+
+```html
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <title></title>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href=''>
+    <script type='text/javascript' src=''></script>
+    <!-- test -->
+</head>
+
+<!-- ~~~~~✦✦✦✦✦ B O
+ D Y ✦✦✦✦✦~~~~~ -->
+<body>
+
+</body>
+
+</html>
+```
+
+*To:*
+
+```html
+<!DOCTYPE html><html lang='es'><head><title></title><meta charset='utf-8'><link rel='stylesheet' href=''><script type='text/javascript' src=''></script></head><body></body></html>
+```
+
+- Only one line
+- Only neccessary spaces
+- No tabs
+- No single line comments
+- No multiline comments
 
 ---
 
@@ -114,7 +191,9 @@ To:
 }
 ```
 
-- Save minified text to other file using json (second command in a json file) may cause some errors that may not be errors.
+- Save minified text to other file using json (second command in a json file) may cause your vscode linter or intellisense to show some errors that are actually *not errors*.
+
+- If the file you are trying to minify is **not saved** or is an Untitled default vscode file may cause errors.
 
 ---
 

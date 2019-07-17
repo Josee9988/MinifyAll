@@ -3,6 +3,17 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.9] - 2019-07-17
+
+### Changed
+
+- When the file is not css, scss, json, jsonc or html it will now display a waring instead of an error.
+
+### Added
+
+- More examples in readme.md
+- 1 More Known bugs in readme.md
+
 ## [0.5.8] - 2019-07-17
 
 ### Added

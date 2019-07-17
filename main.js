@@ -91,6 +91,7 @@ function activate(context) {
 		const {
 			document
 		} = window.activeTextEditor;
+
 		switch (window.activeTextEditor.document.languageId) {
 			case "css":
 			case "scss":
@@ -272,7 +273,6 @@ function activate(context) {
 				break;
 
 			case "html":
-
 				const newNamehtml = path.basename(fileName).replace('.html', '-min.html');
 				const path2NewFilehtml = path.join(filePath, newNamehtml);
 				const htmlMinifier = require('./src/htmlMinifier.js');
@@ -293,7 +293,7 @@ function activate(context) {
 				break;
 
 			default:
-				window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
+				window.showWarningMessage('⛔ We can not format this file type yet, use a valid one.');
 				break;
 		}
 
