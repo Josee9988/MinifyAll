@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.5.9",
+	"version": "0.6.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -75,7 +75,18 @@
 				"linux": "Ctrl+alt+N",
 				"win": "Ctrl+alt+N"
 			}
-		]
+		],
+		"configuration": {
+			"title": "MinifyAll",
+			"properties": {
+				"MinifyAll.disableHexadecimalShortener": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop shortening colors, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (True for disabling hex.)"
+				}
+			}
+
+		}
 	},
 	"scripts": {
 		"test": "node ./test/runTest.js"

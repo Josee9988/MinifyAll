@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.6.0] - 2019-07-17
+
+### Added
+
+- Configuration setting to set hexadecimal shortener to true or false.
+
 ## [0.5.9] - 2019-07-17
 
 ### Changed

@@ -28,6 +28,9 @@ vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
 
+const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll')
+const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener')
+
 /**
  * getNewSize gets the new size of the
  * document and creates the triggers
@@ -109,13 +112,14 @@ function activate(context) {
 				const RemoverLine4Css = new LineRemover(cssContent);
 				RemoverLine4Css.removeMultipleLineComments();
 				RemoverLine4Css.removeSingleLineComments();
-
 				const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
-				//Minifier processes
-				MinifierHex4Css.shortHexMain();
-				MinifierHex4Css.shortRGBMain();
-				MinifierHex4Css.shortRGBAMain();
+				if (hexDisabled == false) {
+					//Minifier processes
+					MinifierHex4Css.shortHexMain();
+					MinifierHex4Css.shortRGBMain();
+					MinifierHex4Css.shortRGBAMain();
+				}
 
 				const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
 
@@ -142,10 +146,12 @@ function activate(context) {
 				const jsonContent = document.getText().split('\n');
 				const MinifierHex4Json = new HexMinifier(jsonContent);
 
-				//Minifier processes
-				MinifierHex4Json.shortHexMain();
-				MinifierHex4Json.shortRGBMain();
-				MinifierHex4Json.shortRGBAMain();
+				if (hexDisabled == false) {
+					//Minifier processes
+					MinifierHex4Json.shortHexMain();
+					MinifierHex4Json.shortRGBMain();
+					MinifierHex4Json.shortRGBAMain();
+				}
 
 				const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
@@ -219,10 +225,12 @@ function activate(context) {
 
 				const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
-				//Minifier processes
-				MinifierHex4Css.shortHexMain();
-				MinifierHex4Css.shortRGBMain();
-				MinifierHex4Css.shortRGBAMain();
+				if (hexDisabled == false) {
+					//Minifier processes
+					MinifierHex4Css.shortHexMain();
+					MinifierHex4Css.shortRGBMain();
+					MinifierHex4Css.shortRGBAMain();
+				}
 
 				const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
 
@@ -247,10 +255,12 @@ function activate(context) {
 				const jsonContent = document.getText().split('\n');
 				const MinifierHex4Json = new HexMinifier(jsonContent);
 
-				//Minifier processes
-				MinifierHex4Json.shortHexMain();
-				MinifierHex4Json.shortRGBMain();
-				MinifierHex4Json.shortRGBAMain();
+				if (hexDisabled == false) {
+					//Minifier processes
+					MinifierHex4Json.shortHexMain();
+					MinifierHex4Json.shortRGBMain();
+					MinifierHex4Json.shortRGBAMain();
+				}
 
 				const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 

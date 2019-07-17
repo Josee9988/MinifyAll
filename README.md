@@ -176,6 +176,14 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
+## **Configuration**
+
+- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.)
+
+``` json
+"MinifyAll.disableHexadecimalShortener": true|false,
+```
+
 ## **Known bugs:** 🛑
 
 - Css classes or ids don't support *px* or *keyframes* as a **name**.
