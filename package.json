@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.5.6",
+	"version": "0.5.7",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
 	"publisher": "josee9988",
@@ -26,7 +26,9 @@
 		"json",
 		"html",
 		"scss",
-		"jsonc"
+		"jsonc",
+		"size",
+		"reduce"
 	],
 	"galleryBanner": {
 		"color": "#1b1a1a",
@@ -38,7 +40,8 @@
 	},
 	"activationEvents": [
 		"onCommand:extension.MinifyAll",
-		"onCommand:extension.MinifyAll2OtherDoc"
+		"onCommand:extension.MinifyAll2OtherDoc",
+		"*"
 	],
 	"main": "./main.js",
 	"contributes": {
@@ -50,7 +53,24 @@
 				"command": "extension.MinifyAll2OtherDoc",
 				"title": "Minify this document and preserve the original ⛏"
 			}
+		],
 
+		"keybindings": [{
+				"command": "extension.MinifyAll",
+				"key": "Control+Alt+M M",
+				"mac": "Control+Alt+M M",
+				"win": "Control+Alt+M M",
+				"linux": "Control+Alt+M M",
+				"when": "editorTextFocus && editorLangId == css || editorLangId == json || editorLangId == scss || editorLangId == jsonc || editorLangId == html"
+			},
+			{
+				"command": "extension.MinifyAll2OtherDoc",
+				"key": "Control+Alt+M N",
+				"mac": "Control+Alt+M N",
+				"win": "Control+Alt+M N",
+				"linux": "Control+Alt+M N",
+				"when": "editorTextFocus && editorLangId == css || editorLangId == json || editorLangId == scss || editorLangId == jsonc || editorLangId == html"
+			}
 		],
 		"bugs": {
 			"url": "https://github.com/Josee9988/MinifyAll/issues",

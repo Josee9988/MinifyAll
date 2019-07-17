@@ -3,6 +3,16 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.7] - 2019-07-17
+
+### Added
+
+- Keybindings and more info to package.json
+
+---
+
+## [RELEASED] - 2019-07-17
+
 ## [0.5.6] - 2019-07-16
 
 ### Added
