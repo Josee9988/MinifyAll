@@ -38,8 +38,8 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ### **Commands** 📐
 
-- **```Minify this document ⚡```**
-- **```Minify this document and preserve the original ⛏```**
+- **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
+- **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
 
 ---
 
@@ -47,7 +47,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 - The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
 
-<img src="https://i.imgur.com/wsqAcGS.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://i.imgur.com/mBABVUM.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
 
 - The output that you will find after you save your document:
 

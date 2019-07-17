@@ -2,10 +2,10 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.5.7",
+	"version": "0.5.8",
+	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
-	"publisher": "josee9988",
 	"icon": "icon-min.png",
 	"engines": {
 		"vscode": "^1.36.0"
@@ -30,6 +30,11 @@
 		"size",
 		"reduce"
 	],
+	"bugs": {
+		"url": "https://github.com/Josee9988/MinifyAll/issues",
+		"email": "jgracia9988@gmail.com"
+	},
+	"homepage": "https://github.com/Josee9988/MinifyAll",
 	"galleryBanner": {
 		"color": "#1b1a1a",
 		"theme": "dark"
@@ -54,42 +59,36 @@
 				"title": "Minify this document and preserve the original ⛏"
 			}
 		],
-
 		"keybindings": [{
 				"command": "extension.MinifyAll",
-				"key": "Control+Alt+M M",
-				"mac": "Control+Alt+M M",
-				"win": "Control+Alt+M M",
-				"linux": "Control+Alt+M M",
-				"when": "editorTextFocus && editorLangId == css || editorLangId == json || editorLangId == scss || editorLangId == jsonc || editorLangId == html"
+				"title": "Minify this document ⚡",
+				"key": "Ctrl+alt+m",
+				"mac": "cmd+alt+m",
+				"linux": "Ctrl+alt+m",
+				"win": "Ctrl+alt+m"
 			},
 			{
 				"command": "extension.MinifyAll2OtherDoc",
-				"key": "Control+Alt+M N",
-				"mac": "Control+Alt+M N",
-				"win": "Control+Alt+M N",
-				"linux": "Control+Alt+M N",
-				"when": "editorTextFocus && editorLangId == css || editorLangId == json || editorLangId == scss || editorLangId == jsonc || editorLangId == html"
+				"title": "Minify this document and preserve the original ⛏",
+				"key": "Ctrl+alt+N",
+				"mac": "cmd+alt+N",
+				"linux": "Ctrl+alt+N",
+				"win": "Ctrl+alt+N"
 			}
-		],
-		"bugs": {
-			"url": "https://github.com/Josee9988/MinifyAll/issues",
-			"email": "jgracia9988@gmail.com"
-		},
-		"homepage": "https://github.com/Josee9988/MinifyAll",
-		"scripts": {
-			"test": "node ./test/runTest.js"
-		},
-		"devDependencies": {
-			"@types/glob": "^7.1.1",
-			"@types/mocha": "^5.2.6",
-			"@types/node": "^10.12.21",
-			"@types/vscode": "^1.36.0",
-			"eslint": "^5.13.0",
-			"glob": "^7.1.4",
-			"mocha": "^6.1.4",
-			"typescript": "^3.3.1",
-			"vscode-test": "^1.0.0-next.0"
-		}
+		]
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.36.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.0-next.0"
 	}
 }

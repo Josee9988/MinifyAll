@@ -3,6 +3,16 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.5.8] - 2019-07-17
+
+### Added
+
+- Keybindings to readme.md
+
+### Fixed
+
+- Mistake in package.json that made the keybindings don't work.
+
 ## [0.5.7] - 2019-07-17
 
 ### Added
