@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -83,9 +83,13 @@
 					"type": "boolean",
 					"default": false,
 					"description": "If you want MinifyAll to stop shortening colors, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (True for disabling hex.)"
+				},
+				"MinifyAll.disableStatusbarInformation": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop showing an status bar with information about the compression after you minify a file. (True for disabling.)"
 				}
 			}
-
 		}
 	},
 	"scripts": {

@@ -51,7 +51,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 - The output that you will find after you save your document:
 
-<img src="https://i.imgur.com/vRF9IUQ.png" alt="output" title="output" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://i.imgur.com/oYztqCE.png" alt="output" title="output" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
 
 - The first and default command that replaces the actual code with the minified one:
 
@@ -181,7 +181,13 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.)
 
 ``` json
-"MinifyAll.disableHexadecimalShortener": true|false,
+"MinifyAll.disableHexadecimalShortener": true|false
+```
+
+- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.)
+
+``` json
+"MinifyAll.disableStatusbarInformation": true|false
 ```
 
 ## **Known bugs:** 🛑

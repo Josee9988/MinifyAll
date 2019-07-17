@@ -3,6 +3,14 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.6.1] - 2019-07-17
+
+### Added
+
+- Configuration for disabling status bar output.
+- More information in the output of the status bar.
+- Changed picture of the documentation of the output in readme.md and in /Screenshots
+
 ## [0.6.0] - 2019-07-17
 
 ### Added

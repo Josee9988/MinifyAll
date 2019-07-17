@@ -28,8 +28,10 @@ vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
 
-const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll')
-const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener')
+const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
+const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener');
+const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation')
+
 
 /**
  * getNewSize gets the new size of the
@@ -39,10 +41,12 @@ const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener')
 function getNewSize() {
 	const newFilepath = vscode.window.activeTextEditor.document.fileName
 	const newSize = FileSaver.statSync(newFilepath).size
-	createStatusBar(originalSize, newSize);
-	vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
-	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
-	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+	if (statusDisabled == false) {
+		createStatusBar(originalSize, newSize);
+		vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
+		vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
+		vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+	}
 }
 
 /**
@@ -72,12 +76,14 @@ function statusBarInfo() {
 	oc.appendLine("╔══════════════════════════════╗");
 	oc.appendLine("║      Extension MinifyAll     ║	")
 	oc.appendLine("╠═══════════════════╦══════════╣");
-	oc.appendLine("║ Original size     ║ " + sizeTransform.transformSize(originalSize) + "  ║");
+	oc.appendLine("║ Original size     ║ " + sizeTransform.transformSize(originalSize) + " ║");
 	oc.appendLine("╠═══════════════════╬══════════║");
-	oc.appendLine("║ New minified size ║ " + sizeTransform.transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + "  ║");
+	oc.appendLine("║ New minified size ║ " + sizeTransform.transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + " ║");
 	oc.appendLine("╚═══════════════════╩══════════╝");
-	oc.appendLine("File path:\t" + window.activeTextEditor.document.fileName);
-	oc.appendLine("File type:\t" + window.activeTextEditor.document.languageId);
+	oc.appendLine("File path:\t\t" + window.activeTextEditor.document.fileName);
+	oc.appendLine("File type:\t\t" + window.activeTextEditor.document.languageId);
+	oc.appendLine("% of shrink:\t\t" + (100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3) + "%");
+	oc.appendLine("Bytes freed:\t\t" + (originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)) + "B");
 	oc.show();
 }
 
