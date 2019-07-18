@@ -227,6 +227,8 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 [![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 [![Github forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 
+[Check my theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme)
+
 ---
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***

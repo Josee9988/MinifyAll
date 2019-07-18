@@ -23,6 +23,8 @@ let originalFilepath = vscode.window.activeTextEditor.document.fileName
 let originalSize = FileSaver.statSync(originalFilepath).size
 const ModuleSizeTransform = require('./src/sizeTransform');
 const sizeTransform = new ModuleSizeTransform();
+let startTime = new Date().getTime(),
+	timeSpend;
 
 vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 vscode.workspace.onDidSaveTextDocument(() => getNewSize());
@@ -80,10 +82,11 @@ function statusBarInfo() {
 	oc.appendLine("╠═══════════════════╬══════════║");
 	oc.appendLine("║ New minified size ║ " + sizeTransform.transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + " ║");
 	oc.appendLine("╚═══════════════════╩══════════╝");
-	oc.appendLine("File path:\t\t" + window.activeTextEditor.document.fileName);
-	oc.appendLine("File type:\t\t" + window.activeTextEditor.document.languageId);
+	oc.appendLine("File path:\t\t  " + window.activeTextEditor.document.fileName);
+	oc.appendLine("File type:\t\t  " + window.activeTextEditor.document.languageId);
 	oc.appendLine("% of shrink:\t\t" + (100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3) + "%");
 	oc.appendLine("Bytes freed:\t\t" + (originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)) + "B");
+	oc.appendLine("Time spend:\t\t " + timeSpend + " miliseconds");
 	oc.show();
 }
 
@@ -134,6 +137,7 @@ function activate(context) {
 				editorCss.edit(builder => {
 					builder.replace(textRangeCss, modifiedCssText);
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
 
 				break;
 
@@ -172,6 +176,8 @@ function activate(context) {
 				editorJson.edit(builder => {
 					builder.replace(textRangeJson, modifiedJsonText);
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
+
 				break;
 
 			case "html":
@@ -194,6 +200,7 @@ function activate(context) {
 				editorHtml.edit(builder => {
 					builder.replace(textRangeHtml, modifiedHtmlText);
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
 
 				break;
 
@@ -249,6 +256,8 @@ function activate(context) {
 						vscode.window.showTextDocument(doc);
 					});
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
+				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				break;
 
@@ -285,6 +294,8 @@ function activate(context) {
 						vscode.window.showTextDocument(doc);
 					});
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
+				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				break;
 
@@ -305,6 +316,8 @@ function activate(context) {
 						vscode.window.showTextDocument(doc);
 					});
 				});
+				timeSpend = ((new Date().getTime()) - startTime);
+				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				break;
 

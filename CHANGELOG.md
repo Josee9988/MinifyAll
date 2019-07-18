@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.6.2] - 2019-07-18
+
+### Added
+
+- Time of execution of the program in the output of the status bar (if you are using Minify2OtherDoc it will display in console.log).
+
 ## [0.6.1] - 2019-07-17
 
 ### Added
