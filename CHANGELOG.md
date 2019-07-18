@@ -3,6 +3,27 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.8.0] - 2019-07-18
+
+### Changed
+
+- Module sizeTransform only had one function and was stupid to have one module for just one function. So sizeTransform is now directly in main.js again.
+- Reorganized the code in main.js
+- Renamed the icon from icon-min.png to icon.png as all the pictures are minified there is no need to add this sufix.
+- Readme.md examples are now underneath the configuration.
+
+### Fixed
+
+- When you triggered the command from now on every time you saved the document you would get a new statusbar item. This is now fixed. It will only appear once and after you run MInifyAll and save.
+- Output now displays all inline in the same tab.
+
+### Added
+
+- Configuration for setting the priority of the status bar
+- Configuration for setting the alignment of the status bar (right, left)
+- Time of execution of the program in the output of the status bar will also display in seconds.
+- Readme new configuration settigns explanation
+
 ## [0.7.0] - 2019-07-18
 
 ### Added

@@ -75,6 +75,32 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
+## **Configuration**
+
+- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.) Default = false
+
+``` json
+"MinifyAll.disableHexadecimalShortener": true|false
+```
+
+- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.) Default = false
+
+``` json
+"MinifyAll.disableStatusbarInformation": true|false
+```
+
+- Priority of the status bar. 0 Is the greatest. Default = 0
+
+``` json
+"MinifyAll.statusbarPriority": integer
+```
+
+- Aligns the status bar indicator to the left or right.
+
+``` json
+"MinifyAll.statusbarAlignment": Left|Right
+```
+
 ## **Examples**
 
 ### **Css**
@@ -177,20 +203,6 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - No multiline comments
 
 ---
-
-## **Configuration**
-
-- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.)
-
-``` json
-"MinifyAll.disableHexadecimalShortener": true|false
-```
-
-- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.)
-
-``` json
-"MinifyAll.disableStatusbarInformation": true|false
-```
 
 ## **Known bugs:** 🛑
 

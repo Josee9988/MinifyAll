@@ -2,7 +2,8 @@
  * @file That is executed when the command extension.MinifyAll is used.
  * it checks what language are you using in your document and if its
  * supported it will remove all your code and replace it with a 
- * minified version of the code.
+ * minified version of the code. If you execute MinifyAll2OtherDoc
+ * it will create a new file with the minified code.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
  * @see README.md
@@ -19,76 +20,24 @@ const FileSaver = require('fs');
 const vscode = require('vscode');
 const HexMinifier = require('./src/hexMinifier');
 const LineRemover = require('./src/lineRemover');
-let originalFilepath = vscode.window.activeTextEditor.document.fileName
-let originalSize = FileSaver.statSync(originalFilepath).size
-const ModuleSizeTransform = require('./src/sizeTransform');
-const sizeTransform = new ModuleSizeTransform();
-let startTime = new Date().getTime(),
-	timeSpend;
-
-vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
-vscode.workspace.onDidSaveTextDocument(() => getNewSize());
-const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+let originalFilepath = vscode.window.activeTextEditor.document.fileName;
+let originalSize = FileSaver.statSync(originalFilepath).size;
 
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
 const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener');
-const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation')
+const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation');
+const priority = userMinifyAllSettings.get('statusbarPriority');
+const alignment = userMinifyAllSettings.get('statusbarAlignment');
 
-
-/**
- * getNewSize gets the new size of the
- * document and creates the triggers
- * then calls createStatusBar()
- */
-function getNewSize() {
-	const newFilepath = vscode.window.activeTextEditor.document.fileName
-	const newSize = FileSaver.statSync(newFilepath).size
-	if (statusDisabled == false) {
-		createStatusBar(originalSize, newSize);
-		vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
-		vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
-		vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
-	}
+let statusBarItem, timeSpend, startTime, statusReady, oc;
+vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
+vscode.workspace.onDidSaveTextDocument(() => getNewSize());
+if (alignment == "Right") {
+	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
+} else {
+	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, priority);
 }
 
-/**
- * createStatusBar creates the status bar item
- * @param {number} originalSize the unminified size
- * @param {number} newSize the minified size
- */
-function createStatusBar(originalSize, newSize) {
-	statusBarItem.tooltip = 'New file size, click for more info!';
-	statusBarItem.command = 'extension.MinifyAllStatus';
-	statusBarItem.text = sizeTransform.transformSize(originalSize) + " --> " + sizeTransform.transformSize(newSize);
-	statusBarItem.show();
-	vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
-	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
-	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
-}
-
-/**
- * statusBarInfo Creates an output
- * channel with information about
- * the file that has been minified
- * original size, new minified size
- * filetype and path.
- */
-function statusBarInfo() {
-	const oc = window.createOutputChannel('Minify output');
-	oc.appendLine("╔══════════════════════════════╗");
-	oc.appendLine("║      Extension MinifyAll     ║	")
-	oc.appendLine("╠═══════════════════╦══════════╣");
-	oc.appendLine("║ Original size     ║ " + sizeTransform.transformSize(originalSize) + " ║");
-	oc.appendLine("╠═══════════════════╬══════════║");
-	oc.appendLine("║ New minified size ║ " + sizeTransform.transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + " ║");
-	oc.appendLine("╚═══════════════════╩══════════╝");
-	oc.appendLine("File path:\t\t  " + window.activeTextEditor.document.fileName);
-	oc.appendLine("File type:\t\t  " + window.activeTextEditor.document.languageId);
-	oc.appendLine("% of shrink:\t\t" + (100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3) + "%");
-	oc.appendLine("Bytes freed:\t\t" + (originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)) + "B");
-	oc.appendLine("Time spend:\t\t " + timeSpend + " miliseconds");
-	oc.show();
-}
 
 /**
  * activate Main function called when the user
@@ -98,8 +47,10 @@ function statusBarInfo() {
 function activate(context) {
 	//Command MinifyAll default one.
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
-		originalFilepath = vscode.window.activeTextEditor.document.fileName
-		originalSize = FileSaver.statSync(originalFilepath).size
+		let startTime = new Date().getTime();
+		originalFilepath = vscode.window.activeTextEditor.document.fileName;
+		originalSize = FileSaver.statSync(originalFilepath).size;
+		statusReady = true;
 		const {
 			document
 		} = window.activeTextEditor;
@@ -214,6 +165,7 @@ function activate(context) {
 
 	});
 
+	//-----------------------------------------------------------------------------
 	//Command MinifyAll and writes the result in other file.
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
@@ -337,6 +289,74 @@ function activate(context) {
 }
 
 
+/**
+ * getNewSize gets the new size of the
+ * document and creates the triggers
+ * then calls createStatusBar()
+ */
+function getNewSize() {
+	if (statusReady) {
+		const newFilepath = vscode.window.activeTextEditor.document.fileName;
+		const newSize = FileSaver.statSync(newFilepath).size;
+		if (statusDisabled == false) {
+			createStatusBar(originalSize, newSize);
+			vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
+			vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
+			vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+		}
+	}
+}
+
+/**
+ * createStatusBar creates the status bar item
+ * @param {number} originalSize the unminified size
+ * @param {number} newSize the minified size
+ */
+function createStatusBar(originalSize, newSize) {
+	statusBarItem.tooltip = 'New file size, click for more info!';
+	statusBarItem.command = 'extension.MinifyAllStatus';
+	statusBarItem.text = transformSize(originalSize) + " --> " + transformSize(newSize);
+	statusBarItem.show();
+	vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
+	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
+	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+	statusReady = false;
+}
+
+/**
+ * transformSize receives an int and transform its value to KB, OR MB
+ * @param {number} size 
+ */
+function transformSize(size) {
+	if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} MB`;
+	else if (size >= 1024) return `${Math.floor(size / 10.24) / 100} KB`;
+	else return `${size} B`;
+}
+
+/**
+ * statusBarInfo Creates an output
+ * channel with information about
+ * the file that has been minified
+ * original size, new minified size
+ * filetype and path.
+ */
+function statusBarInfo() {
+	oc = window.createOutputChannel('Minify output');
+	oc.appendLine("╔══════════════════════════════╗");
+	oc.appendLine("║      Extension MinifyAll     ║	")
+	oc.appendLine("╠═══════════════════╦══════════╣");
+	oc.appendLine("║ Original size     ║ " + transformSize(originalSize) + " ║");
+	oc.appendLine("╠═══════════════════╬══════════║");
+	oc.appendLine("║ New minified size ║ " + transformSize(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size) + " ║");
+	oc.appendLine("╚═══════════════════╩══════════╝");
+	oc.appendLine("File path:  \t\t" + window.activeTextEditor.document.fileName);
+	oc.appendLine("File type:  \t\t" + window.activeTextEditor.document.languageId);
+	oc.appendLine("% of shrink:\t\t" + (100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3) + "%");
+	oc.appendLine("Bytes freed:\t\t" + (originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)) + "B");
+	oc.appendLine("Time spend: \t\t" + timeSpend + " miliseconds. (" + timeSpend / 1000 + " seconds).");
+	oc.show();
+}
+
 exports.activate = activate;
 
 /**
@@ -346,5 +366,6 @@ exports.activate = activate;
  */
 function deactivate() {
 	statusBarItem.dispose();
+	oc.dispose();
 }
 exports.deactivate = deactivate;

@@ -2,11 +2,11 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
-	"icon": "icon-min.png",
+	"icon": "icon.png",
 	"engines": {
 		"vscode": "^1.36.0"
 	},
@@ -22,6 +22,7 @@
 		"compresser",
 		"compress",
 		"minify",
+		"minifier",
 		"css",
 		"json",
 		"jsonc",
@@ -65,10 +66,10 @@
 		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
-				"key": "Ctrl+alt+m",
-				"mac": "cmd+alt+m",
-				"linux": "Ctrl+alt+m",
-				"win": "Ctrl+alt+m"
+				"key": "Ctrl+alt+M",
+				"mac": "cmd+alt+M",
+				"linux": "Ctrl+alt+M",
+				"win": "Ctrl+alt+M"
 			},
 			{
 				"command": "extension.MinifyAll2OtherDoc",
@@ -91,6 +92,23 @@
 					"type": "boolean",
 					"default": false,
 					"description": "If you want MinifyAll to stop showing an status bar with information about the compression after you minify a file. (True for disabling.)"
+				},
+				"MinifyAll.statusbarPriority": {
+					"type": "integer",
+					"default": 0,
+					"description": "Priority of the status bar. 0 Is the greatest."
+				},
+				"MinifyAll.statusbarAlignment": {
+					"type": "string",
+					"default": "Left",
+					"enum": [
+						"Left",
+						"Right"
+					],
+					"enumDescriptions": [
+						"Aligns the status bar indicator to the left.",
+						"Aligns the status bar indicator to the right."
+					]
 				}
 			}
 		}
