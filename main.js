@@ -107,6 +107,8 @@ function activate(context) {
 		switch (window.activeTextEditor.document.languageId) {
 			case "css":
 			case "scss":
+			case "less":
+			case "sass":
 
 				const editorCss = vscode.window.activeTextEditor;
 				const firstLineCss = editorCss.document.lineAt(0);
@@ -227,6 +229,9 @@ function activate(context) {
 
 			case "css":
 			case "scss":
+			case "less":
+			case "sass":
+
 				const newName = path.basename(fileName).replace('.css', '-min.css');
 				const path2NewFile = path.join(filePath, newName);
 				const cssMinifier = require('./src/cssMinifier.js');

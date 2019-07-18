@@ -1,6 +1,6 @@
 # **MinifyAll a extension for VSCode**
 
-VSCode **minifier** for **JSON**, **JSONC**, **CSS**, **SCSS**, and **HTML**, you will love its simplicity!
+VSCode **minifier** for *JSON*, *CSS*, *HTML*, *LESS*, *SASS*, *SCSS*, and *JSONC*. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
@@ -66,10 +66,12 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 ## **Languages available** 🧪🔥
 
 - CSS
-- SCSS
 - HTML
 - JSON
 - JSONC
+- LESS
+- SASS
+- SCSS
 
 ---
 
