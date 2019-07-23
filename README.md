@@ -8,7 +8,7 @@ Not based in any minifier, made from scratch!
 
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
-Want to help us improve the theme or you found a mistake?
+Want to help us improve the extension or you found a mistake?
 **[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
 
 Or contact **[me](jgracia9988@gmail.com)**.
