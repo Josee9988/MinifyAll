@@ -19,7 +19,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:45%;"/>
+<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:40%;"/>
 
 ---
 
@@ -100,6 +100,58 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 ``` json
 "MinifyAll.statusbarAlignment": Left|Right
 ```
+
+- Disables warning and information mensages
+
+``` json
+"MinifyAll.disableMessages": true|false
+```
+
+### **Disabling languages configuration**
+
+- Disables html minimization
+
+``` json
+"MinifyAll.disableHtml": true|false
+```
+
+- Disables css minimization
+
+``` json
+"MinifyAll.disableCss": true|false
+```
+
+- Disables scss minimization
+
+``` json
+"MinifyAll.disableScss": true|false
+```
+
+- Disables less minimization
+
+``` json
+"MinifyAll.disableLess": true|false
+```
+
+- Disables sass minimization
+
+``` json
+"MinifyAll.disableSass": true|false
+```
+
+- Disables json minimization
+
+``` json
+"MinifyAll.disableJson": true|false
+```
+
+- Disables jsonc minimization
+
+``` json
+"MinifyAll.disableJsonc": true|false
+```
+
+---
 
 ## **Examples**
 

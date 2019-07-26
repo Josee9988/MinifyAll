@@ -3,6 +3,14 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.8.2] - 2019-07-26
+
+### Added
+
+- Added configuration setting for disabling each language
+- Information about the new configuration settings
+- Added configuration setting for disabling all kind of messages (error, warning and information)
+
 ## [0.8.1] - 2019-07-23
 
 ### Changed

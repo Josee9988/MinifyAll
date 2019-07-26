@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.8.1",
+	"version": "0.8.2",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -109,12 +109,49 @@
 						"Aligns the status bar indicator to the left.",
 						"Aligns the status bar indicator to the right."
 					]
+				},
+				"MinifyAll.disableHtml": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing html. (True for disabling.)"
+				},
+				"MinifyAll.disableCss": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing css. (True for disabling.)"
+				},
+				"MinifyAll.disableScss": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing scss. (True for disabling.)"
+				},
+				"MinifyAll.disableLess": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing less. (True for disabling.)"
+				},
+				"MinifyAll.disableSass": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing sass. (True for disabling.)"
+				},
+				"MinifyAll.disableJson": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing json. (True for disabling.)"
+				},
+				"MinifyAll.disableJsonc": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing jsonc. (True for disabling.)"
+				},
+				"MinifyAll.disableMessages": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop showing error, warning or information messages. (True for disabling.)"
 				}
 			}
 		}
-	},
-	"scripts": {
-		"test": "node ./test/runTest.js"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",

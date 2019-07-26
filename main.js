@@ -28,6 +28,15 @@ const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener');
 const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation');
 const priority = userMinifyAllSettings.get('statusbarPriority');
 const alignment = userMinifyAllSettings.get('statusbarAlignment');
+const disableHtml = userMinifyAllSettings.get('disableHtml');
+const disableCss = userMinifyAllSettings.get('disableCss');
+const disableScss = userMinifyAllSettings.get('disableScss');
+const disableLess = userMinifyAllSettings.get('disableLess');
+const disableSass = userMinifyAllSettings.get('disableSass');
+const disableJson = userMinifyAllSettings.get('disableJson');
+const disableJsonc = userMinifyAllSettings.get('disableJsonc');
+const disableMessages = userMinifyAllSettings.get('disableMessages');
+
 
 let statusBarItem, timeSpend, startTime, statusReady, oc;
 vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
@@ -61,104 +70,134 @@ function activate(context) {
 			case "less":
 			case "sass":
 
-				const editorCss = vscode.window.activeTextEditor;
-				const firstLineCss = editorCss.document.lineAt(0);
-				const lastLineCss = editorCss.document.lineAt(editorCss.document.lineCount - 1);
-				const textRangeCss = new vscode.Range(0,
-					firstLineCss.range.start.character,
-					editorCss.document.lineCount - 1,
-					lastLineCss.range.end.character);
+				if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
+					(window.activeTextEditor.document.languageId == "scss" && disableScss == false) ||
+					(window.activeTextEditor.document.languageId == "less" && disableLess == false) ||
+					(window.activeTextEditor.document.languageId == "sass" && disableSass == false)) {
 
-				const cssMinifier = require('./src/cssMinifier.js');
-				const cssContent = document.getText().split('\n');
-				const RemoverLine4Css = new LineRemover(cssContent);
-				RemoverLine4Css.removeMultipleLineComments();
-				RemoverLine4Css.removeSingleLineComments();
-				const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
+					const editorCss = vscode.window.activeTextEditor;
+					const firstLineCss = editorCss.document.lineAt(0);
+					const lastLineCss = editorCss.document.lineAt(editorCss.document.lineCount - 1);
+					const textRangeCss = new vscode.Range(0,
+						firstLineCss.range.start.character,
+						editorCss.document.lineCount - 1,
+						lastLineCss.range.end.character);
 
-				if (hexDisabled == false) {
-					//Minifier processes
-					MinifierHex4Css.shortHexMain();
-					MinifierHex4Css.shortRGBMain();
-					MinifierHex4Css.shortRGBAMain();
+					const cssMinifier = require('./src/cssMinifier.js');
+					const cssContent = document.getText().split('\n');
+					const RemoverLine4Css = new LineRemover(cssContent);
+					RemoverLine4Css.removeMultipleLineComments();
+					RemoverLine4Css.removeSingleLineComments();
+					const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
+
+					if (hexDisabled == false) {
+						//Minifier processes
+						MinifierHex4Css.shortHexMain();
+						MinifierHex4Css.shortRGBMain();
+						MinifierHex4Css.shortRGBAMain();
+					}
+
+					const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
+
+					//Get the minified code and replace it
+					const modifiedCssText = minifiercss.getCssMinified();
+					editorCss.edit(builder => {
+						builder.replace(textRangeCss, modifiedCssText);
+					});
+					timeSpend = ((new Date().getTime()) - startTime);
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
 				}
-
-				const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
-
-				//Get the minified code and replace it
-				const modifiedCssText = minifiercss.getCssMinified();
-				editorCss.edit(builder => {
-					builder.replace(textRangeCss, modifiedCssText);
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
 
 				break;
 
 			case "json":
 			case "jsonc":
 
-				const editorJson = vscode.window.activeTextEditor;
-				const firstLineJson = editorJson.document.lineAt(0);
-				const lastLineJson = editorJson.document.lineAt(editorJson.document.lineCount - 1);
-				const textRangeJson = new vscode.Range(0,
-					firstLineJson.range.start.character,
-					editorJson.document.lineCount - 1,
-					lastLineJson.range.end.character);
+				if ((window.activeTextEditor.document.languageId == "json" && disableJson == false) ||
+					(window.activeTextEditor.document.languageId == "jsonc" && disableJsonc == false)) {
 
-				const jsonMinifier = require('./src/jsonMinifier.js');
-				const jsonContent = document.getText().split('\n');
-				const MinifierHex4Json = new HexMinifier(jsonContent);
+					const editorJson = vscode.window.activeTextEditor;
+					const firstLineJson = editorJson.document.lineAt(0);
+					const lastLineJson = editorJson.document.lineAt(editorJson.document.lineCount - 1);
+					const textRangeJson = new vscode.Range(0,
+						firstLineJson.range.start.character,
+						editorJson.document.lineCount - 1,
+						lastLineJson.range.end.character);
 
-				if (hexDisabled == false) {
-					//Minifier processes
-					MinifierHex4Json.shortHexMain();
-					MinifierHex4Json.shortRGBMain();
-					MinifierHex4Json.shortRGBAMain();
+					const jsonMinifier = require('./src/jsonMinifier.js');
+					const jsonContent = document.getText().split('\n');
+					const MinifierHex4Json = new HexMinifier(jsonContent);
+
+					if (hexDisabled == false) {
+						//Minifier processes
+						MinifierHex4Json.shortHexMain();
+						MinifierHex4Json.shortRGBMain();
+						MinifierHex4Json.shortRGBAMain();
+					}
+
+					const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
+
+					RemoverLine4Json.removeMultipleLineComments();
+					RemoverLine4Json.removeSingleLineComments();
+
+					const minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
+
+					//Get the minified code and replace it
+					const modifiedJsonText = minifierjson.getJSONMinified();
+
+					editorJson.edit(builder => {
+						builder.replace(textRangeJson, modifiedJsonText);
+					});
+					timeSpend = ((new Date().getTime()) - startTime);
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
 				}
-
-				const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
-
-				RemoverLine4Json.removeMultipleLineComments();
-				RemoverLine4Json.removeSingleLineComments();
-
-				const minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
-
-				//Get the minified code and replace it
-				const modifiedJsonText = minifierjson.getJSONMinified();
-
-				editorJson.edit(builder => {
-					builder.replace(textRangeJson, modifiedJsonText);
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
 
 				break;
 
 			case "html":
 
-				const editorHtml = vscode.window.activeTextEditor;
-				const firstLineHtml = editorHtml.document.lineAt(0);
-				const lastLineHtml = editorHtml.document.lineAt(editorHtml.document.lineCount - 1);
-				const textRangeHtml = new vscode.Range(0,
-					firstLineHtml.range.start.character,
-					editorHtml.document.lineCount - 1,
-					lastLineHtml.range.end.character);
+				if ((window.activeTextEditor.document.languageId == "html" && disableHtml == false)) {
 
-				const htmlMinifier = require('./src/htmlMinifier.js');
-				const htmlContent = document.getText().split('\n');
-				const minifierhtml = new htmlMinifier(htmlContent);
-				minifierhtml.removeMultipleLineComments();
-				//Get the minified code and replace it
-				const modifiedHtmlText = minifierhtml.gethtmlMinified();
+					const editorHtml = vscode.window.activeTextEditor;
+					const firstLineHtml = editorHtml.document.lineAt(0);
+					const lastLineHtml = editorHtml.document.lineAt(editorHtml.document.lineCount - 1);
+					const textRangeHtml = new vscode.Range(0,
+						firstLineHtml.range.start.character,
+						editorHtml.document.lineCount - 1,
+						lastLineHtml.range.end.character);
 
-				editorHtml.edit(builder => {
-					builder.replace(textRangeHtml, modifiedHtmlText);
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
+					const htmlMinifier = require('./src/htmlMinifier.js');
+					const htmlContent = document.getText().split('\n');
+					const minifierhtml = new htmlMinifier(htmlContent);
+					minifierhtml.removeMultipleLineComments();
+					//Get the minified code and replace it
+					const modifiedHtmlText = minifierhtml.gethtmlMinified();
+
+					editorHtml.edit(builder => {
+						builder.replace(textRangeHtml, modifiedHtmlText);
+					});
+					timeSpend = ((new Date().getTime()) - startTime);
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 
 			default:
-				window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
+				if (!disableMessages) {
+					window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
+				}
 				break;
 		}
 		context.subscriptions.push(disposable);
@@ -184,102 +223,139 @@ function activate(context) {
 			case "less":
 			case "sass":
 
-				const newName = path.basename(fileName).replace('.css', '-min.css');
-				const path2NewFile = path.join(filePath, newName);
-				const cssMinifier = require('./src/cssMinifier.js');
-				const cssContent = document.getText().split('\n');
-				const RemoverLine4Css = new LineRemover(cssContent);
+				if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
+					(window.activeTextEditor.document.languageId == "scss" && disableScss == false) ||
+					(window.activeTextEditor.document.languageId == "less" && disableLess == false) ||
+					(window.activeTextEditor.document.languageId == "sass" && disableSass == false)) {
 
-				RemoverLine4Css.removeMultipleLineComments();
-				RemoverLine4Css.removeSingleLineComments();
+					const newName = path.basename(fileName).replace('.css', '-min.css');
+					const path2NewFile = path.join(filePath, newName);
+					const cssMinifier = require('./src/cssMinifier.js');
+					const cssContent = document.getText().split('\n');
+					const RemoverLine4Css = new LineRemover(cssContent);
 
-				const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
+					RemoverLine4Css.removeMultipleLineComments();
+					RemoverLine4Css.removeSingleLineComments();
 
-				if (hexDisabled == false) {
-					//Minifier processes
-					MinifierHex4Css.shortHexMain();
-					MinifierHex4Css.shortRGBMain();
-					MinifierHex4Css.shortRGBAMain();
-				}
+					const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
-				const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
+					if (hexDisabled == false) {
+						//Minifier processes
+						MinifierHex4Css.shortHexMain();
+						MinifierHex4Css.shortRGBMain();
+						MinifierHex4Css.shortRGBAMain();
+					}
 
-				const modifiedCssText = minifiercss.getCssMinified();
+					const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
 
-				//Get the minified code and replace it in a new file
-				FileSaver.writeFile(path2NewFile, modifiedCssText, () => {
-					window.showInformationMessage(`The minified file has been saved in: ${path2NewFile}`);
-					vscode.workspace.openTextDocument(path2NewFile).then(doc => {
-						vscode.window.showTextDocument(doc);
+					const modifiedCssText = minifiercss.getCssMinified();
+
+					//Get the minified code and replace it in a new file
+					FileSaver.writeFile(path2NewFile, modifiedCssText, () => {
+						if (!disableMessages) {
+							window.showInformationMessage(`The minified file has been saved in: ${path2NewFile}`);
+						}
+						vscode.workspace.openTextDocument(path2NewFile).then(doc => {
+							vscode.window.showTextDocument(doc);
+						});
 					});
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
-				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					timeSpend = ((new Date().getTime()) - startTime);
+					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 
 			case "json":
 			case "jsonc":
 
-				const newNamejson = path.basename(fileName).replace('.json', '-min.json');
-				const path2NewFilejson = path.join(filePath, newNamejson);
-				const jsonMinifier = require('./src/jsonMinifier.js');
-				const jsonContent = document.getText().split('\n');
-				const MinifierHex4Json = new HexMinifier(jsonContent);
+				if ((window.activeTextEditor.document.languageId == "json" && disableJson == false) ||
+					(window.activeTextEditor.document.languageId == "jsonc" && disableJsonc == false)) {
 
-				if (hexDisabled == false) {
-					//Minifier processes
-					MinifierHex4Json.shortHexMain();
-					MinifierHex4Json.shortRGBMain();
-					MinifierHex4Json.shortRGBAMain();
-				}
+					const newNamejson = path.basename(fileName).replace('.json', '-min.json');
+					const path2NewFilejson = path.join(filePath, newNamejson);
+					const jsonMinifier = require('./src/jsonMinifier.js');
+					const jsonContent = document.getText().split('\n');
+					const MinifierHex4Json = new HexMinifier(jsonContent);
 
-				const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
+					if (hexDisabled == false) {
+						//Minifier processes
+						MinifierHex4Json.shortHexMain();
+						MinifierHex4Json.shortRGBMain();
+						MinifierHex4Json.shortRGBAMain();
+					}
 
-				RemoverLine4Json.removeMultipleLineComments();
-				RemoverLine4Json.removeSingleLineComments();
+					const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
 
-				const minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
+					RemoverLine4Json.removeMultipleLineComments();
+					RemoverLine4Json.removeSingleLineComments();
 
-				//Get the minified code and replace it
-				const modifiedJsonText = minifierjson.getJSONMinified();
+					const minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
 
-				//Get the minified code and replace it in a new file
-				FileSaver.writeFile(path2NewFilejson, modifiedJsonText, () => {
-					window.showInformationMessage(`The minified file has been saved in: ${path2NewFilejson}`);
-					vscode.workspace.openTextDocument(path2NewFilejson).then(doc => {
-						vscode.window.showTextDocument(doc);
+					//Get the minified code and replace it
+					const modifiedJsonText = minifierjson.getJSONMinified();
+
+					//Get the minified code and replace it in a new file
+					FileSaver.writeFile(path2NewFilejson, modifiedJsonText, () => {
+						if (!disableMessages) {
+							window.showInformationMessage(`The minified file has been saved in: ${path2NewFilejson}`);
+						}
+						vscode.workspace.openTextDocument(path2NewFilejson).then(doc => {
+							vscode.window.showTextDocument(doc);
+						});
 					});
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
-				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					timeSpend = ((new Date().getTime()) - startTime);
+					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 
 			case "html":
-				const newNamehtml = path.basename(fileName).replace('.html', '-min.html');
-				const path2NewFilehtml = path.join(filePath, newNamehtml);
-				const htmlMinifier = require('./src/htmlMinifier.js');
-				const htmlContent = document.getText().split('\n');
-				const minifierhtml = new htmlMinifier(htmlContent);
-				minifierhtml.removeMultipleLineComments();
 
-				const modifiedHtmlText = minifierhtml.gethtmlMinified();
+				if ((window.activeTextEditor.document.languageId == "html" && disableHtml == false)) {
 
-				//Get the minified code and replace it in a new file
-				FileSaver.writeFile(path2NewFilehtml, modifiedHtmlText, () => {
-					window.showInformationMessage(`The minified file has been saved in: ${path2NewFilehtml}`);
-					vscode.workspace.openTextDocument(path2NewFilehtml).then(doc => {
-						vscode.window.showTextDocument(doc);
+					const newNamehtml = path.basename(fileName).replace('.html', '-min.html');
+					const path2NewFilehtml = path.join(filePath, newNamehtml);
+					const htmlMinifier = require('./src/htmlMinifier.js');
+					const htmlContent = document.getText().split('\n');
+					const minifierhtml = new htmlMinifier(htmlContent);
+					minifierhtml.removeMultipleLineComments();
+
+					const modifiedHtmlText = minifierhtml.gethtmlMinified();
+
+					//Get the minified code and replace it in a new file
+					FileSaver.writeFile(path2NewFilehtml, modifiedHtmlText, () => {
+						if (!disableMessages) {
+							window.showInformationMessage(`The minified file has been saved in: ${path2NewFilehtml}`);
+						}
+						vscode.workspace.openTextDocument(path2NewFilehtml).then(doc => {
+							vscode.window.showTextDocument(doc);
+						});
 					});
-				});
-				timeSpend = ((new Date().getTime()) - startTime);
-				console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					timeSpend = ((new Date().getTime()) - startTime);
+					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 
 			default:
-				window.showWarningMessage('⛔ We can not format this file type yet, use a valid one.');
+				if (!disableMessages) {
+					window.showWarningMessage('⛔ We can not format this file type yet, use a valid one.');
+				}
 				break;
 		}
 
