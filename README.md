@@ -107,6 +107,18 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 "MinifyAll.disableMessages": true|false
 ```
 
+- Minify on save (Default command, which will minify your actual code)
+
+``` json
+"MinifyAll.minifyOnSave": true|false
+```
+
+- Minify on save (Second command, which will minify your actual code into a new file)
+
+``` json
+"MinifyAll.minifyOnSaveToNewFIle": true|false
+```
+
 ### **Disabling languages configuration**
 
 - Disables html minimization

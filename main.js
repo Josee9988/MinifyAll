@@ -23,6 +23,7 @@ const LineRemover = require('./src/lineRemover');
 let originalFilepath = vscode.window.activeTextEditor.document.fileName;
 let originalSize = FileSaver.statSync(originalFilepath).size;
 
+// Getting user configuration
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
 const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener');
 const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation');
@@ -36,6 +37,15 @@ const disableSass = userMinifyAllSettings.get('disableSass');
 const disableJson = userMinifyAllSettings.get('disableJson');
 const disableJsonc = userMinifyAllSettings.get('disableJsonc');
 const disableMessages = userMinifyAllSettings.get('disableMessages');
+const minifyOnSave = userMinifyAllSettings.get('minifyOnSave');
+const minifyOnSaveToNewFIle = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
+
+if (minifyOnSave) {
+	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll'));
+}
+if (minifyOnSaveToNewFIle) {
+	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll2OtherDoc'));
+}
 
 
 let statusBarItem, timeSpend, startTime, statusReady, oc;

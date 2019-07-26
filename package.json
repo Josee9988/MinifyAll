@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.8.2",
+	"version": "0.8.3",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -149,6 +149,16 @@
 					"type": "boolean",
 					"default": false,
 					"description": "If you want MinifyAll to stop showing error, warning or information messages. (True for disabling.)"
+				},
+				"MinifyAll.minifyOnSave": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to minify every time you save in the same file. (True for disabling.)"
+				},
+				"MinifyAll.minifyOnSaveToNewFIle": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling.)"
 				}
 			}
 		}
