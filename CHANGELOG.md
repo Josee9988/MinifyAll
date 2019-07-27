@@ -3,6 +3,13 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.8.4] - 2019-07-27
+
+### Changed
+
+- A lot of code that were in each language now is only in a couple of functions. (Improved readability and code consistency by a lot)
+- Removed about 50 total lines of code.
+
 ## [0.8.3] - 2019-07-26
 
 ### Added

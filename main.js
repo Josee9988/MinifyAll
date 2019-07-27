@@ -85,35 +85,20 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId == "less" && disableLess == false) ||
 					(window.activeTextEditor.document.languageId == "sass" && disableSass == false)) {
 
-					const editorCss = vscode.window.activeTextEditor;
-					const firstLineCss = editorCss.document.lineAt(0);
-					const lastLineCss = editorCss.document.lineAt(editorCss.document.lineCount - 1);
-					const textRangeCss = new vscode.Range(0,
-						firstLineCss.range.start.character,
-						editorCss.document.lineCount - 1,
-						lastLineCss.range.end.character);
-
 					const cssMinifier = require('./src/cssMinifier.js');
 					const cssContent = document.getText().split('\n');
 					const RemoverLine4Css = new LineRemover(cssContent);
+
 					RemoverLine4Css.removeMultipleLineComments();
 					RemoverLine4Css.removeSingleLineComments();
-					const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
 
-					if (hexDisabled == false) {
-						//Minifier processes
-						MinifierHex4Css.shortHexMain();
-						MinifierHex4Css.shortRGBMain();
-						MinifierHex4Css.shortRGBAMain();
-					}
+					const hexMinifiedCss = HexMinify(RemoverLine4Css.getLineRemoved());
 
-					const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
+					const minifiercss = new cssMinifier(hexMinifiedCss);
 
-					//Get the minified code and replace it
 					const modifiedCssText = minifiercss.getCssMinified();
-					editorCss.edit(builder => {
-						builder.replace(textRangeCss, modifiedCssText);
-					});
+
+					replaceActualCode(modifiedCssText);
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
@@ -130,38 +115,21 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId == "json" && disableJson == false) ||
 					(window.activeTextEditor.document.languageId == "jsonc" && disableJsonc == false)) {
 
-					const editorJson = vscode.window.activeTextEditor;
-					const firstLineJson = editorJson.document.lineAt(0);
-					const lastLineJson = editorJson.document.lineAt(editorJson.document.lineCount - 1);
-					const textRangeJson = new vscode.Range(0,
-						firstLineJson.range.start.character,
-						editorJson.document.lineCount - 1,
-						lastLineJson.range.end.character);
-
 					const jsonMinifier = require('./src/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
-					const MinifierHex4Json = new HexMinifier(jsonContent);
 
-					if (hexDisabled == false) {
-						//Minifier processes
-						MinifierHex4Json.shortHexMain();
-						MinifierHex4Json.shortRGBMain();
-						MinifierHex4Json.shortRGBAMain();
-					}
-
-					const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
+					const contentWithHexMinified = HexMinify(jsonContent);
+					const RemoverLine4Json = new LineRemover(contentWithHexMinified);
 
 					RemoverLine4Json.removeMultipleLineComments();
 					RemoverLine4Json.removeSingleLineComments();
 
 					const minifierjson = new jsonMinifier(RemoverLine4Json.getLineRemoved());
 
-					//Get the minified code and replace it
 					const modifiedJsonText = minifierjson.getJSONMinified();
 
-					editorJson.edit(builder => {
-						builder.replace(textRangeJson, modifiedJsonText);
-					});
+					replaceActualCode(modifiedJsonText);
+
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
@@ -176,32 +144,20 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId == "html" && disableHtml == false)) {
 
-					const editorHtml = vscode.window.activeTextEditor;
-					const firstLineHtml = editorHtml.document.lineAt(0);
-					const lastLineHtml = editorHtml.document.lineAt(editorHtml.document.lineCount - 1);
-					const textRangeHtml = new vscode.Range(0,
-						firstLineHtml.range.start.character,
-						editorHtml.document.lineCount - 1,
-						lastLineHtml.range.end.character);
-
 					const htmlMinifier = require('./src/htmlMinifier.js');
 					const htmlContent = document.getText().split('\n');
 					const minifierhtml = new htmlMinifier(htmlContent);
 					minifierhtml.removeMultipleLineComments();
-					//Get the minified code and replace it
 					const modifiedHtmlText = minifierhtml.gethtmlMinified();
 
-					editorHtml.edit(builder => {
-						builder.replace(textRangeHtml, modifiedHtmlText);
-					});
-					timeSpend = ((new Date().getTime()) - startTime);
+					replaceActualCode(modifiedHtmlText);
 
+					timeSpend = ((new Date().getTime()) - startTime);
 				} else {
 					if (!disableMessages) {
 						window.showInformationMessage('We will not format this file type because you disabled it.');
 					}
 				}
-
 				break;
 
 			default:
@@ -247,28 +203,14 @@ function activate(context) {
 					RemoverLine4Css.removeMultipleLineComments();
 					RemoverLine4Css.removeSingleLineComments();
 
-					const MinifierHex4Css = new HexMinifier(RemoverLine4Css.getLineRemoved());
+					const hexMinifiedCss = HexMinify(RemoverLine4Css.getLineRemoved());
 
-					if (hexDisabled == false) {
-						//Minifier processes
-						MinifierHex4Css.shortHexMain();
-						MinifierHex4Css.shortRGBMain();
-						MinifierHex4Css.shortRGBAMain();
-					}
-
-					const minifiercss = new cssMinifier(MinifierHex4Css.getHexMinified());
+					const minifiercss = new cssMinifier(hexMinifiedCss);
 
 					const modifiedCssText = minifiercss.getCssMinified();
 
-					//Get the minified code and replace it in a new file
-					FileSaver.writeFile(path2NewFile, modifiedCssText, () => {
-						if (!disableMessages) {
-							window.showInformationMessage(`The minified file has been saved in: ${path2NewFile}`);
-						}
-						vscode.workspace.openTextDocument(path2NewFile).then(doc => {
-							vscode.window.showTextDocument(doc);
-						});
-					});
+					minifiedTextToNewFile(path2NewFile, modifiedCssText);
+
 					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
@@ -290,16 +232,10 @@ function activate(context) {
 					const path2NewFilejson = path.join(filePath, newNamejson);
 					const jsonMinifier = require('./src/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
-					const MinifierHex4Json = new HexMinifier(jsonContent);
 
-					if (hexDisabled == false) {
-						//Minifier processes
-						MinifierHex4Json.shortHexMain();
-						MinifierHex4Json.shortRGBMain();
-						MinifierHex4Json.shortRGBAMain();
-					}
+					const contentWithHexMinified = HexMinify(jsonContent);
 
-					const RemoverLine4Json = new LineRemover(MinifierHex4Json.getHexMinified());
+					const RemoverLine4Json = new LineRemover(contentWithHexMinified);
 
 					RemoverLine4Json.removeMultipleLineComments();
 					RemoverLine4Json.removeSingleLineComments();
@@ -309,15 +245,8 @@ function activate(context) {
 					//Get the minified code and replace it
 					const modifiedJsonText = minifierjson.getJSONMinified();
 
-					//Get the minified code and replace it in a new file
-					FileSaver.writeFile(path2NewFilejson, modifiedJsonText, () => {
-						if (!disableMessages) {
-							window.showInformationMessage(`The minified file has been saved in: ${path2NewFilejson}`);
-						}
-						vscode.workspace.openTextDocument(path2NewFilejson).then(doc => {
-							vscode.window.showTextDocument(doc);
-						});
-					});
+					minifiedTextToNewFile(path2NewFilejson, modifiedJsonText);
+
 					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
@@ -342,15 +271,8 @@ function activate(context) {
 
 					const modifiedHtmlText = minifierhtml.gethtmlMinified();
 
-					//Get the minified code and replace it in a new file
-					FileSaver.writeFile(path2NewFilehtml, modifiedHtmlText, () => {
-						if (!disableMessages) {
-							window.showInformationMessage(`The minified file has been saved in: ${path2NewFilehtml}`);
-						}
-						vscode.workspace.openTextDocument(path2NewFilehtml).then(doc => {
-							vscode.window.showTextDocument(doc);
-						});
-					});
+					minifiedTextToNewFile(path2NewFilehtml, modifiedHtmlText);
+
 					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
@@ -441,6 +363,55 @@ function statusBarInfo() {
 	oc.appendLine("Bytes freed:\t\t" + (originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)) + "B");
 	oc.appendLine("Time spend: \t\t" + timeSpend + " miliseconds. (" + timeSpend / 1000 + " seconds).");
 	oc.show();
+}
+
+/**
+ * HexMinify receives an array with all the content, and minifies it's hexadecimal, rgb and rgba values. then return the new array.
+ * @param {Array} Content 
+ * @return {Array} with the colors minified
+ */
+function HexMinify(Content) {
+	let MinifierHex = new HexMinifier(Content);
+	if (hexDisabled == false) {
+		//Minifier processes
+		MinifierHex.shortHexMain();
+		MinifierHex.shortRGBMain();
+		MinifierHex.shortRGBAMain();
+	}
+	return MinifierHex.getHexMinified();
+}
+
+/**
+ * replaceActualCode gets the actual code and replaces it with the minified one
+ * @param {String} modifiedText the text to replace the original code
+ */
+function replaceActualCode(modifiedText) {
+	const editor = vscode.window.activeTextEditor;
+	const firstLineCss = editor.document.lineAt(0);
+	const lastLineCss = editor.document.lineAt(editor.document.lineCount - 1);
+	const textRange = new vscode.Range(0,
+		firstLineCss.range.start.character,
+		editor.document.lineCount - 1,
+		lastLineCss.range.end.character);
+	editor.edit(builder => {
+		builder.replace(textRange, modifiedText);
+	});
+}
+
+/**
+ * minifiedTextToNewFile gets the minified code and writes it in a new file.
+ * @param {String} path2NewFile The path to the new file
+ * @param {String} modifiedText The text to place in the new file
+ */
+function minifiedTextToNewFile(path2NewFile, modifiedText) {
+	FileSaver.writeFile(path2NewFile, modifiedText, () => {
+		if (!disableMessages) {
+			window.showInformationMessage(`The minified file has been saved in: ${path2NewFile}`);
+		}
+		vscode.workspace.openTextDocument(path2NewFile).then(doc => {
+			vscode.window.showTextDocument(doc);
+		});
+	});
 }
 
 exports.activate = activate;

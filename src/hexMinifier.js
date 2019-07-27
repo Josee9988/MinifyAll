@@ -159,7 +159,7 @@ class HexMinifier {
 
     /**
      * getHexMinified
-     * @return {Array} the line compressed
+     * @return {Array} the lines compressed
      */
     getHexMinified() {
         return this.cssContent;
