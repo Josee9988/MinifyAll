@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.8.4",
+	"version": "0.8.5",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -108,7 +108,8 @@
 					"enumDescriptions": [
 						"Aligns the status bar indicator to the left.",
 						"Aligns the status bar indicator to the right."
-					]
+					],
+					"description": "Aligns the status bar indicator to the left or the right (Default left)."
 				},
 				"MinifyAll.disableHtml": {
 					"type": "boolean",

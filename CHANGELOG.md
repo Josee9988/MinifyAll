@@ -3,6 +3,15 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.8.5] - 2019-07-27
+
+### Added
+
+- Description to configuration 'statusbarAlignment' which it had not.
+- Upcoming features in readme.md file
+- Improved readme
+- Added 'click me too see ...' So all the configuration and the examples don't show at first.
+
 ## [0.8.4] - 2019-07-27
 
 ### Changed

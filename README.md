@@ -30,7 +30,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-## **Installation** 🔩⚙️
+## **Installation** 🔩⚙
 
 - Open the command Palette of VSCode with *Ctrl+P* or *⌘P*
 - And type:➡️
@@ -75,7 +75,12 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-## **Configuration**
+## **Configuration settings** ⚙️
+
+<!-- markdownlint-disable no-inline-html-->
+
+<details>
+<summary>Click to see more info about the configuration settings</summary>
 
 - If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.) Default = false
 
@@ -163,11 +168,16 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 "MinifyAll.disableJsonc": true|false
 ```
 
+</details>
+
 ---
 
 ## **Examples**
 
-### **Css**
+### **Css less sass scss**
+
+<details>
+<summary>Click to see an example of how the extension minifies CSS</summary>
 
 *From:*
 
@@ -196,7 +206,12 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-### **Json**
+</details>
+
+### **Json jsonc**
+
+<details>
+<summary>Click to see an example of how the extension minifies JSON</summary>
 
 *From:*
 
@@ -229,7 +244,12 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
+</details>
+
 ### **Html**
+
+<details>
+<summary>Click to see an example of how the extension minifies HTML</summary>
 
 *From:*
 
@@ -268,6 +288,8 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
+</details>
+
 ## **Known bugs:** 🛑
 
 - Css classes or ids don't support *px* or *keyframes* as a **name**.
@@ -289,6 +311,13 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
+## **Upcoming features** ✅💡
+
+- [ ] Right click in a file of the menu will minify to other document.
+- [ ] Right click in a folder will minify all supported files.
+- [ ] Path of the minify to other document (new file with minified text) will be customizable
+- [ ] JavaScript support (this will be hard if I try to do it on my own as I did before, maybe I search for an API or something if I find it too mind blowing because all the JS minifiers I've tested has given me errors and doesn't support new JS features at all...)
+
 ## **Built with** 🛠️🔧
 
 - [Virtual Studio Code](https://code.visualstudio.com/)
@@ -297,7 +326,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-### Did you enjoyed the minifier? Help us raise these numbers up
+### Did you enjoyed the minifier? Help us raise these numbers up 🥰
 
 [![Donate](https://img.shields.io/badge/Donate-Patreon-green.svg)](https://www.patreon.com/bePatron?u=22162331)
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#languages-primarily-tested)
@@ -305,7 +334,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 [![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 [![Github forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 
-[Check my theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme)
+[Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme)
 
 ---
 
