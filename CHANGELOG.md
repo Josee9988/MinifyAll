@@ -3,6 +3,13 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.9.0] - 2019-07-27
+
+### Added
+
+- JavaScript support!!. Made from scratch, I will be improving and fixing some bugs with javascript in the upcoming days...
+- Image used of right click minify is now in the Screenshots/ folder
+
 ## [0.8.6] - 2019-07-27
 
 ### Added

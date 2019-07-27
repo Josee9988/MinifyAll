@@ -1,6 +1,6 @@
 # **MinifyAll a extension for VSCode**
 
-VSCode **minifier** for **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for **JSON**, **CSS**, **HTML**, **JavaScript**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
@@ -8,7 +8,7 @@ Not based in any minifier, made from scratch!
 
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
-Want to help us improve the extension or you found a mistake?
+Do you want to help us improve the extension or did you found a bug?
 **[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
 
 Or contact **[me](jgracia9988@gmail.com)**.
@@ -19,7 +19,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
+<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
 
 ---
 
@@ -72,6 +72,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - CSS
 - HTML
 - JSON
+- JavaScript(beta)
 - JSONC
 - LESS
 - SASS
@@ -315,12 +316,11 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-## **Upcoming features** ✅💡
+## **Upcoming features?** ✅💡
 
 - [ ] Right click in a file of the menu will minify to other document.
 - [ ] Right click in a folder will minify all supported files.
 - [ ] Path of the minify to other document (new file with minified text) will be customizable
-- [ ] JavaScript support (this will be hard if I try to do it on my own as I did before, maybe I search for an API or something if I find it too mind blowing because all the JS minifiers I've tested has given me errors and doesn't support new JS features at all...)
 
 ## **Built with** 🛠️🔧
 

@@ -160,6 +160,21 @@ function activate(context) {
 				}
 				break;
 
+			case "javascript":
+				const jsMinifier = require('./src/jsMinifier.js');
+				const jsContent = document.getText().split('\n');
+
+				const RemoverLine4JS = new LineRemover(jsContent);
+
+				RemoverLine4JS.removeMultipleLineComments();
+				RemoverLine4JS.removeSingleLineComments();
+
+				const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+
+				replaceActualCode(minifierjs.getjsMinified());
+
+				break;
+
 			default:
 				if (!disableMessages) {
 					window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
@@ -284,6 +299,24 @@ function activate(context) {
 
 				break;
 
+			case "javascript":
+
+				const newNamejs = path.basename(fileName).replace('.js', '-min.js');
+				const path2NewFilejs = path.join(filePath, newNamejs);
+				const jsMinifier = require('./src/jsMinifier.js');
+				const jsContent = document.getText().split('\n');
+
+				const RemoverLine4JS = new LineRemover(jsContent);
+
+				RemoverLine4JS.removeMultipleLineComments();
+				RemoverLine4JS.removeSingleLineComments();
+
+				const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+
+				minifiedTextToNewFile(path2NewFilejs, minifierjs.getjsMinified());
+
+				break;
+
 			default:
 				if (!disableMessages) {
 					window.showWarningMessage('⛔ We can not format this file type yet, use a valid one.');
@@ -351,7 +384,7 @@ function transformSize(size) {
 function statusBarInfo() {
 	oc = window.createOutputChannel('Minify output');
 	oc.appendLine("╔══════════════════════════════╗");
-	oc.appendLine("║      Extension MinifyAll     ║	")
+	oc.appendLine("║      Extension MinifyAll     ║	");
 	oc.appendLine("╠═══════════════════╦══════════╣");
 	oc.appendLine("║ Original size     ║ " + transformSize(originalSize) + " ║");
 	oc.appendLine("╠═══════════════════╬══════════║");
