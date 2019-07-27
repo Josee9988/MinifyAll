@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.8.5",
+	"version": "0.8.6",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -162,6 +162,17 @@
 					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling.)"
 				}
 			}
+		},
+		"menus": {
+			"editor/context": [{
+					"command": "extension.MinifyAll",
+					"group": "myGroup@1"
+				},
+				{
+					"command": "extension.MinifyAll2OtherDoc",
+					"group": "myGroup@1"
+				}
+			]
 		}
 	},
 	"devDependencies": {

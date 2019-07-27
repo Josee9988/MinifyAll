@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.8.6] - 2019-07-27
+
+### Added
+
+- Right click on the open file will show you both commmands
+
 ## [0.8.5] - 2019-07-27
 
 ### Added

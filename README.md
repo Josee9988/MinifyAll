@@ -1,6 +1,6 @@
 # **MinifyAll a extension for VSCode**
 
-VSCode **minifier** for *JSON*, *CSS*, *HTML*, *LESS*, *SASS*, *SCSS*, and *JSONC*. you will love its simplicity!
+VSCode **minifier** for **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
@@ -19,7 +19,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:40%;"/>
+<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
 
 ---
 
@@ -60,6 +60,10 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - The second command that saves the minfied text to other file and preserves the original text:
 
 <img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+- Also minify when right clicking on the code!
+
+<img src="https://i.imgur.com/fXMQTc0.png" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
 ---
 
