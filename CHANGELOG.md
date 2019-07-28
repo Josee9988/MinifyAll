@@ -3,6 +3,12 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.5] - 2019-07-28
+
+### Fixed
+
+- Bug in JSONC. Trailing commas removed (,}) (,])
+
 ## [0.9.4] - 2019-07-28
 
 ### Changed

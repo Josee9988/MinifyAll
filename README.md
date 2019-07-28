@@ -370,9 +370,7 @@ break;default:break;}}
 }
 ```
 
-- Save minified text to other file using json (second command in a json file) may cause your vscode linter or intellisense to show some errors that are actually *not errors*.
-
-- If the file you are trying to minify is **not saved** or is an Untitled default vscode file may cause errors.
+- If the file you are trying to minify is **not saved** or is an Untitled default vscode file might cause errors.
 
 ---
 
