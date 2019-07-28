@@ -3,6 +3,12 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.9.3] - 2019-07-28
+
+### Fixed
+
+- icon.png, waricon.png and jsMinifier.js were not added!
+
 ## [0.9.2] - 2019-07-28
 
 ### Added

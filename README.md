@@ -19,10 +19,6 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-<img src="https://i.imgur.com/6q7Q8UG.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
-
----
-
 [![Version](https://vsmarketplacebadge.apphb.com/version-short/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-star/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
