@@ -3,6 +3,17 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.6] - 2019-07-28
+
+### Added
+
+- Comments to configuration in readme.md
+
+### Changed
+
+- Readme.md little things...
+- Hex shortener is default set by true (by default is **disabled**)
+
 ## [0.9.5] - 2019-07-28
 
 ### Fixed

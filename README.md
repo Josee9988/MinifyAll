@@ -4,18 +4,14 @@ VSCode **minifier** for **JavaScript**, **JSON**, **CSS**, **HTML**, **LESS**, *
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
-Not based in any minifier, made from scratch!
+Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
 Do you want to help us improve the extension or did you found a bug?
-**[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
-
-Or contact **[me](jgracia9988@gmail.com)**.
+**[Let us know](https://github.com/Josee9988/MinifyAll/issues)** or contact **[me](jgracia9988@gmail.com)**.
 
 Check our **[changelog](CHANGELOG.md)**.
-
-How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
@@ -83,46 +79,46 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 <details>
 <summary>Click to see more info about the configuration settings</summary>
 
-- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (*True for disabling hexadecimal shortener*.) Default = false
+- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in color accuracy
 
 ``` json
-"MinifyAll.disableHexadecimalShortener": true|false
+"MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default is disabled)
 ```
 
-- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.) Default = false
+- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.)
 
 ``` json
-"MinifyAll.disableStatusbarInformation": true|false
+"MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default is enabled)
 ```
 
-- Priority of the status bar. 0 Is the greatest. Default = 0
+- Priority of the status bar. 0 Is the greatest.
 
 ``` json
-"MinifyAll.statusbarPriority": integer
+"MinifyAll.statusbarPriority": integer //A number: default '0'
 ```
 
 - Aligns the status bar indicator to the left or right.
 
 ``` json
-"MinifyAll.statusbarAlignment": Left|Right
+"MinifyAll.statusbarAlignment": Left|Right //default 'left'
 ```
 
 - Disables warning and information messages
 
 ``` json
-"MinifyAll.disableMessages": true|false
+"MinifyAll.disableMessages": true|false //default 'false' (by default is enabled)
 ```
 
 - Minify on save (Default command, which will minify your actual code)
 
 ``` json
-"MinifyAll.minifyOnSave": true|false
+"MinifyAll.minifyOnSave": true|false //default 'false' (by default is enabled)
 ```
 
 - Minify on save (Second command, which will minify your actual code into a new file)
 
 ``` json
-"MinifyAll.minifyOnSaveToNewFIle": true|false
+"MinifyAll.minifyOnSaveToNewFIle": true|false //default 'false' (by default is enabled)
 ```
 
 ### **Disabling languages configuration**
@@ -130,49 +126,49 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - Disables **html** minimization
 
 ``` json
-"MinifyAll.disableHtml": true|false
+"MinifyAll.disableHtml": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **css** minimization
 
 ``` json
-"MinifyAll.disableCss": true|false
+"MinifyAll.disableCss": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **scss** minimization
 
 ``` json
-"MinifyAll.disableScss": true|false
+"MinifyAll.disableScss": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **less** minimization
 
 ``` json
-"MinifyAll.disableLess": true|false
+"MinifyAll.disableLess": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **sass** minimization
 
 ``` json
-"MinifyAll.disableSass": true|false
+"MinifyAll.disableSass": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **json** minimization
 
 ``` json
-"MinifyAll.disableJson": true|false
+"MinifyAll.disableJson": true|false //default 'false' (by default is enabled)
 ```
 
 - Disables **jsonc** minimization
 
 ``` json
-"MinifyAll.disableJsonc": true|false
+"MinifyAll.disableJsonc": true|false //default 'false' (by default is enabled)
 ```
 
-- Disables **JavaScript** minimization
+- Disables **JavaScript** minimization //default 'false' (by default is enabled)
 
 ``` json
-"MinifyAll.disableJavascript": true|false
+"MinifyAll.disableJavascript": true|false //default 'false' (by default is enabled)
 ```
 
 </details>
@@ -226,7 +222,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 {
 "contributes": {
 "commands": [{
-"title": "Minify this document ⚡"
+"title": "Minify this document ⚡",
 },
 {
 "color": "#FAFAFA", // comments
@@ -248,6 +244,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - 6 Digit hex to 3 digit hex
 - No single line comments
 - No multiline comments
+- Removed trailing comma before '}'
 
 ---
 
@@ -304,6 +301,7 @@ break;default:break;}}
 - Only changes line if at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code)
 - All irrelevant spaces removed
 - Spaces left are only whithin quotes (Strings) and variable declarations.
+- If 'OR' and 'AND' are without spaces, same as if condition or switch cases.
 
 ---
 
