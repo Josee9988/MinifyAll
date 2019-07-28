@@ -3,6 +3,20 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.9.2] - 2019-07-28
+
+### Added
+
+- Raw icon without the text in Screenshots/rawicon.png
+
+### Changed
+
+- Icon (added new languages available)
+- Folder of icon. Now it is in Screenshots/
+- Readme icon to the new one
+- Readme list of languages available added bold
+- Examples fixed some mistakes of order and headings
+
 ## [0.9.1] - 2019-07-28
 
 ### Added

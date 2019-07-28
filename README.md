@@ -19,7 +19,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-<img src="https://i.imgur.com/mscnJe8.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
+<img src="https://i.imgur.com/6q7Q8UG.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:37%;"/>
 
 ---
 
@@ -69,14 +69,14 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ## **Languages available** 🧪🔥
 
-- CSS
-- HTML
-- JSON
-- JavaScript
-- JSONC
-- LESS
-- SASS
-- SCSS
+- **CSS**
+- **HTML**
+- **JSON**
+- **JavaScript**
+- **JSONC**
+- **LESS**
+- **SASS**
+- **SCSS**
 
 ---
 
@@ -257,10 +257,10 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 </details>
 
-### **Html**
+### **JavaScript**
 
 <details>
-<summary>Click to see an example of how the extension minifies HTML</summary>
+<summary>Click to see an example of how the extension minifies JavaScript</summary>
 
 *From:*
 
@@ -313,39 +313,51 @@ break;default:break;}}
 
 </details>
 
-### **JavaScript**
+### **Html**
 
 <details>
-<summary>Click to see an example of how the extension minifies JavaScript</summary>
+<summary>Click to see an example of how the extension minifies HTML</summary>
 
 *From:*
 
-```css
-.myClass {
-    background-color: rgba(12, 12, 12, 0.8);
-    background-color: rgb(12, 12, 12); /* my comment
-    */
-    background-color: #FAFAFA;
-}
+```html
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <title></title>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href=''>
+    <script type='text/javascript' src=''></script>
+    <!-- test -->
+</head>
+
+<!-- ~~~~~✦✦✦✦✦ B O
+ D Y ✦✦✦✦✦~~~~~ -->
+<body>
+
+</body>
+
+</html>
 ```
 
 *To:*
 
-```css
-.myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
+```html
+<!DOCTYPE html><html lang='es'><head><title></title><meta charset='utf-8'><link rel='stylesheet' href=''><script type='text/javascript' src=''></script></head><body></body></html>
 ```
 
-- rgba is formatted to hexadecimal.
-- rgb is formatted to 3 digit value hexadecimal.
-- 6 digit hexadimal is formatted to 3 digit value hexadecimal
-- There are no spaces
-- There is only one line
+- Only one line
+- Only neccessary spaces
+- No tabs
 - No single line comments
 - No multiline comments
 
 ---
 
 </details>
+
+---
 
 ## **Known bugs:** 🛑
 
