@@ -3,6 +3,13 @@
 
 All notable changes to the "minifyall" extension will be documented in this file.
 
+## [0.9.1] - 2019-07-28
+
+### Added
+
+- Configuration setting for disabling javascript and added in readme.md
+- Improved by a lot javascript minimization
+
 ## [0.9.0] - 2019-07-27
 
 ### Added

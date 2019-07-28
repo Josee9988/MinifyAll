@@ -39,6 +39,7 @@ const disableJsonc = userMinifyAllSettings.get('disableJsonc');
 const disableMessages = userMinifyAllSettings.get('disableMessages');
 const minifyOnSave = userMinifyAllSettings.get('minifyOnSave');
 const minifyOnSaveToNewFIle = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
+const disableJavascript = userMinifyAllSettings.get('disableJavascript');
 
 if (minifyOnSave) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll'));
@@ -161,17 +162,25 @@ function activate(context) {
 				break;
 
 			case "javascript":
-				const jsMinifier = require('./src/jsMinifier.js');
-				const jsContent = document.getText().split('\n');
 
-				const RemoverLine4JS = new LineRemover(jsContent);
+				if ((window.activeTextEditor.document.languageId == "javascript" && disableJavascript == false)) {
+					const jsMinifier = require('./src/jsMinifier.js');
+					const jsContent = document.getText().split('\n');
 
-				RemoverLine4JS.removeMultipleLineComments();
-				RemoverLine4JS.removeSingleLineComments();
+					const RemoverLine4JS = new LineRemover(jsContent);
 
-				const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+					RemoverLine4JS.removeMultipleLineComments();
+					RemoverLine4JS.removeSingleLineComments();
 
-				replaceActualCode(minifierjs.getjsMinified());
+					const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+
+					replaceActualCode(minifierjs.getjsMinified());
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 
@@ -185,7 +194,7 @@ function activate(context) {
 
 	});
 
-	//-----------------------------------------------------------------------------
+	//**************************************************************************************************************
 	//Command MinifyAll and writes the result in other file.
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
@@ -301,19 +310,28 @@ function activate(context) {
 
 			case "javascript":
 
-				const newNamejs = path.basename(fileName).replace('.js', '-min.js');
-				const path2NewFilejs = path.join(filePath, newNamejs);
-				const jsMinifier = require('./src/jsMinifier.js');
-				const jsContent = document.getText().split('\n');
+				if ((window.activeTextEditor.document.languageId == "javascript" && disableJavascript == false)) {
 
-				const RemoverLine4JS = new LineRemover(jsContent);
 
-				RemoverLine4JS.removeMultipleLineComments();
-				RemoverLine4JS.removeSingleLineComments();
+					const newNamejs = path.basename(fileName).replace('.js', '-min.js');
+					const path2NewFilejs = path.join(filePath, newNamejs);
+					const jsMinifier = require('./src/jsMinifier.js');
+					const jsContent = document.getText().split('\n');
 
-				const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+					const RemoverLine4JS = new LineRemover(jsContent);
 
-				minifiedTextToNewFile(path2NewFilejs, minifierjs.getjsMinified());
+					RemoverLine4JS.removeMultipleLineComments();
+					RemoverLine4JS.removeSingleLineComments();
+
+					const minifierjs = new jsMinifier(RemoverLine4JS.getLineRemoved());
+
+					minifiedTextToNewFile(path2NewFilejs, minifierjs.getjsMinified());
+
+				} else {
+					if (!disableMessages) {
+						window.showInformationMessage('We will not format this file type because you disabled it.');
+					}
+				}
 
 				break;
 

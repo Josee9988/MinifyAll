@@ -1,6 +1,6 @@
 # **MinifyAll a extension for VSCode**
 
-VSCode **minifier** for **JSON**, **CSS**, **HTML**, **JavaScript**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for **JavaScript**, **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
@@ -72,7 +72,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - CSS
 - HTML
 - JSON
-- JavaScript(beta)
+- JavaScript
 - JSONC
 - LESS
 - SASS
@@ -131,46 +131,52 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ### **Disabling languages configuration**
 
-- Disables html minimization
+- Disables **html** minimization
 
 ``` json
 "MinifyAll.disableHtml": true|false
 ```
 
-- Disables css minimization
+- Disables **css** minimization
 
 ``` json
 "MinifyAll.disableCss": true|false
 ```
 
-- Disables scss minimization
+- Disables **scss** minimization
 
 ``` json
 "MinifyAll.disableScss": true|false
 ```
 
-- Disables less minimization
+- Disables **less** minimization
 
 ``` json
 "MinifyAll.disableLess": true|false
 ```
 
-- Disables sass minimization
+- Disables **sass** minimization
 
 ``` json
 "MinifyAll.disableSass": true|false
 ```
 
-- Disables json minimization
+- Disables **json** minimization
 
 ``` json
 "MinifyAll.disableJson": true|false
 ```
 
-- Disables jsonc minimization
+- Disables **jsonc** minimization
 
 ``` json
 "MinifyAll.disableJsonc": true|false
+```
+
+- Disables **JavaScript** minimization
+
+``` json
+"MinifyAll.disableJavascript": true|false
 ```
 
 </details>
@@ -258,36 +264,82 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 *From:*
 
-```html
-<!DOCTYPE html>
-<html lang='es'>
+```javascript
+"use strict";
+const {
+    commands,
+    window
+} = require('vscode');
+const FileSaver = require('fs')
+const vscode = require('vscode');
+const HexMinifier = require('./src/hexMinifier');
+let originalFilepath = vscode.window.activeTextEditor.document.fileName;
+let originalSize = FileSaver.statSync(originalFilepath).size;
+const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll')
+if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
+    (window.activeTextEditor.document.languageId == "scss" && disableScss == false)) {
+    const {
+        document
+    } = window.activeTextEditor;
+    switch (window.activeTextEditor.document.languageId) {
+        case "css":
+        case "scss":
+        case "less":
+        case "sass":
+            console.log("Love this minifier !!!")
+            break;
 
-<head>
-    <title></title>
-    <meta charset='utf-8'>
-    <link rel='stylesheet' href=''>
-    <script type='text/javascript' src=''></script>
-    <!-- test -->
-</head>
+        default:
 
-<!-- ~~~~~✦✦✦✦✦ B O
- D Y ✦✦✦✦✦~~~~~ -->
-<body>
-
-</body>
-
-</html>
+            break;
+    }
+}
 ```
 
 *To:*
 
-```html
-<!DOCTYPE html><html lang='es'><head><title></title><meta charset='utf-8'><link rel='stylesheet' href=''><script type='text/javascript' src=''></script></head><body></body></html>
+```javascript
+"use strict";const{commands,window}=require('vscode');const FileSaver=require('fs')
+const vscode=require('vscode');const HexMinifier=require('./src/hexMinifier');let originalFilepath=vscode.window.activeTextEditor.document.fileName;let originalSize=FileSaver.statSync(originalFilepath).size;const userMinifyAllSettings=vscode.workspace.getConfiguration('MinifyAll')
+if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":case"scss":case"less":case"sass":console.log("Love this minifier !!!")
+break;default:break;}}
 ```
 
-- Only one line
-- Only neccessary spaces
-- No tabs
+- Only changes line if at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code)
+- All irrelevant spaces removed
+- Spaces left are only whithin quotes (Strings) and variable declarations.
+
+---
+
+</details>
+
+### **JavaScript**
+
+<details>
+<summary>Click to see an example of how the extension minifies JavaScript</summary>
+
+*From:*
+
+```css
+.myClass {
+    background-color: rgba(12, 12, 12, 0.8);
+    background-color: rgb(12, 12, 12); /* my comment
+    */
+    background-color: #FAFAFA;
+}
+```
+
+*To:*
+
+```css
+.myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
+```
+
+- rgba is formatted to hexadecimal.
+- rgb is formatted to 3 digit value hexadecimal.
+- 6 digit hexadimal is formatted to 3 digit value hexadecimal
+- There are no spaces
+- There is only one line
 - No single line comments
 - No multiline comments
 
