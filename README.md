@@ -1,4 +1,4 @@
-# **MinifyAll a extension for VSCode**
+# **MinifyAll an extension for VSCode**
 
 VSCode **minifier** for **JavaScript**, **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
@@ -32,7 +32,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 - And type:➡️
 **```ext install josee9988.minifyall```**
 
-### **Commands** 📐
+### **Commands** 📐🛡
 
 - **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
 - **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
@@ -53,7 +53,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 <img src="https://i.imgur.com/bbAhxJj.gif" alt="Preview" title="preview" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
-- The second command that saves the minfied text to other file and preserves the original text:
+- The second command that saves the minified text to other file and preserves the original text:
 
 <img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
@@ -76,7 +76,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 ---
 
-## **Configuration settings** ⚙️
+## **Configuration settings** ⚙️⛓
 
 <!-- markdownlint-disable no-inline-html-->
 
@@ -107,7 +107,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 "MinifyAll.statusbarAlignment": Left|Right
 ```
 
-- Disables warning and information mensages
+- Disables warning and information messages
 
 ``` json
 "MinifyAll.disableMessages": true|false
@@ -205,7 +205,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 
 - rgba is formatted to hexadecimal.
 - rgb is formatted to 3 digit value hexadecimal.
-- 6 digit hexadimal is formatted to 3 digit value hexadecimal
+- 6 digit hexadecimals are formatted to 3 digit value hexadecimal
 - There are no spaces
 - There is only one line
 - No single line comments
@@ -244,7 +244,7 @@ How does it look? Look at our **[Screenshots](Screenshots/)**
 ```
 
 - Only one line
-- No unnecesary spaces
+- No unnecessary spaces
 - 6 Digit hex to 3 digit hex
 - No single line comments
 - No multiline comments
@@ -344,7 +344,7 @@ break;default:break;}}
 ```
 
 - Only one line
-- Only neccessary spaces
+- Only necessary spaces
 - No tabs
 - No single line comments
 - No multiline comments
@@ -355,9 +355,9 @@ break;default:break;}}
 
 ---
 
-## **Known bugs:** 🛑
+## **Known bugs:** 🛑🗑
 
-- Css classes or ids don't support *px* or *keyframes* as a **name**.
+- Css classes or ids don't support *px* or *keyframe* as a **name**.
 
 **Don't** do this
 
@@ -380,7 +380,7 @@ break;default:break;}}
 
 - [ ] Right click in a file of the menu will minify to other document.
 - [ ] Right click in a folder will minify all supported files.
-- [ ] Path of the minify to other document (new file with minified text) will be customizable
+- [ ] Path of the minify to other document (new file with minified text) customizable
 
 ## **Built with** 🛠️🔧
 
@@ -390,7 +390,7 @@ break;default:break;}}
 
 ---
 
-### Did you enjoyed the minifier? Help us raise these numbers up 🥰
+### Did you enjoyed the minifier? Help us raise these numbers up 🥰 🎉
 
 [![Donate](https://img.shields.io/badge/Donate-Patreon-green.svg)](https://www.patreon.com/bePatron?u=22162331)
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#languages-primarily-tested)
@@ -398,7 +398,7 @@ break;default:break;}}
 [![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 [![Github forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#languages-primarily-tested)
 
-[Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme)
+[Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme) 🧲
 
 ---
 

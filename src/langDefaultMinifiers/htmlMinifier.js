@@ -17,10 +17,10 @@ class htmlMinifier {
     }
 
     /**
-     * gethtmlMinified finds lasts spaces and trim it into just one line
+     * getHtmlMinified finds lasts spaces and trim it into just one line
      * @return {String} the line compressed
      */
-    gethtmlMinified() {
+    getHtmlMinified() {
         return this.htmlContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/(\>)\1+/g, '');
     }
 
@@ -30,7 +30,7 @@ class htmlMinifier {
      * and removes the multiple line comments
      * it only removes the content inside the comments
      * if the multiple line comment is placed in a line
-     * with usefull code it will not be replaced.
+     * with useful code it will not be replaced.
      */
     removeMultipleLineComments() {
         for (let i = 0; i < this.htmlContent.length; i++) {
@@ -46,8 +46,8 @@ class htmlMinifier {
                                 this.htmlContent[k] = firstLineToReplace;
                             } else if (k == j) {
                                 let lastCharacterToRemove = this.htmlContent[k].indexOf("-->");
-                                let lasttLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2, this.htmlContent[k].length);
-                                this.htmlContent[k] = lasttLineToReplace;
+                                let lastLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2, this.htmlContent[k].length);
+                                this.htmlContent[k] = lastLineToReplace;
 
                             } else {
                                 this.htmlContent[k] = '';

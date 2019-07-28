@@ -43,7 +43,7 @@ class lineRemover {
      * and removes the multiple line comments
      * it only removes the content inside the comments
      * if the multiple line comment is placed in a line
-     * with usefull code it will not be replaced.
+     * with useful code it will not be replaced.
      */
     removeMultipleLineComments() {
         for (let i = 0; i < this.lineContent.length; i++) {
@@ -59,8 +59,8 @@ class lineRemover {
                                 this.lineContent[k] = firstLineToReplace;
                             } else if (k == j) {
                                 let lastCharacterToRemove = this.lineContent[k].indexOf("*/");
-                                let lasttLineToReplace = this.lineContent[k].substring(lastCharacterToRemove + 2, this.lineContent[k].length);
-                                this.lineContent[k] = lasttLineToReplace;
+                                let lastLineToReplace = this.lineContent[k].substring(lastCharacterToRemove + 2, this.lineContent[k].length);
+                                this.lineContent[k] = lastLineToReplace;
 
                             } else {
                                 this.lineContent[k] = '';

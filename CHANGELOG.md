@@ -1,13 +1,32 @@
 <!-- markdownlint-disable MD024-->
-# Change Log
+# **Change Log**
 
-All notable changes to the "minifyall" extension will be documented in this file.
+All notable changes to the "**MinifyAll**" extension will be documented in this file.
+
+## [0.9.4] - 2019-07-28
+
+### Changed
+
+- Now all the source code can be found inside src/
+- Location of main.js into folder src/
+- All global utilities that multiple languages use are now in src/utilities/
+- All personal minifiers are in src/langDefaultMinifiers/ there are all the files that correspond to each language and perform specific tasks for each language.
+
+### Added
+
+- Improved readability in main.js
+- Function in main.js with the CommentRemover so in the switch you will not need to initialize a class every time, just call this method.
+
+### Fixed
+
+- Ton of bad spelled words.
+- Some variable names fixed lowercasing when using a new word.
 
 ## [0.9.3] - 2019-07-28
 
 ### Fixed
 
-- icon.png, waricon.png and jsMinifier.js were not added!
+- icon.png, rawicon.png and jsMinifier.js were not added!
 
 ## [0.9.2] - 2019-07-28
 
@@ -41,7 +60,7 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 ### Added
 
-- Right click on the open file will show you both commmands
+- Right click on the open file will show you both commands
 
 ## [0.8.5] - 2019-07-27
 
@@ -85,12 +104,12 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 - Module sizeTransform only had one function and was stupid to have one module for just one function. So sizeTransform is now directly in main.js again.
 - Reorganized the code in main.js
-- Renamed the icon from icon-min.png to icon.png as all the pictures are minified there is no need to add this sufix.
+- Renamed the icon from icon-min.png to icon.png as all the pictures are minified there is no need to add this suffix.
 - Readme.md examples are now underneath the configuration.
 
 ### Fixed
 
-- When you triggered the command from now on every time you saved the document you would get a new statusbar item. This is now fixed. It will only appear once and after you run MInifyAll and save.
+- When you triggered the command from now on every time you saved the document you would get a new statusbar item. This is now fixed. It will only appear once and after you run MinifyAll and save.
 - Output now displays all inline in the same tab.
 
 ### Added
@@ -98,7 +117,7 @@ All notable changes to the "minifyall" extension will be documented in this file
 - Configuration for setting the priority of the status bar
 - Configuration for setting the alignment of the status bar (right, left)
 - Time of execution of the program in the output of the status bar will also display in seconds.
-- Readme new configuration settigns explanation
+- Readme new configuration settings explanation
 
 ## [0.7.0] - 2019-07-18
 
@@ -194,7 +213,7 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 ### Fixed
 
-- Bug supper annoying that didn't let minify two different files in main.js . Not optimiced at all yet, just fixed.
+- Bug supper annoying that didn't let minify two different files in main.js . Not optimized at all yet, just fixed.
 
 ## [0.5.2] - 2019-07-15
 
@@ -221,13 +240,13 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 - When saving a file without wanting to get the new modified text in other document (default MinifyAll command). After you save the new minified text it will display in the status bar the original value --> the new value
 - When you click in the status bar item it will display a table with information about the path, and the new and original size
-- The status bar will dissapear when you change document or when you click to see the output!
+- The status bar will disappear when you change document or when you click to see the output!
 
 ## [0.4.2] - 2019-07-14
 
 ### Added
 
-- Support for RGBA colors. rgba colors will be formatted to hex but rgba with alpha(transparency) color in percentajes or rgba with a 0 value in transparency.
+- Support for RGBA colors. rgba colors will be formatted to hex but rgba with alpha(transparency) color in percentages or rgba with a 0 value in transparency.
 
 ### Changed
 
@@ -307,7 +326,7 @@ All notable changes to the "minifyall" extension will be documented in this file
 
 ### Removed
 
-- Unnecesary if.
+- Unnecessary if.
 
 ## [0.1.1] - 2019-07-12
 
@@ -333,5 +352,5 @@ All notable changes to the "minifyall" extension will be documented in this file
 - Css minify hexadecimal 6 digit colors will now be turned into 3 digit ones
 - Css minify can now be minified in one line.
 - Css minify will now be displayed without comments
-- Css minify remmoves all the spaces but the ones after the : (need to be fixed)
+- Css minify removes all the spaces but the ones after the : (need to be fixed)
 - Folder with all the languages that we will support (Minifiers)
