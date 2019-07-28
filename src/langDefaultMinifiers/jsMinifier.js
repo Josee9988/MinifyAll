@@ -21,8 +21,12 @@ class jsMinifier {
      * @return {String} the line compressed
      */
     getJsMinified() {
-        return this.jsContent.join('\n').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{')
-            .replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/}[\n]*\n/igm, '}').replace(/{[\n]*\n/igm, '{').replace(/:[\n]*\n/igm, ':').replace(/;[\n]*\n/igm, ';').replace(/,\n/gm, ',').replace(/\|\|[\n]*\n/gm, '||').replace(/\&\&[\n]*\n/gm, '&&').replace(/ = /g, '=').replace(/ =/g, '=').replace(/= /g, '=').replace(/\bcase\b /g, 'case').replace(/\bswitch\b /g, 'switch').replace(/\bif\b /g, 'if').replace(/ && /g, '&&').replace(/&& /g, '&&').replace(/ &&/g, '&&').replace(/ == /g, '==').replace(/ \|\| /g, '||').replace(/== /g, '==').replace(/\|\| /g, '||').replace(/ ==/g, '==').replace(/ \|\|/g, '||');
+        return this.jsContent.join('\n').replace(/;\}|\s+}/g, '}').replace(/:\s/g, ':').replace(/ {/g, '{')
+            .replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/}[\n]*\n/igm, '}').replace(/{[\n]*\n/igm, '{').replace(/:[\n]*\n/igm, ':')
+            .replace(/;[\n]*\n/igm, ';').replace(/,\n/gm, ',').replace(/\|\|[\n]*\n/gm, '||').replace(/\&\&[\n]*\n/gm, '&&').replace(/ = /g, '=')
+            .replace(/ =/g, '=').replace(/= /g, '=').replace(/\bcase\b /g, 'case').replace(/\bswitch\b /g, 'switch')
+            .replace(/\bif\b /g, 'if').replace(/ && /g, '&&').replace(/&& /g, '&&').replace(/ &&/g, '&&').replace(/ == /g, '==')
+            .replace(/ \|\| /g, '||').replace(/== /g, '==').replace(/\|\| /g, '||').replace(/ ==/g, '==').replace(/ \|\|/g, '||');
     }
 
 

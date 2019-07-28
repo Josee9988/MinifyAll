@@ -458,8 +458,9 @@ function minifiedTextToNewFile(path2NewFile, modifiedText) {
 function removeComments(content) {
 	let RemoveComments = new LineRemover(content);
 	//Remove comment methods
-	RemoveComments.removeMultipleLineComments();
 	RemoveComments.removeSingleLineComments();
+	RemoveComments.removeMultipleLineComments();
+
 	return RemoveComments.getLineRemoved();
 }
 

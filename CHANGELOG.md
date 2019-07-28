@@ -3,6 +3,17 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.7] - 2019-07-28
+
+### Fixed
+
+- Bug at removing single lines
+- Bug that let a single '/' when removing multiple line comments
+
+### Changed
+
+- Now single line comments are removed before the multiple ones due to some bugs
+
 ## [0.9.6] - 2019-07-28
 
 ### Added
