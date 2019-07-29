@@ -26,16 +26,27 @@ class lineRemover {
 
     /**
      * removeCommentsMain method that is called when you want to remove the 
-     * comments from the array of lines it calls the method removeComments 
+     * comments from the array of lines
+     * First remove all the multiline comments in the same lne
+     * calls removeMultipleLineComments();
+     * Then it calls the method removeComments 
      * which receives a single string and it does all the job.
      * This method is only a for with a method call.
-     * After all calls removeMultipleLineComments();
      */
     removeCommentsMain() {
         for (let i = 0; i < this.lineContent.length; i++) {
-            this.lineContent[i] = this.removeComments(this.lineContent[i]);
+            this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
+
         }
         this.removeMultipleLineComments();
+        for (let i = 0; i < this.lineContent.length; i++) {
+            let newLine = this.removeComments(this.lineContent[i]);
+            let numberOfUndefinedCurrencies = (this.lineContent[i].match(/\bundefined\b/g) || []).length;
+            let newNumberOfUndefinedCurrencies = (newLine.match(/\bundefined\b/g) || []).length;
+            if (numberOfUndefinedCurrencies == newNumberOfUndefinedCurrencies) {
+                this.lineContent[i] = newLine;
+            }
+        }
     }
 
     /**
