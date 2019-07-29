@@ -32,7 +32,6 @@ class lineRemover {
         for (let i = 0; i < this.lineContent.length; i++) {
             this.lineContent[i] = this.lineContent[i].replace(/\/\/.*/g, '');
         }
-
     }
 
     /**
@@ -44,31 +43,7 @@ class lineRemover {
      */
     removeMultipleLineComments() {
         for (let i = 0; i < this.lineContent.length; i++) {
-            let begin = this.lineContent[i].match(/(\/\*)/gm); // first /* found
-            if (begin != null) {
-                for (let j = 0; j < this.lineContent.length; j++) {
-                    let end = this.lineContent[j].match(/(\*\/)/gm); //found */ end
-                    if (end != null) {
-                        for (let k = i; k < j + 1; k++) {
-                            if (k == i) {
-                                let FirstCharacterToRemove = this.lineContent[k].indexOf("/");
-                                let firstLineToReplace = this.lineContent[k].substring(0, FirstCharacterToRemove);
-                                this.lineContent[k] = firstLineToReplace;
-                            } else if (k == j) {
-                                let lastCharacterToRemove = this.lineContent[k].indexOf("*/");
-                                let lastLineToReplace = this.lineContent[k].substring(lastCharacterToRemove + 2, this.lineContent[k].length + 1);
-                                this.lineContent[k] = lastLineToReplace;
-
-                            } else {
-                                this.lineContent[k] = '';
-
-                            }
-                        }
-                        break; // to stop reading the rest of the document
-                    }
-
-                }
-            }
+            this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
         }
     }
 }

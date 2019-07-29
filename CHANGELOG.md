@@ -3,6 +3,13 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.8] - 2019-07-28
+
+### Fixed
+
+- Reworked and improved multiline comments
+- Removed some bugs with the comments
+
 ## [0.9.7] - 2019-07-28
 
 ### Fixed
