@@ -10,15 +10,15 @@
 class jsonMinifier {
     /**
      * Minifier constructor that maps and trims the code.
-     * @param {Array} jsonContent all the code that will be minified 
+     * @param {Array} jsonContent all the code that will be minified .
      */
     constructor(jsonContent) {
         this.jsonContent = jsonContent.map(content => content.trim());
     }
 
     /**
-     * getJSONMinified finds lasts spaces and trim it into just one line
-     * @return {String} the line compressed
+     * getJSONMinified finds lasts spaces and trim it into just one line.
+     * @return {String} the line minified.
      */
     getJSONMinified() {
         return this.jsonContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/\s{2}/g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/,}/g, '}').replace(/,]/g, ']');

@@ -85,7 +85,7 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default is disabled)
 ```
 
-- If you want MinifyAll to stop showing a **status bar** with information about the compression after you minify a file. (True for disabling.)
+- If you want MinifyAll to stop showing a **status bar** with information about the minimization after you minify a file. (True for disabling.)
 
 ``` json
 "MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default is enabled)
@@ -187,16 +187,18 @@ Check our **[changelog](CHANGELOG.md)**.
 ```css
 .myClass {
     background-color: rgba(12, 12, 12, 0.8);
-    background-color: rgb(12, 12, 12); /* my comment
+    background-color: rgb(12, 12, 12);
+    /* my comment
     */
-    background-color: #FAFAFA;
+    background-color: #FAFAFA; //other comment
+    content: url("http://placehold.it/350x150");
 }
 ```
 
 *To:*
 
 ```css
-.myClass{background-color:#0C0C0CCC;background-color:#111;BACKGROUND-COLOR:#FFF}
+.myClass{background-color: rgba(12, 12, 12, 0.8);background-color: rgb(12, 12, 12);background-color:#FAFAFA;content: url("http://placehold.it/350x150")}
 ```
 
 - rgba is formatted to hexadecimal.
@@ -204,8 +206,9 @@ Check our **[changelog](CHANGELOG.md)**.
 - 6 digit hexadecimals are formatted to 3 digit value hexadecimal
 - There are no spaces
 - There is only one line
-- No single line comments
-- No multiline comments
+- Single line comments removed
+- Multiline comments removed
+- Url '//' is not detected as a comment and can be perfectly placed.
 
 ---
 
@@ -264,37 +267,34 @@ const {
     window
 } = require('vscode');
 const FileSaver = require('fs')
-const vscode = require('vscode');
-const HexMinifier = require('./src/hexMinifier');
-let originalFilepath = vscode.window.activeTextEditor.document.fileName;
-let originalSize = FileSaver.statSync(originalFilepath).size;
-const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll')
-if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
+const StringWithComments = "// not a comment" //this is my comment
+if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) || //myComment
     (window.activeTextEditor.document.languageId == "scss" && disableScss == false)) {
     const {
         document
     } = window.activeTextEditor;
     switch (window.activeTextEditor.document.languageId) {
         case "css":
-        case "scss":
-        case "less":
-        case "sass":
+            /*
+            multi line comments
+            */
             console.log("Love this minifier !!!")
             break;
-
         default:
-
             break;
     }
 }
+/* foo asd
+foo
+*/
 ```
 
 *To:*
 
 ```javascript
 "use strict";const{commands,window}=require('vscode');const FileSaver=require('fs')
-const vscode=require('vscode');const HexMinifier=require('./src/hexMinifier');let originalFilepath=vscode.window.activeTextEditor.document.fileName;let originalSize=FileSaver.statSync(originalFilepath).size;const userMinifyAllSettings=vscode.workspace.getConfiguration('MinifyAll')
-if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":case"scss":case"less":case"sass":console.log("Love this minifier !!!")
+const StringWithComments="// not a comment"
+if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":console.log("Love this minifier !!!")
 break;default:break;}}
 ```
 
@@ -302,6 +302,8 @@ break;default:break;}}
 - All irrelevant spaces removed
 - Spaces left are only whithin quotes (Strings) and variable declarations.
 - If 'OR' and 'AND' are without spaces, same as if condition or switch cases.
+- All comments removed
+- Single line comments inside of a string don't removed.
 
 ---
 
@@ -369,6 +371,7 @@ break;default:break;}}
 ```
 
 - If the file you are trying to minify is **not saved** or is an Untitled default vscode file might cause errors.
+- Multiline comments inside of a String will be removed. Single line comments inside of a string *are allowed* but *multiline* are **not**.
 
 ---
 

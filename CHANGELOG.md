@@ -3,6 +3,17 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.10] - 2019-07-29
+
+### Added
+
+- Improved overall readability
+- Improved some comments
+- "Remove multiline comments" in line removed added because the new method does not remove multiline comments.
+- Improved readme.md examples
+- Know bugs in readme.md: "Multiline comments inside of a String will be removed. Single line comments inside of a string *are allowed* but *multiline* are **not**."
+- "Remove comments" seems to work perfectly but for multiline comments inside quotes
+
 ## [0.9.9] - 2019-07-29
 
 ### Fixed

@@ -101,7 +101,7 @@ class HexMinifier {
      * rgbArrayToObject receives a String with the rgb and turns it into
      * an object with r, g, and b value.
      * @param {String} rgbString a string with the rgb and its values
-     * @return {Object} rgb
+     * @return {Object} rgb r g b integers result with the red, yellow and green
      */
     rgbArrayToObject(rgbString) {
         let matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
@@ -116,7 +116,7 @@ class HexMinifier {
     /**
      * getShortHexColorCode receives the 6digit hex code
      * calls the needed functions and returns a 3digit hex
-     * @param {String} code 
+     * @param {String} code receives the 6digit hex code
      * @return {String} this.rgbToShortHex(rgb)
      */
     getShortHexColorCode(code) {
@@ -127,8 +127,8 @@ class HexMinifier {
     /**
      * hexToRgb receives a String with an hexadecimal value
      * and returns red green and blue values
-     * @param {String} hex 
-     * @return {Object} r g b integers result with the red, yellow and
+     * @param {String} hex the hexadecimal value
+     * @return {Object} r g b integers result with the red, yellow and green
      */
     hexToRgb(hex) {
         var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -147,8 +147,8 @@ class HexMinifier {
      * rgbToShortHex receives an object with red green and blue values
      * then it shorts red green and blue into just one number
      * and it will finally get a 3 digit hex
-     * @param {Object} rgb 
-     * @return {String} with the 3 digit hex value
+     * @param {Object} rgb object with red, green and blue values.
+     * @return {String} with the 3 digit hex value.
      */
     rgbToShortHex(rgb) {
         var hexR = Math.round(rgb.r / 17).toString(16);
@@ -158,8 +158,8 @@ class HexMinifier {
     }
 
     /**
-     * getHexMinified
-     * @return {Array} the lines compressed
+     * getHexMinified returns the content with the hex minified.
+     * @return {Array} the lines minified.
      */
     getHexMinified() {
         return this.cssContent;

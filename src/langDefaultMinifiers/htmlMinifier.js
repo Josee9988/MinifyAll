@@ -10,15 +10,15 @@
 class htmlMinifier {
     /**
      * Minifier constructor that maps and trims the code.
-     * @param {Array} htmlContent all the code that will be minified 
+     * @param {Array} htmlContent all the code that will be minified. 
      */
     constructor(htmlContent) {
         this.htmlContent = htmlContent.map(content => content.trim());
     }
 
     /**
-     * getHtmlMinified finds lasts spaces and trim it into just one line
-     * @return {String} the line compressed
+     * getHtmlMinified finds lasts spaces and trim it into just one line.
+     * @return {String} the line minified.
      */
     getHtmlMinified() {
         return this.htmlContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/(\>)\1+/g, '');

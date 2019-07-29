@@ -18,7 +18,7 @@ class jsMinifier {
 
     /**
      * getJsMinified finds lasts spaces and trim it into just one line
-     * @return {String} the line compressed
+     * @return {String} the line minified
      */
     getJsMinified() {
         return this.jsContent.join('\n').replace(/;\}|\s+}/g, '}').replace(/:\s/g, ':').replace(/ {/g, '{')

@@ -2,8 +2,11 @@
  * @file That is executed when the command extension.MinifyAll is used.
  * it checks what language are you using in your document and if its
  * supported it will remove all your code and replace it with a 
- * minified version of the code. If you execute MinifyAll2OtherDoc
- * it will create a new file with the minified code.
+ * minified version of the code. 
+ * Or if you execute MinifyAll2OtherDoc it will create a new file
+ * with the minified code so you can preserve the original file.
+ * It also creates the status bar and calls all the necessary methods
+ * to make the extension perform well.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
  * @see README.md
@@ -62,10 +65,11 @@ if (alignment == "Right") {
 /**
  * activate Main function called when the user
  * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc'
- * @param {object} context information about vscode. Ignore
+ * or right clicks in the code and calls the commands
+ * @param {object} context information about vscode. Ignore.
  */
 function activate(context) {
-	//Command MinifyAll default one.
+	//Command MinifyAll.
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
 		let startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
@@ -81,10 +85,10 @@ function activate(context) {
 			case "less":
 			case "sass":
 
-				if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
-					(window.activeTextEditor.document.languageId == "scss" && disableScss == false) ||
-					(window.activeTextEditor.document.languageId == "less" && disableLess == false) ||
-					(window.activeTextEditor.document.languageId == "sass" && disableSass == false)) {
+				if ((window.activeTextEditor.document.languageId == "css" && !disableCss) ||
+					(window.activeTextEditor.document.languageId == "scss" && !disableScss) ||
+					(window.activeTextEditor.document.languageId == "less" && !disableLess) ||
+					(window.activeTextEditor.document.languageId == "sass" && !disableSass)) {
 
 					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
 					const cssContent = document.getText().split('\n');
@@ -110,8 +114,8 @@ function activate(context) {
 			case "json":
 			case "jsonc":
 
-				if ((window.activeTextEditor.document.languageId == "json" && disableJson == false) ||
-					(window.activeTextEditor.document.languageId == "jsonc" && disableJsonc == false)) {
+				if ((window.activeTextEditor.document.languageId == "json" && !disableJson) ||
+					(window.activeTextEditor.document.languageId == "jsonc" && !disableJsonc)) {
 
 					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
@@ -137,7 +141,7 @@ function activate(context) {
 
 			case "html":
 
-				if ((window.activeTextEditor.document.languageId == "html" && disableHtml == false)) {
+				if ((window.activeTextEditor.document.languageId == "html" && !disableHtml)) {
 
 					const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
 					const htmlContent = document.getText().split('\n');
@@ -160,7 +164,7 @@ function activate(context) {
 
 			case "javascript":
 
-				if ((window.activeTextEditor.document.languageId == "javascript" && disableJavascript == false)) {
+				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript)) {
 
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
@@ -189,8 +193,10 @@ function activate(context) {
 
 	});
 
+
+
 	//**************************************************************************************************************
-	//Command MinifyAll and writes the result in other file.
+	//Command MinifyAll2OtherDoc and writes the result in other file.
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
 		const {
@@ -208,10 +214,10 @@ function activate(context) {
 			case "less":
 			case "sass":
 
-				if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) ||
-					(window.activeTextEditor.document.languageId == "scss" && disableScss == false) ||
-					(window.activeTextEditor.document.languageId == "less" && disableLess == false) ||
-					(window.activeTextEditor.document.languageId == "sass" && disableSass == false)) {
+				if ((window.activeTextEditor.document.languageId == "css" && !disableCss) ||
+					(window.activeTextEditor.document.languageId == "scss" && !disableScss) ||
+					(window.activeTextEditor.document.languageId == "less" && !disableLess) ||
+					(window.activeTextEditor.document.languageId == "sass" && !disableSass)) {
 
 					const newName = path.basename(fileName).replace('.css', '-min.css');
 					const path2NewFile = path.join(filePath, newName);
@@ -241,8 +247,8 @@ function activate(context) {
 			case "json":
 			case "jsonc":
 
-				if ((window.activeTextEditor.document.languageId == "json" && disableJson == false) ||
-					(window.activeTextEditor.document.languageId == "jsonc" && disableJsonc == false)) {
+				if ((window.activeTextEditor.document.languageId == "json" && !disableJson) ||
+					(window.activeTextEditor.document.languageId == "jsonc" && !disableJsonc)) {
 
 					const newNameJson = path.basename(fileName).replace('.json', '-min.json');
 					const path2NewFileJson = path.join(filePath, newNameJson);
@@ -272,7 +278,7 @@ function activate(context) {
 
 			case "html":
 
-				if ((window.activeTextEditor.document.languageId == "html" && disableHtml == false)) {
+				if ((window.activeTextEditor.document.languageId == "html" && !disableHtml)) {
 
 					const newNameHtml = path.basename(fileName).replace('.html', '-min.html');
 					const path2NewFileHtml = path.join(filePath, newNameHtml);
@@ -300,7 +306,7 @@ function activate(context) {
 
 			case "javascript":
 
-				if ((window.activeTextEditor.document.languageId == "javascript" && disableJavascript == false)) {
+				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript)) {
 
 					const newNameJs = path.basename(fileName).replace('.js', '-min.js');
 					const path2NewFileJs = path.join(filePath, newNameJs);
@@ -335,15 +341,15 @@ function activate(context) {
 
 
 /**
- * getNewSize gets the new size of the
- * document and creates the triggers
- * then calls createStatusBar()
+ * getNewSize gets the new size of the actual
+ * document and creates the triggers then calls
+ * the method to create it createStatusBar().
  */
 function getNewSize() {
 	if (statusReady) {
 		const newFilepath = vscode.window.activeTextEditor.document.fileName;
 		const newSize = FileSaver.statSync(newFilepath).size;
-		if (statusDisabled == false) {
+		if (!statusDisabled) {
 			createStatusBar(originalSize, newSize);
 			vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
 			vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
@@ -353,9 +359,9 @@ function getNewSize() {
 }
 
 /**
- * createStatusBar creates the status bar item
- * @param {number} originalSize the non minified size
- * @param {number} newSize the minified size
+ * createStatusBar creates the status bar item.
+ * @param {number} originalSize the non minified size in Bytes.
+ * @param {number} newSize the minified size in Bytes.
  */
 function createStatusBar(originalSize, newSize) {
 	statusBarItem.tooltip = 'New file size, click for more info!';
@@ -369,8 +375,9 @@ function createStatusBar(originalSize, newSize) {
 }
 
 /**
- * transformSize receives an int and transform its value to KB, OR MB
- * @param {number} size 
+ * transformSize receives an int (no. of bytes) and transform its value to KB, OR MB
+ * @param {number} size A number with the bytes.
+ * @return {String} the new value in KB, MB or in Bytes 
  */
 function transformSize(size) {
 	if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} MB`;
@@ -403,13 +410,15 @@ function statusBarInfo() {
 }
 
 /**
- * HexMinify receives an array with all the content, and minifies it's hexadecimal, rgb and rgba values. then return the new array.
- * @param {Array} Content 
- * @return {Array} with the colors minified
+ * HexMinify receives an array with all the content, 
+ * and minifies it's hexadecimal, rgb and rgba values. 
+ * then return the new array.
+ * @param {Array} Content Array with all the lines to be hexMinified.
+ * @return {Array} with the colors minified.
  */
 function HexMinify(Content) {
 	let MinifierHex = new HexMinifier(Content);
-	if (hexDisabled == false) {
+	if (!hexDisabled) {
 		//Minifier methods
 		MinifierHex.shortHexMain();
 		MinifierHex.shortRGBMain();
@@ -419,8 +428,8 @@ function HexMinify(Content) {
 }
 
 /**
- * replaceActualCode gets the actual code and replaces it with the minified one
- * @param {String} modifiedText the text to replace the original code
+ * replaceActualCode gets the actual code and replaces it with the minified one.
+ * @param {String} modifiedText the text to replace the original code.
  */
 function replaceActualCode(modifiedText) {
 	const editor = vscode.window.activeTextEditor;
@@ -437,8 +446,8 @@ function replaceActualCode(modifiedText) {
 
 /**
  * minifiedTextToNewFile gets the minified code and writes it in a new file.
- * @param {String} path2NewFile The path to the new file
- * @param {String} modifiedText The text to place in the new file
+ * @param {String} path2NewFile The path to the new file.
+ * @param {String} modifiedText The text to place the text in the new file.
  */
 function minifiedTextToNewFile(path2NewFile, modifiedText) {
 	FileSaver.writeFile(path2NewFile, modifiedText, () => {
@@ -452,7 +461,8 @@ function minifiedTextToNewFile(path2NewFile, modifiedText) {
 }
 
 /**
- * removeComments receives an array with the content and removes single line and multiple line comments (//)(/* * /)
+ * removeComments receives an array with the content 
+ * and removes single line and multiple line comments (//)(/* * /)
  * @param {Array} content All the content to remove the comments
  */
 function removeComments(content) {
@@ -466,7 +476,7 @@ exports.activate = activate;
 /**
  * deactivate function that is
  * called when the extension
- * is deactivated.
+ * is deactivated or disabled.
  */
 function deactivate() {
 	statusBarItem.dispose();
