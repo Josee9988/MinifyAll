@@ -3,7 +3,13 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
-## [0.9.8] - 2019-07-28
+## [0.9.9] - 2019-07-29
+
+### Fixed
+
+- Remove comments completely removed by only one method [from:](https://j11y.io/javascript/javascript-comment-removal-revisted/) that doesn't remove comments inside strings and is much solid than my older one.
+
+## [0.9.8] - 2019-07-29
 
 ### Fixed
 
