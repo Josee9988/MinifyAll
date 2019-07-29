@@ -3,13 +3,28 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+## [0.9.12] - 2019-07-29
+
+### Added
+
+- Added know bugs in readme.md
+
+### Changed
+
+- Line removed reworked because the function that I added in 0.9.9 has a tons of bugs
+- Remove multiple line reworked
+
+### Fixed
+
+- Multiple bugs removing comments (tested in jquery js(10k lines) and only gives one mistake at one regex that is not scaped)
+
 ## [0.9.11] - 2019-07-29
 
 ### Fixed
 
 - Problem with multiline comments
 - Multiline comments regex multiline was disabled by a mistake
-- Problem with the new comment remover that added undefined. If the number of undefineds changes it will simply don't remove anything from this.
+- Problem with the new comment remover that added undefined. If the number of undefined changes it will simply don't remove anything from this.
 
 ### Added
 

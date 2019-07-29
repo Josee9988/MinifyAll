@@ -27,7 +27,7 @@ class lineRemover {
     /**
      * removeCommentsMain method that is called when you want to remove the 
      * comments from the array of lines
-     * First remove all the multiline comments in the same lne
+     * First remove all the multiline comments in the same line
      * calls removeMultipleLineComments();
      * Then it calls the method removeComments 
      * which receives a single string and it does all the job.
@@ -36,15 +36,20 @@ class lineRemover {
     removeCommentsMain() {
         for (let i = 0; i < this.lineContent.length; i++) {
             this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
-
         }
         this.removeMultipleLineComments();
+
         for (let i = 0; i < this.lineContent.length; i++) {
             let newLine = this.removeComments(this.lineContent[i]);
-            let numberOfUndefinedCurrencies = (this.lineContent[i].match(/\bundefined\b/g) || []).length;
             let newNumberOfUndefinedCurrencies = (newLine.match(/\bundefined\b/g) || []).length;
-            if (numberOfUndefinedCurrencies == newNumberOfUndefinedCurrencies) {
-                this.lineContent[i] = newLine;
+            if (newNumberOfUndefinedCurrencies < 1) {
+                if (newLine.match(/\/\//g) == null) {
+                    this.lineContent[i] = newLine;
+                } else if ((newLine.match(/\"/g) || []).length < 2) {
+                    this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, '');
+                }
+            } else {
+                this.lineContent[i].replace(/\/\/.*/g, '');
             }
         }
     }
@@ -100,33 +105,9 @@ class lineRemover {
      * with useful code it will not be replaced.
      */
     removeMultipleLineComments() {
-        for (let i = 0; i < this.lineContent.length; i++) {
-            let begin = this.lineContent[i].match(/(\/\*)/gm); // first /* found
-            if (begin != null) {
-                for (let j = 0; j < this.lineContent.length; j++) {
-                    let end = this.lineContent[j].match(/(\*\/)/gm); //found */ end
-                    if (end != null) {
-                        for (let k = i; k < j + 1; k++) {
-                            if (k == i) {
-                                let FirstCharacterToRemove = this.lineContent[k].indexOf("/");
-                                let firstLineToReplace = this.lineContent[k].substring(0, FirstCharacterToRemove);
-                                this.lineContent[k] = firstLineToReplace;
-                            } else if (k == j) {
-                                let lastCharacterToRemove = this.lineContent[k].indexOf("*/");
-                                let lastLineToReplace = this.lineContent[k].substring(lastCharacterToRemove + 2, this.lineContent[k].length + 1);
-                                this.lineContent[k] = lastLineToReplace;
-
-                            } else {
-                                this.lineContent[k] = '';
-
-                            }
-                        }
-                        break; // to stop reading the rest of the document
-                    }
-
-                }
-            }
-        }
+        this.lineContent = this.lineContent.join('\n');
+        this.lineContent = this.lineContent.replace(/\/\*[\s\S]*?\*\//g, '');
+        this.lineContent = this.lineContent.split('\n')
     }
 }
 module.exports = lineRemover;
