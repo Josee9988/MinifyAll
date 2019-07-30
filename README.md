@@ -295,7 +295,7 @@ foo
 
 ```javascript
 "use strict";const{commands,window}=require('vscode');const FileSaver=require('fs')
-const StringWithComments="// not a comment" //this is my comment
+const StringWithComments="// not a comment"
 if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":console.log("Love this minifier !!!")
 break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 ```

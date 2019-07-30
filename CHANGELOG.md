@@ -5,6 +5,21 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.2] - 2019-07-30
+
+### Added
+
+- Readme examples changed things that now the minifier is capable of doing
+
+### Changed
+
+- Package.json changed group name of editor/context from myGroup to 'MinifyAll'
+- jsMinifier.js changed from a single space to \s
+
+### Fixed
+
+- JavaScript fixed bug that didn't remove a comment if in the line was found a String
+
 ## [0.10.1] - 2019-07-30
 
 ### Added

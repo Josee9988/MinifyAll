@@ -45,13 +45,18 @@ class lineRemover {
         for (let i = 0; i < this.lineContent.length; i++) {
             let newLine = this.removeComments(this.lineContent[i]);
             let newNumberOfUndefinedCurrencies = (newLine.match(/\bundefined\b/g) || []).length;
-            //If it is a regex don't replace
+
+            //If there is not a regex expression in the line...
             if (!(this.lineContent[i].indexOf("/") != -1 && this.lineContent[i].indexOf("/g") != -1 && this.lineContent[i].indexOf("/") < this.lineContent[i].indexOf("/g"))) {
+
+                //If there his not any error at parsing the line...
                 if (newNumberOfUndefinedCurrencies < 1) {
                     if (newLine.match(/\/\//g) == null) {
                         this.lineContent[i] = newLine;
-                    } else if ((newLine.match(/\"/g) || []).length < 2) {
-                        this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, '');
+                    } else if ((newLine.match(/\"/g) || []).length < 2) { //if there is less than 2 quotes(no string)
+                        this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, ''); //remove comments
+                    } else {
+                        this.lineContent[i] = newLine;
                     }
                 } else {
                     this.lineContent[i].replace(/\/\/.*/g, '');
@@ -101,7 +106,6 @@ class lineRemover {
             })
         );
     }
-
 
     /**
      * removeMultipleLineComments checks line by line
