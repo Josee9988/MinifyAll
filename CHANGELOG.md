@@ -1,9 +1,21 @@
 <!-- markdownlint-disable MD024-->
-# **Change Log**
+# **Change Log** 📜📝
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
 ---
+
+## [0.10.1] - 2019-07-30
+
+### Added
+
+- Css less sass scss removes space before a hexadecimal color.
+- Css less sass scss removes two single spaces at once into one.
+- Css less sass scss removes space before '}'
+- Css less sass scss removes space before ';'
+- Css less sass scss removes space after ':'
+- Css less sass scss removes space before and after ')'
+- Css less sass scss removes space before and after '('
 
 ## [0.10.0] - 2019-07-30
 

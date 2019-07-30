@@ -198,7 +198,7 @@ Check our **[changelog](CHANGELOG.md)**.
 *To:*
 
 ```css
-.myClass{background-color: rgba(12, 12, 12, 0.8);background-color: rgb(12, 12, 12);background-color:#FAFAFA;content: url("http://placehold.it/350x150")}
+.myClass{background-color:rgba(12, 12, 12, 0.8);background-color:rgb(12, 12, 12);background-color:#FAFAFA;content:url("http://placehold.it/350x150")}
 ```
 
 - rgba is formatted to hexadecimal.
