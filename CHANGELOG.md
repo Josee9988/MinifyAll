@@ -3,6 +3,27 @@
 
 All notable changes to the "**MinifyAll**" extension will be documented in this file.
 
+---
+
+## [0.10.0] - 2019-07-30
+
+### Added
+
+- Javascript don't removes '//' in a regex expression!!
+- Javascript removes spaces after and before '?'
+- Javascript removes spaces after and before '+'
+- Javascript removes spaces after and before '<'
+- Javascript removes spaces after and before '>'
+- Javascript removes spaces after and before ','
+- Javascript removes spaces after and before '+'
+- Javascript removes spaces after and before '-'
+- Javascript removes spaces after and before '!='
+- Javascript removes spaces after and before '!=='
+
+### Changed
+
+- Javascript example in readme.md
+
 ## [0.9.12] - 2019-07-29
 
 ### Added

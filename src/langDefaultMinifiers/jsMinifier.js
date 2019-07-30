@@ -18,6 +18,7 @@ class jsMinifier {
 
     /**
      * getJsMinified finds lasts spaces and trim it into just one line
+     * removes all kind of spaces
      * @return {String} the line minified
      */
     getJsMinified() {
@@ -26,9 +27,16 @@ class jsMinifier {
             .replace(/;[\n]*\n/igm, ';').replace(/,\n/gm, ',').replace(/\|\|[\n]*\n/gm, '||').replace(/\&\&[\n]*\n/gm, '&&').replace(/ = /g, '=')
             .replace(/ =/g, '=').replace(/= /g, '=').replace(/\bcase\b /g, 'case').replace(/\bswitch\b /g, 'switch')
             .replace(/\bif\b /g, 'if').replace(/ && /g, '&&').replace(/&& /g, '&&').replace(/ &&/g, '&&').replace(/ == /g, '==')
-            .replace(/ \|\| /g, '||').replace(/== /g, '==').replace(/\|\| /g, '||').replace(/ ==/g, '==').replace(/ \|\|/g, '||');
+            .replace(/ \|\| /g, '||').replace(/== /g, '==').replace(/\|\| /g, '||').replace(/ ==/g, '==').replace(/ \|\|/g, '||')
+            .replace(/ \?/g, '?').replace(/\? /g, '?').replace(/ \?/g, '?')
+            .replace(/ \+/g, '+').replace(/\+ /g, '+').replace(/ \+/g, '+')
+            .replace(/ \</g, '<').replace(/\< /g, '<').replace(/ \</g, '<')
+            .replace(/ \>/g, '>').replace(/\> /g, '>').replace(/ \>/g, '>')
+            .replace(/ \,/g, ',').replace(/\, /g, ',').replace(/ \,/g, ',')
+            .replace(/ \+/g, '+').replace(/\+ /g, '+').replace(/ \+/g, '+')
+            .replace(/ \-/g, '-').replace(/\- /g, '-').replace(/ \-/g, '-')
+            .replace(/ \!\=/g, '!=').replace(/\!\= /g, '!=').replace(/ \!\=/g, '!=')
+            .replace(/ \!\=\=/g, '!==').replace(/\!\=\= /g, '!==').replace(/ \!\=\=/g, '!==');
     }
-
-
 }
 module.exports = jsMinifier;

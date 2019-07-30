@@ -1,6 +1,6 @@
 # **MinifyAll an extension for VSCode**
 
-VSCode **minifier** for **JavaScript**, **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for **JavaScript**(testing yet), **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
 
@@ -203,11 +203,11 @@ Check our **[changelog](CHANGELOG.md)**.
 
 - rgba is formatted to hexadecimal.
 - rgb is formatted to 3 digit value hexadecimal.
-- 6 digit hexadecimals are formatted to 3 digit value hexadecimal
-- There are no spaces
-- There is only one line
-- Single line comments removed
-- Multiline comments removed
+- 6 digit hexadecimals are formatted to 3 digit value hexadecimal.
+- There are no spaces.
+- There is only one line.
+- Single line comments removed.
+- Multiline comments removed.
 - Url '//' is not detected as a comment and can be perfectly placed.
 
 ---
@@ -242,12 +242,12 @@ Check our **[changelog](CHANGELOG.md)**.
 {"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FFF",}]}}
 ```
 
-- Only one line
-- No unnecessary spaces
-- 6 Digit hex to 3 digit hex
-- No single line comments
-- No multiline comments
-- Removed trailing comma before '}'
+- Only one line.
+- No unnecessary spaces.
+- 6 Digit hex to 3 digit hex.
+- No single line comments.
+- No multiline comments.
+- Removed trailing comma before '}'.
 
 ---
 
@@ -284,6 +284,8 @@ if ((window.activeTextEditor.document.languageId == "css" && disableCss == false
             break;
     }
 }
+let myString = "hello//";
+myString.replace(/\/\//g, '');
 /* foo asd
 foo
 */
@@ -293,17 +295,19 @@ foo
 
 ```javascript
 "use strict";const{commands,window}=require('vscode');const FileSaver=require('fs')
-const StringWithComments="// not a comment"
+const StringWithComments="// not a comment" //this is my comment
 if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":console.log("Love this minifier !!!")
-break;default:break;}}
+break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 ```
 
-- Only changes line if at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code)
-- All irrelevant spaces removed
+- Only changes line if at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code).
+- All irrelevant spaces removed.
 - Spaces left are only whithin quotes (Strings) and variable declarations.
 - If 'OR' and 'AND' are without spaces, same as if condition or switch cases.
-- All comments removed
-- Single line comments inside of a string don't removed.
+- All single line and multiline comments removed.
+- Single line comments inside of a string don't removed. (hello//) (// not a comment).
+- Regex expression with single line comments don't removed.
+- No tabs.
 
 ---
 
@@ -343,11 +347,11 @@ break;default:break;}}
 <!DOCTYPE html><html lang='es'><head><title></title><meta charset='utf-8'><link rel='stylesheet' href=''><script type='text/javascript' src=''></script></head><body></body></html>
 ```
 
-- Only one line
-- Only necessary spaces
-- No tabs
-- No single line comments
-- No multiline comments
+- Only one line.
+- Only necessary spaces.
+- No tabs.
+- No single line comments.
+- No multiline comments.
 
 ---
 
@@ -380,7 +384,7 @@ break;default:break;}}
 
 - [ ] Right click in a file of the menu will minify to other document.
 - [ ] Right click in a folder will minify all supported files.
-- [ ] Path of the minify to other document (new file with minified text) customizable
+- [ ] Path of the minify to other document (new file with minified text) customizable.
 
 ## **Built with** 🛠️🔧
 

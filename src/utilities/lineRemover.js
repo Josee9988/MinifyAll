@@ -34,22 +34,28 @@ class lineRemover {
      * This method is only a for with a method call.
      */
     removeCommentsMain() {
+        // Remove multiline comments in the same line
         for (let i = 0; i < this.lineContent.length; i++) {
             this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
         }
+        // Remove overall multiline comments
         this.removeMultipleLineComments();
 
+        // Remove all single line comments
         for (let i = 0; i < this.lineContent.length; i++) {
             let newLine = this.removeComments(this.lineContent[i]);
             let newNumberOfUndefinedCurrencies = (newLine.match(/\bundefined\b/g) || []).length;
-            if (newNumberOfUndefinedCurrencies < 1) {
-                if (newLine.match(/\/\//g) == null) {
-                    this.lineContent[i] = newLine;
-                } else if ((newLine.match(/\"/g) || []).length < 2) {
-                    this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, '');
+            //If it is a regex don't replace
+            if (!(this.lineContent[i].indexOf("/") != -1 && this.lineContent[i].indexOf("/g") != -1 && this.lineContent[i].indexOf("/") < this.lineContent[i].indexOf("/g"))) {
+                if (newNumberOfUndefinedCurrencies < 1) {
+                    if (newLine.match(/\/\//g) == null) {
+                        this.lineContent[i] = newLine;
+                    } else if ((newLine.match(/\"/g) || []).length < 2) {
+                        this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, '');
+                    }
+                } else {
+                    this.lineContent[i].replace(/\/\/.*/g, '');
                 }
-            } else {
-                this.lineContent[i].replace(/\/\/.*/g, '');
             }
         }
     }
