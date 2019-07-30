@@ -55,6 +55,7 @@ if (minifyOnSaveToNewFIle) {
 let statusBarItem, timeSpend, startTime, statusReady, oc;
 vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 vscode.workspace.onDidSaveTextDocument(() => getNewSize());
+
 if (alignment == "Right") {
 	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
 } else {
@@ -69,7 +70,7 @@ if (alignment == "Right") {
  * @param {object} context information about vscode. Ignore.
  */
 function activate(context) {
-	//Command MinifyAll.
+	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
 		let startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
@@ -105,9 +106,7 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
 				break;
 
@@ -133,9 +132,7 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
 				break;
 
@@ -156,9 +153,7 @@ function activate(context) {
 
 					timeSpend = ((new Date().getTime()) - startTime);
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
 				break;
 
@@ -180,13 +175,9 @@ function activate(context) {
 						window.showInformationMessage('We will not format this file type because you disabled it.');
 					}
 				}
-
 				break;
-
 			default:
-				if (!disableMessages) {
-					window.showErrorMessage('⛔ We can not format this file type yet, use a valid one.');
-				}
+				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
 				break;
 		}
 		context.subscriptions.push(disposable);
@@ -197,6 +188,7 @@ function activate(context) {
 
 	//**************************************************************************************************************
 	//Command MinifyAll2OtherDoc and writes the result in other file.
+	//It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
 		const {
@@ -237,11 +229,8 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
-
 				break;
 
 			case "json":
@@ -269,11 +258,8 @@ function activate(context) {
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
-
 				break;
 
 			case "html":
@@ -297,11 +283,8 @@ function activate(context) {
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
-
 				break;
 
 			case "javascript":
@@ -320,17 +303,11 @@ function activate(context) {
 					minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
 
 				} else {
-					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
-					}
+					showMessage('We will not format this file type because you disabled it.', false);
 				}
-
 				break;
-
 			default:
-				if (!disableMessages) {
-					window.showWarningMessage('⛔ We can not format this file type yet, use a valid one.');
-				}
+				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
 				break;
 		}
 
@@ -463,12 +440,34 @@ function minifiedTextToNewFile(path2NewFile, modifiedText) {
 /**
  * removeComments receives an array with the content 
  * and removes single line and multiple line comments (//)(/* * /)
+ * by calling the class removeComments and calling the method
+ * removeCommentsMain. Then gets the result with getLineRemoved
  * @param {Array} content All the content to remove the comments
  */
 function removeComments(content) {
 	let RemoveComments = new LineRemover(content);
 	RemoveComments.removeCommentsMain();
 	return RemoveComments.getLineRemoved();
+}
+
+/**
+ * showMessage shows a message to the user, it might be a warning
+ * or a informational one. The method receives a text with the message
+ * and a boolean for saying if it is a warning (true) 
+ * or an informational(false)
+ * @param {String} text The text to be displayed in the message
+ * @param {boolean} warning If it is a warning or an informational message
+ */
+function showMessage(text, warning) {
+	if (warning) {
+		if (!disableMessages) {
+			window.showWarningMessage(text);
+		}
+	} else {
+		if (!disableMessages) {
+			window.showInformationMessage(text);
+		}
+	}
 }
 
 exports.activate = activate;

@@ -188,17 +188,18 @@ Check our **[changelog](CHANGELOG.md)**.
 .myClass {
     background-color: rgba(12, 12, 12, 0.8);
     background-color: rgb(12, 12, 12);
-    /* my comment
+    background-color: #FAFAFA;
+    /*other comment*/
+    content: url("https://github.com/Josee9988/MinifyAll");
+    margin-right: 0px;
+}/* my comment
     */
-    background-color: #FAFAFA; //other comment
-    content: url("http://placehold.it/350x150");
-}
 ```
 
 *To:*
 
 ```css
-.myClass{background-color:rgba(12, 12, 12, 0.8);background-color:rgb(12, 12, 12);background-color:#FAFAFA;content:url("http://placehold.it/350x150")}
+.myClass{background-color:#0C0C0CCC;background-color:#111;background-color:#FFF;content:url("https://github.com/Josee9988/MinifyAll");margin-right:0}
 ```
 
 - rgba is formatted to hexadecimal.
@@ -206,9 +207,9 @@ Check our **[changelog](CHANGELOG.md)**.
 - 6 digit hexadecimals are formatted to 3 digit value hexadecimal.
 - There are no spaces.
 - There is only one line.
-- Single line comments removed.
 - Multiline comments removed.
 - Url '//' is not detected as a comment and can be perfectly placed.
+- From 0px to 0
 
 ---
 

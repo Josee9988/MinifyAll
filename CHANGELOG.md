@@ -5,6 +5,20 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.3] - 2019-07-30
+
+### Added
+
+- Method to display a message, so instead of having it in every case it will simply call the method for better readability!
+- Some comments added
+- Css less sass scss removes space before '!'
+- Css less sass scss removes space before and after a','
+- Css less sass scss from '0px' to '0'
+
+### Changed
+
+- Readme.md css example adding the new from 0px to 0 feature
+
 ## [0.10.2] - 2019-07-30
 
 ### Added
