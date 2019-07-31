@@ -1,6 +1,6 @@
 /**
- * @file That is called when the user minifies a html document
- * This file receives the html document and returns the minified one.
+ * @file That is called when the user minifies an HTML document
+ * This file receives the HTML document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.3.0
  * @see README.md

@@ -1,6 +1,6 @@
 # **utilities**
 
-Folder that contains some modules that are used by multiple languages, and it is better to have that functions in a module than in every module that needs it, so it improves readability by a lot.
+A Folder that contains some modules that are used by multiple languages, and it is better to have that functions in a module than in every module that needs it, so it improves readability by a lot.
 
 ---
 

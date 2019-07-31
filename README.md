@@ -2,7 +2,7 @@
 
 VSCode **minifier** for **JavaScript**(testing yet), **JSON**, **CSS**, **HTML**, **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in other document!
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document!
 
 Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
@@ -24,7 +24,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ## **Installation** 🔩⚙
 
-- Open the command Palette of VSCode with *Ctrl+P* or *⌘P*
+- Open the **Command Palette** of VSCode with **Ctrl+P** or **⌘P**
 - And type:➡️
 **```ext install josee9988.minifyall```**
 
@@ -35,7 +35,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ---
 
-## **How does it looks with real code?** 📸 😁
+## **How does it look with real code?** 📸 😁
 
 - The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
 
@@ -53,7 +53,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 <img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
-- Also minify when right clicking on the code!
+- Also, minify when right-clicking on the code!
 
 <img src="https://i.imgur.com/fXMQTc0.png" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
@@ -79,7 +79,7 @@ Check our **[changelog](CHANGELOG.md)**.
 <details>
 <summary>Click to see more info about the configuration settings</summary>
 
-- If you want MinifyAll to **stop shortening colors**, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in color accuracy
+- If you want MinifyAll to **stop shortening colours**, such as RGB to 3 digit hex, or RGBA to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in colour accuracy
 
 ``` json
 "MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default is disabled)
@@ -91,7 +91,7 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default is enabled)
 ```
 
-- Priority of the status bar. 0 Is the greatest.
+- The Priority of the status bar. 0 Is the greatest.
 
 ``` json
 "MinifyAll.statusbarPriority": integer //A number: default '0'
@@ -202,9 +202,9 @@ Check our **[changelog](CHANGELOG.md)**.
 .myClass{background-color:#0C0C0CCC;background-color:#111;background-color:#FFF;content:url("https://github.com/Josee9988/MinifyAll");margin-right:0}
 ```
 
-- rgba is formatted to hexadecimal.
-- rgb is formatted to 3 digit value hexadecimal.
-- 6 digit hexadecimals are formatted to 3 digit value hexadecimal.
+- RGBA is formatted to hexadecimal.
+- RGB is formatted to 3 digit value hexadecimal.
+- 6 digit hexadecimal values are formatted to 3 digit value hexadecimal.
 - There are no spaces.
 - There is only one line.
 - Multiline comments removed.
@@ -246,7 +246,7 @@ Check our **[changelog](CHANGELOG.md)**.
 - Only one line.
 - No unnecessary spaces.
 - 6 Digit hex to 3 digit hex.
-- No single line comments.
+- No single-line comments.
 - No multiline comments.
 - Removed trailing comma before '}'.
 
@@ -301,13 +301,13 @@ if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(win
 break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 ```
 
-- Only changes line if at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code).
+- Only changes line if, at the end of a declaration or an import, that line does not end in ';' (So adding more ';' at the end of every line will help you minimize more your code).
 - All irrelevant spaces removed.
-- Spaces left are only whithin quotes (Strings) and variable declarations.
-- If 'OR' and 'AND' are without spaces, same as if condition or switch cases.
+- Spaces left are only within quotes (Strings) and variable declarations.
+- If 'OR' and 'AND' are without spaces, the same as if condition or switch cases.
 - All single line and multiline comments removed.
-- Single line comments inside of a string don't removed. (hello//) (// not a comment).
-- Regex expression with single line comments don't removed.
+- Single line comments inside of a String will not be removed. (hello//) (// not a comment).
+- Regex expression with single-line comments will not be removed.
 - No tabs.
 
 ---
@@ -349,9 +349,9 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 ```
 
 - Only one line.
-- Only necessary spaces.
+- Only the necessary spaces.
 - No tabs.
-- No single line comments.
+- No single-line comments.
 - No multiline comments.
 
 ---
@@ -383,9 +383,10 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Upcoming features?** ✅💡
 
-- [ ] Right click in a file of the menu will minify to other document.
-- [ ] Right click in a folder will minify all supported files.
-- [ ] Path of the minify to other document (new file with minified text) customizable.
+- [ ] Enable multiline comments inside a String or a path as single-line comments are.
+- [ ] Right-click in a file of the menu will minify to another document.
+- [ ] Right-click on a folder will minify all supported files.
+- [ ] Path of the minify to another document (new file with minified text) customizable.
 
 ## **Built with** 🛠️🔧
 

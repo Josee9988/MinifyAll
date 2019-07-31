@@ -1,6 +1,6 @@
 /**
- * @file That is called when the user minifies a css document
- * This file receives the css document and returns the minified one.
+ * @file That is called when the user minifies a CSS document
+ * This file receives the CSS document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
  * @see README.md

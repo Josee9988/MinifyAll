@@ -95,6 +95,7 @@ class HexMinifier {
      * 8 digit value.
      * 
      * @param {*} rgba original rgba number
+     * 
      * @return {String} the hexadecimal value
      * 
      * @access private

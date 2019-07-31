@@ -1,6 +1,6 @@
 # **langDefaultMinifiers**
 
-Folder that contains every necessary module for each specific language and perform unique tasks per language so the code can be successfully minified.
+A Folder that contains every necessary module for each specific language and performs unique tasks per language so the code can be successfully minified.
 
 All modules contain a constructor that receives the code and a getter of the code in which the module will make all the tasks and transform the array of lines into a String.
 

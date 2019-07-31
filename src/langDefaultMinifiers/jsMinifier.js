@@ -1,6 +1,6 @@
 /**
- * @file That is called when the user minifies a javascript document
- * This file receives the javascript document and returns the minified one.
+ * @file That is called when the user minifies a JavaScript document
+ * This file receives the JavaScript document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.9.0
  * @see README.md

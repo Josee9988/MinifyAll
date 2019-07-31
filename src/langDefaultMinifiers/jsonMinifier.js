@@ -1,6 +1,6 @@
 /**
- * @file That is called when the user minifies a json document
- * This file receives the json document and returns the minified one.
+ * @file That is called when the user minifies a JSON document
+ * This file receives the JSON document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.2.0
  * @see README.md

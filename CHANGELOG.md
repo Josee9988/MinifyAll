@@ -5,6 +5,17 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.5] - 2019-07-31
+
+### Fixed
+
+- Multiple spelling mistakes
+
+### Added
+
+- Spaces in the documentation before a **@return** tag
+- README.md to screenshots/
+
 ## [0.10.4] - 2019-07-31
 
 ### Added
@@ -54,7 +65,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Added
 
-- Css less sass scss removes space before a hexadecimal color.
+- Css less sass scss removes space before a hexadecimal colour.
 - Css less sass scss removes two single spaces at once into one.
 - Css less sass scss removes space before '}'
 - Css less sass scss removes space before ';'
@@ -66,7 +77,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Added
 
-- Javascript don't removes '//' in a regex expression!!
+- Javascript doesn't remove '//' in a regex expression!!
 - Javascript removes spaces after and before '?'
 - Javascript removes spaces after and before '+'
 - Javascript removes spaces after and before '<'
@@ -89,8 +100,8 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Changed
 
-- Line removed reworked because the function that I added in 0.9.9 has a tons of bugs
-- Remove multiple line reworked
+- Line removed reworked because the function that I added in 0.9.9 has a ton of bugs
+- Remove multiple lines reworked
 
 ### Fixed
 
@@ -138,17 +149,17 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Fixed
 
 - Bug at removing single lines
-- Bug that let a single '/' when removing multiple line comments
+- A bug that let a single '/' when removing multiple line comments
 
 ### Changed
 
-- Now single line comments are removed before the multiple ones due to some bugs
+- Now single-line comments are removed before the multiple ones due to some bugs
 
 ## [0.9.6] - 2019-07-28
 
 ### Added
 
-- Comments to configuration in readme.md
+- Comments to the configuration in readme.md
 
 ### Changed
 
@@ -168,16 +179,16 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 - Now all the source code can be found inside src/
 - Location of main.js into folder src/
 - All global utilities that multiple languages use are now in src/utilities/
-- All personal minifiers are in src/langDefaultMinifiers/ there are all the files that correspond to each language and perform specific tasks for each language.
+- All personal minifiers are in src/langDefaultMinifiers/all the files correspond to each language and perform specific tasks for each language.
 
 ### Added
 
 - Improved readability in main.js
-- Function in main.js with the CommentRemover so in the switch you will not need to initialize a class every time, just call this method.
+- Function in main.js with the CommentRemover so in the switch, you will not need to initialize a class every time, just call this method.
 
 ### Fixed
 
-- Ton of bad spelled words.
+- A ton of bad spelt words.
 - Some variable names fixed lowercasing when using a new word.
 
 ## [0.9.3] - 2019-07-28
@@ -195,9 +206,9 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Changed
 
 - Icon (added new languages available)
-- Folder of icon. Now it is in Screenshots/
+- Folder of the icon. Now it is in Screenshots/
 - Readme icon to the new one
-- Readme list of languages available added bold
+- Readme list of languages available added boldly
 - Examples fixed some mistakes of order and headings
 
 ## [0.9.1] - 2019-07-28
@@ -212,28 +223,28 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Added
 
 - JavaScript support!!. Made from scratch, I will be improving and fixing some bugs with javascript in the upcoming days...
-- Image used of right click minify is now in the Screenshots/ folder
+- Image used of right-clicking minify is now in the Screenshots/ folder
 
 ## [0.8.6] - 2019-07-27
 
 ### Added
 
-- Right click on the open file will show you both commands
+- Right-click on the open file will show you both commands
 
 ## [0.8.5] - 2019-07-27
 
 ### Added
 
 - Description to configuration 'statusbarAlignment' which it had not.
-- Upcoming features in readme.md file
+- Upcoming features in the readme.md file
 - Improved readme
-- Added 'click me too see ...' So all the configuration and the examples don't show at first.
+- Added 'click me to see ...' So all the configuration and the examples don't show at first.
 
 ## [0.8.4] - 2019-07-27
 
 ### Changed
 
-- A lot of code that were in each language now is only in a couple of functions. (Improved readability and code consistency by a lot)
+- A lot of code that was in each language now is only in a couple of functions. (Improved readability and code consistency by a lot)
 - Removed about 50 total lines of code.
 
 ## [0.8.3] - 2019-07-26
@@ -267,7 +278,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Fixed
 
-- When you triggered the command from now on every time you saved the document you would get a new statusbar item. This is now fixed. It will only appear once and after you run MinifyAll and save.
+- When you triggered the command from now on every time you saved the document you would get a new status bar item. This is now fixed. It will only appear once and after you run MinifyAll and save.
 - Output now displays all inline in the same tab.
 
 ### Added
@@ -295,7 +306,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 - Configuration for disabling status bar output.
 - More information in the output of the status bar.
-- Changed picture of the documentation of the output in readme.md and in /Screenshots
+- Changed picture of the documentation of the output in the readme.md and in /Screenshots
 
 ## [0.6.0] - 2019-07-17
 
@@ -307,7 +318,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Changed
 
-- When the file is not css, scss, json, jsonc or html it will now display a waring instead of an error.
+- When the file is not css, scss, json, jsonc or HTML it will now display a warning instead of an error.
 
 ### Added
 
@@ -322,7 +333,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Fixed
 
-- Mistake in package.json that made the keybindings don't work.
+- A mistake in package.json that made the keybindings don't work.
 
 ## [0.5.7] - 2019-07-17
 
@@ -345,11 +356,11 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Added
 
 - Comments in main.js
-- File type in output of statusbar
+- File type in the output of status bar
 
 ### Changed
 
-- Name of folder from Minifier to src as there is more things than just minifiers.
+- Name of the folder from Minifier to src as there are more things than just minifiers.
 - From let to const in main.js
 - Now the function transform size is in src/sizeTransform.js to improve main.js readability
 
@@ -378,8 +389,8 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Fixed
 
 - Bugs that let multiple spaces exist.
-- Bug that didn't let 6 digit hexadecimal be formatted
-- Bug that didn't uppercase the hexadecimal values
+- A bug that didn't let 6 digit hexadecimal be formatted
+- A bug that didn't uppercase the hexadecimal values
 
 ### Added
 
@@ -390,25 +401,25 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Fixed
 
-- Bug from the single line remover that removed a false line from an http: // link. It looked for the double '/' and removed it all to the next line.
+- A bug from the single line remover that removed a false line from an HTTP: // link. It looked for the double '/' and removed it all to the next line.
 
 ## [0.5.0] - 2019-07-15
 
 ### Added
 
-- When saving a file without wanting to get the new modified text in other document (default MinifyAll command). After you save the new minified text it will display in the status bar the original value --> the new value
-- When you click in the status bar item it will display a table with information about the path, and the new and original size
+- When saving a file without wanting to get the new modified text in another document (default MinifyAll command). After you save the new minified text it will display in the status bar the original value --> the new value
+- When you click on the status bar item it will display a table with information about the path, and the new and original size
 - The status bar will disappear when you change document or when you click to see the output!
 
 ## [0.4.2] - 2019-07-14
 
 ### Added
 
-- Support for RGBA colors. rgba colors will be formatted to hex but rgba with alpha(transparency) color in percentages or rgba with a 0 value in transparency.
+- Support for RGBA colours. RGBA colours will be formatted to hex but rgba with alpha(transparency) colour in percentages or rgba with a 0 value in transparency.
 
 ### Changed
 
-- Hex colors will always be formatted in uppercase.
+- Hex colours will always be formatted in uppercase.
 
 ## [0.4.2] - 2019-07-14
 
@@ -428,7 +439,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 ### Added
 
 - Added emojis to the titles of the commands
-- Added other command that the minified content don't replace the original and creates other document with the new minified content.
+- Added other command that the minified content doesn't replace the original and creates another document with the new minified content.
 - Removed debug comments that I forgot to remove.
 - Donate button in readme.md
 
@@ -436,8 +447,8 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ### Added
 
-- Support for html
-- Html minify removes single line and multiline comments and doesn't care if its set on the same line or not.
+- Support for HTML
+- Html minify removes the single line and multiline comments and doesn't care if its set on the same line or not.
 
 ### Removed
 
@@ -473,7 +484,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 - JSON minify support
 - JSON single line comment support
 - JSON multiline comment support
-- JSON Multiline if its placed between code it will only remove the comment
+- JSON Multiline if it's placed between code it will only remove the comment
 - Now minifiers also remove tabs
 
 ## [0.1.2] - 2019-07-13
@@ -507,7 +518,7 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 - Added all the initial files.
 - Support for css
-- Css minify hexadecimal 6 digit colors will now be turned into 3 digit ones
+- Css minify hexadecimal 6 digit colours will now be turned into 3 digit ones
 - Css minify can now be minified in one line.
 - Css minify will now be displayed without comments
 - Css minify removes all the spaces but the ones after the : (need to be fixed)

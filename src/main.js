@@ -5,7 +5,7 @@
  * minified version of the code. 
  * Or if you execute MinifyAll2OtherDoc it will create a new file
  * with the minified code so you can preserve the original file.
- * It also creates the status bar and calls all the necessary methods
+ * It also creates the status bar and calls all the necessary methods 
  * to make the extension perform well.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
@@ -67,11 +67,11 @@ if (alignment == "Right") {
  * Summary main method that is executed when the user calls 
  * the commands 'MinifyAll' or 'MinifyAll2OtherDoc'.
  * 
- * Description activate Main function called when the user
+ * Description activate the Main function called when the user
  * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc'
- * or right clicks in the code and calls the commands
+ * or right-clicks in the code and calls the commands
  * it may be called from both commands and every command has a switch
- * with the languages available and its own methods to minify the code
+ * with the languages available and its methods to minify the code
  * then if the command is 'MinifyAll' it will replace the actual code
  * with the new one or if the command is 'MinifyAll2OtherDoc' it will create
  * a new file with the minified text.
@@ -383,6 +383,7 @@ function createStatusBar(originalSize, newSize) {
  * @access private
  * 
  * @param {number} size A number with the bytes.
+ * 
  * @return {String} the new value in KB, MB or in Bytes 
  */
 function transformSize(size) {
@@ -426,6 +427,7 @@ function statusBarInfo() {
  * @access private
  * 
  * @param {Array} Content Array with all the lines to be hexMinified.
+ * 
  * @return {Array} with the colors minified.
  */
 function HexMinify(Content) {
@@ -505,10 +507,12 @@ function removeComments(content) {
  * Summary it shows a warning or information message.
  * 
  * Description showMessage shows a message to the user, it might be a warning
- * or a informational one, the method receives a text with the message
+ * or an informational one, the method receives a text with the message
  * and a boolean for saying if it is a warning (true) 
  * or an informational(false).
+ * 
  * @access private
+ * 
  * @param {String} text The text to be displayed in the message
  * @param {boolean} warning If it is a warning or an informational message
  */
