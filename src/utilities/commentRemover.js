@@ -1,15 +1,18 @@
 /**
- * @file That is called for performing line removing
+ * @file That is called for performing comment removing
  * removes // and / * * / comments
  * @author Jose Gracia Berenguer
  * @since 0.2.2
- * @see ../README.md
+ * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
 
-class lineRemover {
+class commentRemover {
     /**
-     * Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that maps and trims the code.
+     * 
+     * @access public
+     * 
      * @param {Array} lineContent all the code that will be minified.
      */
     constructor(lineContent) {
@@ -17,21 +20,28 @@ class lineRemover {
     }
 
     /**
-     * getLineRemoved finds lasts spaces and trim it into just one line.
+     * Summary getLineRemoved finds lasts spaces and trim it into just one line.
+     * 
+     * @access public
+     * 
      * @return {Array} the line minified.
      */
-    getLineRemoved() {
+    getCommentsRemoved() {
         return this.lineContent;
     }
 
     /**
-     * removeCommentsMain method that is called when you want to remove the 
-     * comments from the array of lines
+     * Summary main method that perform all the tasks to remove comments.
+     * 
+     * Description removeCommentsMain method that is called when 
+     * you want to remove the comments from the array of lines
      * First remove all the multiline comments in the same line
      * calls removeMultipleLineComments();
      * Then it calls the method removeComments 
-     * which receives a single string and it does all the job.
+     * which receives a single string and it does all the job;
      * This method is only a for with a method call.
+     * 
+     * @access public
      */
     removeCommentsMain() {
         // Remove multiline comments in the same line
@@ -66,14 +76,16 @@ class lineRemover {
     }
 
     /**
-     * removeComments method that removes all the single line and multiline 
+     * Summary removes most of the '//' comments.
+     * 
+     * Description removeComments method that removes all the single line and multiline 
      * comments from a String and it returns the new string without the comments,
      * it also support comments inside string which are not comments
      * 
      * Remove single-line comments that contain would-be multi-line delimiters
-     * E.g. // Comment /* <--
+     * Example // Comment /* <--
      * Remove multi-line comments that contain would be single-line delimiters
-     * E.g. /* // <-- 
+     * Example /* // <-- 
      * 
      * Don't Removes regex
      * 
@@ -82,7 +94,9 @@ class lineRemover {
      * Remove multi-line comments that have a replace ending (string/regex)
      * Greedy, so no inner strings/regex will stop it.
      * 
-     * @param {String} str the string to remove the comments
+     * @access private
+     * 
+     * @param {String} str the string to remove the comments.
      */
     removeComments(str) {
         var uid = '_' + +new Date(),
@@ -108,11 +122,15 @@ class lineRemover {
     }
 
     /**
-     * removeMultipleLineComments checks line by line
+     * Summary remove multiline comments.
+     * 
+     * Description removeMultipleLineComments checks line by line
      * and removes the multiple line comments
      * it only removes the content inside the comments
      * if the multiple line comment is placed in a line
      * with useful code it will not be replaced.
+     * 
+     * @access private
      */
     removeMultipleLineComments() {
         this.lineContent = this.lineContent.join('\n');
@@ -120,4 +138,4 @@ class lineRemover {
         this.lineContent = this.lineContent.split('\n')
     }
 }
-module.exports = lineRemover;
+module.exports = commentRemover;

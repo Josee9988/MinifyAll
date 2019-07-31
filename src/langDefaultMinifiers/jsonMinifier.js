@@ -3,13 +3,16 @@
  * This file receives the json document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.2.0
- * @see ../README.md
+ * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
 
 class jsonMinifier {
     /**
-     * Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that maps and trims the code.
+     * 
+     * @access public
+     * 
      * @param {Array} jsonContent all the code that will be minified .
      */
     constructor(jsonContent) {
@@ -17,7 +20,10 @@ class jsonMinifier {
     }
 
     /**
-     * getJSONMinified finds lasts spaces and trim it into just one line.
+     * Summary getJSONMinified finds lasts spaces and trim it into just one line.
+     * 
+     * @access public
+     * 
      * @return {String} the line minified.
      */
     getJSONMinified() {

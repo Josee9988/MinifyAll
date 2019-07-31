@@ -5,6 +5,22 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.4] - 2019-07-31
+
+### Added
+
+- Readme inside /src/ explaining what that folder has.
+- Readme inside /src/utilities/ explaining what that folder has.
+- Readme inside /src/langDefaultMinifiers/ explaining what that folder has.
+- @access tag in all functions (documentation)
+- Description tag in all functions (documentation)
+- Summary tag in all functions (documentation)
+
+### Changed
+
+- Name of class 'lineRemover.js' to 'commentRemover.js'
+- location of readme.md in the description src/ classes
+
 ## [0.10.3] - 2019-07-30
 
 ### Added

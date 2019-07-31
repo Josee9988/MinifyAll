@@ -3,13 +3,16 @@
  * This file receives the javascript document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.9.0
- * @see ../README.md
+ * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
 
 class jsMinifier {
     /**
-     * Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that maps and trims the code.
+     * 
+     * @access public
+     * 
      * @param {Array} jsContent all the code that will be minified 
      */
     constructor(jsContent) {
@@ -17,8 +20,11 @@ class jsMinifier {
     }
 
     /**
-     * getJsMinified finds lasts spaces and trim it into just one line
-     * removes all kind of spaces
+     * Summary getJsMinified finds lasts spaces and trim it into just one line
+     * removes all kind of spaces.
+     * 
+     * @access public
+     * 
      * @return {String} the line minified
      */
     getJsMinified() {

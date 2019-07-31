@@ -22,7 +22,7 @@ const {
 const FileSaver = require('fs');
 const vscode = require('vscode');
 const HexMinifier = require('./utilities/hexMinifier.js');
-const LineRemover = require('./utilities/lineRemover');
+const commentRemover = require('./utilities/commentRemover');
 let originalFilepath = vscode.window.activeTextEditor.document.fileName;
 let originalSize = FileSaver.statSync(originalFilepath).size;
 
@@ -64,9 +64,20 @@ if (alignment == "Right") {
 
 
 /**
- * activate Main function called when the user
+ * Summary main method that is executed when the user calls 
+ * the commands 'MinifyAll' or 'MinifyAll2OtherDoc'.
+ * 
+ * Description activate Main function called when the user
  * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc'
  * or right clicks in the code and calls the commands
+ * it may be called from both commands and every command has a switch
+ * with the languages available and its own methods to minify the code
+ * then if the command is 'MinifyAll' it will replace the actual code
+ * with the new one or if the command is 'MinifyAll2OtherDoc' it will create
+ * a new file with the minified text.
+ * 
+ * @access public
+ * 
  * @param {object} context information about vscode. Ignore.
  */
 function activate(context) {
@@ -318,9 +329,13 @@ function activate(context) {
 
 
 /**
- * getNewSize gets the new size of the actual
- * document and creates the triggers then calls
- * the method to create it createStatusBar().
+ * Summary it gets the size of the actual document and creates triggers to hide
+ * the status bar.
+ * 
+ * Description gets the new size of the actual document and creates the 
+ * triggers then calls the method to create it createStatusBar().
+ * 
+ * @access private
  */
 function getNewSize() {
 	if (statusReady) {
@@ -336,7 +351,14 @@ function getNewSize() {
 }
 
 /**
- * createStatusBar creates the status bar item.
+ * Summary creates the status bar item.
+ * 
+ * Description it receives the original size of the document in Bytes
+ * and the new size in Bytes and it creates a status bar with
+ * both values and an arrow so you can see the old and new size.
+ * 
+ * @access private
+ * 
  * @param {number} originalSize the non minified size in Bytes.
  * @param {number} newSize the minified size in Bytes.
  */
@@ -352,7 +374,14 @@ function createStatusBar(originalSize, newSize) {
 }
 
 /**
- * transformSize receives an int (no. of bytes) and transform its value to KB, OR MB
+ * Summary receives an int (number of bytes) and 
+ * transform its value to KB, OR MB.
+ * 
+ * Description it receives a size in Bytes and it will return a String 
+ * with the number of Bytes, KiloBytes or MegaBytes + 'B' or 'KB' or 'MB'.
+ * 
+ * @access private
+ * 
  * @param {number} size A number with the bytes.
  * @return {String} the new value in KB, MB or in Bytes 
  */
@@ -363,11 +392,12 @@ function transformSize(size) {
 }
 
 /**
- * statusBarInfo Creates an output
- * channel with information about
- * the file that has been minified
- * original size, new minified size
- * filetype and path.
+ * Summary creates an output channel with information about the minify.
+ * 
+ * Description Creates an output channel with information about the file
+ * that has been minified original size, new minified size filetype and path.
+ * 
+ * @access private
  */
 function statusBarInfo() {
 	oc = window.createOutputChannel('Minify output');
@@ -387,9 +417,14 @@ function statusBarInfo() {
 }
 
 /**
- * HexMinify receives an array with all the content, 
- * and minifies it's hexadecimal, rgb and rgba values. 
+ * Summary minifies hexadecimal code if enabled.
+ * 
+ * Description receives an array with all the content, 
+ * and minifies it's hexadecimal, rgb and rgba values;
  * then return the new array.
+ * 
+ * @access private
+ * 
  * @param {Array} Content Array with all the lines to be hexMinified.
  * @return {Array} with the colors minified.
  */
@@ -405,7 +440,13 @@ function HexMinify(Content) {
 }
 
 /**
- * replaceActualCode gets the actual code and replaces it with the minified one.
+ * Summary gets the actual code and replaces it with the minified one.
+ * 
+ * Description it receives the minified text and replaces it with the
+ * received text.
+ * 
+ * @access private
+ * 
  * @param {String} modifiedText the text to replace the original code.
  */
 function replaceActualCode(modifiedText) {
@@ -422,7 +463,13 @@ function replaceActualCode(modifiedText) {
 }
 
 /**
- * minifiedTextToNewFile gets the minified code and writes it in a new file.
+ * Summary gets the minified code and writes it in a new file.
+ * 
+ * Description it receives a path and the modified text, and
+ * it writes the text receives to the new file and then opens the file.
+ * 
+ * @access private
+ * 
  * @param {String} path2NewFile The path to the new file.
  * @param {String} modifiedText The text to place the text in the new file.
  */
@@ -438,23 +485,30 @@ function minifiedTextToNewFile(path2NewFile, modifiedText) {
 }
 
 /**
- * removeComments receives an array with the content 
+ * Summary it removes the comments from a class.
+ * 
+ * Description removeComments receives an array with the content 
  * and removes single line and multiple line comments (//)(/* * /)
  * by calling the class removeComments and calling the method
- * removeCommentsMain. Then gets the result with getLineRemoved
+ * removeCommentsMain, Then gets the result with getLineRemoved.
+ * 
+ * @access private
  * @param {Array} content All the content to remove the comments
  */
 function removeComments(content) {
-	let RemoveComments = new LineRemover(content);
+	let RemoveComments = new commentRemover(content);
 	RemoveComments.removeCommentsMain();
-	return RemoveComments.getLineRemoved();
+	return RemoveComments.getCommentsRemoved();
 }
 
 /**
- * showMessage shows a message to the user, it might be a warning
- * or a informational one. The method receives a text with the message
+ * Summary it shows a warning or information message.
+ * 
+ * Description showMessage shows a message to the user, it might be a warning
+ * or a informational one, the method receives a text with the message
  * and a boolean for saying if it is a warning (true) 
- * or an informational(false)
+ * or an informational(false).
+ * @access private
  * @param {String} text The text to be displayed in the message
  * @param {boolean} warning If it is a warning or an informational message
  */
@@ -473,9 +527,12 @@ function showMessage(text, warning) {
 exports.activate = activate;
 
 /**
- * deactivate function that is
- * called when the extension
- * is deactivated or disabled.
+ * Summary a function that is called by vscode to deactivate the extension.
+ * 
+ * Description function that is called when the extension is deactivated 
+ * or disabled, and it disposes all it can to stop using resources.
+ * 
+ * @access public
  */
 function deactivate() {
 	statusBarItem.dispose();

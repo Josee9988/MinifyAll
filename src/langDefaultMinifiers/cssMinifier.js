@@ -3,12 +3,15 @@
  * This file receives the css document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
- * @see ../README.md
+ * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
 class cssMinifier {
     /**
-     * Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that maps and trims the code.
+     * 
+     * @access public
+     * 
      * @param {Array} cssContent all the code that will be minified.
      */
     constructor(cssContent) {
@@ -16,7 +19,10 @@ class cssMinifier {
     }
 
     /**
-     * getCssMinified finds lasts spaces and trim it into just one line.
+     * Summary getCssMinified finds lasts spaces and trim it into just one line.
+     * 
+     * @access public
+     * 
      * @return {String} the line minified.
      */
     getCssMinified() {

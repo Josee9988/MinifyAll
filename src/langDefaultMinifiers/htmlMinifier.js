@@ -3,13 +3,16 @@
  * This file receives the html document and returns the minified one.
  * @author Jose Gracia Berenguer
  * @since 0.3.0
- * @see ../README.md
+ * @see README.md
  * @link https://github.com/Josee9988/MinifyAll
  */
 
 class htmlMinifier {
     /**
-     * Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that maps and trims the code.
+     * 
+     * @access public
+     * 
      * @param {Array} htmlContent all the code that will be minified. 
      */
     constructor(htmlContent) {
@@ -17,7 +20,10 @@ class htmlMinifier {
     }
 
     /**
-     * getHtmlMinified finds lasts spaces and trim it into just one line.
+     * Summary getHtmlMinified finds lasts spaces and trim it into just one line.
+     * 
+     * @access public
+     * 
      * @return {String} the line minified.
      */
     getHtmlMinified() {
@@ -26,11 +32,15 @@ class htmlMinifier {
 
 
     /**
-     * removeMultipleLineComments checks line by line
+     * Summary removes multiline comments.
+     * 
+     * Description removeMultipleLineComments checks line by line
      * and removes the multiple line comments
      * it only removes the content inside the comments
      * if the multiple line comment is placed in a line
      * with useful code it will not be replaced.
+     * 
+     * @access public
      */
     removeMultipleLineComments() {
         for (let i = 0; i < this.htmlContent.length; i++) {
