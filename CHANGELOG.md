@@ -5,6 +5,13 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.6] - 2019-07-31
+
+### Changed
+
+- Javascript is disabled by default because it is not on a stable version yet(It is giving a lot of trouble and it will be disabled until everything seems fixed)
+- JavaScript minify development will take a little break.
+
 ## [0.10.5] - 2019-07-31
 
 ### Fixed

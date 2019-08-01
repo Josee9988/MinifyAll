@@ -83,6 +83,7 @@ if (alignment == "Right") {
 function activate(context) {
 	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
+		console.log("MinifyAll is working")
 		let startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
 		originalSize = FileSaver.statSync(originalFilepath).size;
@@ -201,6 +202,7 @@ function activate(context) {
 	//Command MinifyAll2OtherDoc and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+		console.log("MinifyAll is working")
 		const path = require('path');
 		const {
 			document

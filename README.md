@@ -165,7 +165,7 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.disableJsonc": true|false //default 'false' (by default is enabled)
 ```
 
-- Disables **JavaScript** minimization //default 'false' (by default is enabled)
+- Disables **JavaScript** minimization //default 'true' (by default is disabled because it is not on a stable version yet)
 
 ``` json
 "MinifyAll.disableJavascript": true|false //default 'false' (by default is enabled)
