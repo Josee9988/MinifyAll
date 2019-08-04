@@ -406,6 +406,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 [Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme) 🧲
 
+[Check my VSCode Markdown and Changelog snippets](https://marketplace.visualstudio.com/items?itemName=josee9988.changelog-and-markdown-snippets) 🌟
+
 ---
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***
