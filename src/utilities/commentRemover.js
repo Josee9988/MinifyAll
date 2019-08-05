@@ -36,7 +36,7 @@ class commentRemover {
      * Description removeCommentsMain method that is called when 
      * you want to remove the comments from the array of lines
      * First remove all the multiline comments in the same line
-     * calls removeMultipleLineComments();
+     * calls removeComments.
      * Then it calls the method removeComments 
      * which receives a single string and it does all the job;
      * This method is only a for with a method call.
@@ -48,31 +48,10 @@ class commentRemover {
         for (let i = 0; i < this.lineContent.length; i++) {
             this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
         }
-        // Remove overall multiline comments
-        this.removeMultipleLineComments();
 
-        // Remove all single line comments
-        for (let i = 0; i < this.lineContent.length; i++) {
-            let newLine = this.removeComments(this.lineContent[i]);
-            let newNumberOfUndefinedCurrencies = (newLine.match(/\bundefined\b/g) || []).length;
+        this.lineContent = this.removeComments(this.lineContent.join("\n"));
 
-            //If there is not a regex expression in the line...
-            if (!(this.lineContent[i].indexOf("/") != -1 && this.lineContent[i].indexOf("/g") != -1 && this.lineContent[i].indexOf("/") < this.lineContent[i].indexOf("/g"))) {
-
-                //If there his not any error at parsing the line...
-                if (newNumberOfUndefinedCurrencies < 1) {
-                    if (newLine.match(/\/\//g) == null) {
-                        this.lineContent[i] = newLine;
-                    } else if ((newLine.match(/\"/g) || []).length < 2) { //if there is less than 2 quotes(no string)
-                        this.lineContent[i] = this.lineContent[i].replace(/([^:]|^)\/\/.*$/g, ''); //remove comments
-                    } else {
-                        this.lineContent[i] = newLine;
-                    }
-                } else {
-                    this.lineContent[i].replace(/\/\/.*/g, '');
-                }
-            }
-        }
+        this.lineContent = this.lineContent.split("\n");
     }
 
     /**
@@ -129,6 +108,8 @@ class commentRemover {
      * it only removes the content inside the comments
      * if the multiple line comment is placed in a line
      * with useful code it will not be replaced.
+     * 
+     * @deprecated since version 1.0.0 It will deleted soon.
      * 
      * @access private
      */

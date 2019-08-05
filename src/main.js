@@ -206,7 +206,7 @@ function activate(context) {
 	//Command MinifyAll2OtherDoc and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		console.log("MinifyAll is working")
+		console.log("MinifyAll2OtherDoc is working")
 		const path = require('path');
 		const {
 			document
@@ -320,6 +320,9 @@ function activate(context) {
 					const minifierJs = new jsMinifier(RemoveComments);
 
 					minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
+
+					timeSpend = ((new Date().getTime()) - startTime);
+					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
 					showMessage('We will not format this file type because you disabled it.', false);

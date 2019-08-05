@@ -275,7 +275,7 @@ const {
     window
 } = require('vscode');
 const FileSaver = require('fs')
-const StringWithComments = "// not a comment" //this is my comment
+const StringWithComments = "// not a comment /*" //this is my comment
 if ((window.activeTextEditor.document.languageId == "css" && disableCss == false) || //myComment
     (window.activeTextEditor.document.languageId == "scss" && disableScss == false)) {
     const {
@@ -292,18 +292,13 @@ if ((window.activeTextEditor.document.languageId == "css" && disableCss == false
             break;
     }
 }
-let myString = "hello//";
-myString.replace(/\/\//g, '');
-/* foo asd
-foo
-*/
 ```
 
 *To:*
 
 ```javascript
 "use strict";const{commands,window}=require('vscode');const FileSaver=require('fs')
-const StringWithComments="// not a comment"
+const StringWithComments="// not a comment /*"
 if((window.activeTextEditor.document.languageId=="css"&&disableCss==false)||(window.activeTextEditor.document.languageId=="scss"&&disableScss==false)){const{document}=window.activeTextEditor;switch(window.activeTextEditor.document.languageId){case"css":console.log("Love this minifier !!!")
 break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 ```
@@ -314,6 +309,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 - If 'OR' and 'AND' are without spaces, the same as if condition or switch cases.
 - All single line and multiline comments removed.
 - Single line comments inside of a String will not be removed. (hello//) (// not a comment).
+- Multi line comments inside of a String will not be removed. (// not a comment **/\***).
 - Regex expression with single-line comments will not be removed.
 - No tabs.
 
@@ -369,9 +365,9 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
-- Css classes or ids don't support *px* or *keyframe* as a **name**.
+- ⚠️ Css classes or ids *don't* support **px** or **keyframe** as a **name**.
 
-**Don't** do this
+**Don't** do that!
 
 ``` css
 .myPxClass{
@@ -382,9 +378,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 }
 ```
 
-- If the file you are trying to minify is **not saved** or is an Untitled default vscode file might cause errors.
-- Multiline comments inside of a String will be removed. Single line comments inside of a string *are allowed* but *multiline* are **not**.
-- If you are doing a regex without scaping the '//' it will be deleted. It must be scaped.
+- ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default vscode file *might* cause errors.
+- ⚠️ If you are doing a regex without scaping the '//' it will be deleted as it must be scaped (\/\/).
 
 ---
 
