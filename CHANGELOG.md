@@ -5,6 +5,13 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [0.10.7] - 2019-08-05
+
+### Added
+
+- Links to my other extensions in the readme.md file.
+- Added a little warning message in the readme.md file.
+
 ## [0.10.6] - 2019-07-31
 
 ### Changed
