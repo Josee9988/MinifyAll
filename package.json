@@ -1,8 +1,8 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, JavaScript(testing), LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "0.10.7",
+	"description": "Minifier for JSON, CSS, HTML, JavaScript(beta), JavaScriptReact(beta), LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
+	"version": "0.11.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -152,6 +152,11 @@
 					"type": "boolean",
 					"default": true,
 					"description": "If you want MinifyAll to stop minimizing JavaScript. (True for disabling.)"
+				},
+				"MinifyAll.disableJavascriptReact": {
+					"type": "boolean",
+					"default": true,
+					"description": "If you want MinifyAll to stop minimizing JavaScriptReact. (True for disabling.)"
 				},
 				"MinifyAll.disableMessages": {
 					"type": "boolean",

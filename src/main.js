@@ -23,8 +23,7 @@ const FileSaver = require('fs');
 const vscode = require('vscode');
 const HexMinifier = require('./utilities/hexMinifier.js');
 const commentRemover = require('./utilities/commentRemover');
-let originalFilepath = vscode.window.activeTextEditor.document.fileName;
-let originalSize = FileSaver.statSync(originalFilepath).size;
+let originalFilepath, originalSize;
 
 // Getting user configuration
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
@@ -43,6 +42,8 @@ const disableMessages = userMinifyAllSettings.get('disableMessages');
 const minifyOnSave = userMinifyAllSettings.get('minifyOnSave');
 const minifyOnSaveToNewFIle = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
 const disableJavascript = userMinifyAllSettings.get('disableJavascript');
+const disableJavascriptReact = userMinifyAllSettings.get('disableJavascriptReact');
+
 
 if (minifyOnSave) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll'));
@@ -83,7 +84,8 @@ if (alignment == "Right") {
 function activate(context) {
 	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
-		console.log("MinifyAll is working")
+		console.log("MinifyAll is working...")
+
 		let startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
 		originalSize = FileSaver.statSync(originalFilepath).size;
@@ -170,8 +172,10 @@ function activate(context) {
 				break;
 
 			case "javascript":
+			case "javascriptreact":
 
-				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript)) {
+				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript) ||
+					window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) {
 
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
@@ -301,8 +305,10 @@ function activate(context) {
 				break;
 
 			case "javascript":
+			case "javascriptreact":
 
-				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript)) {
+				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript) ||
+					window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) {
 
 					const newNameJs = path.basename(fileName).replace('.js', '-min.js');
 					const path2NewFileJs = path.join(filePath, newNameJs);

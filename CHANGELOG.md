@@ -5,6 +5,17 @@ All notable changes to the "**MinifyAll**" extension will be documented in this 
 
 ---
 
+## [**0.11.0**] - 2019-08-05
+
+### Added
+
+- Support for JavaScriptReact (disabled by default, same as JavaScript).
+- Setting for disabling/enabling JavaScriptReact.
+
+### Fixed
+
+- Bug that appeared when you started VSCode without any document.
+
 ## [0.10.7] - 2019-08-05
 
 ### Added
