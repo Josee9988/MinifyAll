@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, JavaScript(beta), JavaScriptReact(beta), LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Jose Gracia Berenguer <jgracia9988@gmail.com>",
@@ -34,7 +34,9 @@
 		"size",
 		"reduce",
 		"javascript",
-		"js"
+		"js",
+		"javascriptreact",
+		"react"
 	],
 	"bugs": {
 		"url": "https://github.com/Josee9988/MinifyAll/issues",

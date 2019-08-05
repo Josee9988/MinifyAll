@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.0.1**] - 2019-08-05
+
+### Added
+
+* Beta tag of JavaScriptReact in the readme.md file.
+* Tag of JavaScriptReact in package.json.
+
 ## [**1.0.0**] - 2019-08-05
 
 ### Added
