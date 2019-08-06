@@ -385,7 +385,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Upcoming features?** ✅💡
 
-- [ ] Enable multiline comments inside a String or a path as single-line comments are.
+- [x] Enable multiline comments inside a String or a path as single-line comments are.
+- [ ] Optimize, comment and clean all the .replaces in src/langDefaultMinifiers/
 - [ ] Right-click in a file of the menu will minify to another document.
 - [ ] Right-click on a folder will minify all supported files.
 - [ ] Path of the minify to another document (new file with minified text) customizable.
