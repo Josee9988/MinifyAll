@@ -284,7 +284,7 @@ if ((window.activeTextEditor.document.languageId == "css" && disableCss == false
     switch (window.activeTextEditor.document.languageId) {
         case "css":
             /*
-            multi line comments
+            multi-line comments
             */
             console.log("Love this minifier !!!")
             break;
@@ -309,7 +309,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 - If 'OR' and 'AND' are without spaces, the same as if condition or switch cases.
 - All single line and multiline comments removed.
 - Single line comments inside of a String will not be removed. (hello//) (// not a comment).
-- Multi line comments inside of a String will not be removed. (// not a comment **/\***).
+- Multi-line comments inside of a String will not be removed. (// not a comment **/\***).
 - Regex expression with single-line comments will not be removed.
 - No tabs.
 
@@ -365,7 +365,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
-- ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default vscode file *might* cause errors.
+- ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default VSCode file *might* cause errors.
 - ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be scaped (\/\/).
 
 ---

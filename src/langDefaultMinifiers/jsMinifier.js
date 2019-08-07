@@ -9,19 +9,27 @@
 
 class jsMinifier {
     /**
-     * Summary Minifier constructor that maps and trims the code.
+     * Summary Minifier constructor that receives the content.
      * 
+     * Description this is the constructor of the class and it 
+     * will receive an array with the content and it will assign it
+     * to a private variable that will be used later on.
      * @access public
      * 
      * @param {Array} jsContent all the code that will be minified 
      */
     constructor(jsContent) {
-        this.jsContent = jsContent.map(content => content.trim());
+        this.jsContent = jsContent;
     }
 
     /**
      * Summary getJsMinified finds lasts spaces and trim it into just one line
      * removes all kind of spaces.
+     * 
+     * Description the method will get the array with all the lines and will
+     * make one String out of all of them; Then it will use REGEX
+     * to replace multiple concurrencies, like removing multiple spaces, 
+     * unnecessary tabulations and specific things per each language.
      * 
      * @access public
      * 

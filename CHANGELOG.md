@@ -7,6 +7,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.1**] - 2019-08-07
+
+### Added
+
+* Documentation 'Description' for getters in langDefaultMinifiers/.
+* File 'vscodeignore' will now ignore Screenshots folder.
+
+### Changed
+
+* Documentation comments of constructor in langDefaultMinifiers/.
+* Updated npm dependencies to the latest version.
+
+### Fixed
+
+* Some spelling and punctuation mistakes in the CHANGELOG.md file.
+* Some spelling mistakes in the main README.md file.
+
+### Removed
+
+* Some unnecessary code from the constructors of langDefaultMinifiers/.
+
 ## [**1.1.0**] - 2019-08-07
 
 ### Fixed
@@ -17,24 +38,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Badges link updated to current header.
+* Badges link updated to the current header.
 
 ## [**1.0.2**] - 2019-08-06
 
 ### Changed
 
-* In the readme.md file changed one checkbox of upcoming features.
+* In the README.md file changed one checkbox of upcoming features.
 
 ### Added
 
-* In the readme.md file added one to-do checkbox.
+* In the README.md file added one to-do checkbox.
 
 ## [**1.0.1**] - 2019-08-05
 
 ### Added
 
-* Beta tag of JavaScriptReact in the readme.md file.
-* Tag of JavaScriptReact in package.json.
+* Beta tag of JavaScriptReact in the README.md file.
+* Tag of JavaScriptReact in package.JSON.
 
 ## [**1.0.0**] - 2019-08-05
 
@@ -70,8 +91,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Links to my other extensions in the readme.md file.
-* Added a little warning message in the readme.md file.
+* Links to my other extensions in the README.md file.
+* Added a little warning message in the README.md file.
 
 ## [**0.10.6**] - 2019-07-31
 
@@ -95,9 +116,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Readme inside /src/ explaining what that folder has.
-* Readme inside /src/utilities/ explaining what that folder has.
-* Readme inside /src/langDefaultMinifiers/ explaining what that folder has.
+* README inside /src/ explaining what that folder has.
+* README inside /src/utilities/ explaining what that folder has.
+* README inside /src/langDefaultMinifiers/ explaining what that folder has.
 * @access tag in all functions (documentation)
 * Description tag in all functions (documentation)
 * Summary tag in all functions (documentation)
@@ -105,7 +126,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 * Name of class 'lineRemover.js' to 'commentRemover.js'
-* location of readme.md in the description src/ classes
+* location of README.md in the description src/ classes
 
 ## [**0.10.3**] - 2019-07-30
 
@@ -113,23 +134,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * Method to display a message, so instead of having it in every case it will simply call the method for better readability!
 * Some comments added
-* Css less sass scss removes space before '!'
-* Css less sass scss removes space before and after a','
-* Css less sass scss from '0px' to '0'
+* CSS LESS SASS SCSS removes space before '!'
+* CSS LESS SASS SCSS removes space before and after a','
+* CSS LESS SASS SCSS from '0px' to '0'
 
 ### Changed
 
-* Readme.md css example adding the new from 0px to 0 feature
+* README.md CSS example adding the new from 0px to 0 feature
 
 ## [**0.10.2**] - 2019-07-30
 
 ### Added
 
-* Readme examples changed things that now the minifier is capable of doing
+* README examples changed things that now the minifier is capable of doing
 
 ### Changed
 
-* Package.json changed group name of editor/context from myGroup to 'MinifyAll'
+* Package.JSON changed group name of editor/context from myGroup to 'MinifyAll'
 * jsMinifier.js changed from a single space to \s
 
 ### Fixed
@@ -140,13 +161,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Css less sass scss removes space before a hexadecimal colour.
-* Css less sass scss removes two single spaces at once into one.
-* Css less sass scss removes space before '}'
-* Css less sass scss removes space before ';'
-* Css less sass scss removes space after ':'
-* Css less sass scss removes space before and after ')'
-* Css less sass scss removes space before and after '('
+* CSS LESS SASS SCSS removes space before a hexadecimal colour.
+* CSS LESS SASS SCSS removes two single spaces at once into one.
+* CSS LESS SASS SCSS removes space before '}'
+* CSS LESS SASS SCSS removes space before ';'
+* CSS LESS SASS SCSS removes space after ':'
+* CSS LESS SASS SCSS removes space before and after ')'
+* CSS LESS SASS SCSS removes space before and after '('
 
 ## [**0.10.0**] - 2019-07-30
 
@@ -165,13 +186,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Javascript example in readme.md
+* Javascript example in README.md
 
 ## [**0.9.12**] - 2019-07-29
 
 ### Added
 
-* Added know bugs in readme.md
+* Added know bugs in README.md
 
 ### Changed
 
@@ -192,8 +213,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Before removing multiline comments globally, it will remove multiline comments from a single line. Reduced bugs
-* Testing javascript in readme.md as it already has some bugs with hard codes. (now testing minifying jquery)
+* Before removing multiline comments globally, it will remove multiline comments from a single-line. Reduced bugs
+* Testing javascript in README.md as it already has some bugs with hard codes. (now testing minifying jquery)
 
 ## [**0.9.10**] - 2019-07-29
 
@@ -202,8 +223,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Improved overall readability
 * Improved some comments
 * "Remove multiline comments" in line removed added because the new method does not remove multiline comments.
-* Improved readme.md examples
-* Know bugs in readme.md: "Multiline comments inside of a String will be removed. Single line comments inside of a string *are allowed* but *multiline* are **not**."
+* Improved README.md examples
+* Know bugs in README.md: "Multiline comments inside of a String will be removed. Single-line comments inside of a string *are allowed* but *multiline* are **not**."
 * "Remove comments" seems to work perfectly but for multiline comments inside quotes
 
 ## [**0.9.9**] - 2019-07-29
@@ -223,7 +244,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Bug at removing single lines
+* Bug at removing single-lines
 * A bug that let a single '/' when removing multiple line comments
 
 ### Changed
@@ -234,11 +255,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Comments to the configuration in readme.md
+* Comments to the configuration in README.md
 
 ### Changed
 
-* Readme.md little things...
+* README.md little things...
 * Hex shortener is default set by true (by default is **disabled**)
 
 ## [**0.9.5**] - 2019-07-28
@@ -282,15 +303,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * Icon (added new languages available)
 * Folder of the icon. Now it is in Screenshots/
-* Readme icon to the new one
-* Readme list of languages available added boldly
+* README icon to the new one
+* README list of languages available added boldly
 * Examples fixed some mistakes of order and headings
 
 ## [**0.9.1**] - 2019-07-28
 
 ### Added
 
-* Configuration setting for disabling javascript and added in readme.md
+* Configuration setting for disabling javascript and added in README.md
 * Improved by a lot javascript minimization
 
 ## [**0.9.0**] - 2019-07-27
@@ -311,8 +332,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Description to configuration 'statusbarAlignment' which it had not.
-* Upcoming features in the readme.md file
-* Improved readme
+* Upcoming features in the README.md file
+* Improved README
 * Added 'click me to see ...' So all the configuration and the examples don't show at first.
 
 ## [**0.8.4**] - 2019-07-27
@@ -340,7 +361,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Mistake in readme.md
+* Mistake in README.md
 
 ## [**0.8.0**] - 2019-07-18
 
@@ -349,7 +370,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Module sizeTransform only had one function and was stupid to have one module for just one function. So sizeTransform is now directly in main.js again.
 * Reorganized the code in main.js
 * Renamed the icon from icon-min.png to icon.png as all the pictures are minified there is no need to add this suffix.
-* Readme.md examples are now underneath the configuration.
+* README.md examples are now underneath the configuration.
 
 ### Fixed
 
@@ -361,7 +382,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Configuration for setting the priority of the status bar
 * Configuration for setting the alignment of the status bar (right, left)
 * Time of execution of the program in the output of the status bar will also display in seconds.
-* Readme new configuration settings explanation
+* README new configuration settings explanation
 
 ## [**0.7.0**] - 2019-07-18
 
@@ -381,7 +402,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * Configuration for disabling status bar output.
 * More information in the output of the status bar.
-* Changed picture of the documentation of the output in the readme.md and /Screenshots
+* Changed picture of the documentation of the output in the README.md and /Screenshots
 
 ## [**0.6.0**] - 2019-07-17
 
@@ -393,28 +414,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* When the file is not css, scss, json, jsonc or HTML it will now display a warning instead of an error.
+* When the file is not CSS, SCSS, JSON, JSONc or HTML it will now display a warning instead of an error.
 
 ### Added
 
-* More examples in readme.md
-* 1 More Known bugs in readme.md
+* More examples in README.md
+* 1 More Known bugs in README.md
 
 ## [**0.5.8**] - 2019-07-17
 
 ### Added
 
-* Keybindings to readme.md
+* Keybindings to README.md
 
 ### Fixed
 
-* A mistake in package.json that made the keybindings don't work.
+* A mistake in package.JSON that made the keybindings don't work.
 
 ## [**0.5.7**] - 2019-07-17
 
 ### Added
 
-* Keybindings and more info to package.json
+* Keybindings and more info to package.JSON
 
 ---
 
@@ -424,7 +445,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Readme added much more documentation
+* README added much more documentation
 
 ## [**0.5.5**] - 2019-07-16
 
@@ -447,7 +468,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Fixed some fails with uppercasing json attributes
+* Fixed some fails with uppercasing JSON attributes
 
 ## [**0.5.3**] - 2019-07-15
 
@@ -457,7 +478,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Bug supper annoying that didn't let minify two different files in main.js. Not optimized at all yet, just fixed.
+* Bug super annoying that didn't let minify two different files in main.js. Not optimized at all yet, just fixed.
 
 ## [**0.5.2**] - 2019-07-15
 
@@ -469,14 +490,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Readme.md section with known bugs.
+* README.md section with known bugs.
 * Improved status bar
 
 ## [**0.5.1**] - 2019-07-15
 
 ### Fixed
 
-* A bug from the single line remover that removed a false line from an HTTP: // link. It looked for the double '/' and removed it all to the next line.
+* A bug from the single-line remover that removed a false line from an HTTP: // link. It looked for the double '/' and removed it all to the next line.
 
 ## [**0.5.0**] - 2019-07-15
 
@@ -490,7 +511,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Support for RGBA colours. RGBA colours will be formatted to hex but rgba with alpha(transparency) colour in percentages or rgba with a 0 value in transparency.
+* Support for RGBA colours. RGBA colours will be formatted to hex but RGBA with alpha(transparency) colour in percentages or RGBA with a 0 value in transparency.
 
 ### Changed
 
@@ -507,7 +528,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * An icon to the project.
-* Icon to the readme.md file.
+* Icon to the README.md file.
 
 ## [**0.4.0**] - 2019-07-14
 
@@ -516,18 +537,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Added emojis to the titles of the commands
 * Added other command that the minified content doesn't replace the original and creates another document with the new minified content.
 * Removed debug comments that I forgot to remove.
-* Donate button in readme.md
+* Donate button in README.md
 
 ## [**0.3.0**] - 2019-07-13
 
 ### Added
 
 * Support for HTML
-* Html minify removes the single line and multiline comments and doesn't care if its set on the same line or not.
+* Html minify removes the single-line and multiline comments and doesn't care if its set on the same line or not.
 
 ### Removed
 
-* jsonMinifier.js removed lines minifier because it is already in lineRemover.js
+* JSONMinifier.js removed lines minifier because it is already in lineRemover.js
 
 ## [**0.2.3**] - 2019-07-13
 
@@ -549,7 +570,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Several bugs with css minify, hex and spaces with selectors.
+* Several bugs with CSS minify, hex and spaces with selectors.
 * Bug that removed a space when a tab was after
 
 ## [**0.2.0**] - 2019-07-13
@@ -557,7 +578,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * JSON minify support
-* JSON single line comment support
+* JSON single-line comment support
 * JSON multiline comment support
 * JSON Multiline if it's placed between code it will only remove the comment
 * Now minifiers also remove tabs
@@ -576,15 +597,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Name of the get function of css: from endWork to getCssMinified
+* Name of the get function of CSS: from endWork to getCSSMinified
 * Name of extension.js to main.js
 
 ### Added
 
-* Info in the package.json
-* Css minify now removes a space after a ':'
-* Css minify now removes a space after a '{'
-* Comments in cssMinifier.js
+* Info in the package.JSON
+* CSS minify now removes a space after a ':'
+* CSS minify now removes a space after a '{'
+* Comments in CSSMinifier.js
 * Comment in main.js
 
 ## [**0.1.0**] - 2019-07-12
@@ -592,9 +613,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Added all the initial files.
-* Support for css
-* Css minify hexadecimal 6 digit colours will now be turned into 3 digit ones
-* Css minify can now be minified in one line.
-* Css minify will now be displayed without comments
-* Css minify removes all the spaces but the ones after the : (need to be fixed)
+* Support for CSS
+* CSS minify hexadecimal 6 digit colours will now be turned into 3 digit ones
+* CSS minify can now be minified in one line.
+* CSS minify will now be displayed without comments
+* CSS minify removes all the spaces but the ones after the : (need to be fixed)
 * Folder with all the languages that we will support (Minifiers)
