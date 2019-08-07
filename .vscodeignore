@@ -2,7 +2,12 @@
 .vscode-test/**
 test/**
 .gitignore
-Screenshots/**
 **/jsconfig.json
 **/*.map
 **/.eslintrc.json
+Screenshots/Preview.gif
+Screenshots/Preview2ndcommand.gif
+Screenshots/command.png
+Screenshots/output.png
+Screenshots/rawIcon.png
+Screenshots/RightClick.png

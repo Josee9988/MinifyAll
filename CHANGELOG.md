@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.2**] - 2019-08-07
+
+### Fixed
+
+* File 'vscodeignore' will now ignore Screenshots folder but icon.png.
+
 ## [**1.1.1**] - 2019-08-07
 
 ### Added
