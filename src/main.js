@@ -5,7 +5,7 @@
  * minified version of the code. 
  * Or if you execute MinifyAll2OtherDoc it will create a new file
  * with the minified code so you can preserve the original file.
- * It also creates the status bar and calls all the necessary methods 
+ * It also creates the status bar and calls all the necessary methods
  * to make the extension perform well.
  * @author Jose Gracia Berenguer
  * @since 0.1.0
@@ -23,9 +23,9 @@ const FileSaver = require('fs');
 const vscode = require('vscode');
 const HexMinifier = require('./utilities/hexMinifier.js');
 const commentRemover = require('./utilities/commentRemover');
-let originalFilepath, originalSize;
+let originalFilepath, originalSize, statusBarItem, timeSpend, startTime, statusReady, oc;
 
-// Getting user configuration
+// Getting user configuration.
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
 const hexDisabled = userMinifyAllSettings.get('disableHexadecimalShortener');
 const statusDisabled = userMinifyAllSettings.get('disableStatusbarInformation');
@@ -40,27 +40,16 @@ const disableJson = userMinifyAllSettings.get('disableJson');
 const disableJsonc = userMinifyAllSettings.get('disableJsonc');
 const disableMessages = userMinifyAllSettings.get('disableMessages');
 const minifyOnSave = userMinifyAllSettings.get('minifyOnSave');
-const minifyOnSaveToNewFIle = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
+const minifyOnSaveToNewFile = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
 const disableJavascript = userMinifyAllSettings.get('disableJavascript');
 const disableJavascriptReact = userMinifyAllSettings.get('disableJavascriptReact');
 
-
+// If the user has selected to minify its code when saving.
 if (minifyOnSave) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll'));
 }
-if (minifyOnSaveToNewFIle) {
+if (minifyOnSaveToNewFile) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll2OtherDoc'));
-}
-
-
-let statusBarItem, timeSpend, startTime, statusReady, oc;
-vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
-vscode.workspace.onDidSaveTextDocument(() => getNewSize());
-
-if (alignment == "Right") {
-	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
-} else {
-	statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, priority);
 }
 
 
@@ -79,12 +68,16 @@ if (alignment == "Right") {
  * 
  * @access public
  * 
- * @param {object} context information about vscode. Ignore.
+ * @param {object} context information about VSCode. Ignore.
  */
 function activate(context) {
 	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
-		console.log("MinifyAll is working...")
+		console.log("MinifyAll is working...");
+
+		//It will trigger statusBarInfo when the user saves the document.
+		vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
+		vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
 		let startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
@@ -206,7 +199,8 @@ function activate(context) {
 	//Command MinifyAll2OtherDoc and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		console.log("MinifyAll2OtherDoc is working")
+		console.log("MinifyAll2OtherDoc is working");
+
 		const path = require('path');
 		const {
 			document
@@ -364,7 +358,9 @@ function getNewSize() {
 /**
  * Summary creates the status bar item.
  * 
- * Description it receives the original size of the document in Bytes
+ * Description first of all it checks at the user settings
+ * and creates the status bar item with the alignment chosen
+ * then it receives the original size of the document in Bytes
  * and the new size in Bytes and it creates a status bar with
  * both values and an arrow so you can see the old and new size.
  * 
@@ -374,6 +370,11 @@ function getNewSize() {
  * @param {number} newSize the minified size in Bytes.
  */
 function createStatusBar(originalSize, newSize) {
+	if (alignment == "Right") {
+		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
+	} else {
+		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, priority);
+	}
 	statusBarItem.tooltip = 'New file size, click for more info!';
 	statusBarItem.command = 'extension.MinifyAllStatus';
 	statusBarItem.text = transformSize(originalSize) + " --> " + transformSize(newSize);
