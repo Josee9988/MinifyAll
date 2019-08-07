@@ -26,7 +26,7 @@ class cssMinifier {
      * @return {String} the line minified.
      */
     getCssMinified() {
-        return this.cssContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '').replace(/px/ig, 'px ').replace(/keyframes/g, 'keyframes ')
+        return this.cssContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '')
             .replace(/ \#/g, '#').replace(/\s\s/g, ' ').replace(/\s\}/g, '}').replace(/\s\;/g, ';').replace(/\:\s/g, ':')
             .replace(/\s\)/g, ')').replace(/\)\s/g, ')')
             .replace(/\s\(/g, '(').replace(/\)\s/g, '(')

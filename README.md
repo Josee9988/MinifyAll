@@ -365,21 +365,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
-- ⚠️ Css classes or ids *don't* support **px** or **keyframe** as a **name**.
-
-**Don't** do that!
-
-``` css
-.myPxClass{
-    margin-left:0px;
-}
-#myPxId{
-    margin-left:0px;
-}
-```
-
 - ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default vscode file *might* cause errors.
-- ⚠️ If you are doing a regex without scaping the '//' it will be deleted as it must be scaped (\/\/).
+- ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be scaped (\/\/).
 
 ---
 
