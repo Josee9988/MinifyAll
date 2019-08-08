@@ -21,9 +21,8 @@ const {
 } = require('vscode');
 const FileSaver = require('fs');
 const vscode = require('vscode');
-const HexMinifier = require('./utilities/hexMinifier.js');
 const commentRemover = require('./utilities/commentRemover');
-let originalFilepath, originalSize, statusBarItem, timeSpend, startTime, statusReady, oc;
+let originalFilepath, originalSize, statusBarItem, timeSpend, startTime, statusReady, oc, HexMinifier;
 
 // Getting user configuration.
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
@@ -52,6 +51,11 @@ if (minifyOnSaveToNewFile) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll2OtherDoc'));
 }
 
+// If the user has hexadecimal shortener enabled it will import it.
+if (!hexDisabled) {
+	HexMinifier = require('./utilities/hexMinifier.js');
+}
+
 
 /**
  * Summary main method that is executed when the user calls 
@@ -73,7 +77,7 @@ if (minifyOnSaveToNewFile) {
 function activate(context) {
 	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const disposable = commands.registerCommand('extension.MinifyAll', () => {
-		console.log("MinifyAll is working...");
+		console.log("The extension 'MinifyAll' with the command: 'MinifyAll' (default command) is currently working...");
 
 		//It will trigger statusBarInfo when the user saves the document.
 		vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
@@ -199,7 +203,7 @@ function activate(context) {
 	//Command MinifyAll2OtherDoc and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		console.log("MinifyAll2OtherDoc is working");
+		console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDoc' (minify and get the code to another document) is currently working...");
 
 		const path = require('path');
 		const {
@@ -329,7 +333,6 @@ function activate(context) {
 
 		context.subscriptions.push(disposable2);
 	});
-
 }
 
 
@@ -434,7 +437,11 @@ function statusBarInfo() {
  * 
  * Description receives an array with all the content, 
  * and minifies it's hexadecimal, rgb and rgba values;
- * then return the new array.
+ * then return the new array; 
+ * If it is enabled it will initialize the HexMinifier
+ * class and it will make all the processes and return
+ * the new array of values OR it will simply return the
+ * received value and do nothing.
  * 
  * @access private
  * 
@@ -443,14 +450,19 @@ function statusBarInfo() {
  * @return {Array} with the colors minified.
  */
 function HexMinify(Content) {
-	let MinifierHex = new HexMinifier(Content);
+	let MinifierHex, returnValue;
+
 	if (!hexDisabled) {
+		MinifierHex = new HexMinifier(Content);
 		//Minifier methods
 		MinifierHex.shortHexMain();
 		MinifierHex.shortRGBMain();
 		MinifierHex.shortRGBAMain();
+		returnValue = MinifierHex.getHexMinified();
+	} else {
+		returnValue = Content;
 	}
-	return MinifierHex.getHexMinified();
+	return returnValue;
 }
 
 /**

@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.4**] - 2019-08-08
+
+### Added
+
+* Some minor optimizations to the main.js file!
+
+### Changed
+
+* Console log when the extension starts.
+
 ## [**1.1.3**] - 2019-08-07
 
 ### Changed
