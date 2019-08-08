@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.2.0**] - 2019-08-08
+
+### Added
+
+* Right-click on the open file will show you both commands only if you are on a supported language. This is now possible due to the new VSCode update (July 2019 (version 1.37).
+* Typescript support. It will be enabled by default not as JavaScript or JavaScript react but it will show a testing tag in the readme and in package.json as it is not fully ready yet.
+* Typescript language in the README.md file and in the package.json file.
+
+### Changed
+
+* Warning message when the the minified language is disabled.
+
 ## [**1.1.4**] - 2019-08-08
 
 ### Added

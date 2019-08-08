@@ -42,6 +42,8 @@ const minifyOnSave = userMinifyAllSettings.get('minifyOnSave');
 const minifyOnSaveToNewFile = userMinifyAllSettings.get('minifyOnSaveToNewFIle');
 const disableJavascript = userMinifyAllSettings.get('disableJavascript');
 const disableJavascriptReact = userMinifyAllSettings.get('disableJavascriptReact');
+const disableTypescript = userMinifyAllSettings.get('disableTypescript');
+
 
 // If the user has selected to minify its code when saving.
 if (minifyOnSave) {
@@ -117,7 +119,7 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
@@ -143,7 +145,7 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
@@ -164,15 +166,17 @@ function activate(context) {
 
 					timeSpend = ((new Date().getTime()) - startTime);
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
 			case "javascript":
 			case "javascriptreact":
+			case "typescript":
 
 				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript) ||
-					window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) {
+					(window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) ||
+					(window.activeTextEditor.document.languageId == "typescript" && !disableTypescript)) {
 
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
@@ -185,7 +189,7 @@ function activate(context) {
 
 				} else {
 					if (!disableMessages) {
-						window.showInformationMessage('We will not format this file type because you disabled it.');
+						window.showInformationMessage('We will not format this file type because it is disabled.');
 					}
 				}
 				break;
@@ -244,7 +248,7 @@ function activate(context) {
 					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
@@ -273,7 +277,7 @@ function activate(context) {
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
@@ -298,15 +302,17 @@ function activate(context) {
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 
 			case "javascript":
 			case "javascriptreact":
+			case "typescript":
 
 				if ((window.activeTextEditor.document.languageId == "javascript" && !disableJavascript) ||
-					window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) {
+					(window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) ||
+					(window.activeTextEditor.document.languageId == "typescript" && !disableTypescript)) {
 
 					const newNameJs = path.basename(fileName).replace('.js', '-min.js');
 					const path2NewFileJs = path.join(filePath, newNameJs);
@@ -323,7 +329,7 @@ function activate(context) {
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
-					showMessage('We will not format this file type because you disabled it.', false);
+					showMessage('We will not format this file type because it is disabled.', false);
 				}
 				break;
 			default:
