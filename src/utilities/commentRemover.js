@@ -99,24 +99,5 @@ class commentRemover {
             })
         );
     }
-
-    /**
-     * Summary remove multiline comments.
-     * 
-     * Description removeMultipleLineComments checks line by line
-     * and removes the multiple line comments
-     * it only removes the content inside the comments
-     * if the multiple line comment is placed in a line
-     * with useful code it will not be replaced.
-     * 
-     * @deprecated since version 1.0.0 It will deleted soon.
-     * 
-     * @access private
-     */
-    removeMultipleLineComments() {
-        this.lineContent = this.lineContent.join('\n');
-        this.lineContent = this.lineContent.replace(/\/\*[\s\S]*?\*\//g, '');
-        this.lineContent = this.lineContent.split('\n')
-    }
 }
 module.exports = commentRemover;

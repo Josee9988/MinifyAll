@@ -11,8 +11,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Documentation of the new Command which lets you minify a file without opening it on the menu.
 * Reorganize and improve the main.js readability.
+
+## [**1.3.1**] - 2019-08-09
+
+### Added
+
+* Documentation of the new Command which lets you minify a file without opening it on the menu.
+
+### Changed
+
+* Name of the 'disposable' variables.
+
+### Removed
+
+* Deprecated function of commentRemover.js.
 
 ## [**1.3.0**] - 2019-08-09
 

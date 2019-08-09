@@ -1,12 +1,29 @@
 /**
- * @file That is executed when the command extension.MinifyAll is used.
- * it checks what language are you using in your document and if its
- * supported it will remove all your code and replace it with a 
- * minified version of the code. 
- * Or if you execute MinifyAll2OtherDoc it will create a new file
- * with the minified code so you can preserve the original file.
+ * @file Main file of the extension.
+ * 
+ * Summary this file is called when the user executes any of the
+ * 3 commands available on the extension (MinifyAll, MinifyAll2OtherDoc or
+ * MinifyAll2OtherDocSelected).
+ * 
+ * Description file that is called when any of the commands
+ * available on the extension are executed (MinifyAll, MinifyAll2OtherDoc or
+ * MinifyAll2OtherDocSelected),
+ * 
+ * If the user executes 'MinifyAll' it checks what language are you using in 
+ * your document and if it is supported it will remove all your code and 
+ * replace it with a minified version of the code,
+ * 
+ * Or if the user executes 'MinifyAll2OtherDoc' it will create a new file
+ * with the minified code so you can preserve the original file,
+ * 
+ * OR if the user executes 'MinifyAll2OtherDocSelected' which is the 
+ * command when you right-click at a file on the menu, it will do
+ * the same job as 'MinifyAll2OtherDoc' (create a new file with the 
+ * minified code so you can preserve the original file)
+ * 
  * It also creates the status bar and calls all the necessary methods
- * to make the extension perform well.
+ * to make the extension and all three commands perform well.
+ * 
  * @author Jose Gracia Berenguer
  * @since 0.1.0
  * @see README.md
@@ -61,16 +78,20 @@ if (!hexDisabled) {
 
 /**
  * Summary main method that is executed when the user calls 
- * the commands 'MinifyAll' or 'MinifyAll2OtherDoc'.
+ * the commands 'MinifyAll', 'MinifyAll2OtherDoc' 
+ * or 'MinifyAll2OtherDocSelected'.
  * 
  * Description activate the Main function called when the user
- * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc'
- * or right-clicks in the code and calls the commands
+ * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc',
+ * or right-clicks on a file at the menu and calls 'MinifyAll2OtherDocSelected'
+ * or right-clicks in the code and calls 'MinifyAll' or 'MinifyAll2OtherDoc'
  * it may be called from both commands and every command has a switch
  * with the languages available and its methods to minify the code
  * then if the command is 'MinifyAll' it will replace the actual code
- * with the new one or if the command is 'MinifyAll2OtherDoc' it will create
- * a new file with the minified text.
+ * with the new one, or if the command is 'MinifyAll2OtherDoc' it will create
+ * a new file with the minified text, 'MinifyAll2OtherDocSelected' makes
+ * the same process as 'MinifyAll2OtherDoc' but this command is called
+ * from the menu.
  * 
  * @access public
  * 
@@ -78,7 +99,7 @@ if (!hexDisabled) {
  */
 function activate(context) {
 	//Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const disposable = commands.registerCommand('extension.MinifyAll', () => {
+	const MinifyAll = commands.registerCommand('extension.MinifyAll', () => {
 		console.log("The extension 'MinifyAll' with the command: 'MinifyAll' (default command) is currently working...");
 
 		//It will trigger statusBarInfo when the user saves the document.
@@ -197,7 +218,7 @@ function activate(context) {
 				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
 				break;
 		}
-		context.subscriptions.push(disposable);
+		context.subscriptions.push(MinifyAll);
 	});
 
 
@@ -205,7 +226,7 @@ function activate(context) {
 	//**************************************************************************************************************
 	//Command MinifyAll2OtherDoc and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDoc"
-	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+	const MinifyAll2OtherDoc = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDoc' (minify and get the code to another document) is currently working...");
 
 		let startTime = new Date().getTime();
@@ -340,19 +361,20 @@ function activate(context) {
 				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
 				break;
 		}
-		context.subscriptions.push(disposable2);
+		context.subscriptions.push(MinifyAll2OtherDoc);
 	});
 
 
 	//**************************************************************************************************************
-	let disposable3 = commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
+	//Command MinifyAll2OtherDocSelected and writes the result in other file.
+	//It executes if its called the command "extension.MinifyAll2OtherDocSelected"
+	let MinifyAll2OtherDocSelected = commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
 		//We get the text from the selected file.
 		FileSaver.readFile(fileUri.path, 'utf8', (err, data) => {
 			if (err) {
 				throw err;
 			} else {
 				console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDocSelected' (minify and get the code to another document) is currently working...");
-
 				let startTime = new Date().getTime();
 
 				const path = require('path');
@@ -479,10 +501,8 @@ function activate(context) {
 				}
 			}
 		});
-
-		context.subscriptions.push(disposable3);
+		context.subscriptions.push(MinifyAll2OtherDocSelected);
 	});
-
 
 }
 
