@@ -198,7 +198,6 @@ function activate(context) {
 				break;
 		}
 		context.subscriptions.push(disposable);
-
 	});
 
 
@@ -209,15 +208,20 @@ function activate(context) {
 	const disposable2 = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDoc' (minify and get the code to another document) is currently working...");
 
+		let startTime = new Date().getTime();
+
 		const path = require('path');
 		const {
 			document
 		} = window.activeTextEditor;
+
 		const {
 			fileName
 		} = document;
 
+
 		const filePath = path.dirname(fileName);
+
 		switch (window.activeTextEditor.document.languageId) {
 
 			case "css":
@@ -336,10 +340,152 @@ function activate(context) {
 				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
 				break;
 		}
-
 		context.subscriptions.push(disposable2);
 	});
+
+
+	//**************************************************************************************************************
+	let disposable3 = commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
+		//We get the text from the selected file.
+		FileSaver.readFile(fileUri.path, 'utf8', (err, data) => {
+			if (err) {
+				throw err;
+			} else {
+				console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDocSelected' (minify and get the code to another document) is currently working...");
+
+				let startTime = new Date().getTime();
+
+				const path = require('path');
+
+				const filePath = path.dirname(fileUri.path);
+
+				switch (fileUri.path.split('.').pop()) {
+
+					case "css":
+					case "scss":
+					case "less":
+					case "sass":
+
+						if ((fileUri.path.split('.').pop() == "css" && !disableCss) ||
+							(fileUri.path.split('.').pop() == "scss" && !disableScss) ||
+							(fileUri.path.split('.').pop() == "less" && !disableLess) ||
+							(fileUri.path.split('.').pop() == "sass" && !disableSass)) {
+
+							const newName = path.basename(fileUri.path).replace('.css', '-min.css');
+							const path2NewFile = path.join(filePath, newName);
+							const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
+							const cssContent = data.split('\n');
+
+							const RemoveComments = removeComments(cssContent);
+
+							const hexMinifiedCss = HexMinify(RemoveComments);
+
+							const minifierCss = new cssMinifier(hexMinifiedCss);
+
+							const modifiedCssText = minifierCss.getCssMinified();
+
+							minifiedTextToNewFile(path2NewFile, modifiedCssText);
+
+							timeSpend = ((new Date().getTime()) - startTime);
+							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+						} else {
+							showMessage('We will not format this file type because it is disabled.', false);
+						}
+						break;
+
+					case "json":
+					case "jsonc":
+
+						if ((fileUri.path.split('.').pop() == "json" && !disableJson) ||
+							(fileUri.path.split('.').pop() == "jsonc" && !disableJsonc)) {
+
+							const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
+							const path2NewFileJson = path.join(filePath, newNameJson);
+							const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
+							const jsonContent = data.split('\n');
+
+							const contentWithHexMinified = HexMinify(jsonContent);
+
+							const RemoveComments = removeComments(contentWithHexMinified);
+
+							const minifierJson = new jsonMinifier(RemoveComments);
+
+							const modifiedJsonText = minifierJson.getJSONMinified();
+
+							minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
+
+							timeSpend = ((new Date().getTime()) - startTime);
+							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+						} else {
+							showMessage('We will not format this file type because it is disabled.', false);
+						}
+						break;
+
+					case "html":
+
+						if ((fileUri.path.split('.').pop() == "html" && !disableHtml)) {
+
+							const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
+							const path2NewFileHtml = path.join(filePath, newNameHtml);
+							const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
+							const htmlContent = data.split('\n');
+
+							const minifierHtml = new htmlMinifier(htmlContent);
+
+							minifierHtml.removeMultipleLineComments();
+
+							const modifiedHtmlText = minifierHtml.getHtmlMinified();
+
+							minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
+
+							timeSpend = ((new Date().getTime()) - startTime);
+							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+						} else {
+							showMessage('We will not format this file type because it is disabled.', false);
+						}
+						break;
+
+					case "javascript":
+					case "javascriptreact":
+					case "typescript":
+
+						if ((fileUri.path.split('.').pop() == "javascript" && !disableJavascript) ||
+							(fileUri.path.split('.').pop() == "javascriptreact" && !disableJavascriptReact) ||
+							(fileUri.path.split('.').pop() == "typescript" && !disableTypescript)) {
+
+							const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
+							const path2NewFileJs = path.join(filePath, newNameJs);
+							const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
+							const jsContent = data.split('\n');
+
+							const RemoveComments = removeComments(jsContent);
+
+							const minifierJs = new jsMinifier(RemoveComments);
+
+							minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
+
+							timeSpend = ((new Date().getTime()) - startTime);
+							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+						} else {
+							showMessage('We will not format this file type because it is disabled.', false);
+						}
+						break;
+					default:
+						showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+						break;
+				}
+			}
+		});
+
+		context.subscriptions.push(disposable3);
+	});
+
+
 }
+
 
 
 /**
@@ -557,6 +703,7 @@ function showMessage(text, warning) {
 		}
 	}
 }
+
 
 exports.activate = activate;
 

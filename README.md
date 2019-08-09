@@ -59,6 +59,10 @@ Check our **[changelog](CHANGELOG.md)**.
 
 <img src="https://i.imgur.com/fXMQTc0.png" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
+- Minify when right-clicking on a file of the menu without opening it!
+
+<img src="https://i.imgur.com/UsO2dbn.gif" alt="rightclickMenu" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
 ---
 
 ## **Languages available** 🧪🔥
@@ -171,13 +175,19 @@ Check our **[changelog](CHANGELOG.md)**.
 - Disables **JavaScript** minimization //default 'true' (by default is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascript": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableJavascript": true|false //default 'true' (by default is disabled)
 ```
 
 - Disables **JavaScriptReact** minimization //default 'true' (by default is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascriptReact": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableJavascriptReact": true|false //default 'true' (by default is disabled)
+```
+
+- Disables **Typescript** minimization //default 'false' (by default is enabled but it is not on a stable version yet)
+
+``` json
+"MinifyAll.disableTypescript": true|false //default 'true' (by default is enabled)
 ```
 
 </details>

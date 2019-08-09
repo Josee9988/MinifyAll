@@ -7,17 +7,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* Documentation of the new Command which lets you minify a file without opening it on the menu.
+* Reorganize and improve the main.js readability.
+
+## [**1.3.0**] - 2019-08-09
+
+### Added
+
+* Right-click on a menu file will not display MinifyAll2OtherDocSelected which will get the text from the selected file and create a new one with the minified text!
+* Gif of the usage of this new command in the README.md file.
+
+### Fixed
+
+* Couple spelling mistakes.
+
+## [**1.2.1**] - 2019-08-08
+
+### Added
+
+* In the README.md file configuration setting for disabling Typescript.
+
+### Changed
+
+* Default values in the README.md file of the configuration of JavaScript and JavaScriptReact which were on false and the default value is true for both.
+* Author from a String to object in the package.json file.
+
+### Fixed
+
+* MinifyAll2OtherDoc was not showing the time to Minify.
+
 ## [**1.2.0**] - 2019-08-08
 
 ### Added
 
 * Right-click on the open file will show you both commands only if you are on a supported language. This is now possible due to the new VSCode update (July 2019 (version 1.37).
-* Typescript support. It will be enabled by default not as JavaScript or JavaScript react but it will show a testing tag in the readme and in package.json as it is not fully ready yet.
+* Typescript support. It will be enabled by default not as JavaScript or JavaScript react but it will show a testing tag in the readme and package.json as it is not fully ready yet.
 * Typescript language in the README.md file and in the package.json file.
 
 ### Changed
 
-* Warning message when the the minified language is disabled.
+* Warning message when the minified language is disabled.
 
 ## [**1.1.4**] - 2019-08-08
 
