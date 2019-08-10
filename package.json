@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, Typescript(testing), JavaScript(beta), JavaScriptReact(beta), LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -194,12 +194,12 @@
 		"menus": {
 			"editor/context": [{
 					"command": "extension.MinifyAll",
-					"when": "editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.MinifyAll2OtherDoc",
-					"when": "editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
 				}
 			],

@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.3.3**] - 2019-08-10
+
+### Fixed
+
+* A bug that didn't let right click on the document (not at the menu) at HTML documents
+* A bug that didn't count the milisenconds and showed undefined.
+* Improved readability in the main.js file.
+
 ## [**1.3.2**] - 2019-08-10
 
 ### Added

@@ -237,8 +237,6 @@ function activate(context) {
 			fileName
 		} = document;
 
-		const filePath = path.dirname(fileName);
-
 		switch (window.activeTextEditor.document.languageId) {
 
 			case "css":
@@ -251,8 +249,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId == "less" && !disableLess) ||
 					(window.activeTextEditor.document.languageId == "sass" && !disableSass)) {
 
-					const newName = path.basename(fileName).replace('.css', '-min.css');
-					const path2NewFile = path.join(filePath, newName);
+					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
 					const cssContent = document.getText().split('\n');
 
@@ -266,7 +263,7 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
-					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -279,8 +276,7 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId == "json" && !disableJson) ||
 					(window.activeTextEditor.document.languageId == "jsonc" && !disableJsonc)) {
 
-					const newNameJson = path.basename(fileName).replace('.json', '-min.json');
-					const path2NewFileJson = path.join(filePath, newNameJson);
+					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
 
@@ -292,9 +288,9 @@ function activate(context) {
 
 					const modifiedJsonText = minifierJson.getJSONMinified();
 
-					minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
+					minifiedTextToNewFile(path2NewFile, modifiedJsonText);
 
-					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -305,8 +301,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId == "html" && !disableHtml)) {
 
-					const newNameHtml = path.basename(fileName).replace('.html', '-min.html');
-					const path2NewFileHtml = path.join(filePath, newNameHtml);
+					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
 					const htmlContent = document.getText().split('\n');
 
@@ -316,9 +311,9 @@ function activate(context) {
 
 					const modifiedHtmlText = minifierHtml.getHtmlMinified();
 
-					minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
+					minifiedTextToNewFile(path2NewFile, modifiedHtmlText);
 
-					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -333,8 +328,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId == "javascriptreact" && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId == "typescript" && !disableTypescript)) {
 
-					const newNameJs = path.basename(fileName).replace('.js', '-min.js');
-					const path2NewFileJs = path.join(filePath, newNameJs);
+					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
 
@@ -342,9 +336,9 @@ function activate(context) {
 
 					const minifierJs = new jsMinifier(RemoveComments);
 
-					minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
+					minifiedTextToNewFile(path2NewFile, minifierJs.getJsMinified());
 
-					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+					console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -402,7 +396,8 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
-								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
+
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -429,7 +424,7 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
 
-								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
@@ -453,8 +448,7 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
 
-
-								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
@@ -480,7 +474,7 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
 
-								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								console.log("Time spend minifying: " + ((new Date().getTime()) - startTime) + " milisenconds.");
 
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
@@ -497,7 +491,6 @@ function activate(context) {
 		}
 		context.subscriptions.push(MinifyAll2OtherDocSelected);
 	});
-
 }
 
 
@@ -718,6 +711,28 @@ function showMessage(text, warning) {
 			window.showInformationMessage(text);
 		}
 	}
+}
+
+
+/**
+ * Summary sets the path to the new file with minified code.
+ * 
+ * Description receives the object path, the absolute path
+ * and the name of the extension without a dot, then it creates
+ * the new path to the new file with the minified text.
+ * 
+ * @param {*} path the object path imported from vscode.
+ * @param {*} fileName the Full path with the name and extension to the current
+ * file (the non minified one).
+ * @param {*} extensionWithOutDot the name of the extension (css, js, html).
+ * @return {String} path2NewFile the path to the new file which will have
+ * the minified code.
+ */
+function getNewFilePath(path, fileName, extensionWithOutDot) {
+	const filePath = path.dirname(fileName);
+	const newName = path.basename(fileName).replace("." + extensionWithOutDot, '-min.' + extensionWithOutDot);
+	const path2NewFile = path.join(filePath, newName);
+	return path2NewFile;
 }
 
 
