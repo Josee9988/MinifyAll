@@ -7,11 +7,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**1.3.2**] - 2019-08-10
 
 ### Added
 
-* Reorganize and improve the main.js readability.
+* Reorganized and improved the main.js readability.
+
+### Fixed
+
+* Controlled bug when you called the menu command through the command palette.
 
 ## [**1.3.1**] - 2019-08-09
 

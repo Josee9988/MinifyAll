@@ -106,7 +106,7 @@ function activate(context) {
 		vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 		vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
-		let startTime = new Date().getTime();
+		startTime = new Date().getTime();
 		originalFilepath = vscode.window.activeTextEditor.document.fileName;
 		originalSize = FileSaver.statSync(originalFilepath).size;
 		statusReady = true;
@@ -136,8 +136,8 @@ function activate(context) {
 
 					const modifiedCssText = minifierCss.getCssMinified();
 
-					replaceActualCode(modifiedCssText);
-					timeSpend = ((new Date().getTime()) - startTime);
+					timeSpend = replaceActualCodeAndGetTime(modifiedCssText);
+
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -161,9 +161,7 @@ function activate(context) {
 
 					const modifiedJsonText = minifierJson.getJSONMinified();
 
-					replaceActualCode(modifiedJsonText);
-
-					timeSpend = ((new Date().getTime()) - startTime);
+					timeSpend = replaceActualCodeAndGetTime(modifiedJsonText);
 
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -183,9 +181,8 @@ function activate(context) {
 
 					const modifiedHtmlText = minifierHtml.getHtmlMinified();
 
-					replaceActualCode(modifiedHtmlText);
+					timeSpend = replaceActualCodeAndGetTime(modifiedHtmlText);
 
-					timeSpend = ((new Date().getTime()) - startTime);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -206,7 +203,7 @@ function activate(context) {
 
 					const minifierJs = new jsMinifier(RemoveComments);
 
-					replaceActualCode(minifierJs.getJsMinified());
+					timeSpend = replaceActualCodeAndGetTime(minifierJs.getJsMinified());
 
 				} else {
 					if (!disableMessages) {
@@ -229,7 +226,7 @@ function activate(context) {
 	const MinifyAll2OtherDoc = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDoc' (minify and get the code to another document) is currently working...");
 
-		let startTime = new Date().getTime();
+		startTime = new Date().getTime();
 
 		const path = require('path');
 		const {
@@ -239,7 +236,6 @@ function activate(context) {
 		const {
 			fileName
 		} = document;
-
 
 		const filePath = path.dirname(fileName);
 
@@ -270,8 +266,8 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
-					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -298,7 +294,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
 
-					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
@@ -323,7 +318,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
 
-					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
@@ -350,7 +344,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
 
-					timeSpend = ((new Date().getTime()) - startTime);
 					console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
 				} else {
@@ -369,138 +362,139 @@ function activate(context) {
 	//Command MinifyAll2OtherDocSelected and writes the result in other file.
 	//It executes if its called the command "extension.MinifyAll2OtherDocSelected"
 	let MinifyAll2OtherDocSelected = commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
-		//We get the text from the selected file.
-		FileSaver.readFile(fileUri.path, 'utf8', (err, data) => {
-			if (err) {
-				throw err;
-			} else {
-				console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDocSelected' (minify and get the code to another document) is currently working...");
-				let startTime = new Date().getTime();
+		if (fileUri != undefined) {
+			//We get the text from the selected file.
+			FileSaver.readFile(fileUri.path, 'utf8', (err, data) => {
+				if (err) {
+					throw err;
+				} else {
+					console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDocSelected' (minify and get the code to another document) is currently working...");
+					startTime = new Date().getTime();
 
-				const path = require('path');
+					const path = require('path');
 
-				const filePath = path.dirname(fileUri.path);
+					const filePath = path.dirname(fileUri.path);
 
-				switch (fileUri.path.split('.').pop()) {
+					switch (fileUri.path.split('.').pop()) {
 
-					case "css":
-					case "scss":
-					case "less":
-					case "sass":
+						case "css":
+						case "scss":
+						case "less":
+						case "sass":
 
-						if ((fileUri.path.split('.').pop() == "css" && !disableCss) ||
-							(fileUri.path.split('.').pop() == "scss" && !disableScss) ||
-							(fileUri.path.split('.').pop() == "less" && !disableLess) ||
-							(fileUri.path.split('.').pop() == "sass" && !disableSass)) {
+							if ((fileUri.path.split('.').pop() == "css" && !disableCss) ||
+								(fileUri.path.split('.').pop() == "scss" && !disableScss) ||
+								(fileUri.path.split('.').pop() == "less" && !disableLess) ||
+								(fileUri.path.split('.').pop() == "sass" && !disableSass)) {
 
-							const newName = path.basename(fileUri.path).replace('.css', '-min.css');
-							const path2NewFile = path.join(filePath, newName);
-							const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-							const cssContent = data.split('\n');
+								const newName = path.basename(fileUri.path).replace('.css', '-min.css');
+								const path2NewFile = path.join(filePath, newName);
+								const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
+								const cssContent = data.split('\n');
 
-							const RemoveComments = removeComments(cssContent);
+								const RemoveComments = removeComments(cssContent);
 
-							const hexMinifiedCss = HexMinify(RemoveComments);
+								const hexMinifiedCss = HexMinify(RemoveComments);
 
-							const minifierCss = new cssMinifier(hexMinifiedCss);
+								const minifierCss = new cssMinifier(hexMinifiedCss);
 
-							const modifiedCssText = minifierCss.getCssMinified();
+								const modifiedCssText = minifierCss.getCssMinified();
 
-							minifiedTextToNewFile(path2NewFile, modifiedCssText);
+								minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
-							timeSpend = ((new Date().getTime()) - startTime);
-							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
-						} else {
-							showMessage('We will not format this file type because it is disabled.', false);
-						}
-						break;
+								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+							} else {
+								showMessage('We will not format this file type because it is disabled.', false);
+							}
+							break;
 
-					case "json":
-					case "jsonc":
+						case "json":
+						case "jsonc":
 
-						if ((fileUri.path.split('.').pop() == "json" && !disableJson) ||
-							(fileUri.path.split('.').pop() == "jsonc" && !disableJsonc)) {
+							if ((fileUri.path.split('.').pop() == "json" && !disableJson) ||
+								(fileUri.path.split('.').pop() == "jsonc" && !disableJsonc)) {
 
-							const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
-							const path2NewFileJson = path.join(filePath, newNameJson);
-							const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-							const jsonContent = data.split('\n');
+								const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
+								const path2NewFileJson = path.join(filePath, newNameJson);
+								const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
+								const jsonContent = data.split('\n');
 
-							const contentWithHexMinified = HexMinify(jsonContent);
+								const contentWithHexMinified = HexMinify(jsonContent);
 
-							const RemoveComments = removeComments(contentWithHexMinified);
+								const RemoveComments = removeComments(contentWithHexMinified);
 
-							const minifierJson = new jsonMinifier(RemoveComments);
+								const minifierJson = new jsonMinifier(RemoveComments);
 
-							const modifiedJsonText = minifierJson.getJSONMinified();
+								const modifiedJsonText = minifierJson.getJSONMinified();
 
-							minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
+								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
 
-							timeSpend = ((new Date().getTime()) - startTime);
-							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
-						} else {
-							showMessage('We will not format this file type because it is disabled.', false);
-						}
-						break;
+							} else {
+								showMessage('We will not format this file type because it is disabled.', false);
+							}
+							break;
 
-					case "html":
+						case "html":
 
-						if ((fileUri.path.split('.').pop() == "html" && !disableHtml)) {
+							if ((fileUri.path.split('.').pop() == "html" && !disableHtml)) {
 
-							const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
-							const path2NewFileHtml = path.join(filePath, newNameHtml);
-							const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-							const htmlContent = data.split('\n');
+								const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
+								const path2NewFileHtml = path.join(filePath, newNameHtml);
+								const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
+								const htmlContent = data.split('\n');
 
-							const minifierHtml = new htmlMinifier(htmlContent);
+								const minifierHtml = new htmlMinifier(htmlContent);
 
-							minifierHtml.removeMultipleLineComments();
+								minifierHtml.removeMultipleLineComments();
 
-							const modifiedHtmlText = minifierHtml.getHtmlMinified();
+								const modifiedHtmlText = minifierHtml.getHtmlMinified();
 
-							minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
+								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
 
-							timeSpend = ((new Date().getTime()) - startTime);
-							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
-						} else {
-							showMessage('We will not format this file type because it is disabled.', false);
-						}
-						break;
+								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
 
-					case "javascript":
-					case "javascriptreact":
-					case "typescript":
+							} else {
+								showMessage('We will not format this file type because it is disabled.', false);
+							}
+							break;
 
-						if ((fileUri.path.split('.').pop() == "javascript" && !disableJavascript) ||
-							(fileUri.path.split('.').pop() == "javascriptreact" && !disableJavascriptReact) ||
-							(fileUri.path.split('.').pop() == "typescript" && !disableTypescript)) {
+						case "javascript":
+						case "javascriptreact":
+						case "typescript":
 
-							const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
-							const path2NewFileJs = path.join(filePath, newNameJs);
-							const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
-							const jsContent = data.split('\n');
+							if ((fileUri.path.split('.').pop() == "javascript" && !disableJavascript) ||
+								(fileUri.path.split('.').pop() == "javascriptreact" && !disableJavascriptReact) ||
+								(fileUri.path.split('.').pop() == "typescript" && !disableTypescript)) {
 
-							const RemoveComments = removeComments(jsContent);
+								const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
+								const path2NewFileJs = path.join(filePath, newNameJs);
+								const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
+								const jsContent = data.split('\n');
 
-							const minifierJs = new jsMinifier(RemoveComments);
+								const RemoveComments = removeComments(jsContent);
 
-							minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
+								const minifierJs = new jsMinifier(RemoveComments);
 
-							timeSpend = ((new Date().getTime()) - startTime);
-							console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+								minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
 
-						} else {
-							showMessage('We will not format this file type because it is disabled.', false);
-						}
-						break;
-					default:
-						showMessage('⛔ We can not format this file type yet, use a valid one.', true);
-						break;
+								console.log("Time spend minifying: " + timeSpend + " milisenconds.");
+
+							} else {
+								showMessage('We will not format this file type because it is disabled.', false);
+							}
+							break;
+						default:
+							showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+							break;
+					}
 				}
-			}
-		});
+			});
+		} else {
+			showMessage("This command must be called from the menu, use instead 'Minify this document ⚡' or 'Minify this document and preserve the original ⛏' but don't call this command through the command palette", true);
+		}
 		context.subscriptions.push(MinifyAll2OtherDocSelected);
 	});
 
@@ -641,13 +635,14 @@ function HexMinify(Content) {
  * Summary gets the actual code and replaces it with the minified one.
  * 
  * Description it receives the minified text and replaces it with the
- * received text.
+ * received text and also it gets the total time spend minifying.
  * 
  * @access private
  * 
  * @param {String} modifiedText the text to replace the original code.
+ * @return {Number} of the time spend.
  */
-function replaceActualCode(modifiedText) {
+function replaceActualCodeAndGetTime(modifiedText) {
 	const editor = vscode.window.activeTextEditor;
 	const firstLineCss = editor.document.lineAt(0);
 	const lastLineCss = editor.document.lineAt(editor.document.lineCount - 1);
@@ -658,6 +653,7 @@ function replaceActualCode(modifiedText) {
 	editor.edit(builder => {
 		builder.replace(textRange, modifiedText);
 	});
+	return ((new Date().getTime()) - startTime);
 }
 
 /**
