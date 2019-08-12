@@ -412,6 +412,6 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ---
 
-> ⚠️Remember that this extension does not guarantee a 100% effectiveness and may have some issue at some point. Use it at your own risk and always to backups of your code.⚠️
+> ⚠️Remember that this extension does not guarantee a 100% effectiveness and may have some issue at some point. Use it at your own risk and always do backups of your code.⚠️
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***
