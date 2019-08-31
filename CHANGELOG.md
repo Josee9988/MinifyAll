@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Security
 
-* Updated package.json dependencies to fix some security issues.
+* Updated package.json and package-lock.json dependencies to fix some security issues.
 
 ## [**1.3.3**] - 2019-08-10
 

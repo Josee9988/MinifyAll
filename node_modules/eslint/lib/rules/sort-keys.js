@@ -9,7 +9,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const astUtils = require("../util/ast-utils"),
+const astUtils = require("./utils/ast-utils"),
     naturalCompare = require("natural-compare");
 
 //------------------------------------------------------------------------------
@@ -29,7 +29,13 @@ const astUtils = require("../util/ast-utils"),
  * @private
  */
 function getPropertyName(node) {
-    return astUtils.getStaticPropertyName(node) || node.key.name || null;
+    const staticName = astUtils.getStaticPropertyName(node);
+
+    if (staticName !== null) {
+        return staticName;
+    }
+
+    return node.key.name || null;
 }
 
 /**
@@ -96,6 +102,11 @@ module.exports = {
                     natural: {
                         type: "boolean",
                         default: false
+                    },
+                    minKeys: {
+                        type: "integer",
+                        minimum: 2,
+                        default: 2
                     }
                 },
                 additionalProperties: false
@@ -110,6 +121,7 @@ module.exports = {
         const options = context.options[1];
         const insensitive = options && options.caseSensitive === false;
         const natual = options && options.natural;
+        const minKeys = options && options.minKeys;
         const isValidOrder = isValidOrders[
             order + (insensitive ? "I" : "") + (natual ? "N" : "")
         ];
@@ -118,10 +130,11 @@ module.exports = {
         let stack = null;
 
         return {
-            ObjectExpression() {
+            ObjectExpression(node) {
                 stack = {
                     upper: stack,
-                    prevName: null
+                    prevName: null,
+                    numKeys: node.properties.length
                 };
             },
 
@@ -141,11 +154,14 @@ module.exports = {
                 }
 
                 const prevName = stack.prevName;
+                const numKeys = stack.numKeys;
                 const thisName = getPropertyName(node);
 
-                stack.prevName = thisName || prevName;
+                if (thisName !== null) {
+                    stack.prevName = thisName;
+                }
 
-                if (!prevName || !thisName) {
+                if (prevName === null || thisName === null || numKeys < minKeys) {
                     return;
                 }
 

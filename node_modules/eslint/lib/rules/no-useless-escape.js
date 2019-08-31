@@ -5,7 +5,7 @@
 
 "use strict";
 
-const astUtils = require("../util/ast-utils");
+const astUtils = require("./utils/ast-utils");
 
 //------------------------------------------------------------------------------
 // Rule Definition
@@ -102,9 +102,14 @@ module.exports = {
          * @returns {void}
          */
         function report(node, startOffset, character) {
+            const start = sourceCode.getLocFromIndex(sourceCode.getIndexFromLoc(node.loc.start) + startOffset);
+
             context.report({
                 node,
-                loc: sourceCode.getLocFromIndex(sourceCode.getIndexFromLoc(node.loc.start) + startOffset),
+                loc: {
+                    start,
+                    end: { line: start.line, column: start.column + 1 }
+                },
                 message: "Unnecessary escape character: \\{{character}}.",
                 data: { character }
             });

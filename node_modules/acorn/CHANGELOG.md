@@ -1,3 +1,25 @@
+## 7.0.0 (2019-08-13)
+
+### Breaking changes
+
+Changes the node format for dynamic imports to use the `ImportExpression` node type, as defined in [ESTree](https://github.com/estree/estree/blob/master/es2020.md#importexpression).
+
+Makes 10 (ES2019) the default value for the `ecmaVersion` option.
+
+## 6.3.0 (2019-08-12)
+
+### New features
+
+`sourceType: "module"` can now be used even when `ecmaVersion` is less than 6, to parse module-style code that otherwise conforms to an older standard.
+
+## 6.2.1 (2019-07-21)
+
+### Bug fixes
+
+Fix bug causing Acorn to treat some characters as identifier characters that shouldn't be treated as such.
+
+Fix issue where setting the `allowReserved` option to `"never"` allowed reserved words in some circumstances.
+
 ## 6.2.0 (2019-07-04)
 
 ### Bug fixes

@@ -9,7 +9,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const astUtils = require("../util/ast-utils");
+const astUtils = require("./utils/ast-utils");
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -52,16 +52,7 @@ function isOctalEscapeSequence(node) {
         return false;
     }
 
-    const match = node.raw.match(/^([^\\]|\\[^0-7])*\\([0-7]{1,3})/u);
-
-    if (match) {
-
-        // \0 is actually not considered an octal
-        if (match[2] !== "0" || typeof match[3] !== "undefined") {
-            return true;
-        }
-    }
-    return false;
+    return astUtils.hasOctalEscapeSequence(node.raw);
 }
 
 /**

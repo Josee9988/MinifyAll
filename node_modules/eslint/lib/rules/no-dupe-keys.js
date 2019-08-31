@@ -9,7 +9,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const astUtils = require("../util/ast-utils");
+const astUtils = require("./utils/ast-utils");
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -120,7 +120,7 @@ module.exports = {
                 }
 
                 // Skip if the name is not static.
-                if (!name) {
+                if (name === null) {
                     return;
                 }
 
