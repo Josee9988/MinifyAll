@@ -7,10 +7,6 @@
 **/*.map
 **/.eslintrc.json
 
-#src folder.
-src/langDefaultMinifiers/README.md
-src/utilities/README.md
-
 #Screenshots folder.Screenshots/**
 Screenshots/Preview.gif
 Screenshots/Preview2ndcommand.gif
