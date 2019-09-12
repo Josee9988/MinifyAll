@@ -16,7 +16,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 * Some dependencies were updated.
-* The user will not download any of the images or the main icon of the extension. (Screenshots folder will be fully ignored when downloading the extension).
 * The user will now download two more 'README.md' files from the folders '/src/langDefaultMinifiers/' and 'src/utilities' so he could have a better understanding of what these folders are meant (936+652KBs).
 
 ### Fixed

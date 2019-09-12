@@ -1,6 +1,5 @@
 #Full folders ignored.
 .vscode/**
-Screenshots/**
 .github/**
 
 #Root files ignored.
@@ -11,3 +10,14 @@ Screenshots/**
 #src folder.
 src/langDefaultMinifiers/README.md
 src/utilities/README.md
+
+#Screenshots folder.Screenshots/**
+Screenshots/Preview.gif
+Screenshots/Preview2ndcommand.gif
+Screenshots/RightClickMenu.gif
+Screenshots/command.png
+Screenshots/README.md
+Screenshots/command.png
+Screenshots/output.png
+Screenshots/rawIcon.png
+Screenshots/RightClick.png
