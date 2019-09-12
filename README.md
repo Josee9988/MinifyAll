@@ -89,13 +89,13 @@ Check our **[changelog](CHANGELOG.md)**.
 - If you want MinifyAll to **stop shortening colours**, such as RGB to 3 digit hex, or RGBA to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in colour accuracy
 
 ``` json
-"MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default is disabled)
+"MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default it is disabled)
 ```
 
 - If you want MinifyAll to stop showing a **status bar** with information about the minimization after you minify a file. (True for disabling.)
 
 ``` json
-"MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default it is enabled)
 ```
 
 - The Priority of the status bar. 0 Is the greatest.
@@ -104,7 +104,7 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.statusbarPriority": integer //A number: default '0'
 ```
 
-- Aligns the status bar indicator to the left or right.
+- Align the status bar indicator to the left or right.
 
 ``` json
 "MinifyAll.statusbarAlignment": Left|Right //default 'left'
@@ -113,19 +113,19 @@ Check our **[changelog](CHANGELOG.md)**.
 - Disables warning and information messages
 
 ``` json
-"MinifyAll.disableMessages": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableMessages": true|false //default 'false' (by default it is enabled)
 ```
 
 - Minify on save (Default command, which will minify your actual code)
 
 ``` json
-"MinifyAll.minifyOnSave": true|false //default 'false' (by default is enabled)
+"MinifyAll.minifyOnSave": true|false //default 'false' (by default it is enabled)
 ```
 
 - Minify on save (Second command, which will minify your actual code into a new file)
 
 ``` json
-"MinifyAll.minifyOnSaveToNewFIle": true|false //default 'false' (by default is enabled)
+"MinifyAll.minifyOnSaveToNewFIle": true|false //default 'false' (by default it is enabled)
 ```
 
 ### **Disabling languages configuration**
@@ -133,61 +133,61 @@ Check our **[changelog](CHANGELOG.md)**.
 - Disables **html** minimization
 
 ``` json
-"MinifyAll.disableHtml": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableHtml": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **css** minimization
 
 ``` json
-"MinifyAll.disableCss": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableCss": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **scss** minimization
 
 ``` json
-"MinifyAll.disableScss": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableScss": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **less** minimization
 
 ``` json
-"MinifyAll.disableLess": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableLess": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **sass** minimization
 
 ``` json
-"MinifyAll.disableSass": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableSass": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **json** minimization
 
 ``` json
-"MinifyAll.disableJson": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableJson": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **jsonc** minimization
 
 ``` json
-"MinifyAll.disableJsonc": true|false //default 'false' (by default is enabled)
+"MinifyAll.disableJsonc": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **JavaScript** minimization //default 'true' (by default is disabled because it is not on a stable version yet)
+- Disables **JavaScript** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascript": true|false //default 'true' (by default is disabled)
+"MinifyAll.disableJavascript": true|false //default 'true' (by default it is disabled)
 ```
 
-- Disables **JavaScriptReact** minimization //default 'true' (by default is disabled because it is not on a stable version yet)
+- Disables **JavaScriptReact** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascriptReact": true|false //default 'true' (by default is disabled)
+"MinifyAll.disableJavascriptReact": true|false //default 'true' (by default it is disabled)
 ```
 
-- Disables **Typescript** minimization //default 'false' (by default is enabled but it is not on a stable version yet)
+- Disables **Typescript** minimization //default 'false' (by default it is enabled but it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableTypescript": true|false //default 'true' (by default is enabled)
+"MinifyAll.disableTypescript": true|false //default 'true' (by default it is enabled)
 ```
 
 </details>

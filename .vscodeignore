@@ -1,16 +1,13 @@
+#Full folders ignored.
 .vscode/**
+Screenshots/**
+.github/**
+
+#Root files ignored.
 **/jsconfig.json
 **/*.map
 **/.eslintrc.json
-Screenshots/Preview.gif
-Screenshots/Preview2ndcommand.gif
-Screenshots/RightClickMenu.gif
-Screenshots/command.png
-Screenshots/output.png
-Screenshots/rawIcon.png
-Screenshots/RightClick.png
-Screenshots/README.md
+
+#src folder.
 src/langDefaultMinifiers/README.md
 src/utilities/README.md
-.github/**
-.github/CODE_OF_CONDUCT.md

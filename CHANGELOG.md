@@ -7,12 +7,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.3.7**] - 2019-09-12
+
+### Added
+
+* '.vscodeignore' added comments to improve readability.
+
+### Changed
+
+* Some dependencies were updated.
+* The user will not download any of the images or the main icon of the extension. (Screenshots folder will be fully ignored when downloading the extension).
+* The user will now download two more 'README.md' files from the folders '/src/langDefaultMinifiers/' and 'src/utilities' so he could have a better understanding of what these folders are meant (936+652KBs).
+
+### Fixed
+
+* Some grammar mistakes from the package.json file, changelog.md and the readme.md file was fixed to improve overall readability.
+
+### Removed
+
+* Useless '.vscodeignore' entry.
+
 ## [**1.3.6**] - 2019-09-07
 
 ### Changed
 
 * Some dependencies were updated.
-* vscode engine updated to last version.
+* VSCode engine updated to the last version.
 
 ## [**1.3.5**] - 2019-09-03
 
@@ -22,7 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Removed
 
-* .gitignore file which was useless.
+* .gitignore useless file.
 
 ### Changed
 
@@ -40,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Fixed
 
 * A bug that didn't let right click on the document (not at the menu) at HTML documents
-* A bug that didn't count the milisenconds and showed undefined.
+* A bug that didn't count the milliseconds and showed undefined.
 * Improved readability in the main.js file.
 
 ## [**1.3.2**] - 2019-08-10
@@ -131,7 +151,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* File 'vscodeignore' will now ignore Screenshots folder but icon.png.
+* File '.vscodeignore' will now ignore Screenshots folder but icon.png.
 
 ## [**1.1.1**] - 2019-08-07
 
@@ -276,7 +296,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Package.JSON changed group name of editor/context from myGroup to 'MinifyAll'
+* Package.JSON changed group name of editor/context from 'myGroup' to 'MinifyAll'
 * jsMinifier.js changed from a single space to \s
 
 ### Fixed

@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, Typescript(testing), JavaScript(beta), JavaScriptReact(beta), LESS, SASS, SCSS, and JSONC. you will love its simplicity!",
-	"version": "1.3.6",
+	"version": "1.3.7",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -119,75 +119,75 @@
 						"Right"
 					],
 					"enumDescriptions": [
-						"Aligns the status bar indicator to the left.",
-						"Aligns the status bar indicator to the right."
+						"Align the status bar indicator to the left.",
+						"Align the status bar indicator to the right."
 					],
-					"description": "Aligns the status bar indicator to the left or the right (Default left)."
+					"description": "Align the status bar indicator to the left or the right (Default left)"
 				},
 				"MinifyAll.disableHtml": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing html. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing html. (True for disabling)"
 				},
 				"MinifyAll.disableCss": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing css. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing css. (True for disabling)"
 				},
 				"MinifyAll.disableScss": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing scss. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing scss. (True for disabling)"
 				},
 				"MinifyAll.disableLess": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing less. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing less. (True for disabling)"
 				},
 				"MinifyAll.disableSass": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing sass. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing sass. (True for disabling)"
 				},
 				"MinifyAll.disableJson": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing json. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing json. (True for disabling)"
 				},
 				"MinifyAll.disableJsonc": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing jsonc. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing jsonc. (True for disabling)"
 				},
 				"MinifyAll.disableJavascript": {
 					"type": "boolean",
 					"default": true,
-					"description": "If you want MinifyAll to stop minimizing JavaScript. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing JavaScript. (True for disabling)"
 				},
 				"MinifyAll.disableJavascriptReact": {
 					"type": "boolean",
 					"default": true,
-					"description": "If you want MinifyAll to stop minimizing JavaScriptReact. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing JavaScriptReact. (True for disabling)"
 				},
 				"MinifyAll.disableTypescript": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop minimizing Typescript. (True for disabling.)"
+					"description": "If you want MinifyAll to stop minimizing Typescript. (True for disabling)"
 				},
 				"MinifyAll.disableMessages": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to stop showing error, warning or information messages. (True for disabling.)"
+					"description": "If you want MinifyAll to stop showing error, warning or information messages. (True for disabling)"
 				},
 				"MinifyAll.minifyOnSave": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to minify every time you save in the same file. (True for disabling.)"
+					"description": "If you want MinifyAll to minify every time you save in the same file. (True for disabling)"
 				},
 				"MinifyAll.minifyOnSaveToNewFIle": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling.)"
+					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling)"
 				}
 			}
 		},
@@ -212,12 +212,12 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
-		"@types/node": "^12.7.4",
+		"@types/node": "^12.7.5",
 		"@types/vscode": "^1.38.0",
 		"eslint": "^6.3.0",
 		"glob": "^7.1.4",
 		"mocha": "^6.2.0",
-		"typescript": "^3.6.2",
+		"typescript": "^3.6.3",
 		"vscode-test": "^1.2.0"
 	}
 }
