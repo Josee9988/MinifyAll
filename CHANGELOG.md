@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.3.9**] - 2019-09-13
+
+### Added
+
+* Documentation link for posting issues or enhancements.
+
+### Changed
+
+* Some regex alignments.
+
 ## [**1.3.8**] - 2019-09-12
 
 ### Changed

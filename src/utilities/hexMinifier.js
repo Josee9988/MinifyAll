@@ -3,7 +3,8 @@
  * @author Jose Gracia Berenguer
  * @since 0.2.1
  * @see ../README.md
- * @link https://github.com/Josee9988/MinifyAll
+ * @link https://github.com/Josee9988/MinifyAll repository.
+ * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 class HexMinifier {
     /**

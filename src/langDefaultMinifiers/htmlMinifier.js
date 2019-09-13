@@ -4,7 +4,8 @@
  * @author Jose Gracia Berenguer
  * @since 0.3.0
  * @see README.md
- * @link https://github.com/Josee9988/MinifyAll
+ * @link https://github.com/Josee9988/MinifyAll repository.
+ * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
 class htmlMinifier {
@@ -35,8 +36,10 @@ class htmlMinifier {
      * @return {String} the line minified.
      */
     getHtmlMinified() {
-        return this.htmlContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
-            .replace(/ {/g, '{').replace(/[\t]/g, '').replace(/\s{2}/g, '').replace(/(\>)\1+/g, '');
+        return this.htmlContent.join('').replace(/;\}|\s+}/g, '}')
+            .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
+            .replace(/ {/g, '{').replace(/[\t]/g, '')
+            .replace(/\s{2}/g, '').replace(/(\>)\1+/g, '');
     }
 
 

@@ -4,8 +4,10 @@
  * @author Jose Gracia Berenguer
  * @since 0.1.0
  * @see README.md
- * @link https://github.com/Josee9988/MinifyAll
+ * @link https://github.com/Josee9988/MinifyAll repository.
+ * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+
 class cssMinifier {
     /**
      * Summary Minifier constructor that receives the content.
@@ -36,8 +38,11 @@ class cssMinifier {
      * @return {String} the line minified.
      */
     getCssMinified() {
-        return this.cssContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '')
-            .replace(/ \#/g, '#').replace(/\s\s/g, ' ').replace(/\s\}/g, '}').replace(/\s\;/g, ';').replace(/\:\s/g, ':')
+        return this.cssContent.join('').replace(/;\}|\s+}/g, '}')
+            .replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{')
+            .replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '')
+            .replace(/ \#/g, '#').replace(/\s\s/g, ' ')
+            .replace(/\s\}/g, '}').replace(/\s\;/g, ';').replace(/\:\s/g, ':')
             .replace(/\s\)/g, ')').replace(/\)\s/g, ')')
             .replace(/\s\(/g, '(').replace(/\)\s/g, '(')
             .replace(/\s\!/g, '!')

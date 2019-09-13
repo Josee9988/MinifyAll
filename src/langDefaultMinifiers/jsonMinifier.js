@@ -4,7 +4,8 @@
  * @author Jose Gracia Berenguer
  * @since 0.2.0
  * @see README.md
- * @link https://github.com/Josee9988/MinifyAll
+ * @link https://github.com/Josee9988/MinifyAll repository.
+ * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
 class jsonMinifier {
@@ -35,7 +36,10 @@ class jsonMinifier {
      * @return {String} the line minified.
      */
     getJSONMinified() {
-        return this.jsonContent.join('').replace(/;\}|\s+}/g, '}').replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':').replace(/\s{2}/g, '').replace(/ {/g, '{').replace(/[\t]/g, '').replace(/,}/g, '}').replace(/,]/g, ']');
+        return this.jsonContent.join('').replace(/;\}|\s+}/g, '}')
+            .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
+            .replace(/\s{2}/g, '').replace(/ {/g, '{')
+            .replace(/[\t]/g, '').replace(/,}/g, '}').replace(/,]/g, ']');
     }
 
 }
