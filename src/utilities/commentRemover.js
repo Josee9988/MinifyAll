@@ -79,7 +79,7 @@ class commentRemover {
      * @param {String} str the string to remove the comments.
      */
     removeComments(str) {
-        var uid = '_' + +new Date(),
+        let uid = '_' + +new Date(),
             primatives = [],
             primIndex = 0;
         return (

@@ -102,7 +102,7 @@ class HexMinifier {
      * @access private
      */
     rgba2hex(rgba) {
-        var a,
+        let a,
             rgb = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i),
             alpha = (rgb && rgb[4] || "").trim(),
             hex = rgb ?
@@ -156,7 +156,7 @@ class HexMinifier {
      * @return {String} this.rgbToShortHex(rgb).
      */
     getShortHexColorCode(code) {
-        var rgb = this.hexToRgb(code);
+        let rgb = this.hexToRgb(code);
         return this.rgbToShortHex(rgb).toUpperCase();;
     }
 
@@ -174,11 +174,11 @@ class HexMinifier {
      * @return {Object} r g b integers result with the red, yellow and green.
      */
     hexToRgb(hex) {
-        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        let shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
         hex = hex.replace(shorthandRegex, function (m, r, g, b) {
             return r + r + g + g + b + b;
         });
-        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
             r: parseInt(result[1], 16),
             g: parseInt(result[2], 16),
@@ -200,9 +200,9 @@ class HexMinifier {
      * @return {String} with the 3 digit hex value.
      */
     rgbToShortHex(rgb) {
-        var hexR = Math.round(rgb.r / 17).toString(16);
-        var hexG = Math.round(rgb.g / 17).toString(16);
-        var hexB = Math.round(rgb.b / 17).toString(16);
+        let hexR = Math.round(rgb.r / 17).toString(16);
+        let hexG = Math.round(rgb.g / 17).toString(16);
+        let hexB = Math.round(rgb.b / 17).toString(16);
         return "#" + hexR + "" + hexG + "" + hexB;
     }
 

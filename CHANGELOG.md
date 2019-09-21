@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.3.10**] - 2019-09-21
+
+### Changed
+
+* From 'var' to 'let' in some functions.
+
+### Changed
+
+* Some dependencies were updated.
+
 ## [**1.3.9**] - 2019-09-13
 
 ### Added
