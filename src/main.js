@@ -76,6 +76,10 @@ if (!hexDisabled) {
 	HexMinifier = require('./utilities/hexMinifier.js');
 }
 
+// If the user has the statusBar output enabled it will register the command.
+if (!statusDisabled) {
+	vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
+}
 
 /**
  * Summary main method that is executed when the user calls 
@@ -103,8 +107,6 @@ function activate(context) {
 	const MinifyAll = commands.registerCommand('extension.MinifyAll', () => {
 		console.log("The extension 'MinifyAll' with the command: 'MinifyAll' (default command) is currently working...");
 
-		//It will trigger statusBarInfo when the user saves the document.
-		vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 		vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
 		startTime = new Date().getTime();

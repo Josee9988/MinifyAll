@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, Typescript(beta), JavaScript(beta), JavaScriptReact(beta) and JSONC. you will love its simplicity!",
-	"version": "1.3.10",
+	"version": "1.4.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -63,7 +63,8 @@
 	],
 	"main": "./src/main.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -76,7 +77,8 @@
 				"title": "Minify the selected document and preserve the original 💎"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -192,7 +194,8 @@
 			}
 		},
 		"menus": {
-			"editor/context": [{
+			"editor/context": [
+				{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
@@ -203,10 +206,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [{
-				"command": "extension.MinifyAll2OtherDocSelected",
-				"group": "MinifyAll"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				}
+			]
 		}
 	},
 	"devDependencies": {

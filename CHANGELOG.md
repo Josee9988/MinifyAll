@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.4.0**] - 2019-09-21
+
+### Fixed
+
+* Finally fixed a bug that made the extension fail when trying to minify (with the default command) multiple files, because the extension was registering a command that already was registered.
+
 ## [**1.3.10**] - 2019-09-21
 
 ### Changed
