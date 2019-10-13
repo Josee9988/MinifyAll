@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.4.1**] - 2019-10-13
+
+### Added
+
+* Pull request from @pattishih
+* A .gitignore file.
+
+### Fixed
+
+* Some eslint problems.
+
+### Changed
+
+* Some dependencies were updated.
+
 ## [**1.4.0**] - 2019-09-21
 
 ### Fixed

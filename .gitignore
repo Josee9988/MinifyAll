@@ -1,0 +1,7 @@
+# Full folfers ignored
+node_modules/
+.vscode/
+
+# Files ignored
+.eslintrc.js
+.eslintrc.json
