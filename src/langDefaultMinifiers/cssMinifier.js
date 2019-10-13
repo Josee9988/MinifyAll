@@ -38,16 +38,14 @@ class cssMinifier {
      * @return {String} the line minified.
      */
     getCssMinified() {
-        return this.cssContent.join('').replace(/;\}|\s+}/g, '}')
-            .replace(/\/\*.*?\*\//g, '').replace(/ {/g, '{')
-            .replace(/[\t]/g, '').replace(/#/g, ' #').replace(/\s{2}/g, '')
-            .replace(/ \#/g, '#').replace(/\s\s/g, ' ')
-            .replace(/\s\}/g, '}').replace(/\s\;/g, ';').replace(/\:\s/g, ':')
-            .replace(/\s\)/g, ')').replace(/\)\s/g, ')')
-            .replace(/\s\(/g, '(').replace(/\)\s/g, '(')
-            .replace(/\s\!/g, '!')
-            .replace(/\s\,/g, ',').replace(/\,\s/g, ',')
-            .replace(/[:](0px)/g, ':0');
+        return this.cssContent.join('').replace(/;?\s*}/g, '}') //reduce any whitespace preceding } and remove semicolon if present
+            .replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep... there is probably a better way to go about this, but this works
+            .replace(/\s+/g, ' ') //reduce any type of whitespace to a single space
+            .replace(/[\t]/g, '') // the previous version for parsing # had incorrectly removed spaces between CSS selectors that use IDs 
+            .replace(/ ?([;(){}!,>]) ?/g, '$1') // removes space before or after these chars
+            .replace(/: /g, ':') //not included in prev line to avoid conflicts with CSS selectors for space before :
+            .replace(/:0(?!ms|s)[a-z%]+?([;}])/gi, ':0$1') //remove units from 0, unless it is ms or s for CSS transitions
+            .replace(/(:[\d\w \.,()])*0(\.\d+)/g,'$1$2'); //remove any prefixed 0 from decimal values
     }
 
 }
