@@ -45,7 +45,7 @@ class cssMinifier {
             .replace(/ ?([;(){}!,>]) ?/g, '$1') // removes space before or after these chars
             .replace(/: /g, ':') //not included in prev line to avoid conflicts with CSS selectors for space before :
             .replace(/:0(?!ms|s)[a-z%]+?([;}])/gi, ':0$1') //remove units from 0, unless it is ms or s for CSS transitions
-            .replace(/:0(\.\d+)/g,':$1'); //remove any prefixed 0 from decimal values
+            .replace(/(:[\d\w \.,()])*0(\.\d+)/g,'$1$2'); //remove any prefixed 0 from decimal values
     }
 
 }
