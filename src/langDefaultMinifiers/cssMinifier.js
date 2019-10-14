@@ -38,15 +38,13 @@ class cssMinifier {
      * @return {String} the line minified.
      */
     getCssMinified() {
-        return this.cssContent.join('').replace(/;?\s*}/g, '}') // reduce any whitespace preceding } and remove semicolon if present
-            .replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1')
-            .replace(/\/\*(?:.|\s)*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep... there is probably a better way to go about this, but this works
-            .replace(/\s+/g, ' ') // reduce any type of whitespace to a single space
-            .replace(/[\t]/g, '') // the previous version for parsing # had incorrectly removed spaces between CSS selectors that use IDs
-            .replace(/ ?([;(){}!,>]) ?/g, '$1') // removes space before or after these chars
-            .replace(/: /g, ':') // not included in prev line to avoid conflicts with CSS selectors for space before :
-            .replace(/:0(?!ms|s)[a-z%]+?([;}])/gi, ':0$1') // remove units from 0, unless it is ms or s for CSS transitions
-            .replace(/:0(\.\d+)/g, ':$1'); // remove any prefixed 0 from decimal values
+        return this.cssContent.join('').replace(/\s+/g, ' ') //reduce any type of whitespace to a single space
+        .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1')
+        .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep... there is probably a better way to go about this, but this works
+        .replace(/;? }/g, '}') // remove space (and semicolon if present) preceding }
+        .replace(/ ?([;{}!,>]) ?| ([)])|([:(]) /g, '$1$2$3') // removes space before or after these chars
+        .replace(/(\b0).?0*(?:r?e[mx]|p[xtc]|[chm]{2}|in|v(?:h|w|min|max)|%)/gi, '$1') //remove units from 0 that are allowed to be omitted
+        .replace(/\b0(\.\d+)/g,'$1'); //remove any prefixed 0 from decimal values
     }
 }
 
