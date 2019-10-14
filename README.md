@@ -1,7 +1,6 @@
 # **MinifyAll an extension for VSCode**
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(testing), **JavaScript**(beta), **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**(alpha), **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document!
 
@@ -22,7 +21,7 @@ Check our **[changelog](CHANGELOG.md)**.
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-star/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Josee9988/minifyall.svg?style=popout-square)](#minifyall-an-extension-for-vscode)
-
+[![Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 ---
 
 ## **Installation** 🔩⚙
@@ -417,7 +416,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***
 
-## Contributors ✨
+# **Contributors** ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -425,7 +424,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/pattishih"><img src="https://avatars1.githubusercontent.com/u/16858138?v=4" width="100px;" alt="Patti"/><br /><sub><b>Patti</b></sub></a><br /><a href="#infra-pattishih" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-pattishih" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/pattishih"><img src="https://avatars1.githubusercontent.com/u/16858138?v=4" width="75px;" alt="Patti"/><br /><sub><b>Patti</b></sub></a><br /><a href="#infra-pattishih" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-pattishih" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
