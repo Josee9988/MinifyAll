@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.4.1**] - 2019-10-14
+
+### Added
+
+* Contributor to readme.md
+
+### Fixed
+
+* Mistake parsing css from pull request #2
+
 ## [**1.4.1**] - 2019-10-13
 
 ### Added

@@ -132,10 +132,10 @@ function activate(context) {
 			case 'less':
 			case 'sass':
 
-				if ((window.activeTextEditor.document.languageId == 'css' && !disableCss) ||
-					(window.activeTextEditor.document.languageId == 'scss' && !disableScss) ||
-					(window.activeTextEditor.document.languageId == 'less' && !disableLess) ||
-					(window.activeTextEditor.document.languageId == 'sass' && !disableSass)) {
+				if ((window.activeTextEditor.document.languageId == 'css' && !disableCss)
+					|| (window.activeTextEditor.document.languageId == 'scss' && !disableScss)
+					|| (window.activeTextEditor.document.languageId == 'less' && !disableLess)
+					|| (window.activeTextEditor.document.languageId == 'sass' && !disableSass)) {
 					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
 					const cssContent = document.getText().split('\n');
 
@@ -156,8 +156,8 @@ function activate(context) {
 			case 'json':
 			case 'jsonc':
 
-				if ((window.activeTextEditor.document.languageId == 'json' && !disableJson) ||
-					(window.activeTextEditor.document.languageId == 'jsonc' && !disableJsonc)) {
+				if ((window.activeTextEditor.document.languageId == 'json' && !disableJson)
+					|| (window.activeTextEditor.document.languageId == 'jsonc' && !disableJsonc)) {
 					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
 
@@ -197,9 +197,9 @@ function activate(context) {
 			case 'javascriptreact':
 			case 'typescript':
 
-				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript) ||
-					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
-					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
+				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript)
+					|| (window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact)
+					|| (window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
 
@@ -243,10 +243,10 @@ function activate(context) {
 			case 'less':
 			case 'sass':
 
-				if ((window.activeTextEditor.document.languageId == 'css' && !disableCss) ||
-					(window.activeTextEditor.document.languageId == 'scss' && !disableScss) ||
-					(window.activeTextEditor.document.languageId == 'less' && !disableLess) ||
-					(window.activeTextEditor.document.languageId == 'sass' && !disableSass)) {
+				if ((window.activeTextEditor.document.languageId == 'css' && !disableCss)
+					|| (window.activeTextEditor.document.languageId == 'scss' && !disableScss)
+					|| (window.activeTextEditor.document.languageId == 'less' && !disableLess)
+					|| (window.activeTextEditor.document.languageId == 'sass' && !disableSass)) {
 					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
 					const cssContent = document.getText().split('\n');
@@ -270,8 +270,8 @@ function activate(context) {
 			case 'json':
 			case 'jsonc':
 
-				if ((window.activeTextEditor.document.languageId == 'json' && !disableJson) ||
-					(window.activeTextEditor.document.languageId == 'jsonc' && !disableJsonc)) {
+				if ((window.activeTextEditor.document.languageId == 'json' && !disableJson)
+					|| (window.activeTextEditor.document.languageId == 'jsonc' && !disableJsonc)) {
 					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
 					const jsonContent = document.getText().split('\n');
@@ -317,9 +317,9 @@ function activate(context) {
 			case 'javascriptreact':
 			case 'typescript':
 
-				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript) ||
-					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
-					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
+				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript)
+					|| (window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact)
+					|| (window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
 					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
 					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
 					const jsContent = document.getText().split('\n');
@@ -366,10 +366,10 @@ function activate(context) {
 						case 'less':
 						case 'sass':
 
-							if ((fileUri.path.split('.').pop() == 'css' && !disableCss) ||
-								(fileUri.path.split('.').pop() == 'scss' && !disableScss) ||
-								(fileUri.path.split('.').pop() == 'less' && !disableLess) ||
-								(fileUri.path.split('.').pop() == 'sass' && !disableSass)) {
+							if ((fileUri.path.split('.').pop() == 'css' && !disableCss)
+								|| (fileUri.path.split('.').pop() == 'scss' && !disableScss)
+								|| (fileUri.path.split('.').pop() == 'less' && !disableLess)
+								|| (fileUri.path.split('.').pop() == 'sass' && !disableSass)) {
 								const newName = path.basename(fileUri.path).replace('.css', '-min.css');
 								const path2NewFile = path.join(filePath, newName);
 								const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
@@ -394,8 +394,8 @@ function activate(context) {
 						case 'json':
 						case 'jsonc':
 
-							if ((fileUri.path.split('.').pop() == 'json' && !disableJson) ||
-								(fileUri.path.split('.').pop() == 'jsonc' && !disableJsonc)) {
+							if ((fileUri.path.split('.').pop() == 'json' && !disableJson)
+								|| (fileUri.path.split('.').pop() == 'jsonc' && !disableJsonc)) {
 								const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
 								const path2NewFileJson = path.join(filePath, newNameJson);
 								const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
@@ -443,9 +443,9 @@ function activate(context) {
 						case 'javascriptreact':
 						case 'typescript':
 
-							if ((fileUri.path.split('.').pop() == 'javascript' && !disableJavascript) ||
-								(fileUri.path.split('.').pop() == 'javascriptreact' && !disableJavascriptReact) ||
-								(fileUri.path.split('.').pop() == 'typescript' && !disableTypescript)) {
+							if ((fileUri.path.split('.').pop() == 'javascript' && !disableJavascript)
+								|| (fileUri.path.split('.').pop() == 'javascriptreact' && !disableJavascriptReact)
+								|| (fileUri.path.split('.').pop() == 'typescript' && !disableTypescript)) {
 								const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
 								const path2NewFileJs = path.join(filePath, newNameJs);
 								const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');

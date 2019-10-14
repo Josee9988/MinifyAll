@@ -6,6 +6,7 @@
 **/jsconfig.json
 **/*.map
 **/.eslintrc.json
+**/.all-contributorsrc
 
 #Screenshots folder.Screenshots/**
 Screenshots/Preview.gif

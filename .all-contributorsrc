@@ -2,7 +2,7 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 75,
   "commit": false,
   "contributors": [
     {
@@ -16,7 +16,7 @@
       ]
     }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 5,
   "projectName": "MinifyAll",
   "projectOwner": "Josee9988",
   "repoType": "github",
