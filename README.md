@@ -1,4 +1,5 @@
 # **MinifyAll an extension for VSCode**
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(testing), **JavaScript**(beta), **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
@@ -415,3 +416,19 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 > ⚠️Remember that this extension does not guarantee a 100% effectiveness and may have some issue at some point. Use it at your own risk and always do backups of your code.⚠️
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/pattishih"><img src="https://avatars1.githubusercontent.com/u/16858138?v=4" width="100px;" alt="Patti"/><br /><sub><b>Patti</b></sub></a><br /><a href="#infra-pattishih" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-pattishih" title="Maintenance">🚧</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
