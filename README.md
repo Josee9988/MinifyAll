@@ -2,7 +2,7 @@
 
 VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**(alpha), **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document!
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also you can simply minify your **selected text**.
 
 Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
@@ -34,6 +34,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 - **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
 - **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
+- **```"Minify the selected text 🎯```  Or ```CTRL+ALT+M CTRL+ALT+M```**
 
 ---
 
@@ -55,9 +56,13 @@ Check our **[changelog](CHANGELOG.md)**.
 
 <img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
+- Minify only your **selected text**!
+
+<img src="https://i.imgur.com/Cym0J2C.gif" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
 - Also, minify when right-clicking on the code!
 
-<img src="https://i.imgur.com/fXMQTc0.png" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://i.imgur.com/fXMQTc0.png" alt="selectedText" title="selectedText" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
 - Minify when right-clicking on a file of the menu without opening it!
 

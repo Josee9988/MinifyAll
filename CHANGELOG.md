@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.5.0**] - 2019-10-19
+
+### Added
+
+* Minify **selected text**.
+
+### Changed
+
+* Some dependencies were updated.
+
 ## [**1.4.3**] - 2019-10-14
 
 ### Fixed
