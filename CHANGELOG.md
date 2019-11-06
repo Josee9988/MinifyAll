@@ -7,9 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**1.6.2**] - 2019-11-06
 
-* Fix bug with minify to other document, that chooses the same path. (MinifyAll2OtherDoc)
+### Fixed
+
+* Fix bug with minify to other document, that chooses the same path. (MinifyAll2OtherDoc) in JS.
 
 ## [**1.6.1**] - 2019-11-06
 

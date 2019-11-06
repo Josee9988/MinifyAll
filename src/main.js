@@ -323,9 +323,8 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript) ||
 					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
-					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
+					const path2NewFile = getNewFilePath(path, fileName, 'js');
 					const Terser = require("terser");
-
 					const jsContent = document.getText();
 
 					const minifierJs = Terser.minify(jsContent);
