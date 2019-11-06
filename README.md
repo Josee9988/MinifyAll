@@ -1,6 +1,6 @@
 # **MinifyAll an extension for VSCode**
 
-VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**(alpha), **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**, **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also you can simply minify your **selected text**.
 
@@ -34,7 +34,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 - **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
 - **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
-- **```"Minify the selected text 🎯```  Or ```CTRL+ALT+M CTRL+ALT+M```**
+- **```"Minify the selected text 🎯```  Or ```CTRL+ALT+. CTRL+ALT+M```**
 
 ---
 
@@ -75,8 +75,9 @@ Check our **[changelog](CHANGELOG.md)**.
 - **CSS**
 - **HTML**
 - **JSON**
-- **JavaScript**(beta)
-- **JavaScriptReact**(beta)
+- **JavaScript** With: [Terser](https://github.com/terser/terser)
+- **TypeScript** With: [Terser](https://github.com/terser/terser)
+- **JavaScriptReact** With: [Terser](https://github.com/terser/terser)
 - **JSONC**
 - **LESS**
 - **SASS**

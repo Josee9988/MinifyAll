@@ -200,14 +200,13 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript) ||
 					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
-					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
-					const jsContent = document.getText().split('\n');
+					const Terser = require("terser");
 
-					const RemoveComments = removeComments(jsContent);
+					const jsContent = document.getText();
 
-					const minifierJs = new jsMinifier(RemoveComments);
+					const minifierJs = Terser.minify(jsContent);
 
-					timeSpend = replaceActualCodeAndGetTime(minifierJs.getJsMinified());
+					timeSpend = replaceActualCodeAndGetTime(minifierJs.code);
 				} else if (!disableMessages) {
 					window.showInformationMessage('We will not format this file type because it is disabled.');
 				}
@@ -321,14 +320,13 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
 					const path2NewFile = getNewFilePath(path, fileName, window.activeTextEditor.document.languageId);
-					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
-					const jsContent = document.getText().split('\n');
+					const Terser = require("terser");
 
-					const RemoveComments = removeComments(jsContent);
+					const jsContent = document.getText();
 
-					const minifierJs = new jsMinifier(RemoveComments);
+					const minifierJs = Terser.minify(jsContent);
 
-					minifiedTextToNewFile(path2NewFile, minifierJs.getJsMinified());
+					minifiedTextToNewFile(path2NewFile, minifierJs.code);
 
 					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
@@ -446,16 +444,13 @@ function activate(context) {
 							if ((fileUri.path.split('.').pop() == 'javascript' && !disableJavascript) ||
 								(fileUri.path.split('.').pop() == 'javascriptreact' && !disableJavascriptReact) ||
 								(fileUri.path.split('.').pop() == 'typescript' && !disableTypescript)) {
+								const Terser = require("terser");
 								const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
 								const path2NewFileJs = path.join(filePath, newNameJs);
-								const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
-								const jsContent = data.split('\n');
+								const jsContent = data;
 
-								const RemoveComments = removeComments(jsContent);
-
-								const minifierJs = new jsMinifier(RemoveComments);
-
-								minifiedTextToNewFile(path2NewFileJs, minifierJs.getJsMinified());
+								const minifierJs = Terser.minify(jsContent);
+								minifiedTextToNewFile(path2NewFileJs, minifierJs.code);
 
 								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
@@ -564,14 +559,13 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId == 'javascript' && !disableJavascript) ||
 					(window.activeTextEditor.document.languageId == 'javascriptreact' && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId == 'typescript' && !disableTypescript)) {
-					const jsMinifier = require('./langDefaultMinifiers/jsMinifier.js');
-					const jsContent = selectedText.split('\n');
+					const Terser = require("terser");
 
-					const RemoveComments = removeComments(jsContent);
+					const jsContent = selectedText;
 
-					const minifierJs = new jsMinifier(RemoveComments);
+					const minifierJs = Terser.minify(jsContent);
 
-					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, minifierJs);
+					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, minifierJs.code);
 				} else if (!disableMessages) {
 					window.showInformationMessage('We will not format this file type because it is disabled.');
 				}

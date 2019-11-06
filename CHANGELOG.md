@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+* Fix bug with minify to other document. (MinifyAll2OtherDoc)
+
+## [**1.6.0**] - 2019-11-06
+
+### Added
+
+* **Terser** to Minify JavaScript.
+
+### Changed
+
+* Some dependencies were updated.
+* Command minify selected text now responds to keyshortcut: Ctrl+alt+. Ctrl+alt+M
+
 ## [**1.5.0**] - 2019-10-19
 
 ### Added

@@ -1,8 +1,8 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, Typescript(alpha), JavaScript(alpha), JavaScriptReact(alpha) and JSONC. you will love its simplicity!",
-	"version": "1.5.0",
+	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, Typescript(alpha), JavaScript, JavaScriptReact(alpha) and JSONC. you will love its simplicity!",
+	"version": "1.6.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -41,7 +41,8 @@
 		"javascriptreact",
 		"react",
 		"typescript",
-		"ts"
+		"ts",
+		"terser"
 	],
 	"bugs": {
 		"url": "https://github.com/Josee9988/MinifyAll/issues",
@@ -75,7 +76,8 @@
 			{
 				"command": "extension.MinifyAll2OtherDocSelected",
 				"title": "Minify the selected document and preserve the original 💎"
-			}, {
+			},
+			{
 				"command": "extension.MinifyAllSelectedText",
 				"title": "Minify the selected text 🎯"
 			}
@@ -99,10 +101,10 @@
 			{
 				"command": "extension.MinifyAllSelectedText",
 				"title": "Minify the selected text 🎯",
-				"key": "Ctrl+alt+M Ctrl+alt+M",
-				"mac": "Ctrl+alt+M Ctrl+alt+M",
-				"linux": "Ctrl+alt+M Ctrl+alt+M",
-				"win": "Ctrl+alt+M Ctrl+alt+M"
+				"key": "Ctrl+alt+. Ctrl+alt+M",
+				"mac": "Ctrl+alt+. Ctrl+alt+M",
+				"linux": "Ctrl+alt+. Ctrl+alt+M",
+				"win": "Ctrl+alt+. Ctrl+alt+M"
 			}
 		],
 		"configuration": {
@@ -228,12 +230,15 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
-		"@types/node": "^12.11.1",
+		"@types/node": "^12.12.6",
 		"@types/vscode": "^1.39.0",
-		"eslint": "^6.5.1",
-		"glob": "^7.1.4",
+		"eslint": "^6.6.0",
+		"glob": "^7.1.5",
 		"mocha": "^6.2.2",
-		"typescript": "^3.6.4",
-		"vscode-test": "^1.2.0"
+		"typescript": "^3.7.2",
+		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"terser": "^4.3.9"
 	}
 }
