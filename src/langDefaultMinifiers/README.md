@@ -14,10 +14,6 @@ All modules contain a constructor that receives the code and a getter of the cod
 
 **[htmlMinifier.js](htmlMinifier.js)** module that perform unique tasks per minifying HTML code.
 
-## **jsMinifier.**
-
-**[jsMinifier.js](jsMinifier.js)** module that perform unique tasks per minifying **JavaScript**, **JavaScriptReact** or **Typescript** code.
-
 ## **jsonMinifier.**
 
 **[jsonMinifier.js](jsonMinifier.js)** module that perform unique tasks per minifying **JSON** or **JSONC** code.

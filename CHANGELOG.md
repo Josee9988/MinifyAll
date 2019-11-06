@@ -9,7 +9,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [Unreleased]
 
-* Fix bug with minify to other document. (MinifyAll2OtherDoc)
+* Fix bug with minify to other document, that chooses the same path. (MinifyAll2OtherDoc)
+
+## [**1.6.1**] - 2019-11-06
+
+### Removed
+
+* File jsMinifier, because it is useless now that we use Terser.
+
+### Fixed
+
+* Terser bugs controller, if there is a mistake Minifying it will display a message and not commit the minify.
 
 ## [**1.6.0**] - 2019-11-06
 

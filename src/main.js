@@ -206,7 +206,11 @@ function activate(context) {
 
 					const minifierJs = Terser.minify(jsContent);
 
-					timeSpend = replaceActualCodeAndGetTime(minifierJs.code);
+					if (minifierJs.error === undefined) {
+						timeSpend = replaceActualCodeAndGetTime(minifierJs.code);
+					} else if (!disableMessages) {
+						window.showErrorMessage('Terser error: ' + minifierJs.error);
+					}
 				} else if (!disableMessages) {
 					window.showInformationMessage('We will not format this file type because it is disabled.');
 				}
@@ -326,9 +330,12 @@ function activate(context) {
 
 					const minifierJs = Terser.minify(jsContent);
 
-					minifiedTextToNewFile(path2NewFile, minifierJs.code);
-
-					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
+					if (minifierJs.error === undefined) {
+						minifiedTextToNewFile(path2NewFile, minifierJs.code);
+						console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
+					} else if (!disableMessages) {
+						window.showErrorMessage('Terser error: ' + minifierJs.error);
+					}
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -450,9 +457,13 @@ function activate(context) {
 								const jsContent = data;
 
 								const minifierJs = Terser.minify(jsContent);
-								minifiedTextToNewFile(path2NewFileJs, minifierJs.code);
 
-								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
+								if (minifierJs.error === undefined) {
+									minifiedTextToNewFile(path2NewFileJs, minifierJs.code);
+									console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
+								} else if (!disableMessages) {
+									window.showErrorMessage('Terser error: ' + minifierJs.error);
+								}
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -565,7 +576,11 @@ function activate(context) {
 
 					const minifierJs = Terser.minify(jsContent);
 
-					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, minifierJs.code);
+					if (minifierJs.error === undefined) {
+						timeSpend = replaceSelectedCodeAndGetTime(editor, selection, minifierJs.code);
+					} else if (!disableMessages) {
+						window.showErrorMessage('Terser error: ' + minifierJs.error);
+					}
 				} else if (!disableMessages) {
 					window.showInformationMessage('We will not format this file type because it is disabled.');
 				}
