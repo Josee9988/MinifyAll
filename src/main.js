@@ -633,7 +633,7 @@ function getNewSize() {
  * @param {number} newSize the minified size in Bytes.
  */
 function createStatusBar(originalSize, newSize) {
-	if (alignment == 'Right') {
+	if (alignment === 'Right') {
 		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, priority);
 	} else {
 		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, priority);
@@ -657,14 +657,14 @@ function createStatusBar(originalSize, newSize) {
  *
  * @access private
  *
- * @param {number} size A number with the bytes.
+ * @param {number} size A number in bytes.
  *
  * @return {String} the new value in KB, MB or in Bytes
  */
 function transformSize(size) {
-	if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} MB`;
-	if (size >= 1024) return `${Math.floor(size / 10.24) / 100} KB`;
-	return `${size} B`;
+	if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} Mb`;
+	if (size >= 1024) return `${Math.floor(size / 10.24) / 100} Kb`;
+	return `${size} b`;
 }
 
 /**
@@ -723,6 +723,7 @@ function HexMinify(Content) {
 	} else {
 		returnValue = Content;
 	}
+	console.log(returnValue);
 	return returnValue;
 }
 
@@ -859,9 +860,6 @@ function getNewFilePath(path, fileName, extensionWithOutDot) {
 	return path2NewFile;
 }
 
-
-exports.activate = activate;
-
 /**
  * Summary a function that is called by vscode to deactivate the extension.
  *
@@ -874,4 +872,9 @@ function deactivate() {
 	statusBarItem.dispose();
 	oc.dispose();
 }
+exports.activate = activate;
 exports.deactivate = deactivate;
+// Exports for tests.
+exports.getNewFilePath = getNewFilePath;
+exports.removeComments = removeComments;
+exports.transformSize = transformSize;
