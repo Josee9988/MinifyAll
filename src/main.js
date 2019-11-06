@@ -18,10 +18,13 @@
  * Or if the user executes 'MinifyAll2OtherDoc' it will create a new file
  * with the minified code so you can preserve the original file,
  *
- * OR if the user executes 'MinifyAll2OtherDocSelected' which is the
+ * Or if the user executes 'MinifyAll2OtherDocSelected' which is the
  * command when you right-click at a file on the menu, it will do
  * the same job as 'MinifyAll2OtherDoc' (create a new file with the
  * minified code so you can preserve the original file)
+ *
+ * Or MinifyAllSelectedText which is the command to only minify
+ * the selected text.
  *
  * It also creates the status bar and calls all the necessary methods
  * to make the extension and all three commands perform well.
@@ -93,7 +96,7 @@ if (!statusDisabled) {
 /**
  * Summary main method that is executed when the user calls
  * the commands 'MinifyAll', 'MinifyAll2OtherDoc'
- * or 'MinifyAll2OtherDocSelected'.
+ * or 'MinifyAll2OtherDocSelected', 'MinifyAllSelectedText'.
  *
  * Description activate the Main function called when the user
  * uses the command 'MinifyAll' or 'MinifyAll2OtherDoc',
@@ -105,7 +108,7 @@ if (!statusDisabled) {
  * with the new one, or if the command is 'MinifyAll2OtherDoc' it will create
  * a new file with the minified text, 'MinifyAll2OtherDocSelected' makes
  * the same process as 'MinifyAll2OtherDoc' but this command is called
- * from the menu.
+ * from the menu. Also it is called when executing MinifyAllSelectedText.
  *
  * @access public
  *
