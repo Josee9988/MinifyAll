@@ -1,16 +1,17 @@
 /* eslint-disable no-undef */ /* eslint-disable no-tabs */ /* eslint-disable indent */
 const assert = require('assert');
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 const vscode = require('vscode');
+const path = require('path');
 const MinifyAll = require('../../src/main');
+const HexMinifier = require('../../src/utilities/hexMinifier.js');
+const htmlMinifier = require('../../src/langDefaultMinifiers/htmlMinifier');
+const jsonMinifier = require('../../src/langDefaultMinifiers/jsonMinifier');
+
 
 suite('MinifyAll Test Suite', () => {
 	vscode.window.showInformationMessage('Start all tests.');
 
 	test('File Path', () => {
-		const path = require('path');
 		const result = MinifyAll.getNewFilePath(path, '/myFile.css', 'css');
 		assert.deepStrictEqual(result, '/myFile-min.css');
 	});
@@ -30,7 +31,6 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 	test('Hexadecimal Minify', () => {
-		const HexMinifier = require('../../src/utilities/hexMinifier.js');
 		const MinifierHex = new HexMinifier(
 			['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;'],
 		);
@@ -42,4 +42,50 @@ suite('MinifyAll Test Suite', () => {
 		assert.deepStrictEqual(result, 'background-color: #0C0C0CCC;background-color: #111;background-color: #FFF;');
 	});
 
+	test('HTML Minify', () => {
+		const htmlMinify = new htmlMinifier(
+			['<!DOCTYPE html>',
+				'<html lang="es">',
+				'',
+				'<head>',
+				'    <title></title>',
+				'    <meta charset="utf-8">',
+				'    <link rel="stylesheet" href="">',
+				'    <script type="text/javascript" src=""></script>',
+				'    <!-- test -->',
+				'</head>',
+				'',
+				'<!-- ~~~~~✦✦✦✦✦ B O',
+				' D Y ✦✦✦✦✦~~~~~ -->',
+				'<body>',
+				'',
+				'</body>',
+				'',
+				'</html>',
+			],
+		);
+		htmlMinify.removeMultipleLineComments();
+		const result = htmlMinify.getHtmlMinified();
+		assert.deepStrictEqual(result, '<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet" href=""><script type="text/javascript" src=""></script></head><body></body></html>');
+	});
+
+	test('JSON Minify', () => {
+		const jsonMinify = new jsonMinifier(
+			['{',
+				'"contributes": {',
+				'"commands": [{',
+				'"title": "Minify this document ⚡",',
+				'},',
+				'{',
+				'"color": "#FAFAFA", ',
+				'}/* multiline comment',
+				'*/',
+				']',
+				'}',
+				'}',
+			],
+		);
+		const result = jsonMinify.getJSONMinified();
+		assert.deepStrictEqual(result, '{"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FAFAFA"}]}}');
+	});
 });

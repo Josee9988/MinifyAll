@@ -7,6 +7,7 @@
 **/*.map
 **/.eslintrc.json
 **/.all-contributorsrc
+**/test
 
 #Screenshots folder.Screenshots/**
 Screenshots/Preview.gif

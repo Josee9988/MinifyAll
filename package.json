@@ -1,8 +1,8 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, Typescript(alpha), JavaScript, JavaScriptReact(alpha) and JSONC. you will love its simplicity!",
-	"version": "1.6.2",
+	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, Typescript(testing), and JavaScriptReact(testing). You will love its simplicity!",
+	"version": "1.6.3",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -65,8 +65,7 @@
 	],
 	"main": "./src/main.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -83,8 +82,7 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -208,8 +206,7 @@
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
@@ -224,12 +221,10 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
-					"command": "extension.MinifyAll2OtherDocSelected",
-					"group": "MinifyAll"
-				}
-			]
+			"explorer/context": [{
+				"command": "extension.MinifyAll2OtherDocSelected",
+				"group": "MinifyAll"
+			}]
 		}
 	},
 	"devDependencies": {
@@ -240,7 +235,7 @@
 		"eslint": "^6.6.0",
 		"eslint-config-airbnb-base": "^14.0.0",
 		"eslint-plugin-import": "^2.18.2",
-		"glob": "^7.1.5",
+		"glob": "^7.1.6",
 		"mocha": "^6.2.2",
 		"typescript": "^3.7.2",
 		"vscode-test": "^1.2.2"

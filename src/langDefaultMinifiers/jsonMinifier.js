@@ -10,31 +10,31 @@
 
 class jsonMinifier {
   /**
-     * Summary Minifier constructor that receives the content.
-     *
-     * Description this is the constructor of the class and it
-     * will receive an array with the content and it will assign it
-     * to a private variable that will be used later on.
-     *
-     * @access public
-     *
-     * @param {Array} jsonContent all the code that will be minified .
-     */
+   * Summary Minifier constructor that receives the content.
+   *
+   * Description this is the constructor of the class and it
+   * will receive an array with the content and it will assign it
+   * to a private variable that will be used later on.
+   *
+   * @access public
+   *
+   * @param {Array} jsonContent all the code that will be minified .
+   */
   constructor(jsonContent) {
     this.jsonContent = jsonContent;
   }
 
   /**
-     * Summary getJSONMinified finds lasts spaces and trim it into just one line.
-     *
-     * Description the method will get the array with all the lines and will
-     * make one String out of all of them; Then it will use REGEX
-     * to replace multiple concurrencies, like removing multiple spaces,
-     * unnecessary tabulations and specific things per each language.
-     * @access public
-     *
-     * @return {String} the line minified.
-     */
+   * Summary getJSONMinified finds lasts spaces and trim it into just one line.
+   *
+   * Description the method will get the array with all the lines and will
+   * make one String out of all of them; Then it will use REGEX
+   * to replace multiple concurrencies, like removing multiple spaces,
+   * unnecessary tabulations and specific things per each language.
+   * @access public
+   *
+   * @return {String} the line minified.
+   */
   getJSONMinified() {
     return this.jsonContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')

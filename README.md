@@ -265,7 +265,7 @@ Check our **[changelog](CHANGELOG.md)**.
 *To:*
 
 ``` json
-{"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FFF",}]}}
+{"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FFF"}]}}
 ```
 
 - Only one line.

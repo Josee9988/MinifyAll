@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.6.3**] - 2019-11-07
+
+### Added
+
+* Multiple tests.
+
+### Fixed
+
+* Problem with HTML, that allowed double closing tag (>>).
+
 ## [**1.6.2**] - 2019-11-06
 
 ### Fixed
