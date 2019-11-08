@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.6.4**] - 2019-11-08
+
+### Fixed
+
+* Fixed useless import of 'document' in the main.js file.
+* Fixed rule 'no-param-reassign' from function 'replaceSelectedCodeAndGetTime' in the main.js file.
+* Multiple rules from ESLint in many files.
+
+### Changed
+
+* Multiple rules from ESLint were changed.
+* VScode now ignores the test folder. (.vscodeignore).
+* Git will only not upload the node_modules folder (.gitignore).
+
 ## [**1.6.3**] - 2019-11-07
 
 ### Added

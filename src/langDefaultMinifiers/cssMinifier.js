@@ -9,7 +9,7 @@
  */
 
 class cssMinifier {
-    /**
+  /**
      * Summary Minifier constructor that receives the content.
      *
      * Description this is the constructor of the class and it
@@ -20,11 +20,11 @@ class cssMinifier {
      *
      * @param {Array} cssContent all the code that will be minified.
      */
-    constructor(cssContent) {
-        this.cssContent = cssContent;
-    }
+  constructor(cssContent) {
+    this.cssContent = cssContent;
+  }
 
-    /**
+  /**
      * Summary getCssMinified finds lasts spaces and
      * trim it into just one line.
      *
@@ -37,15 +37,15 @@ class cssMinifier {
      *
      * @return {String} the line minified.
      */
-    getCssMinified() {
-        return this.cssContent.join('').replace(/\s+/g, ' ') // reduce any type of whitespace to a single space
-            .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1')
-            .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep... there is probably a better way to go about this, but this works
-            .replace(/;? }/g, '}') // remove space (and semicolon if present) preceding }
-            .replace(/ ?([;{}!,>]) ?| ([)])|([:(]) /g, '$1$2$3') // removes space before or after these chars
-            .replace(/(\b0)(?:\.0+)?(?:r?e[mx]|p[xtc]|[chm]{2}|in|v(?:h|w|min|max)|%)/gi, '$1') // remove units from 0 that are allowed to be omitted
-            .replace(/\b0(\.\d+)/g, '$1'); // remove any prefixed 0 from decimal values
-    }
+  getCssMinified() {
+    return this.cssContent.join('').replace(/\s+/g, ' ') // reduce any type of whitespace to a single space
+      .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1')
+      .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep... there is probably a better way to go about this, but this works
+      .replace(/;? }/g, '}') // remove space (and semicolon if present) preceding }
+      .replace(/ ?([;{}!,>]) ?| ([)])|([:(]) /g, '$1$2$3') // removes space before or after these chars
+      .replace(/(\b0)(?:\.0+)?(?:r?e[mx]|p[xtc]|[chm]{2}|in|v(?:h|w|min|max)|%)/gi, '$1') // remove units from 0 that are allowed to be omitted
+      .replace(/\b0(\.\d+)/g, '$1'); // remove any prefixed 0 from decimal values
+  }
 }
 
 module.exports = cssMinifier;

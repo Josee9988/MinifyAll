@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */ /* eslint-disable no-tabs */ /* eslint-disable indent */
+/* eslint-disable no-undef */
 const assert = require('assert');
 const vscode = require('vscode');
 const path = require('path');

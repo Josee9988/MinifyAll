@@ -8,26 +8,26 @@
  */
 class HexMinifier {
   /**
-     * Summary Minifier constructor that maps and trims the code.
-     *
-     * @access public
-     *
-     * @param {Array} cssContent all the code that will be modified
-     */
+   * Summary Minifier constructor that maps and trims the code.
+   *
+   * @access public
+   *
+   * @param {Array} cssContent all the code that will be modified
+   */
   constructor(cssContent) {
     this.cssContent = cssContent;
   }
 
   /**
-     * Summary shorts hexadecimal 6digits to 3 digits.
-     *
-     * Description shortHex function that checks every line of the original content,
-     * and looks for hexadecimal 6 digits and calls getShortHexColorCode
-     * for getting a 3 digit hexadecimal value; Then it replaces the
-     * original line with the shortened one.
-     *
-     * @access public
-     */
+   * Summary shorts hexadecimal 6digits to 3 digits.
+   *
+   * Description shortHex function that checks every line of the original content,
+   * and looks for hexadecimal 6 digits and calls getShortHexColorCode
+   * for getting a 3 digit hexadecimal value; Then it replaces the
+   * original line with the shortened one.
+   *
+   * @access public
+   */
   shortHexMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const hexadecimal = this.cssContent[i].match(/#[0-9a-fA-F]+/ig);
@@ -41,15 +41,15 @@ class HexMinifier {
   }
 
   /**
-     * Summary looks for rgb values and gets a 3digit hexadecimal values.
-     *
-     * Description shortRGBMain function that checks every line of the original content
-     * and looks for rgb values and calls rgbToShortHex
-     * for getting a 3 digit hexadecimal value;
-     * Then it replaces the original line with the shortened one.
-     *
-     * @access public
-     */
+   * Summary looks for rgb values and gets a 3digit hexadecimal values.
+   *
+   * Description shortRGBMain function that checks every line of the original content
+   * and looks for rgb values and calls rgbToShortHex
+   * for getting a 3 digit hexadecimal value;
+   * Then it replaces the original line with the shortened one.
+   *
+   * @access public
+   */
   shortRGBMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgb)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
@@ -64,15 +64,15 @@ class HexMinifier {
   }
 
   /**
-     * Summary rgba values to hexadecimal values.
-     *
-     * Description shortRGBAMain function that checks every line of the original content
-     * and looks for rgba values and calls rgba2hex
-     * for getting a 8 digit hexadecimal value;
-     * Then it replaces the original line with the shortened one.
-     *
-     * @access public
-     */
+   * Summary rgba values to hexadecimal values.
+   *
+   * Description shortRGBAMain function that checks every line of the original content
+   * and looks for rgba values and calls rgba2hex
+   * for getting a 8 digit hexadecimal value;
+   * Then it replaces the original line with the shortened one.
+   *
+   * @access public
+   */
   shortRGBAMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgba)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
@@ -81,7 +81,8 @@ class HexMinifier {
         const percent = rgbaString.match(/[%]/g);
         if (percent == null) {
           const result = this.rgba2hex(rgbaString);
-          const newShortString = this.cssContent[i].replace(rgbaString, result.toString().toUpperCase());
+          const newShortString = this.cssContent[i].replace(rgbaString,
+            result.toString().toUpperCase());
           this.cssContent[i] = newShortString;
         }
       }
@@ -89,26 +90,26 @@ class HexMinifier {
   }
 
   /**
-     * Summary from a rgba without transparency to a 8 digit hexadecimal value.
-     *
-     * Description rgba2hex function that receives a rgba non % based
-     * (without transparency) and transforms it into a hexadecimal
-     * 8 digit value.
-     *
-     * @param {*} rgba original rgba number
-     *
-     * @return {String} the hexadecimal value
-     *
-     * @access private
-     */
+   * Summary from a rgba without transparency to a 8 digit hexadecimal value.
+   *
+   * Description rgba2hex function that receives a rgba non % based
+   * (without transparency) and transforms it into a hexadecimal
+   * 8 digit value.
+   *
+   * @param {*} rgba original rgba number
+   *
+   * @return {String} the hexadecimal value
+   *
+   * @access private
+   */
   rgba2hex(rgba) {
     let a;
     const rgb = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i);
     const alpha = (rgb && rgb[4] || '').trim();
-    let hex = rgb
-      ? (rgb[1] | 1 << 8).toString(16).slice(1)
-            + (rgb[2] | 1 << 8).toString(16).slice(1)
-            + (rgb[3] | 1 << 8).toString(16).slice(1) : rgba;
+    let hex = rgb ?
+      (rgb[1] | 1 << 8).toString(16).slice(1) +
+      (rgb[2] | 1 << 8).toString(16).slice(1) +
+      (rgb[3] | 1 << 8).toString(16).slice(1) : rgba;
 
     if (alpha !== '') {
       a = alpha;
@@ -121,18 +122,18 @@ class HexMinifier {
   }
 
   /**
-     * Summary from a String with rgb to an
-     * object with red green and blue values.
-     *
-     * Description rgbArrayToObject receives a String with the
-     * rgb and turns it into an object with r, g, and b value.
-     *
-     * @access private
-     *
-     * @param {String} rgbString a string with the rgb and its values.
-     *
-     * @return {Object} rgb r g b integers result with the red, yellow and green.
-     */
+   * Summary from a String with rgb to an
+   * object with red green and blue values.
+   *
+   * Description rgbArrayToObject receives a String with the
+   * rgb and turns it into an object with r, g, and b value.
+   *
+   * @access private
+   *
+   * @param {String} rgbString a string with the rgb and its values.
+   *
+   * @return {Object} rgb r g b integers result with the red, yellow and green.
+   */
   rgbArrayToObject(rgbString) {
     const matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
     const match = matchColors.exec(rgbString);
@@ -144,35 +145,35 @@ class HexMinifier {
   }
 
   /**
-     * Summary from a 6 digit hexadecimal to a 3 digit hexadecimal.
-     *
-     * Description getShortHexColorCode receives the 6digit hex code
-     * calls the needed functions and returns a 3digit hex.
-     *
-     * @access private
-     *
-     * @param {String} code receives the 6digit hex code.
-     *
-     * @return {String} this.rgbToShortHex(rgb).
-     */
+   * Summary from a 6 digit hexadecimal to a 3 digit hexadecimal.
+   *
+   * Description getShortHexColorCode receives the 6digit hex code
+   * calls the needed functions and returns a 3digit hex.
+   *
+   * @access private
+   *
+   * @param {String} code receives the 6digit hex code.
+   *
+   * @return {String} this.rgbToShortHex(rgb).
+   */
   getShortHexColorCode(code) {
     const rgb = this.hexToRgb(code);
     return this.rgbToShortHex(rgb).toUpperCase();
   }
 
   /**
-     * Summary from a String with and hexadecimal to an object with
-     * red green and blue values.
-     *
-     * Description hexToRgb receives a String with an hexadecimal value
-     * and returns red green and blue values.
-     *
-     * @access private
-     *
-     * @param {String} hex the hexadecimal value.
-     *
-     * @return {Object} r g b integers result with the red, yellow and green.
-     */
+   * Summary from a String with and hexadecimal to an object with
+   * red green and blue values.
+   *
+   * Description hexToRgb receives a String with an hexadecimal value
+   * and returns red green and blue values.
+   *
+   * @access private
+   *
+   * @param {String} hex the hexadecimal value.
+   *
+   * @return {Object} r g b integers result with the red, yellow and green.
+   */
   hexToRgb(hex) {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
@@ -185,18 +186,18 @@ class HexMinifier {
   }
 
   /**
-     * Summary from an object with r,g,b values to 3 digit hex
-     *
-     * Description rgbToShortHex receives an object with red green and blue values
-     * then it shorts red green and blue into just one number
-     * and it will finally get a 3 digit hex.
-     *
-     * @access private
-     *
-     * @param {Object} rgb object with red, green and blue values.
-     *
-     * @return {String} with the 3 digit hex value.
-     */
+   * Summary from an object with r,g,b values to 3 digit hex
+   *
+   * Description rgbToShortHex receives an object with red green and blue values
+   * then it shorts red green and blue into just one number
+   * and it will finally get a 3 digit hex.
+   *
+   * @access private
+   *
+   * @param {Object} rgb object with red, green and blue values.
+   *
+   * @return {String} with the 3 digit hex value.
+   */
   rgbToShortHex(rgb) {
     const hexR = Math.round(rgb.r / 17).toString(16);
     const hexG = Math.round(rgb.g / 17).toString(16);
@@ -205,12 +206,12 @@ class HexMinifier {
   }
 
   /**
-     * Summary getHexMinified returns the content with the hex minified.
-     *
-     * @access public
-     *
-     * @return {Array} the lines minified.
-     */
+   * Summary getHexMinified returns the content with the hex minified.
+   *
+   * @access public
+   *
+   * @return {Array} the lines minified.
+   */
   getHexMinified() {
     return this.cssContent;
   }

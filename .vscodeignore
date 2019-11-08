@@ -1,13 +1,13 @@
 #Full folders ignored.
 .vscode/**
 .github/**
+test/**
 
 #Root files ignored.
 **/jsconfig.json
 **/*.map
 **/.eslintrc.json
 **/.all-contributorsrc
-**/test
 
 #Screenshots folder.Screenshots/**
 Screenshots/Preview.gif

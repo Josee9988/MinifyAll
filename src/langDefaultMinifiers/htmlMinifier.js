@@ -70,7 +70,8 @@ class htmlMinifier {
                 this.htmlContent[k] = firstLineToReplace;
               } else if (k == j) {
                 const lastCharacterToRemove = this.htmlContent[k].indexOf('-->');
-                const lastLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2, this.htmlContent[k].length);
+                const lastLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2,
+                  this.htmlContent[k].length);
                 this.htmlContent[k] = lastLineToReplace;
               } else {
                 this.htmlContent[k] = '';

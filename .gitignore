@@ -1,7 +1,2 @@
-# Full folfers ignored
+# Full folders ignored
 node_modules/
-.vscode/
-
-# Files ignored
-.eslintrc.js
-.eslintrc.json
