@@ -231,7 +231,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.12.6",
-		"@types/vscode": "^1.40.0",
+		"@types/vscode": "^1.39.0",
 		"eslint": "^6.6.0",
 		"eslint-config-airbnb-base": "^14.0.0",
 		"eslint-plugin-import": "^2.18.2",
