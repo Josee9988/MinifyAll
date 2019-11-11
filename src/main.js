@@ -44,6 +44,7 @@ const {
 const FileSaver = require('fs');
 const vscode = require('vscode');
 const commentRemover = require('./utilities/commentRemover');
+const globalMinify = require('./utilities/globalMinifiers');
 
 let originalFilepath;
 let originalSize;
@@ -52,7 +53,7 @@ let timeSpend;
 let startTime;
 let statusReady;
 let oc;
-let HexMinifier;
+
 
 // Getting user configuration.
 const userMinifyAllSettings = vscode.workspace.getConfiguration('MinifyAll');
@@ -79,19 +80,20 @@ const disableTypescript = userMinifyAllSettings.get('disableTypescript');
 if (minifyOnSave) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll'));
 }
+
 if (minifyOnSaveToNewFile) {
 	vscode.workspace.onDidSaveTextDocument(() => commands.executeCommand('extension.MinifyAll2OtherDoc'));
 }
 
 // If the user has hexadecimal shortener enabled it will import it.
-if (!hexDisabled) {
-	HexMinifier = require('./utilities/hexMinifier.js');
-}
+const HexMinifier = !hexDisabled ? require('./utilities/hexMinifier.js') : null;
 
 // If the user has the statusBar output enabled it will register the command.
 if (!statusDisabled) {
 	vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
 }
+
+const globalMinifiers = new globalMinify(HexMinifier, commentRemover);
 
 /**
  * Summary main method that is executed when the user calls
@@ -139,7 +141,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'scss' && !disableScss) ||
 					(window.activeTextEditor.document.languageId === 'less' && !disableLess) ||
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
-					const modifiedCssText = minifyCssScssLessSass(document.getText().split('\n'));
+					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedCssText);
 				} else {
@@ -152,7 +154,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const modifiedJsonText = minifyJsonJsonc(document.getText().split('\n'));
+					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedJsonText);
 				} else {
@@ -161,9 +163,11 @@ function activate(context) {
 				break;
 
 			case 'html':
+			case 'php':
 
-				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
-					const modifiedHtmlText = minifyHtml(document.getText().split('\n'));
+				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml) ||
+					(window.activeTextEditor.document.languageId === 'php')) {
+					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedHtmlText);
 				} else {
@@ -231,7 +235,7 @@ function activate(context) {
 					const path2NewFile = getNewFilePath(path,
 						fileName, window.activeTextEditor.document.languageId);
 
-					const modifiedCssText = minifyCssScssLessSass(document.getText().split('\n'));
+					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
@@ -248,7 +252,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
 					const path2NewFile = getNewFilePath(path, fileName, 'json');
 
-					const modifiedJsonText = minifyJsonJsonc(document.getText().split('\n'));
+					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText);
 
@@ -259,12 +263,14 @@ function activate(context) {
 				break;
 
 			case 'html':
+			case 'php':
 
-				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
+				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml) ||
+					(window.activeTextEditor.document.languageId === 'php')) {
 					const path2NewFile = getNewFilePath(path,
 						fileName, window.activeTextEditor.document.languageId);
 
-					const modifiedHtmlText = minifyHtml(document.getText().split('\n'));
+					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText);
 
@@ -334,7 +340,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'sass' && !disableSass)) {
 								const newName = path.basename(fileUri.path).replace('.css', '-min.css');
 								const path2NewFile = path.join(filePath, newName);
-								const modifiedCssText = minifyCssScssLessSass(data.split('\n'));
+								const modifiedCssText = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
@@ -351,7 +357,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'jsonc' && !disableJsonc)) {
 								const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
 								const path2NewFileJson = path.join(filePath, newNameJson);
-								const modifiedJsonText = minifyJsonJsonc(data.split('\n'));
+								const modifiedJsonText = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
 
@@ -362,12 +368,14 @@ function activate(context) {
 							break;
 
 						case 'html':
+						case 'php':
 
-							if ((fileUri.path.split('.').pop() === 'html' && !disableHtml)) {
+							if ((fileUri.path.split('.').pop() === 'html' && !disableHtml) ||
+								(fileUri.path.split('.').pop() === 'php')) {
 								const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
 								const path2NewFileHtml = path.join(filePath, newNameHtml);
 
-								const modifiedHtmlText = minifyHtml(data.split('\n'));
+								const modifiedHtmlText = globalMinifiers.minifyHtml(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
 
@@ -436,7 +444,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'scss' && !disableScss) ||
 					(window.activeTextEditor.document.languageId === 'less' && !disableLess) ||
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
-					const modifiedCssText = minifyCssScssLessSass(selectedText.split('\n'));
+					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedCssText);
 				} else {
@@ -449,7 +457,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const modifiedJsonText = minifyJsonJsonc(selectedText.split('\n'));
+					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedJsonText);
 				} else {
@@ -458,9 +466,11 @@ function activate(context) {
 				break;
 
 			case 'html':
+			case 'php':
 
-				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
-					const modifiedHtmlText = minifyHtml(selectedText.split('\n'));
+				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml) ||
+					(window.activeTextEditor.document.languageId === 'php')) {
+					const modifiedHtmlText = globalMinifiers.minifyHtml(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedHtmlText);
 				} else {
@@ -595,39 +605,6 @@ function statusBarInfo() {
 	oc.show();
 }
 
-/**
- * Summary minifies hexadecimal code if enabled.
- *
- * Description receives an array with all the content,
- * and minifies it's hexadecimal, rgb and rgba values;
- * then return the new array;
- * If it is enabled it will initialize the HexMinifier
- * class and it will make all the processes and return
- * the new array of values OR it will simply return the
- * received value and do nothing.
- *
- * @access private
- *
- * @param {Array} Content Array with all the lines to be hexMinified.
- *
- * @return {Array} with the colors minified.
- */
-function HexMinify(Content) {
-	let MinifierHex;
-	let returnValue;
-
-	if (!hexDisabled) {
-		MinifierHex = new HexMinifier(Content);
-		// Minifier methods
-		MinifierHex.shortHexMain();
-		MinifierHex.shortRGBMain();
-		MinifierHex.shortRGBAMain();
-		returnValue = MinifierHex.getHexMinified();
-	} else {
-		returnValue = Content;
-	}
-	return returnValue;
-}
 
 /**
  * Summary gets the actual code and replaces it with the minified one.
@@ -701,22 +678,6 @@ function minifiedTextToNewFile(path2NewFile, modifiedText) {
 	});
 }
 
-/**
- * Summary it removes the comments from a class.
- *
- * Description removeComments receives an array with the content
- * and removes single line and multiple line comments (//)(/* * /)
- * by calling the class removeComments and calling the method
- * removeCommentsMain, Then gets the result with getLineRemoved.
- *
- * @access private
- * @param {Array} content All the content to remove the comments
- */
-function removeComments(content) {
-	const RemoveComments = new commentRemover(content);
-	RemoveComments.removeCommentsMain();
-	return RemoveComments.getCommentsRemoved();
-}
 
 /**
  * Summary it shows a warning or information message.
@@ -765,44 +726,6 @@ function getNewFilePath(path, fileName, extensionWithOutDot) {
 
 
 /**
- * Summary Function that does all the steps to minify all the css code.
- * @param {Array} cssContent css array to be minified.
- * @return {string} string with all the code minified.
- */
-function minifyCssScssLessSass(cssContent) {
-	const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-	const RemoveComments = removeComments(cssContent);
-	const hexMinifiedCss = HexMinify(RemoveComments);
-	const minifierCss = new cssMinifier(hexMinifiedCss);
-	return minifierCss.getCssMinified();
-}
-
-/**
- * Summary Function that does all the steps to minify all the json code.
- * @param {Array} jsonContent css array to be minified.
- * @return {string} string with all the code minified.
- */
-function minifyJsonJsonc(jsonContent) {
-	const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-	const contentWithHexMinified = HexMinify(jsonContent);
-	const RemoveComments = removeComments(contentWithHexMinified);
-	const minifierJson = new jsonMinifier(RemoveComments);
-	return minifierJson.getJSONMinified();
-}
-
-/**
- * Summary Function that does all the steps to minify all the html code.
- * @param {Array} htmlContent css array to be minified.
- * @return {string} string with all the code minified.
- */
-function minifyHtml(htmlContent) {
-	const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-	const minifierHtml = new htmlMinifier(htmlContent);
-	minifierHtml.removeMultipleLineComments();
-	return minifierHtml.getHtmlMinified();
-}
-
-/**
  * Summary a function that is called by vscode to deactivate the extension.
  *
  * Description function that is called when the extension is deactivated
@@ -818,5 +741,4 @@ exports.activate = activate;
 exports.deactivate = deactivate;
 // Exports for tests.
 exports.getNewFilePath = getNewFilePath;
-exports.removeComments = removeComments;
 exports.transformSize = transformSize;

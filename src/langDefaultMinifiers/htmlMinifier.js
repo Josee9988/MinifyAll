@@ -41,7 +41,8 @@ class htmlMinifier {
       .replace(/ {/g, '{')
       .replace(/[\t]/g, '')
       .replace(/\s{2}/g, '')
-      .replace(/(>)\1+/g, '>');
+      .replace(/(>)\1+/g, '>')
+      .replace(/"\s/igm, '"');
   }
 
 

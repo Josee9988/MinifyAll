@@ -7,6 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.7.0**] - 2019-11-11
+
+### Added
+
+* Three new tests for the new file src/utilities/globalMinifiers.js, there is now a total of 9 tests.
+
+### Changed
+
+* Improved main.js readability by creating the file src/utilities/globalMinifiers.js which contains the main methods to minify.
+* Example in the readme.md file of how the extension minifies HTML, because now it works even better.
+
+### Fixed
+
+* Mistake that made html not minify '" ' into a simple '"'.
+
 ## [**1.6.5**] - 2019-11-11
 
 ### Changed

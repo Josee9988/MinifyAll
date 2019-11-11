@@ -344,13 +344,13 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ```html
 <!DOCTYPE html>
-<html lang='es'>
+<html lang="es">
 
 <head>
     <title></title>
-    <meta charset='utf-8'>
-    <link rel='stylesheet' href=''>
-    <script type='text/javascript' src=''></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="">
+    <script type="text/javascript' src=""></script>
     <!-- test -->
 </head>
 
@@ -366,7 +366,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 *To:*
 
 ```html
-<!DOCTYPE html><html lang='es'><head><title></title><meta charset='utf-8'><link rel='stylesheet' href=''><script type='text/javascript' src=''></script></head><body></body></html>
+<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet"href=""><script type="text/javascript"src=""></script></head><body></body></html>
 ```
 
 - Only one line.
