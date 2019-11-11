@@ -8,8 +8,9 @@ test/**
 **/*.map
 **/.eslintrc.json
 **/.all-contributorsrc
+**/.gitignore
 
-#Screenshots folder.Screenshots/**
+#Screenshots folder.
 Screenshots/Preview.gif
 Screenshots/Preview2ndcommand.gif
 Screenshots/RightClickMenu.gif
@@ -20,3 +21,8 @@ Screenshots/output.png
 Screenshots/rawIcon.png
 Screenshots/RightClick.png
 Screenshots/SelectedText.gif
+
+#Src folder
+src/README.md
+src/utilities/README.md
+src/langDefaultMinifiers/README.md

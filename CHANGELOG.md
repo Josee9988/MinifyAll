@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.7.1**] - 2019-11-11
+
+### Added
+
+* More tests. Up to 18 total tests.
+* src/readmeS.md files in the .vscodeignore file to make the user download less files.
+
 ## [**1.7.0**] - 2019-11-11
 
 ### Added
