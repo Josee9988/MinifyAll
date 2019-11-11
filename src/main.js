@@ -139,16 +139,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'scss' && !disableScss) ||
 					(window.activeTextEditor.document.languageId === 'less' && !disableLess) ||
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
-					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-					const cssContent = document.getText().split('\n');
-
-					const RemoveComments = removeComments(cssContent);
-
-					const hexMinifiedCss = HexMinify(RemoveComments);
-
-					const minifierCss = new cssMinifier(hexMinifiedCss);
-
-					const modifiedCssText = minifierCss.getCssMinified();
+					const modifiedCssText = minifyCssScssLessSass(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedCssText);
 				} else {
@@ -161,16 +152,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-					const jsonContent = document.getText().split('\n');
-
-					const contentWithHexMinified = HexMinify(jsonContent);
-
-					const RemoveComments = removeComments(contentWithHexMinified);
-
-					const minifierJson = new jsonMinifier(RemoveComments);
-
-					const modifiedJsonText = minifierJson.getJSONMinified();
+					const modifiedJsonText = minifyJsonJsonc(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedJsonText);
 				} else {
@@ -181,14 +163,7 @@ function activate(context) {
 			case 'html':
 
 				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
-					const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-					const htmlContent = document.getText().split('\n');
-
-					const minifierHtml = new htmlMinifier(htmlContent);
-
-					minifierHtml.removeMultipleLineComments();
-
-					const modifiedHtmlText = minifierHtml.getHtmlMinified();
+					const modifiedHtmlText = minifyHtml(document.getText().split('\n'));
 
 					timeSpend = replaceActualCodeAndGetTime(modifiedHtmlText);
 				} else {
@@ -255,16 +230,8 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
 					const path2NewFile = getNewFilePath(path,
 						fileName, window.activeTextEditor.document.languageId);
-					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-					const cssContent = document.getText().split('\n');
 
-					const RemoveComments = removeComments(cssContent);
-
-					const hexMinifiedCss = HexMinify(RemoveComments);
-
-					const minifierCss = new cssMinifier(hexMinifiedCss);
-
-					const modifiedCssText = minifierCss.getCssMinified();
+					const modifiedCssText = minifyCssScssLessSass(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
@@ -279,18 +246,9 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const path2NewFile = getNewFilePath(path,
-						fileName, window.activeTextEditor.document.languageId);
-					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-					const jsonContent = document.getText().split('\n');
+					const path2NewFile = getNewFilePath(path, fileName, 'json');
 
-					const contentWithHexMinified = HexMinify(jsonContent);
-
-					const RemoveComments = removeComments(contentWithHexMinified);
-
-					const minifierJson = new jsonMinifier(RemoveComments);
-
-					const modifiedJsonText = minifierJson.getJSONMinified();
+					const modifiedJsonText = minifyJsonJsonc(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText);
 
@@ -305,14 +263,8 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
 					const path2NewFile = getNewFilePath(path,
 						fileName, window.activeTextEditor.document.languageId);
-					const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-					const htmlContent = document.getText().split('\n');
 
-					const minifierHtml = new htmlMinifier(htmlContent);
-
-					minifierHtml.removeMultipleLineComments();
-
-					const modifiedHtmlText = minifierHtml.getHtmlMinified();
+					const modifiedHtmlText = minifyHtml(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText);
 
@@ -382,16 +334,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'sass' && !disableSass)) {
 								const newName = path.basename(fileUri.path).replace('.css', '-min.css');
 								const path2NewFile = path.join(filePath, newName);
-								const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-								const cssContent = data.split('\n');
-
-								const RemoveComments = removeComments(cssContent);
-
-								const hexMinifiedCss = HexMinify(RemoveComments);
-
-								const minifierCss = new cssMinifier(hexMinifiedCss);
-
-								const modifiedCssText = minifierCss.getCssMinified();
+								const modifiedCssText = minifyCssScssLessSass(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFile, modifiedCssText);
 
@@ -408,16 +351,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'jsonc' && !disableJsonc)) {
 								const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
 								const path2NewFileJson = path.join(filePath, newNameJson);
-								const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-								const jsonContent = data.split('\n');
-
-								const contentWithHexMinified = HexMinify(jsonContent);
-
-								const RemoveComments = removeComments(contentWithHexMinified);
-
-								const minifierJson = new jsonMinifier(RemoveComments);
-
-								const modifiedJsonText = minifierJson.getJSONMinified();
+								const modifiedJsonText = minifyJsonJsonc(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
 
@@ -432,14 +366,8 @@ function activate(context) {
 							if ((fileUri.path.split('.').pop() === 'html' && !disableHtml)) {
 								const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
 								const path2NewFileHtml = path.join(filePath, newNameHtml);
-								const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-								const htmlContent = data.split('\n');
 
-								const minifierHtml = new htmlMinifier(htmlContent);
-
-								minifierHtml.removeMultipleLineComments();
-
-								const modifiedHtmlText = minifierHtml.getHtmlMinified();
+								const modifiedHtmlText = minifyHtml(data.split('\n'));
 
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
 
@@ -508,16 +436,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'scss' && !disableScss) ||
 					(window.activeTextEditor.document.languageId === 'less' && !disableLess) ||
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
-					const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
-					const cssContent = selectedText.split('\n');
-
-					const RemoveComments = removeComments(cssContent);
-
-					const hexMinifiedCss = HexMinify(RemoveComments);
-
-					const minifierCss = new cssMinifier(hexMinifiedCss);
-
-					const modifiedCssText = minifierCss.getCssMinified();
+					const modifiedCssText = minifyCssScssLessSass(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedCssText);
 				} else {
@@ -530,16 +449,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
-					const jsonContent = selectedText.split('\n');
-
-					const contentWithHexMinified = HexMinify(jsonContent);
-
-					const RemoveComments = removeComments(contentWithHexMinified);
-
-					const minifierJson = new jsonMinifier(RemoveComments);
-
-					const modifiedJsonText = minifierJson.getJSONMinified();
+					const modifiedJsonText = minifyJsonJsonc(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedJsonText);
 				} else {
@@ -550,14 +460,7 @@ function activate(context) {
 			case 'html':
 
 				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml)) {
-					const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
-					const htmlContent = selectedText.split('\n');
-
-					const minifierHtml = new htmlMinifier(htmlContent);
-
-					minifierHtml.removeMultipleLineComments();
-
-					const modifiedHtmlText = minifierHtml.getHtmlMinified();
+					const modifiedHtmlText = minifyHtml(selectedText.split('\n'));
 
 					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedHtmlText);
 				} else {
@@ -858,6 +761,45 @@ function getNewFilePath(path, fileName, extensionWithOutDot) {
 	const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `-min.${extensionWithOutDot}`);
 	const path2NewFile = path.join(filePath, newName);
 	return path2NewFile;
+}
+
+
+/**
+ * Summary Function that does all the steps to minify all the css code.
+ * @param {Array} cssContent css array to be minified.
+ * @return {string} string with all the code minified.
+ */
+function minifyCssScssLessSass(cssContent) {
+	const cssMinifier = require('./langDefaultMinifiers/cssMinifier.js');
+	const RemoveComments = removeComments(cssContent);
+	const hexMinifiedCss = HexMinify(RemoveComments);
+	const minifierCss = new cssMinifier(hexMinifiedCss);
+	return minifierCss.getCssMinified();
+}
+
+/**
+ * Summary Function that does all the steps to minify all the json code.
+ * @param {Array} jsonContent css array to be minified.
+ * @return {string} string with all the code minified.
+ */
+function minifyJsonJsonc(jsonContent) {
+	const jsonMinifier = require('./langDefaultMinifiers/jsonMinifier.js');
+	const contentWithHexMinified = HexMinify(jsonContent);
+	const RemoveComments = removeComments(contentWithHexMinified);
+	const minifierJson = new jsonMinifier(RemoveComments);
+	return minifierJson.getJSONMinified();
+}
+
+/**
+ * Summary Function that does all the steps to minify all the html code.
+ * @param {Array} htmlContent css array to be minified.
+ * @return {string} string with all the code minified.
+ */
+function minifyHtml(htmlContent) {
+	const htmlMinifier = require('./langDefaultMinifiers/htmlMinifier.js');
+	const minifierHtml = new htmlMinifier(htmlContent);
+	minifierHtml.removeMultipleLineComments();
+	return minifierHtml.getHtmlMinified();
 }
 
 /**
