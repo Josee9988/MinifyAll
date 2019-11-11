@@ -74,6 +74,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 - **CSS**
 - **HTML**
+- **HTML in a PHP file**
 - **JSON**
 - **JavaScript** With: [Terser](https://github.com/terser/terser)
 - **TypeScript** With: [Terser](https://github.com/terser/terser)

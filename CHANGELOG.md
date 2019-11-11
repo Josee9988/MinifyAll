@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Three new tests for the new file src/utilities/globalMinifiers.js, there is now a total of 9 tests.
+* Support for minifying HTML in a PHP file.
 
 ### Changed
 
