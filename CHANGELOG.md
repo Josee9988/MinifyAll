@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.7.2**] - 2019-11-25
+
+### Fixed
+
+* Welcome to the new version, we just made it easy for you, by hiding the commands in the right-click menu and only enabling them when you are in the right file types!
+* Command MinifyAllSelectedText, will only show in the enabled types + PHP, as featured in early versions.
+
 ## [**1.7.1**] - 2019-11-11
 
 ### Added

@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, Typescript(testing), and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "1.7.1",
+	"version": "1.7.2",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -58,9 +58,6 @@
 		"url": "https://github.com/Josee9988/MinifyAll.git"
 	},
 	"activationEvents": [
-		"onCommand:extension.MinifyAll",
-		"onCommand:extension.MinifyAll2OtherDoc",
-		"onCommand:extension.MinifyAllSelectedText",
 		"*"
 	],
 	"main": "./src/main.js",
@@ -218,6 +215,7 @@
 				},
 				{
 					"command": "extension.MinifyAllSelectedText",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == php",
 					"group": "MinifyAll"
 				}
 			],
@@ -225,7 +223,7 @@
 				"command": "extension.MinifyAll2OtherDocSelected",
 				"group": "MinifyAll"
 			}]
-		}
+		},
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
