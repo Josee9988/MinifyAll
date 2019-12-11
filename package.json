@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, Typescript(testing), and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "1.7.2",
+	"version": "1.8.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -172,7 +172,7 @@
 				},
 				"MinifyAll.disableJavascript": {
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"description": "If you want MinifyAll to stop minimizing JavaScript. (True for disabling)"
 				},
 				"MinifyAll.disableJavascriptReact": {
@@ -199,6 +199,23 @@
 					"type": "boolean",
 					"default": false,
 					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling)"
+				},
+				"MinifyAll.PrefixOfNewMinifiedFiles": {
+					"type": "string",
+					"default": "-min",
+					"enum": [
+						"-min",
+						".min",
+						"minified-",
+						".minified"
+					],
+					"enumDescriptions": [
+						"Sets the future filename to example-min.extension",
+						"Sets the future filename to example.min.extension",
+						"Sets the future filename to example-minified.extension",
+						"Sets the future filename to example.minified.extension"
+					],
+					"description": "The orefix of the extension of the new file. Default -min"
 				}
 			}
 		},

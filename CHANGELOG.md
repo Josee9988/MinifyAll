@@ -7,6 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+[UNRELEASED]
+
+### Changed
+
+* All the settings are located into a single variable.
+* Code is more structurated and improved readability.
+
+## [**1.8.0**] - 2019-12-11
+
+### Added
+
+* Created new setting PrefixOfNewMinifiedFiles, that indicates the prefix of the new file created. (-min or .min) etc.
+
+### Changed
+
+* The extension now enables JavaScript by default.
+
 ## [**1.7.2**] - 2019-11-25
 
 ### Fixed

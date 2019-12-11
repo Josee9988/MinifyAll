@@ -74,6 +74,7 @@ const minifyOnSaveToNewFile = userMinifyAllSettings.get('minifyOnSaveToNewFIle')
 const disableJavascript = userMinifyAllSettings.get('disableJavascript');
 const disableJavascriptReact = userMinifyAllSettings.get('disableJavascriptReact');
 const disableTypescript = userMinifyAllSettings.get('disableTypescript');
+const prefix = userMinifyAllSettings.get('PrefixOfNewMinifiedFiles');
 
 
 // If the user has selected to minify its code when saving.
@@ -233,7 +234,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'less' && !disableLess) ||
 					(window.activeTextEditor.document.languageId === 'sass' && !disableSass)) {
 					const path2NewFile = getNewFilePath(path,
-						fileName, window.activeTextEditor.document.languageId);
+						fileName, window.activeTextEditor.document.languageId, prefix);
 
 					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
@@ -250,7 +251,7 @@ function activate(context) {
 
 				if ((window.activeTextEditor.document.languageId === 'json' && !disableJson) ||
 					(window.activeTextEditor.document.languageId === 'jsonc' && !disableJsonc)) {
-					const path2NewFile = getNewFilePath(path, fileName, 'json');
+					const path2NewFile = getNewFilePath(path, fileName, 'json', prefix);
 
 					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
@@ -268,7 +269,7 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId === 'html' && !disableHtml) ||
 					(window.activeTextEditor.document.languageId === 'php')) {
 					const path2NewFile = getNewFilePath(path,
-						fileName, window.activeTextEditor.document.languageId);
+						fileName, window.activeTextEditor.document.languageId, prefix);
 
 					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
@@ -287,7 +288,7 @@ function activate(context) {
 				if ((window.activeTextEditor.document.languageId === 'javascript' && !disableJavascript) ||
 					(window.activeTextEditor.document.languageId === 'javascriptreact' && !disableJavascriptReact) ||
 					(window.activeTextEditor.document.languageId === 'typescript' && !disableTypescript)) {
-					const path2NewFile = getNewFilePath(path, fileName, 'js');
+					const path2NewFile = getNewFilePath(path, fileName, 'js', prefix);
 					const Terser = require('terser');
 					const jsContent = document.getText();
 
@@ -338,7 +339,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'scss' && !disableScss) ||
 								(fileUri.path.split('.').pop() === 'less' && !disableLess) ||
 								(fileUri.path.split('.').pop() === 'sass' && !disableSass)) {
-								const newName = path.basename(fileUri.path).replace('.css', '-min.css');
+								const newName = path.basename(fileUri.path).replace('.css', prefix + '.css');
 								const path2NewFile = path.join(filePath, newName);
 								const modifiedCssText = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
 
@@ -355,7 +356,7 @@ function activate(context) {
 
 							if ((fileUri.path.split('.').pop() === 'json' && !disableJson) ||
 								(fileUri.path.split('.').pop() === 'jsonc' && !disableJsonc)) {
-								const newNameJson = path.basename(fileUri.path).replace('.json', '-min.json');
+								const newNameJson = path.basename(fileUri.path).replace('.json', prefix + '.json');
 								const path2NewFileJson = path.join(filePath, newNameJson);
 								const modifiedJsonText = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 
@@ -372,7 +373,7 @@ function activate(context) {
 
 							if ((fileUri.path.split('.').pop() === 'html' && !disableHtml) ||
 								(fileUri.path.split('.').pop() === 'php')) {
-								const newNameHtml = path.basename(fileUri.path).replace('.html', '-min.html');
+								const newNameHtml = path.basename(fileUri.path).replace('.html', prefix + '.html');
 								const path2NewFileHtml = path.join(filePath, newNameHtml);
 
 								const modifiedHtmlText = globalMinifiers.minifyHtml(data.split('\n'));
@@ -393,7 +394,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'javascriptreact' && !disableJavascriptReact) ||
 								(fileUri.path.split('.').pop() === 'typescript' && !disableTypescript)) {
 								const Terser = require('terser');
-								const newNameJs = path.basename(fileUri.path).replace('.js', '-min.js');
+								const newNameJs = path.basename(fileUri.path).replace('.js', prefix + '.js');
 								const path2NewFileJs = path.join(filePath, newNameJs);
 								const jsContent = data;
 
@@ -717,9 +718,9 @@ function showMessage(text, warning) {
  * @return {String} path2NewFile the path to the new file which will have
  * the minified code.
  */
-function getNewFilePath(path, fileName, extensionWithOutDot) {
+function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min') {
 	const filePath = path.dirname(fileName);
-	const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `-min.${extensionWithOutDot}`);
+	const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `${prefixUsed}.${extensionWithOutDot}`);
 	const path2NewFile = path.join(filePath, newName);
 	return path2NewFile;
 }

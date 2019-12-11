@@ -135,6 +135,12 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.minifyOnSaveToNewFIle": true|false //default 'false' (by default it is enabled)
 ```
 
+- Prefix of the new minified file from the command that minifies to other doc.
+
+``` json
+"MinifyAll.PrefixOfNewMinifiedFiles": '-min'|'.min'|'-minified'|'.minified' //default '-min'
+```
+
 ### **Disabling languages configuration**
 
 - Disables **html** minimization
@@ -182,7 +188,7 @@ Check our **[changelog](CHANGELOG.md)**.
 - Disables **JavaScript** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascript": true|false //default 'true' (by default it is disabled)
+"MinifyAll.disableJavascript": true|false //default 'false' (by default it is enabled)
 ```
 
 - Disables **JavaScriptReact** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
