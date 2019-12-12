@@ -26,7 +26,7 @@ class GlobalMinifiers {
      * @return {string} string with all the code minified.
      */
     minifyCssScssLessSass(cssContent) {
-        const CssMinifier = require('./../langDefaultMinifiers/cssMinifier.js');
+        const CssMinifier = require('../langDefaultMinifiers/cssMinifier.js');
         const RemoveComments = this.removeComments(cssContent);
         const hexMinifiedCss = this.HexMinify(RemoveComments);
         const minifierCss = new CssMinifier(hexMinifiedCss);
@@ -39,7 +39,7 @@ class GlobalMinifiers {
      * @return {string} string with all the code minified.
      */
     minifyJsonJsonc(jsonContent) {
-        const JsonMinifier = require('./../langDefaultMinifiers/jsonMinifier.js');
+        const JsonMinifier = require('../langDefaultMinifiers/jsonMinifier.js');
         const contentWithHexMinified = this.HexMinify(jsonContent);
         const RemoveComments = this.removeComments(contentWithHexMinified);
         const minifierJson = new JsonMinifier(RemoveComments);
@@ -52,7 +52,7 @@ class GlobalMinifiers {
      * @return {string} string with all the code minified.
      */
     minifyHtml(htmlContent) {
-        const HtmlMinifier = require('./../langDefaultMinifiers/htmlMinifier.js');
+        const HtmlMinifier = require('../langDefaultMinifiers/htmlMinifier.js');
         const minifierHtml = new HtmlMinifier(htmlContent);
         minifierHtml.removeMultipleLineComments();
         return minifierHtml.getHtmlMinified();

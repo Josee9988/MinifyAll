@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * All the settings are located into a single variable.
 * Code is more structurated and improved readability.
+* Utilities folder is now called controller as it should have been.
 
 ## [**1.8.0**] - 2019-12-11
 

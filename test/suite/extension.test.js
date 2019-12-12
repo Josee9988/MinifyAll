@@ -14,9 +14,9 @@ const assert = require('assert');
 const vscode = require('vscode');
 const path = require('path');
 const MinifyAll = require('../../src/main');
-const GlobalMinify = require('./../../src/utilities/globalMinifiers');
-const globalMinifiers = new GlobalMinify(require('./../../src/utilities/hexMinifier.js'), require('./../../src/utilities/commentRemover'));
-const HexMinifier = require('../../src/utilities/hexMinifier.js');
+const GlobalMinify = require('../../src/controller/globalMinifiers');
+const globalMinifiers = new GlobalMinify(require('../../src/controller/hexMinifier.js.js'), require('../../src/controller/commentRemover'));
+const HexMinifier = require('../../src/controller/hexMinifier.js.js');
 const CssMinifier = require('../../src/langDefaultMinifiers/cssMinifier');
 const HtmlMinifier = require('../../src/langDefaultMinifiers/htmlMinifier');
 const JsonMinifier = require('../../src/langDefaultMinifiers/jsonMinifier');
@@ -76,7 +76,7 @@ suite('MinifyAll Test Suite', () => {
 	}));
 
 
-	test('CSS main Minify (/utilities/globalMinifiers.js)', () => {
+	test('CSS main Minify (/controller/globalMinifiers.js)', () => {
 		const result = globalMinifiers.minifyCssScssLessSass(
 			[
 				'@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");',
@@ -109,7 +109,7 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 
-	test('HTML main Minify (/utilities/globalMinifiers.js)', () => {
+	test('HTML main Minify (/controller/globalMinifiers.js)', () => {
 		const result = globalMinifiers.minifyHtml(
 			[
 				'<div class="parallax">',
@@ -128,7 +128,7 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 
-	test('JSON main Minify (/utilities/globalMinifiers.js)', () => {
+	test('JSON main Minify (/controller/globalMinifiers.js)', () => {
 		const result = globalMinifiers.minifyJsonJsonc(
 			[
 				'"tokenColors": [',
@@ -150,7 +150,7 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 
-	test('Hexadecimal Minify (utilities/hexMinifier.js)', () => {
+	test('Hexadecimal Minify (controller/hexMinifier.js)', () => {
 		const MinifierHex = new HexMinifier(
 			['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;'],
 		);
