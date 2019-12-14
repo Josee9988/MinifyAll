@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033-->
 # **MinifyAll an extension for VSCode**
 
 VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**, **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
@@ -139,6 +140,12 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ``` json
 "MinifyAll.PrefixOfNewMinifiedFiles": '-min'|'.min'|'-minified'|'.minified' //default '-min'
+```
+
+- If you want MinifyAll to open the new minified document after you minify. (False for not opening it every time you create a minified file).
+
+``` json
+"MinifyAll.openMinifiedDocument": true|false //default 'true'
 ```
 
 ### **Disabling languages configuration**

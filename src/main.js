@@ -47,13 +47,11 @@ const commentRemover = require('./controller/commentRemover');
 const globalMinify = require('./controller/globalMinifiers');
 const getUserSettings = require('./controller/getConfiguration');
 
-let originalFilepath;
 let originalSize;
 let statusBarItem;
 let timeSpend;
 let startTime;
 let statusReady;
-let oc;
 
 const settings = getUserSettings.getUserSettings();
 
@@ -105,7 +103,7 @@ function activate(context) {
 		vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
 		startTime = new Date().getTime();
-		originalFilepath = vscode.window.activeTextEditor.document.fileName;
+		const originalFilepath = vscode.window.activeTextEditor.document.fileName;
 		originalSize = FileSaver.statSync(originalFilepath).size;
 		statusReady = true;
 		const {
@@ -218,7 +216,7 @@ function activate(context) {
 
 					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
-					minifiedTextToNewFile(path2NewFile, modifiedCssText);
+					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings.openMinifiedDocument);
 
 					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
@@ -235,7 +233,7 @@ function activate(context) {
 
 					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
-					minifiedTextToNewFile(path2NewFile, modifiedJsonText);
+					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings.openMinifiedDocument);
 
 					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
@@ -253,7 +251,7 @@ function activate(context) {
 
 					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
-					minifiedTextToNewFile(path2NewFile, modifiedHtmlText);
+					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings.openMinifiedDocument);
 
 					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
@@ -275,7 +273,7 @@ function activate(context) {
 					const minifierJs = Terser.minify(jsContent);
 
 					if (minifierJs.error === undefined) {
-						minifiedTextToNewFile(path2NewFile, minifierJs.code);
+						minifiedTextToNewFile(path2NewFile, minifierJs.code, settings.openMinifiedDocument);
 						console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 					} else if (!settings.disableMessages) {
 						showMessage(`Terser error: ${minifierJs.error}`, false);
@@ -323,7 +321,7 @@ function activate(context) {
 								const path2NewFile = path.join(filePath, newName);
 								const modifiedCssText = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
 
-								minifiedTextToNewFile(path2NewFile, modifiedCssText);
+								minifiedTextToNewFile(path2NewFile, modifiedCssText, settings.openMinifiedDocument);
 
 								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
@@ -340,7 +338,7 @@ function activate(context) {
 								const path2NewFileJson = path.join(filePath, newNameJson);
 								const modifiedJsonText = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 
-								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText);
+								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings.openMinifiedDocument);
 
 								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
@@ -358,7 +356,7 @@ function activate(context) {
 
 								const modifiedHtmlText = globalMinifiers.minifyHtml(data.split('\n'));
 
-								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText);
+								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText, settings.openMinifiedDocument);
 
 								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
@@ -381,7 +379,7 @@ function activate(context) {
 								const minifierJs = Terser.minify(jsContent);
 
 								if (minifierJs.error === undefined) {
-									minifiedTextToNewFile(path2NewFileJs, minifierJs.code);
+									minifiedTextToNewFile(path2NewFileJs, minifierJs.code, settings.openMinifiedDocument);
 									console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 								} else if (!settings.disableMessages) {
 									showMessage(`Terser error: ${minifierJs.error}`, false);
@@ -570,7 +568,7 @@ function transformSize(size) {
  * @access private
  */
 function statusBarInfo() {
-	oc = window.createOutputChannel('Minify output');
+	const oc = window.createOutputChannel('Minify output');
 	oc.appendLine('╔══════════════════════════════╗');
 	oc.appendLine('║      Extension MinifyAll     ║	');
 	oc.appendLine('╠═══════════════════╦══════════╣');
@@ -637,6 +635,7 @@ function replaceSelectedCodeAndGetTime(editor, selection, modifiedText) {
 	return ((new Date().getTime()) - startTime);
 }
 
+
 /**
  * Summary gets the minified code and writes it in a new file.
  *
@@ -647,15 +646,19 @@ function replaceSelectedCodeAndGetTime(editor, selection, modifiedText) {
  *
  * @param {String} path2NewFile The path to the new file.
  * @param {String} modifiedText The text to place the text in the new file.
+ * @param {boolean} openFile	If it will open the new minified file.
+ * @return {void}
  */
-function minifiedTextToNewFile(path2NewFile, modifiedText) {
+function minifiedTextToNewFile(path2NewFile, modifiedText, openFile) {
 	FileSaver.writeFile(path2NewFile, modifiedText, () => {
-		if (!settings.disableMessages) {
-			showMessage(`The minified file has been saved in: ${path2NewFile}`, false);
+		if (openFile) {
+			vscode.workspace.openTextDocument(path2NewFile).then((doc) => {
+				vscode.window.showTextDocument(doc);
+			});
+			if (!settings.disableMessages) {
+				showMessage(`The minified file has been saved in: ${path2NewFile}`, false);
+			}
 		}
-		vscode.workspace.openTextDocument(path2NewFile).then((doc) => {
-			vscode.window.showTextDocument(doc);
-		});
 	});
 }
 
@@ -716,7 +719,6 @@ function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min'
  */
 function deactivate() {
 	statusBarItem.dispose();
-	oc.dispose();
 }
 exports.activate = activate;
 exports.deactivate = deactivate;

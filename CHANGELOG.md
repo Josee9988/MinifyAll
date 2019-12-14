@@ -7,13 +7,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-[UNRELEASED]
+## [**1.9.0**] - 2019-12-14
+
+### Added
+
+* Setting openMinifiedDocument: If you want MinifyAll to open the new minified document after you minify. (False for not opening it every time you create a minified file).
 
 ### Changed
 
+* When the new setting openMinifiedDocument is disabled it will not show the message that it is minified, as it may break workflow.
 * All the settings are located into a single variable.
-* Code is more structurated and improved readability.
 * Utilities folder is now called controller as it should have been.
+
+### Fixed
+
+* Some global variables that weren't neccessary at all.
 
 ## [**1.8.0**] - 2019-12-11
 

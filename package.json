@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, Typescript(testing), and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -62,8 +62,7 @@
 	],
 	"main": "./src/main.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -80,8 +79,7 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -218,12 +216,16 @@
 						"Sets the future filename to example.minified.extension"
 					],
 					"description": "The orefix of the extension of the new file. Default -min"
+				},
+				"MinifyAll.openMinifiedDocument": {
+					"type": "boolean",
+					"default": true,
+					"description": "If you want MinifyAll to open the new minified document after you minify. (False for not opening it every time you create a minified file)"
 				}
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
@@ -239,12 +241,10 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
-					"command": "extension.MinifyAll2OtherDocSelected",
-					"group": "MinifyAll"
-				}
-			]
+			"explorer/context": [{
+				"command": "extension.MinifyAll2OtherDocSelected",
+				"group": "MinifyAll"
+			}]
 		}
 	},
 	"devDependencies": {
