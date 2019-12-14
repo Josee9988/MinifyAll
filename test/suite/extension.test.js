@@ -10,13 +10,16 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+
+
 const assert = require('assert');
 const vscode = require('vscode');
 const path = require('path');
 const MinifyAll = require('../../src/main');
 const GlobalMinify = require('../../src/controller/globalMinifiers');
-const globalMinifiers = new GlobalMinify(require('../../src/controller/hexMinifier.js.js'), require('../../src/controller/commentRemover'));
-const HexMinifier = require('../../src/controller/hexMinifier.js.js');
+const globalMinifiers = new GlobalMinify(require('../../src/controller/hexMinifier'), require('../../src/controller/commentRemover'));
+const HexMinifier = require('../../src/controller/hexMinifier');
+const getNewFilePath = require('../../src/controller/getNewFilePath');
 const CssMinifier = require('../../src/langDefaultMinifiers/cssMinifier');
 const HtmlMinifier = require('../../src/langDefaultMinifiers/htmlMinifier');
 const JsonMinifier = require('../../src/langDefaultMinifiers/jsonMinifier');
@@ -247,7 +250,7 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('Function \'getNewFilePath\' works', () => {
-		const result = MinifyAll.getNewFilePath(path, '/myFile.css', 'css');
+		const result = getNewFilePath.getNewFilePath(path, '/myFile.css', 'css');
 		assert.deepStrictEqual(result, '/myFile-min.css');
 	});
 

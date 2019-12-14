@@ -1,3 +1,12 @@
+const {
+	replaceActualCode,
+	replaceSelectedCode
+} = require("./controller/replaceCode");
+
+const {
+	getNewFilePath
+} = require("./controller/getNewFilePath");
+
 /* eslint-disable new-cap */
 
 /**
@@ -49,8 +58,6 @@ const getUserSettings = require('./controller/getConfiguration');
 
 let originalSize;
 let statusBarItem;
-let timeSpend;
-let startTime;
 let statusReady;
 
 const settings = getUserSettings.getUserSettings();
@@ -98,11 +105,8 @@ const globalMinifiers = new globalMinify(HexMinifier, commentRemover);
 function activate(context) {
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const MinifyAll = commands.registerCommand('extension.MinifyAll', () => {
-		console.log("The extension 'MinifyAll' with the command: 'MinifyAll' (default command) is currently working...");
-
 		vscode.workspace.onDidSaveTextDocument(() => getNewSize());
 
-		startTime = new Date().getTime();
 		const originalFilepath = vscode.window.activeTextEditor.document.fileName;
 		originalSize = FileSaver.statSync(originalFilepath).size;
 		statusReady = true;
@@ -122,7 +126,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'sass' && !settings.disableSass)) {
 					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
-					timeSpend = replaceActualCodeAndGetTime(modifiedCssText);
+					replaceActualCode(modifiedCssText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -135,7 +139,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'jsonc' && !settings.disableJsonc)) {
 					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
-					timeSpend = replaceActualCodeAndGetTime(modifiedJsonText);
+					replaceActualCode(modifiedJsonText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -148,7 +152,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'php')) {
 					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
-					timeSpend = replaceActualCodeAndGetTime(modifiedHtmlText);
+					replaceActualCode(modifiedHtmlText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -168,7 +172,7 @@ function activate(context) {
 					const minifierJs = Terser.minify(jsContent);
 
 					if (minifierJs.error === undefined) {
-						timeSpend = replaceActualCodeAndGetTime(minifierJs.code);
+						replaceActualCode(minifierJs.code);
 					} else if (!settings.disableMessages) {
 						showMessage(`Terser error: ${minifierJs.error}`, false);
 					}
@@ -188,10 +192,6 @@ function activate(context) {
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const MinifyAll2OtherDoc = commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDoc' (minify and get the code to another document) is currently working...");
-
-		startTime = new Date().getTime();
-
 		const path = require('path');
 		const {
 			document,
@@ -218,7 +218,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings.openMinifiedDocument);
 
-					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -235,7 +234,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings.openMinifiedDocument);
 
-					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -253,7 +251,6 @@ function activate(context) {
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings.openMinifiedDocument);
 
-					console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -274,7 +271,6 @@ function activate(context) {
 
 					if (minifierJs.error === undefined) {
 						minifiedTextToNewFile(path2NewFile, minifierJs.code, settings.openMinifiedDocument);
-						console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 					} else if (!settings.disableMessages) {
 						showMessage(`Terser error: ${minifierJs.error}`, false);
 					}
@@ -300,9 +296,6 @@ function activate(context) {
 				if (err) {
 					throw err;
 				} else {
-					console.log("The extension 'MinifyAll' with the command: 'MinifyAll2OtherDocSelected' (minify and get the code to another document) is currently working...");
-					startTime = new Date().getTime();
-
 					const path = require('path');
 
 					const filePath = path.dirname(fileUri.path);
@@ -323,7 +316,6 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFile, modifiedCssText, settings.openMinifiedDocument);
 
-								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -340,7 +332,6 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings.openMinifiedDocument);
 
-								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -358,7 +349,6 @@ function activate(context) {
 
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText, settings.openMinifiedDocument);
 
-								console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -380,7 +370,6 @@ function activate(context) {
 
 								if (minifierJs.error === undefined) {
 									minifiedTextToNewFile(path2NewFileJs, minifierJs.code, settings.openMinifiedDocument);
-									console.log(`Time spend minifying: ${(new Date().getTime()) - startTime} milisenconds.`);
 								} else if (!settings.disableMessages) {
 									showMessage(`Terser error: ${minifierJs.error}`, false);
 								}
@@ -410,7 +399,6 @@ function activate(context) {
 			selection,
 		} = editor;
 		const selectedText = editor.document.getText(selection);
-		startTime = new Date().getTime();
 		statusReady = true;
 
 		switch (window.activeTextEditor.document.languageId) {
@@ -425,7 +413,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'sass' && !settings.disableSass)) {
 					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(selectedText.split('\n'));
 
-					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedCssText);
+					replaceSelectedCode(editor, selection, modifiedCssText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -438,7 +426,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'jsonc' && !settings.disableJsonc)) {
 					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(selectedText.split('\n'));
 
-					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedJsonText);
+					replaceSelectedCode(editor, selection, modifiedJsonText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -451,7 +439,7 @@ function activate(context) {
 					(window.activeTextEditor.document.languageId === 'php')) {
 					const modifiedHtmlText = globalMinifiers.minifyHtml(selectedText.split('\n'));
 
-					timeSpend = replaceSelectedCodeAndGetTime(editor, selection, modifiedHtmlText);
+					replaceSelectedCode(editor, selection, modifiedHtmlText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -471,7 +459,7 @@ function activate(context) {
 					const minifierJs = Terser.minify(jsContent);
 
 					if (minifierJs.error === undefined) {
-						timeSpend = replaceSelectedCodeAndGetTime(editor, selection, minifierJs.code);
+						replaceSelectedCode(editor, selection, minifierJs.code);
 					} else if (!settings.disableMessages) {
 						showMessage(`Terser error: ${minifierJs.error}`, false);
 					}
@@ -510,6 +498,7 @@ function getNewSize() {
 	}
 }
 
+
 /**
  * Summary creates the status bar item.
  *
@@ -540,6 +529,7 @@ function createStatusBar(originalSizeB, newSize) {
 	statusReady = false;
 }
 
+
 /**
  * Summary receives an int (number of bytes) and
  * transform its value to KB, OR MB.
@@ -558,6 +548,7 @@ function transformSize(size) {
 	if (size >= 1024) return `${Math.floor(size / 10.24) / 100} Kb`;
 	return `${size} b`;
 }
+
 
 /**
  * Summary creates an output channel with information about the minify.
@@ -580,59 +571,7 @@ function statusBarInfo() {
 	oc.appendLine(`File type:  \t\t${window.activeTextEditor.document.languageId}`);
 	oc.appendLine(`% of shrink:\t\t${(100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3)}%`);
 	oc.appendLine(`Bytes freed:\t\t${originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)}B`);
-	oc.appendLine(`Time spend: \t\t${timeSpend} milisenconds. (${timeSpend / 1000} seconds).`);
 	oc.show();
-}
-
-
-/**
- * Summary gets the actual code and replaces it with the minified one.
- *
- * Description it receives the minified text and replaces it with the
- * received text and also it gets the total time spend minifying.
- *
- * @access private
- *
- * @param {String} modifiedText the text to replace the original code.
- * @return {Number} of the time spend.
- */
-function replaceActualCodeAndGetTime(modifiedText) {
-	const editor = vscode.window.activeTextEditor;
-	const firstLineCss = editor.document.lineAt(0);
-	const lastLineCss = editor.document.lineAt(editor.document.lineCount - 1);
-	const textRange = new vscode.Range(0,
-		firstLineCss.range.start.character,
-		editor.document.lineCount - 1,
-		lastLineCss.range.end.character);
-	editor.edit((builder) => {
-		builder.replace(textRange, modifiedText);
-	});
-	return ((new Date().getTime()) - startTime);
-}
-
-/**
- * Summary gets the selected code and replaces it with the minified one.
- *
- * Description it receives the minified text and replaces it with the
- * received text and also it gets the total time spend minifying.
- *
- * @access private
- * @param {object} editor openned editor
- * @param {object} selection selection provided.
- * @param {string} modifiedText the minified text
- *
- * @return {Number} of the time spend.
- */
-function replaceSelectedCodeAndGetTime(editor, selection, modifiedText) {
-	const receivedEditor = editor;
-	receivedEditor.edit((builder) => {
-			builder.replace(selection, modifiedText);
-		})
-		.then(() => {
-			const postion = editor.selection.end;
-			receivedEditor.selection = new vscode.Selection(postion, postion);
-		});
-	return ((new Date().getTime()) - startTime);
 }
 
 
@@ -684,28 +623,6 @@ function showMessage(text, warning) {
 	} else if (!settings.disableMessages) {
 		window.showInformationMessage(text);
 	}
-}
-
-
-/**
- * Summary sets the path to the new file with minified code.
- *
- * Description receives the object path, the absolute path
- * and the name of the extension without a dot, then it creates
- * the new path to the new file with the minified text.
- *
- * @param {*} path the object path imported from vscode.
- * @param {*} fileName the Full path with the name and extension to the current
- * file (the non minified one).
- * @param {*} extensionWithOutDot the name of the extension (css, js, html).
- * @return {String} path2NewFile the path to the new file which will have
- * the minified code.
- */
-function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min') {
-	const filePath = path.dirname(fileName);
-	const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `${prefixUsed}.${extensionWithOutDot}`);
-	const path2NewFile = path.join(filePath, newName);
-	return path2NewFile;
 }
 
 

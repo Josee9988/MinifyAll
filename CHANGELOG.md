@@ -7,6 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [UNRELEASED]
+
+### Added
+
+* File getNewFilePath which contains the function getNewFilePath.
+* File replaceCode which contains the functions replaceActualCode and replaceSelectedCode.
+
+### Removed
+
+* Console logs while running the extension.
+* The extension will not output the time spend.
+
+### Fixed
+
+* Removed multiple global variables from the main.js file.
+* Fixed some paths from the tests.
+
 ## [**1.9.0**] - 2019-12-14
 
 ### Added
