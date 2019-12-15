@@ -1,7 +1,7 @@
 /**
  * @file file that contains the function that returns the new file path.
  *
- * @since 1.9.0
+ * @since 1.9.1
  * @author Jose Gracia Berenguer
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.

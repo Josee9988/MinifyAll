@@ -13,16 +13,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * File getNewFilePath which contains the function getNewFilePath.
 * File replaceCode which contains the functions replaceActualCode and replaceSelectedCode.
+* File checkLanguage that will remove all ifs checking if the selected language is disabled or not.
+* File transformSize that will contain the function transformSize.
+* FileWriteMinifiedCode that will contain all the functions that write code to files.
 
 ### Removed
 
-* Console logs while running the extension.
+* All console logs while running the extension.
 * The extension will not output the time spend.
 
 ### Fixed
 
 * Removed multiple global variables from the main.js file.
 * Fixed some paths from the tests.
+* Code readability in the file main.js.
 
 ## [**1.9.0**] - 2019-12-14
 
