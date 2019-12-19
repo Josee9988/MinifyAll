@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [UNRELEASED]
+## [**1.10.0**] - 2019-12-19
 
 ### Added
 
@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * FileWriteMinifiedCode that will contain all the functions that write code to files.
 * All the basic information about the new files in the controller at the file src/controller/README.md.
 * Added more information about the folder 'Screenshots' at the file Screenshots/README.md.
+* Pull request template.
 
 ### Removed
 
