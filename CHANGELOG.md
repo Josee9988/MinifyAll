@@ -28,6 +28,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Fixed some paths from the tests.
 * Code readability in the file main.js.
 
+### Changed
+
+* Some dependencies were updated.
+
 ## [**1.9.0**] - 2019-12-14
 
 ### Added
