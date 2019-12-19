@@ -78,6 +78,7 @@ class commentRemover {
    *
    * @param {String} str the string to remove the comments.
    */
+  // eslint-disable-next-line class-methods-use-this
   removeComments(str) {
     const uid = `_${+new Date()}`;
     const primatives = [];
@@ -88,7 +89,7 @@ class commentRemover {
         primatives[primIndex] = match;
         return `${uid}${primIndex++}`;
       })
-      .replace(/([^\/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
+      .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
         primatives[primIndex] = $2;
         return `${$1}${uid}${primIndex++}`;
       })

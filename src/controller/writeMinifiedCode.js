@@ -13,7 +13,7 @@
 const vscode = require('vscode');
 const FileSaver = require('fs');
 const {
-    showMessage
+    showMessage,
 } = require('./../main');
 
 
@@ -58,6 +58,7 @@ function replaceSelectedCode(editor, selection, modifiedText) {
         })
         .then(() => {
             const postion = editor.selection.end;
+            // eslint-disable-next-line no-param-reassign
             editor.selection = new vscode.Selection(postion, postion);
         });
 }

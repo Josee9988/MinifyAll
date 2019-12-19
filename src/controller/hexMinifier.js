@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /**
  * @file That is called to perform hex shortened values
  * @author Jose Gracia Berenguer

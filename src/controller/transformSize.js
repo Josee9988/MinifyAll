@@ -21,10 +21,8 @@
  * @return {String} the new value in KB, MB or in Bytes
  */
 function transformSize(size) {
-    if (size >= 1048576)
-        return `${Math.floor(size / 10485.76) / 100} Mb`;
-    if (size >= 1024)
-        return `${Math.floor(size / 10.24) / 100} Kb`;
+    if (size >= 1048576) return `${Math.floor(size / 10485.76) / 100} Mb`;
+    if (size >= 1024) return `${Math.floor(size / 10.24) / 100} Kb`;
     return `${size} b`;
 }
 

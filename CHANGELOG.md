@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * File checkLanguage that will remove all ifs checking if the selected language is disabled or not.
 * File transformSize that will contain the function transformSize.
 * FileWriteMinifiedCode that will contain all the functions that write code to files.
+* All the basic information about the new files in the controller at the file src/controller/README.md.
+* Added more information about the folder 'Screenshots' at the file Screenshots/README.md.
 
 ### Removed
 
@@ -27,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Removed multiple global variables from the main.js file.
 * Fixed some paths from the tests.
 * Code readability in the file main.js.
+* Multiple minnor mistakes in the file main.js.
+* Unnecessary regex scape character in the commentRemover.js file.
+* Missing semicolon in the getConfiguration.js file.
+* Multiple more minnor mistakes in the controller folder.
 
 ### Changed
 

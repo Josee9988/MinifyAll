@@ -40,31 +40,31 @@ const {
 	commands,
 	window,
 } = require('vscode');
+const FileSaver = require('fs');
+const vscode = require('vscode');
 const {
 	replaceActualCode,
 	replaceSelectedCode,
-	minifiedTextToNewFile
-} = require("./controller/writeMinifiedCode");
+	minifiedTextToNewFile,
+} = require('./controller/writeMinifiedCode');
 const {
 	checkLanguageStyles,
 	checkLanguageJson,
 	checkLanguageHtmlPhp,
-	checkLanguageJS
+	checkLanguageJS,
 } = require('./controller/checkLanguage');
 const {
-	getNewFilePath
-} = require("./controller/getNewFilePath");
+	getNewFilePath,
+} = require('./controller/getNewFilePath');
 const {
-	transformSize
-} = require("./controller/transformSize");
-const FileSaver = require('fs');
-const vscode = require('vscode');
+	transformSize,
+} = require('./controller/transformSize');
 const commentRemover = require('./controller/commentRemover');
 const globalMinify = require('./controller/globalMinifiers');
 const getUserSettings = require('./controller/getConfiguration');
 
 let originalSize;
-let statusBarItem;
+let statusBar;
 let statusReady;
 
 const settings = getUserSettings.getUserSettings();
@@ -212,7 +212,6 @@ function activate(context) {
 					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
-
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -227,7 +226,6 @@ function activate(context) {
 					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
-
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -243,7 +241,6 @@ function activate(context) {
 					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
-
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
 				}
@@ -298,12 +295,10 @@ function activate(context) {
 						case 'sass':
 
 							if (checkLanguageStyles(fileUri.path.split('.').pop(), settings)) {
-								const newName = path.basename(fileUri.path).replace('.css', settings.prefix + '.css');
+								const newName = path.basename(fileUri.path).replace('.css', `${settings.prefix}.css`);
 								const path2NewFile = path.join(filePath, newName);
 								const modifiedCssText = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
-
 								minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
-
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -313,12 +308,10 @@ function activate(context) {
 						case 'jsonc':
 
 							if (checkLanguageJson(fileUri.path.split('.').pop(), settings)) {
-								const newNameJson = path.basename(fileUri.path).replace('.json', settings.prefix + '.json');
+								const newNameJson = path.basename(fileUri.path).replace('.json', `${settings.prefix}.json`);
 								const path2NewFileJson = path.join(filePath, newNameJson);
 								const modifiedJsonText = globalMinifiers.minifyJsonJsonc(data.split('\n'));
-
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings);
-
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -328,13 +321,10 @@ function activate(context) {
 						case 'php':
 
 							if (checkLanguageHtmlPhp(fileUri.path.split('.').pop(), settings)) {
-								const newNameHtml = path.basename(fileUri.path).replace('.html', settings.prefix + '.html');
+								const newNameHtml = path.basename(fileUri.path).replace('.html', `${settings.prefix}.html`);
 								const path2NewFileHtml = path.join(filePath, newNameHtml);
-
 								const modifiedHtmlText = globalMinifiers.minifyHtml(data.split('\n'));
-
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText, settings);
-
 							} else {
 								showMessage('We will not format this file type because it is disabled.', false);
 							}
@@ -348,7 +338,7 @@ function activate(context) {
 								(fileUri.path.split('.').pop() === 'javascriptreact' && !settings.disableJavascriptReact) ||
 								(fileUri.path.split('.').pop() === 'typescript' && !settings.disableTypescript)) {
 								const Terser = require('terser');
-								const newNameJs = path.basename(fileUri.path).replace('.js', settings.prefix + '.js');
+								const newNameJs = path.basename(fileUri.path).replace('.js', `${settings.prefix}.js`);
 								const path2NewFileJs = path.join(filePath, newNameJs);
 								const jsContent = data;
 
@@ -468,9 +458,9 @@ function getNewSize() {
 		const newSize = FileSaver.statSync(newFilepath).size;
 		if (!settings.statusDisabled) {
 			createStatusBar(originalSize, newSize);
-			vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
-			vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
-			vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+			vscode.workspace.onDidChangeConfiguration(() => statusBar.hide());
+			vscode.workspace.onDidChangeWorkspaceFolders(() => statusBar.hide());
+			vscode.workspace.onDidCloseTextDocument(() => statusBar.hide());
 		}
 	}
 }
@@ -492,17 +482,17 @@ function getNewSize() {
  */
 function createStatusBar(originalSizeB, newSize) {
 	if (settings.alignment === 'Right') {
-		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, settings.priority);
+		statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, settings.priority);
 	} else {
-		statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, settings.priority);
+		statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, settings.priority);
 	}
-	statusBarItem.tooltip = 'New file size, click for more info!';
-	statusBarItem.command = 'extension.MinifyAllStatus';
-	statusBarItem.text = `${transformSize(originalSizeB)} --> ${transformSize(newSize)}`;
-	statusBarItem.show();
-	vscode.workspace.onDidChangeConfiguration(() => statusBarItem.hide());
-	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBarItem.hide());
-	vscode.workspace.onDidCloseTextDocument(() => statusBarItem.hide());
+	statusBar.tooltip = 'New file size, click for more info!';
+	statusBar.command = 'extension.MinifyAllStatus';
+	statusBar.text = `${transformSize(originalSizeB)} --> ${transformSize(newSize)}`;
+	statusBar.show();
+	vscode.workspace.onDidChangeConfiguration(() => statusBar.hide());
+	vscode.workspace.onDidChangeWorkspaceFolders(() => statusBar.hide());
+	vscode.workspace.onDidCloseTextDocument(() => statusBar.hide());
 	statusReady = false;
 }
 
@@ -565,7 +555,7 @@ function showMessage(text, warning) {
  * @access public
  */
 function deactivate() {
-	statusBarItem.dispose();
+	statusBar.dispose();
 }
 exports.activate = activate;
 exports.deactivate = deactivate;

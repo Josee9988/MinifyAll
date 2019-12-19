@@ -37,7 +37,7 @@ function getUserSettings() {
         disableJavascriptReact: conf.get('disableJavascriptReact'),
         disableTypescript: conf.get('disableTypescript'),
         openMinifiedDocument: conf.get('openMinifiedDocument'),
-    }
+    };
 }
 
 exports.getUserSettings = getUserSettings;
