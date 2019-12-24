@@ -9,7 +9,6 @@
 
 const vscode = require('vscode');
 
-
 /**
  * Summary: The function getUserSettings gathers all settings from the user and returns them.
  *
@@ -31,7 +30,7 @@ function getUserSettings() {
         disableJsonc: conf.get('disableJsonc'),
         disableMessages: conf.get('disableMessages'),
         minifyOnSave: conf.get('minifyOnSave'),
-        minifyOnSaveToNewFile: conf.get('minifyOnSaveToNewFIle'),
+        minifyOnSaveToNewFile: conf.get('minifyOnSaveToNewFile') ? true : conf.get('minifyOnSaveToNewFIle'),
         prefix: conf.get('PrefixOfNewMinifiedFiles'),
         disableJavascript: conf.get('disableJavascript'),
         disableJavascriptReact: conf.get('disableJavascriptReact'),

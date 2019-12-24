@@ -193,12 +193,17 @@
 				"MinifyAll.minifyOnSave": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to minify every time you save in the same file. (True for disabling)"
+					"description": "If you want MinifyAll to minify every time you save in the same file. (True for enabling)"
+				},
+				"MinifyAll.minifyOnSaveToNewFile": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to minify every time you save in other file. (True for enabling)"
 				},
 				"MinifyAll.minifyOnSaveToNewFIle": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to minify every time you save in other file. (True for disabling)"
+					"description": "[DEPRECATED use 'minifyOnSaveToNewFile' instead]If you want MinifyAll to minify every time you save in other file. (True for enabling)"
 				},
 				"MinifyAll.PrefixOfNewMinifiedFiles": {
 					"type": "string",

@@ -7,6 +7,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.10.1**] - 2019-12-24
+
+### Added
+
+* Setting 'minifyOnSaveToNewFile' to replace 'minifyOnSaveToNewF**I**le'
+* Support for the new setting 'minifyOnSaveToNewFile' aswell as keeping retrocompatibility with the deprecated setting.
+
+### Deprecated
+
+* Setting 'minifyOnSaveToNewF**I**le' is deprecated as it has typo, use 'minifyOnSaveToNewFile' instead.
+
+### Changed
+
+* Setting: 'minifyOnSave' description as it was unaccurate.
+* Setting: 'minifyOnSaveToNewFile' description as it was unaccurate.
+
+### Fixed
+
+* Multiple typos.
+
 ## [**1.10.0**] - 2019-12-19
 
 ### Added
@@ -30,10 +50,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Removed multiple global variables from the main.js file.
 * Fixed some paths from the tests.
 * Code readability in the file main.js.
-* Multiple minnor mistakes in the file main.js.
-* Unnecessary regex scape character in the commentRemover.js file.
+* Multiple minor mistakes in the file main.js.
+* Unnecessary regex escape character in the commentRemover.js file.
 * Missing semicolon in the getConfiguration.js file.
-* Multiple more minnor mistakes in the controller folder.
+* Multiple more minor mistakes in the controller folder.
 
 ### Changed
 
@@ -53,7 +73,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Some global variables that weren't neccessary at all.
+* Some global variables that weren't necessary at all.
 
 ## [**1.8.0**] - 2019-12-11
 
@@ -77,7 +97,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * More tests. Up to 18 total tests.
-* src/readmeS.md files in the .vscodeignore file to make the user download less files.
+* src/readmeS.md files in the .vscodeignore file to make the user download fewer files.
 
 ## [**1.7.0**] - 2019-11-11
 
@@ -133,7 +153,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Fix bug with minify to other document, that chooses the same path. (MinifyAll2OtherDoc) in JS.
+* Fix bug with minify to another document, that chooses the same path. (MinifyAll2OtherDoc) in JS.
 
 ## [**1.6.1**] - 2019-11-06
 
@@ -154,7 +174,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 * Some dependencies were updated.
-* Command minify selected text now responds to keyshortcut: Ctrl+alt+. Ctrl+alt+M
+* Command minify selected text now responds to key shortcut: Ctrl+alt+. Ctrl+alt+M
 
 ## [**1.5.0**] - 2019-10-19
 
@@ -170,7 +190,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Fixed last changelod version.
+* Fixed last changelog version.
 * Some readme.md mistakes and alignments
 
 ## [**1.4.2**] - 2019-10-14

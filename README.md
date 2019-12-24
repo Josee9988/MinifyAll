@@ -121,19 +121,19 @@ Check our **[changelog](CHANGELOG.md)**.
 - Disables warning and information messages
 
 ``` json
-"MinifyAll.disableMessages": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableMessages": true|false //default 'false' (by default it is allowed)
 ```
 
 - Minify on save (Default command, which will minify your actual code)
 
 ``` json
-"MinifyAll.minifyOnSave": true|false //default 'false' (by default it is enabled)
+"MinifyAll.minifyOnSave": true|false //default 'false' (by default it is disabled)
 ```
 
 - Minify on save (Second command, which will minify your actual code into a new file)
 
 ``` json
-"MinifyAll.minifyOnSaveToNewFIle": true|false //default 'false' (by default it is enabled)
+"MinifyAll.minifyOnSaveToNewFile": true|false //default 'false' (by default it is disabled)
 ```
 
 - Prefix of the new minified file from the command that minifies to other doc.
