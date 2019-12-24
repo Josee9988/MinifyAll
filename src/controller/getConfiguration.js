@@ -16,6 +16,9 @@ const vscode = require('vscode');
  */
 function getUserSettings() {
     const conf = vscode.workspace.getConfiguration('MinifyAll');
+    if (conf.get('minifyOnSaveToNewFIle')) { // if the user is using a deprecated setting.
+        vscode.window.showWarningMessage('You are using the deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');
+    }
     return {
         hexDisabled: conf.get('disableHexadecimalShortener'),
         statusDisabled: conf.get('disableStatusbarInformation'),

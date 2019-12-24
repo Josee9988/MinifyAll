@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * Setting 'minifyOnSaveToNewFile' to replace 'minifyOnSaveToNewF**I**le'
 * Support for the new setting 'minifyOnSaveToNewFile' aswell as keeping retrocompatibility with the deprecated setting.
+* Warning message to warn the users about the bad setting.
 
 ### Deprecated
 
