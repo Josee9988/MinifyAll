@@ -8,6 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 class commentRemover {
     /**
      * Summary Minifier constructor that maps and trims the code.
@@ -93,5 +94,5 @@ class commentRemover {
             .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n]));
     }
 }
-module.exports = commentRemover;
+exports.default = commentRemover;
 //# sourceMappingURL=commentRemover.js.map

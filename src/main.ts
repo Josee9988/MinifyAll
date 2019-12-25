@@ -35,39 +35,31 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-
-const {
-	commands,
-	window,
-} = require('vscode');
-const FileSaver = require('fs');
-const vscode = require('vscode');
-const {
+import { commands, window } from 'vscode';
+import FileSaver = require('fs');
+import vscode = require('vscode');
+import {
 	replaceActualCode,
 	replaceSelectedCode,
 	minifiedTextToNewFile,
-} = require('./controller/writeMinifiedCode');
-const {
+} from './controller/writeMinifiedCode';
+import {
 	checkLanguageStyles,
 	checkLanguageJson,
 	checkLanguageHtmlPhp,
 	checkLanguageJS,
-} = require('./controller/checkLanguage');
-const {
-	getNewFilePath,
-} = require('./controller/getNewFilePath');
-const {
-	transformSize,
-} = require('./controller/transformSize');
-const commentRemover = require('./controller/commentRemover');
-const globalMinify = require('./controller/globalMinifiers');
-const getUserSettings = require('./controller/getConfiguration');
+} from './controller/checkLanguage';
+import getNewFilePath from './controller/getNewFilePath';
+import transformSize from './controller/transformSize';
+import commentRemover from './controller/commentRemover';
+import globalMinify from './controller/globalMinifiers';
+import getUserSettings from './controller/getConfiguration';
 
-let originalSize;
-let statusBar;
-let statusReady;
+let originalSize: Number;
+let statusBar: any;
+let statusReady: Boolean;
 
-const settings = getUserSettings.getUserSettings();
+const settings = getUserSettings();
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {

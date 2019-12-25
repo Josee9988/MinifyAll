@@ -19,7 +19,7 @@
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-function checkLanguageStyles(languageId, settings) {
+export function checkLanguageStyles(languageId, settings) {
     if ((languageId === 'css' && !settings.disableCss) ||
         (languageId === 'scss' && !settings.disableScss) ||
         (languageId === 'less' && !settings.disableLess) ||
@@ -40,7 +40,7 @@ function checkLanguageStyles(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-function checkLanguageJson(languageId, settings) {
+export function checkLanguageJson(languageId, settings) {
     if ((languageId === 'json' && !settings.disableJson) ||
         (languageId === 'jsonc' && !settings.disableJsonc)) {
         return true;
@@ -59,7 +59,7 @@ function checkLanguageJson(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-function checkLanguageHtmlPhp(languageId, settings) {
+export function checkLanguageHtmlPhp(languageId, settings) {
     if ((languageId === 'html' && !settings.disableHtml) ||
         (languageId === 'php')) {
         return true;
@@ -78,7 +78,7 @@ function checkLanguageHtmlPhp(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-function checkLanguageJS(languageId, settings) {
+export function checkLanguageJS(languageId, settings) {
     if ((languageId === 'javascript' && !settings.disableJavascript) ||
         (languageId === 'javascriptreact' && !settings.disableJavascriptReact) ||
         (languageId === 'typescript' && !settings.disableTypescript)) {
@@ -86,8 +86,3 @@ function checkLanguageJS(languageId, settings) {
     }
     return false;
 }
-
-exports.checkLanguageStyles = checkLanguageStyles;
-exports.checkLanguageJson = checkLanguageJson;
-exports.checkLanguageHtmlPhp = checkLanguageHtmlPhp;
-exports.checkLanguageJS = checkLanguageJS;

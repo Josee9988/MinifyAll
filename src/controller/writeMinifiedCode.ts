@@ -28,7 +28,7 @@ const {
  * @param {String} modifiedText the text to replace the original code.
  * @return {void}
  */
-function replaceActualCode(modifiedText) {
+export function replaceActualCode(modifiedText) {
     const editor = vscode.window.activeTextEditor;
     const firstLineCss = editor.document.lineAt(0);
     const lastLineCss = editor.document.lineAt(editor.document.lineCount - 1);
@@ -52,10 +52,10 @@ function replaceActualCode(modifiedText) {
  *
  * @return {void}
  */
-function replaceSelectedCode(editor, selection, modifiedText) {
+export function replaceSelectedCode(editor, selection, modifiedText) {
     editor.edit((builder) => {
-            builder.replace(selection, modifiedText);
-        })
+        builder.replace(selection, modifiedText);
+    })
         .then(() => {
             const postion = editor.selection.end;
             // eslint-disable-next-line no-param-reassign
@@ -77,7 +77,7 @@ function replaceSelectedCode(editor, selection, modifiedText) {
  * @param {Object} settings     Settings of the user.
  * @return {void}
  */
-function minifiedTextToNewFile(path2NewFile, modifiedText, settings) {
+export function minifiedTextToNewFile(path2NewFile, modifiedText, settings) {
     FileSaver.writeFile(path2NewFile, modifiedText, () => {
         if (settings.openMinifiedDocument) {
             vscode.workspace.openTextDocument(path2NewFile).then((doc) => {
@@ -89,8 +89,3 @@ function minifiedTextToNewFile(path2NewFile, modifiedText, settings) {
         }
     });
 }
-
-
-exports.minifiedTextToNewFile = minifiedTextToNewFile;
-exports.replaceSelectedCode = replaceSelectedCode;
-exports.replaceActualCode = replaceActualCode;

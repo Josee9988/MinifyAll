@@ -8,6 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
  * in their settings, if it is not disabled it will return true, if not false.
@@ -27,6 +28,7 @@ function checkLanguageStyles(languageId, settings) {
     }
     return false;
 }
+exports.checkLanguageStyles = checkLanguageStyles;
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
  * in their settings, if it is not disabled it will return true, if not false.
@@ -44,6 +46,7 @@ function checkLanguageJson(languageId, settings) {
     }
     return false;
 }
+exports.checkLanguageJson = checkLanguageJson;
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
  * in their settings, if it is not disabled it will return true, if not false.
@@ -61,6 +64,7 @@ function checkLanguageHtmlPhp(languageId, settings) {
     }
     return false;
 }
+exports.checkLanguageHtmlPhp = checkLanguageHtmlPhp;
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
  * in their settings, if it is not disabled it will return true, if not false.
@@ -79,8 +83,5 @@ function checkLanguageJS(languageId, settings) {
     }
     return false;
 }
-exports.checkLanguageStyles = checkLanguageStyles;
-exports.checkLanguageJson = checkLanguageJson;
-exports.checkLanguageHtmlPhp = checkLanguageHtmlPhp;
 exports.checkLanguageJS = checkLanguageJS;
 //# sourceMappingURL=checkLanguage.js.map

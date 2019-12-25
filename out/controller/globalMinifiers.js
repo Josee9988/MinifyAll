@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable class-methods-use-this */
 /**
  * @file File that contains all the main methods which contain the main
@@ -105,5 +106,5 @@ class GlobalMinifiers {
         return RemoveComments.getCommentsRemoved();
     }
 }
-module.exports = GlobalMinifiers;
+exports.default = GlobalMinifiers;
 //# sourceMappingURL=globalMinifiers.js.map

@@ -7,6 +7,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Summary receives an int (number of bytes) and
  * transform its value to KB, OR MB.
@@ -27,5 +28,5 @@ function transformSize(size) {
         return `${Math.floor(size / 10.24) / 100} Kb`;
     return `${size} b`;
 }
-exports.transformSize = transformSize;
+exports.default = transformSize;
 //# sourceMappingURL=transformSize.js.map

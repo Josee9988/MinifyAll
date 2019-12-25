@@ -9,6 +9,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require('vscode');
 const FileSaver = require('fs');
 const { showMessage, } = require('./../main');
@@ -32,6 +33,7 @@ function replaceActualCode(modifiedText) {
         builder.replace(textRange, modifiedText);
     });
 }
+exports.replaceActualCode = replaceActualCode;
 /**
  * Summary gets the selected code and replaces it with the minified one.
  *
@@ -55,6 +57,7 @@ function replaceSelectedCode(editor, selection, modifiedText) {
         editor.selection = new vscode.Selection(postion, postion);
     });
 }
+exports.replaceSelectedCode = replaceSelectedCode;
 /**
  * Summary gets the minified code and writes it in a new file.
  *
@@ -81,6 +84,4 @@ function minifiedTextToNewFile(path2NewFile, modifiedText, settings) {
     });
 }
 exports.minifiedTextToNewFile = minifiedTextToNewFile;
-exports.replaceSelectedCode = replaceSelectedCode;
-exports.replaceActualCode = replaceActualCode;
 //# sourceMappingURL=writeMinifiedCode.js.map

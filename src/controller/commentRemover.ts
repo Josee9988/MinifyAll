@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-class commentRemover {
+export default class commentRemover {
   /**
    * Summary Minifier constructor that maps and trims the code.
    *
@@ -85,19 +85,18 @@ class commentRemover {
     let primIndex = 0;
     return (
       str
-      .replace(/(['"])(\\\1|.)+?\1/g, (match) => {
-        primatives[primIndex] = match;
-        return `${uid}${primIndex++}`;
-      })
-      .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
-        primatives[primIndex] = $2;
-        return `${$1}${uid}${primIndex++}`;
-      })
-      .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
-      .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
-      .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
-      .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n])
+        .replace(/(['"])(\\\1|.)+?\1/g, (match) => {
+          primatives[primIndex] = match;
+          return `${uid}${primIndex++}`;
+        })
+        .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
+          primatives[primIndex] = $2;
+          return `${$1}${uid}${primIndex++}`;
+        })
+        .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
+        .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
+        .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
+        .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n])
     );
   }
 }
-module.exports = commentRemover;

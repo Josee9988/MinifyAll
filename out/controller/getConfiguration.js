@@ -7,7 +7,8 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-const vscode = require('vscode');
+Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
 /**
  * Summary: The function getUserSettings gathers all settings from the user and returns them.
  *
@@ -40,5 +41,5 @@ function getUserSettings() {
         openMinifiedDocument: conf.get('openMinifiedDocument'),
     };
 }
-exports.getUserSettings = getUserSettings;
+exports.default = getUserSettings;
 //# sourceMappingURL=getConfiguration.js.map

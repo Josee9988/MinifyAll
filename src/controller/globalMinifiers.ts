@@ -14,7 +14,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-class GlobalMinifiers {
+export default class GlobalMinifiers {
     constructor(HexMinifier, commentRemover) {
         this.HexMinifier = HexMinifier;
         this.CommentRemover = commentRemover;
@@ -110,4 +110,3 @@ class GlobalMinifiers {
         return RemoveComments.getCommentsRemoved();
     }
 }
-module.exports = GlobalMinifiers;

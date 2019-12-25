@@ -7,6 +7,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Summary sets the path to the new file with minified code.
  *
@@ -27,5 +28,5 @@ function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min'
     const path2NewFile = path.join(filePath, newName);
     return path2NewFile;
 }
-exports.getNewFilePath = getNewFilePath;
+exports.default = getNewFilePath;
 //# sourceMappingURL=getNewFilePath.js.map

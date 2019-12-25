@@ -22,11 +22,9 @@
  * @return {String} path2NewFile the path to the new file which will have
  * the minified code.
  */
-function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min') {
+export default function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min') {
     const filePath = path.dirname(fileName);
     const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `${prefixUsed}.${extensionWithOutDot}`);
     const path2NewFile = path.join(filePath, newName);
     return path2NewFile;
 }
-
-exports.getNewFilePath = getNewFilePath;
