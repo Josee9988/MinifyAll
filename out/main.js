@@ -45,37 +45,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const vscode_1 = require("vscode");
 const FileSaver = require("fs");
 const vscode = require("vscode");
 const writeMinifiedCode_1 = require("./controller/writeMinifiedCode");
 const checkLanguage_1 = require("./controller/checkLanguage");
 const getNewFilePath_1 = require("./controller/getNewFilePath");
-const transformSize_1 = require("./controller/transformSize");
 const commentRemover_1 = require("./controller/commentRemover");
 const globalMinifiers_1 = require("./controller/globalMinifiers");
 const getConfiguration_1 = require("./controller/getConfiguration");
-let originalSize;
-let statusBar;
-let statusReady;
 const settings = getConfiguration_1.default();
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
-    vscode.workspace.onDidSaveTextDocument(() => vscode_1.commands.executeCommand('extension.MinifyAll'));
+    vscode.workspace.onDidSaveTextDocument(() => vscode.commands.executeCommand('extension.MinifyAll'));
 }
 if (settings.minifyOnSaveToNewFile) {
-    vscode.workspace.onDidSaveTextDocument(() => vscode_1.commands.executeCommand('extension.MinifyAll2OtherDoc'));
+    vscode.workspace.onDidSaveTextDocument(() => vscode.commands.executeCommand('extension.MinifyAll2OtherDoc'));
 }
 // If the user has hexadecimal shortener enabled it will import it.
 const HexMinifier = !settings.hexDisabled ? require('./controller/hexMinifier') : null;
-// If the user has the statusBar output enabled it will register the command.
-if (!settings.statusDisabled) {
-    vscode.commands.registerCommand('extension.MinifyAllStatus', statusBarInfo);
-}
 const globalMinifiers = new globalMinifiers_1.default(HexMinifier, commentRemover_1.default);
 /**
- * Summary main method that is executed when the user calls
- * the commands 'MinifyAll', 'MinifyAll2OtherDoc'
+ * Summary main method that is executed when the extension is activated,
+ * the extension is activated the very first time the command is executed,
+ * it contains the commandsthe commands 'MinifyAll', 'MinifyAll2OtherDoc'
  * or 'MinifyAll2OtherDocSelected', 'MinifyAllSelectedText'.
  *
  * Description activate the Main function called when the user
@@ -96,18 +88,14 @@ const globalMinifiers = new globalMinifiers_1.default(HexMinifier, commentRemove
  */
 function activate(context) {
     // Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-    const MinifyAll = vscode_1.commands.registerCommand('extension.MinifyAll', () => {
-        vscode.workspace.onDidSaveTextDocument(() => getNewSize());
-        const originalFilepath = vscode.window.activeTextEditor.document.fileName;
-        originalSize = FileSaver.statSync(originalFilepath).size;
-        statusReady = true;
-        const { document, } = vscode_1.window.activeTextEditor;
-        switch (vscode_1.window.activeTextEditor.document.languageId) {
+    const MinifyAll = vscode.commands.registerCommand('extension.MinifyAll', () => {
+        const { document } = vscode.window.activeTextEditor;
+        switch (vscode.window.activeTextEditor.document.languageId) {
             case 'css':
             case 'scss':
             case 'less':
             case 'sass':
-                if (checkLanguage_1.checkLanguageStyles(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
                     writeMinifiedCode_1.replaceActualCode(modifiedCssText);
                 }
@@ -117,7 +105,7 @@ function activate(context) {
                 break;
             case 'json':
             case 'jsonc':
-                if (checkLanguage_1.checkLanguageJson(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
                     writeMinifiedCode_1.replaceActualCode(modifiedJsonText);
                 }
@@ -127,7 +115,7 @@ function activate(context) {
                 break;
             case 'html':
             case 'php':
-                if (checkLanguage_1.checkLanguageHtmlPhp(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
                     writeMinifiedCode_1.replaceActualCode(modifiedHtmlText);
                 }
@@ -138,7 +126,7 @@ function activate(context) {
             case 'javascript':
             case 'javascriptreact':
             case 'typescript':
-                if (checkLanguage_1.checkLanguageJS(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const Terser = require('terser');
                     const jsContent = document.getText();
                     const minifierJs = Terser.minify(jsContent);
@@ -162,17 +150,17 @@ function activate(context) {
     //* ***************************************************************************************
     // Command MinifyAll2OtherDoc and writes the result in other file.
     // It executes if its called the command "extension.MinifyAll2OtherDoc"
-    const MinifyAll2OtherDoc = vscode_1.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+    const MinifyAll2OtherDoc = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
         const path = require('path');
-        const { document, } = vscode_1.window.activeTextEditor;
+        const { document, } = vscode.window.activeTextEditor;
         const { fileName, } = document;
-        switch (vscode_1.window.activeTextEditor.document.languageId) {
+        switch (vscode.window.activeTextEditor.document.languageId) {
             case 'css':
             case 'scss':
             case 'less':
             case 'sass':
-                if (checkLanguage_1.checkLanguageStyles(vscode_1.window.activeTextEditor.document.languageId, settings)) {
-                    const path2NewFile = getNewFilePath_1.default(path, fileName, vscode_1.window.activeTextEditor.document.languageId, settings.prefix);
+                if (checkLanguage_1.checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
+                    const path2NewFile = getNewFilePath_1.default(path, fileName, vscode.window.activeTextEditor.document.languageId, settings.prefix);
                     const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
                     writeMinifiedCode_1.minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
                 }
@@ -182,7 +170,7 @@ function activate(context) {
                 break;
             case 'json':
             case 'jsonc':
-                if (checkLanguage_1.checkLanguageJson(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const path2NewFile = getNewFilePath_1.default(path, fileName, 'json', settings.prefix);
                     const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
                     writeMinifiedCode_1.minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
@@ -193,8 +181,8 @@ function activate(context) {
                 break;
             case 'html':
             case 'php':
-                if (checkLanguage_1.checkLanguageHtmlPhp(vscode_1.window.activeTextEditor.document.languageId, settings)) {
-                    const path2NewFile = getNewFilePath_1.default(path, fileName, vscode_1.window.activeTextEditor.document.languageId, settings.prefix);
+                if (checkLanguage_1.checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
+                    const path2NewFile = getNewFilePath_1.default(path, fileName, vscode.window.activeTextEditor.document.languageId, settings.prefix);
                     const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
                     writeMinifiedCode_1.minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
                 }
@@ -205,7 +193,7 @@ function activate(context) {
             case 'javascript':
             case 'javascriptreact':
             case 'typescript':
-                if (checkLanguage_1.checkLanguageJS(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const path2NewFile = getNewFilePath_1.default(path, fileName, 'js', settings.prefix);
                     const Terser = require('terser');
                     const jsContent = document.getText();
@@ -230,7 +218,7 @@ function activate(context) {
     //* ******************************************************************************************
     // Command MinifyAll2OtherDocSelected and writes the result in other file.
     // It executes if its called the command "extension.MinifyAll2OtherDocSelected"
-    const MinifyAll2OtherDocSelected = vscode_1.commands.registerCommand('extension.MinifyAll2OtherDocSelected', (fileUri) => __awaiter(this, void 0, void 0, function* () {
+    const MinifyAll2OtherDocSelected = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', (fileUri) => __awaiter(this, void 0, void 0, function* () {
         if (fileUri !== undefined) {
             // We get the text from the selected file.
             FileSaver.readFile(fileUri.path, 'utf8', (err, data) => {
@@ -314,17 +302,16 @@ function activate(context) {
         context.subscriptions.push(MinifyAll2OtherDocSelected);
     }));
     // Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-    const MinifyAllSelectedText = vscode_1.commands.registerCommand('extension.MinifyAllSelectedText', () => {
+    const MinifyAllSelectedText = vscode.commands.registerCommand('extension.MinifyAllSelectedText', () => {
         const editor = vscode.window.activeTextEditor;
         const { selection, } = editor;
         const selectedText = editor.document.getText(selection);
-        statusReady = true;
-        switch (vscode_1.window.activeTextEditor.document.languageId) {
+        switch (vscode.window.activeTextEditor.document.languageId) {
             case 'css':
             case 'scss':
             case 'less':
             case 'sass':
-                if (checkLanguage_1.checkLanguageStyles(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedCssText = globalMinifiers.minifyCssScssLessSass(selectedText.split('\n'));
                     writeMinifiedCode_1.replaceSelectedCode(editor, selection, modifiedCssText);
                 }
@@ -334,7 +321,7 @@ function activate(context) {
                 break;
             case 'json':
             case 'jsonc':
-                if (checkLanguage_1.checkLanguageJson(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedJsonText = globalMinifiers.minifyJsonJsonc(selectedText.split('\n'));
                     writeMinifiedCode_1.replaceSelectedCode(editor, selection, modifiedJsonText);
                 }
@@ -344,7 +331,7 @@ function activate(context) {
                 break;
             case 'html':
             case 'php':
-                if (checkLanguage_1.checkLanguageHtmlPhp(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const modifiedHtmlText = globalMinifiers.minifyHtml(selectedText.split('\n'));
                     writeMinifiedCode_1.replaceSelectedCode(editor, selection, modifiedHtmlText);
                 }
@@ -355,7 +342,7 @@ function activate(context) {
             case 'javascript':
             case 'javascriptreact':
             case 'typescript':
-                if (checkLanguage_1.checkLanguageJS(vscode_1.window.activeTextEditor.document.languageId, settings)) {
+                if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
                     const Terser = require('terser');
                     const jsContent = selectedText;
                     const minifierJs = Terser.minify(jsContent);
@@ -377,80 +364,7 @@ function activate(context) {
         context.subscriptions.push(MinifyAllSelectedText);
     });
 }
-/**
- * Summary it gets the size of the actual document and creates triggers to hide
- * the status bar.
- *
- * Description gets the new size of the actual document and creates the
- * triggers then calls the method to create it createStatusBar().
- *
- * @access private
- */
-function getNewSize() {
-    if (statusReady) {
-        const newFilepath = vscode.window.activeTextEditor.document.fileName;
-        const newSize = FileSaver.statSync(newFilepath).size;
-        if (!settings.statusDisabled) {
-            createStatusBar(originalSize, newSize);
-            vscode.workspace.onDidChangeConfiguration(() => statusBar.hide());
-            vscode.workspace.onDidChangeWorkspaceFolders(() => statusBar.hide());
-            vscode.workspace.onDidCloseTextDocument(() => statusBar.hide());
-        }
-    }
-}
-/**
- * Summary creates the status bar item.
- *
- * Description first of all it checks at the user settings
- * and creates the status bar item with the alignment chosen
- * then it receives the original size of the document in Bytes
- * and the new size in Bytes and it creates a status bar with
- * both values and an arrow so you can see the old and new size.
- *
- * @access private
- *
- * @param {number} originalSizeB the non minified size in Bytes.
- * @param {number} newSize the minified size in Bytes.
- */
-function createStatusBar(originalSizeB, newSize) {
-    if (settings.alignment === 'Right') {
-        statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, settings.priority);
-    }
-    else {
-        statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, settings.priority);
-    }
-    statusBar.tooltip = 'New file size, click for more info!';
-    statusBar.command = 'extension.MinifyAllStatus';
-    statusBar.text = `${transformSize_1.default(originalSizeB)} --> ${transformSize_1.default(newSize)}`;
-    statusBar.show();
-    vscode.workspace.onDidChangeConfiguration(() => statusBar.hide());
-    vscode.workspace.onDidChangeWorkspaceFolders(() => statusBar.hide());
-    vscode.workspace.onDidCloseTextDocument(() => statusBar.hide());
-    statusReady = false;
-}
-/**
- * Summary creates an output channel with information about the minify.
- *
- * Description Creates an output channel with information about the file
- * that has been minified original size, new minified size filetype and path.
- *
- * @access private
- */
-function statusBarInfo() {
-    const oc = vscode_1.window.createOutputChannel('Minify output');
-    oc.appendLine('╔══════════════════════════════╗');
-    oc.appendLine('║      Extension MinifyAll     ║	');
-    oc.appendLine('╠═══════════════════╦══════════╣');
-    oc.appendLine(`║ Original size     ║ ${transformSize_1.default(originalSize)} ║`);
-    oc.appendLine('╠═══════════════════╬══════════║');
-    oc.appendLine(`║ New minified size ║ ${transformSize_1.default(FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)} ║`);
-    oc.appendLine('╚═══════════════════╩══════════╝');
-    oc.appendLine(`File path:  \t\t${vscode_1.window.activeTextEditor.document.fileName}`);
-    oc.appendLine(`File type:  \t\t${vscode_1.window.activeTextEditor.document.languageId}`);
-    oc.appendLine(`% of shrink:\t\t${(100 - ((FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size * 100) / originalSize)).toFixed(3)}%`);
-    oc.appendLine(`Bytes freed:\t\t${originalSize - (FileSaver.statSync(vscode.window.activeTextEditor.document.fileName).size)}B`);
-    oc.show();
-}
+exports.default = activate;
 /**
  * Summary it shows a warning or information message.
  *
@@ -467,11 +381,11 @@ function statusBarInfo() {
 function showMessage(text, warning) {
     if (warning) {
         if (!settings.disableMessages) {
-            vscode_1.window.showWarningMessage(text);
+            vscode.window.showWarningMessage(text);
         }
     }
     else if (!settings.disableMessages) {
-        vscode_1.window.showInformationMessage(text);
+        vscode.window.showInformationMessage(text);
     }
 }
 /**
@@ -482,13 +396,9 @@ function showMessage(text, warning) {
  *
  * @access public
  */
-function deactivate() {
-    statusBar.dispose();
-}
+function deactivate() { }
+exports.deactivate = deactivate;
 exports.activate = activate;
 exports.deactivate = deactivate;
 // Exports for tests.
-exports.getNewFilePath = getNewFilePath_1.default;
-exports.transformSize = transformSize_1.default;
-exports.showMessage = showMessage;
 //# sourceMappingURL=main.js.map
