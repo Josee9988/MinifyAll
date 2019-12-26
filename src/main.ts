@@ -57,7 +57,8 @@ const settings = getUserSettings();
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
-	vscode.workspace.onDidSaveTextDocument(() => vscode.commands.executeCommand('extension.MinifyAll'));
+	vscode.workspace.onDidSaveTextDocument(() =>
+		vscode.commands.executeCommand('extension.MinifyAll'));
 }
 
 if (settings.minifyOnSaveToNewFile) {
@@ -95,9 +96,6 @@ const globalMinifiers = new globalMinify(HexMinifier, commentRemover);
 export default function activate(context: vscode.ExtensionContext): void {
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const MinifyAll = vscode.commands.registerCommand('extension.MinifyAll', () => {
-
-		const { document } = vscode.window.activeTextEditor;
-
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css':
 			case 'scss':
@@ -105,7 +103,8 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'sass':
 
 				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
+					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedCssText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -116,7 +115,8 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'jsonc':
 
 				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
+					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedJsonText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -127,7 +127,8 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'php':
 
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
+					const modifiedHtmlText = globalMinifiers.minifyHtml(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedHtmlText);
 				} else {
 					showMessage('We will not format this file type because it is disabled.', false);
@@ -141,7 +142,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const Terser = require('terser');
 
-					const jsContent = document.getText();
+					const jsContent = vscode.window.activeTextEditor.document.getText();
 
 					const minifierJs = Terser.minify(jsContent);
 
@@ -167,13 +168,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const MinifyAll2OtherDoc = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path = require('path');
-		const {
-			document,
-		} = vscode.window.activeTextEditor;
-
-		const {
-			fileName,
-		} = document;
 
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css':
@@ -183,9 +177,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile = getNewFilePath(path,
-						fileName, vscode.window.activeTextEditor.document.languageId, settings.prefix);
+						vscode.window.activeTextEditor.document.fileName,
+						vscode.window.activeTextEditor.document.languageId, settings.prefix);
 
-					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(document.getText().split('\n'));
+					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
 				} else {
@@ -197,9 +193,10 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'jsonc':
 
 				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile = getNewFilePath(path, fileName, 'json', settings.prefix);
+					const path2NewFile = getNewFilePath(path, vscode.window.activeTextEditor.document.fileName, 'json', settings.prefix);
 
-					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(document.getText().split('\n'));
+					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
 				} else {
@@ -212,9 +209,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile = getNewFilePath(path,
-						fileName, vscode.window.activeTextEditor.document.languageId, settings.prefix);
+						vscode.window.activeTextEditor.document.fileName,
+						vscode.window.activeTextEditor.document.languageId, settings.prefix);
 
-					const modifiedHtmlText = globalMinifiers.minifyHtml(document.getText().split('\n'));
+					const modifiedHtmlText = globalMinifiers.minifyHtml(
+						vscode.window.activeTextEditor.document.getText().split('\n'));
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
 				} else {
@@ -227,9 +226,9 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'typescript':
 
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile = getNewFilePath(path, fileName, 'js', settings.prefix);
+					const path2NewFile = getNewFilePath(path, vscode.window.activeTextEditor.document.fileName, 'js', settings.prefix);
 					const Terser = require('terser');
-					const jsContent = document.getText();
+					const jsContent = vscode.window.activeTextEditor.document.getText();
 
 					const minifierJs = Terser.minify(jsContent);
 
@@ -343,78 +342,79 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const MinifyAllSelectedText = vscode.commands.registerCommand('extension.MinifyAllSelectedText', () => {
-		const editor = vscode.window.activeTextEditor;
-		const {
-			selection,
-		} = editor;
-		const selectedText = editor.document.getText(selection);
+	const MinifyAllSelectedText = vscode.commands.registerCommand(
+		'extension.MinifyAllSelectedText', () => {
+			const editor = vscode.window.activeTextEditor;
+			const {
+				selection,
+			} = editor;
+			const selectedText = vscode.window.activeTextEditor.document.getText(selection);
 
-		switch (vscode.window.activeTextEditor.document.languageId) {
-			case 'css':
-			case 'scss':
-			case 'less':
-			case 'sass':
+			switch (vscode.window.activeTextEditor.document.languageId) {
+				case 'css':
+				case 'scss':
+				case 'less':
+				case 'sass':
 
-				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedCssText = globalMinifiers.minifyCssScssLessSass(selectedText.split('\n'));
+					if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
+						const modifiedCssText = globalMinifiers.minifyCssScssLessSass(selectedText.split('\n'));
 
-					replaceSelectedCode(editor, selection, modifiedCssText);
-				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
-				}
-				break;
-
-			case 'json':
-			case 'jsonc':
-
-				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedJsonText = globalMinifiers.minifyJsonJsonc(selectedText.split('\n'));
-
-					replaceSelectedCode(editor, selection, modifiedJsonText);
-				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
-				}
-				break;
-
-			case 'html':
-			case 'php':
-
-				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const modifiedHtmlText = globalMinifiers.minifyHtml(selectedText.split('\n'));
-
-					replaceSelectedCode(editor, selection, modifiedHtmlText);
-				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
-				}
-				break;
-
-			case 'javascript':
-			case 'javascriptreact':
-			case 'typescript':
-
-				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const Terser = require('terser');
-
-					const jsContent = selectedText;
-
-					const minifierJs = Terser.minify(jsContent);
-
-					if (minifierJs.error === undefined) {
-						replaceSelectedCode(editor, selection, minifierJs.code);
-					} else if (!settings.disableMessages) {
-						showMessage(`Terser error: ${minifierJs.error}`, false);
+						replaceSelectedCode(editor, selection, modifiedCssText);
+					} else {
+						showMessage('We will not format this file type because it is disabled.', false);
 					}
-				} else if (!settings.disableMessages) {
-					showMessage('We will not format this file type because it is disabled.', false);
-				}
-				break;
-			default:
-				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
-				break;
-		}
-		context.subscriptions.push(MinifyAllSelectedText);
-	});
+					break;
+
+				case 'json':
+				case 'jsonc':
+
+					if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
+						const modifiedJsonText = globalMinifiers.minifyJsonJsonc(selectedText.split('\n'));
+
+						replaceSelectedCode(editor, selection, modifiedJsonText);
+					} else {
+						showMessage('We will not format this file type because it is disabled.', false);
+					}
+					break;
+
+				case 'html':
+				case 'php':
+
+					if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
+						const modifiedHtmlText = globalMinifiers.minifyHtml(selectedText.split('\n'));
+
+						replaceSelectedCode(editor, selection, modifiedHtmlText);
+					} else {
+						showMessage('We will not format this file type because it is disabled.', false);
+					}
+					break;
+
+				case 'javascript':
+				case 'javascriptreact':
+				case 'typescript':
+
+					if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
+						const Terser = require('terser');
+
+						const jsContent = selectedText;
+
+						const minifierJs = Terser.minify(jsContent);
+
+						if (minifierJs.error === undefined) {
+							replaceSelectedCode(editor, selection, minifierJs.code);
+						} else if (!settings.disableMessages) {
+							showMessage(`Terser error: ${minifierJs.error}`, false);
+						}
+					} else if (!settings.disableMessages) {
+						showMessage('We will not format this file type because it is disabled.', false);
+					}
+					break;
+				default:
+					showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+					break;
+			}
+			context.subscriptions.push(MinifyAllSelectedText);
+		});
 }
 
 
@@ -430,8 +430,9 @@ export default function activate(context: vscode.ExtensionContext): void {
  *
  * @param {String} text The text to be displayed in the message
  * @param {boolean} warning If it is a warning or an informational message
+ * @return {void}
  */
-function showMessage(text, warning) {
+function showMessage(text: string, warning: boolean): void {
 	if (warning) {
 		if (!settings.disableMessages) {
 			vscode.window.showWarningMessage(text);
