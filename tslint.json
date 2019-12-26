@@ -1,0 +1,18 @@
+{
+	"rules": {
+		"no-string-throw": true,
+		"no-unused-expression": true,
+		"no-duplicate-variable": true,
+		"no-duplicate-key": true,
+		"curly": true,
+		"class-name": true,
+		"semicolon": [
+			true,
+			"always"
+		],
+		"indent": true,
+		"max-line-length": [false, 100],
+		"triple-equals": true
+	},
+	"defaultSeverity": "warning"
+}
