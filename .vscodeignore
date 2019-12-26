@@ -1,7 +1,8 @@
 #Full folders ignored.
 .vscode/**
 .github/**
-test/**
+out/test/**
+src/**
 
 #Root files ignored.
 **/jsconfig.json
@@ -9,8 +10,14 @@ test/**
 **/.eslintrc.json
 **/.all-contributorsrc
 **/.gitignore
+**/tsconfig.json
+**/tslint.json
 
-#Screenshots folder.
+# Specific extension
+**/*.map
+**/*.ts
+
+#Screenshots folder. (all but the main icon)
 Screenshots/Preview.gif
 Screenshots/Preview2ndcommand.gif
 Screenshots/RightClickMenu.gif
@@ -21,8 +28,3 @@ Screenshots/output.png
 Screenshots/rawIcon.png
 Screenshots/RightClick.png
 Screenshots/SelectedText.gif
-
-#Src folder
-src/README.md
-src/controller/README.md
-src/langDefaultMinifiers/README.md

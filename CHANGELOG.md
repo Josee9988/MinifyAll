@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.0.1**] - 2019-12-26
+
+### Added
+
+* Multiple ignored folders for VSCode in the .vscodeignore file to download fewer files.
+
 ## [**2.0.0**] - 2019-12-26
 
 ### Changed
