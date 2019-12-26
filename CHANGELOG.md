@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**2.0.0**] - 2019-12-26
 
 ### Changed
 
@@ -15,7 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Extension recomendations in the .vscode/extension.json
+* Extension recomendations in the .vscode/extension.json.
+* File showMessage.
 
 ### Removed
 
@@ -24,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Setting disableStatusbarInformation.
 * Setting statusbarPriority.
 * Information about the new minified size.
+* All the settings from the readme.md file.
 
 ## [**1.10.1**] - 2019-12-24
 

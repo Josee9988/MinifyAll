@@ -100,24 +100,6 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default it is disabled)
 ```
 
-- If you want MinifyAll to stop showing a **status bar** with information about the minimization after you minify a file. (True for disabling.)
-
-``` json
-"MinifyAll.disableStatusbarInformation": true|false //default 'false' (by default it is enabled)
-```
-
-- The Priority of the status bar. 0 Is the greatest.
-
-``` json
-"MinifyAll.statusbarPriority": integer //A number: default '0'
-```
-
-- Align the status bar indicator to the left or right.
-
-``` json
-"MinifyAll.statusbarAlignment": Left|Right //default 'left'
-```
-
 - Disables warning and information messages
 
 ``` json

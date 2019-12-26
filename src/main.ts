@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 /**
  * @file Main file of the extension.
  *
@@ -51,8 +50,9 @@ import {
 import getNewFilePath from './controller/getNewFilePath';
 import globalMinify from './controller/globalMinifiers';
 import { getUserSettings, UserSettings } from './controller/getConfiguration';
+import { showMessage, MessageTypes } from './controller/showMessage';
 
-const settings: UserSettings = getUserSettings();
+export const settings: UserSettings = getUserSettings();
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
@@ -106,7 +106,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedCssText);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -118,7 +118,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedJsonText);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -130,7 +130,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 						vscode.window.activeTextEditor.document.getText().split('\n'));
 					replaceActualCode(modifiedHtmlText);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -148,14 +148,14 @@ export default function activate(context: vscode.ExtensionContext): void {
 					if (minifierJs.error === undefined) {
 						replaceActualCode(minifierJs.code);
 					} else if (!settings.disableMessages) {
-						showMessage(`Terser error: ${minifierJs.error}`, false);
+						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else if (!settings.disableMessages) {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 			default:
-				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(MinifyAll);
@@ -184,7 +184,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -199,7 +199,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -216,7 +216,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -234,14 +234,14 @@ export default function activate(context: vscode.ExtensionContext): void {
 					if (minifierJs.error === undefined) {
 						minifiedTextToNewFile(path2NewFile, minifierJs.code, settings);
 					} else if (!settings.disableMessages) {
-						showMessage(`Terser error: ${minifierJs.error}`, false);
+						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else {
-					showMessage('We will not format this file type because it is disabled.', false);
+					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 			default:
-				showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(MinifyAll2OtherDoc);
@@ -274,7 +274,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 								const modifiedCssText = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
 								minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
 							} else {
-								showMessage('We will not format this file type because it is disabled.', false);
+								showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 							}
 							break;
 
@@ -287,7 +287,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 								const modifiedJsonText = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings);
 							} else {
-								showMessage('We will not format this file type because it is disabled.', false);
+								showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 							}
 							break;
 
@@ -300,7 +300,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 								const modifiedHtmlText = globalMinifiers.minifyHtml(data.split('\n'));
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText, settings);
 							} else {
-								showMessage('We will not format this file type because it is disabled.', false);
+								showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 							}
 							break;
 
@@ -321,20 +321,20 @@ export default function activate(context: vscode.ExtensionContext): void {
 								if (minifierJs.error === undefined) {
 									minifiedTextToNewFile(path2NewFileJs, minifierJs.code, settings);
 								} else if (!settings.disableMessages) {
-									showMessage(`Terser error: ${minifierJs.error}`, false);
+									showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 								}
 							} else {
-								showMessage('We will not format this file type because it is disabled.', false);
+								showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 							}
 							break;
 						default:
-							showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+							showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 							break;
 					}
 				}
 			});
 		} else {
-			showMessage("This command must be called from the menu, use instead 'Minify this document ⚡' or 'Minify this document and preserve the original ⛏' but don't call this command through the command palette", true);
+			showMessage("This command must be called from the menu, use instead 'Minify this document ⚡' or 'Minify this document and preserve the original ⛏' but don't call this command through the command palette", MessageTypes.Warning);
 		}
 		context.subscriptions.push(MinifyAll2OtherDocSelected);
 	});
@@ -360,7 +360,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						replaceSelectedCode(editor, selection, modifiedCssText);
 					} else {
-						showMessage('We will not format this file type because it is disabled.', false);
+						showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 					}
 					break;
 
@@ -372,7 +372,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						replaceSelectedCode(editor, selection, modifiedJsonText);
 					} else {
-						showMessage('We will not format this file type because it is disabled.', false);
+						showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 					}
 					break;
 
@@ -384,7 +384,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						replaceSelectedCode(editor, selection, modifiedHtmlText);
 					} else {
-						showMessage('We will not format this file type because it is disabled.', false);
+						showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 					}
 					break;
 
@@ -402,43 +402,18 @@ export default function activate(context: vscode.ExtensionContext): void {
 						if (minifierJs.error === undefined) {
 							replaceSelectedCode(editor, selection, minifierJs.code);
 						} else if (!settings.disableMessages) {
-							showMessage(`Terser error: ${minifierJs.error}`, false);
+							showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 						}
 					} else if (!settings.disableMessages) {
-						showMessage('We will not format this file type because it is disabled.', false);
+						showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 					}
 					break;
 				default:
-					showMessage('⛔ We can not format this file type yet, use a valid one.', true);
+					showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 					break;
 			}
 			context.subscriptions.push(MinifyAllSelectedText);
 		});
-}
-
-
-/**
- * Summary it shows a warning or information message.
- *
- * Description showMessage shows a message to the user, it might be a warning
- * or an informational one, the method receives a text with the message
- * and a boolean for saying if it is a warning (true)
- * or an informational(false).
- *
- * @access private
- *
- * @param {String} text The text to be displayed in the message
- * @param {boolean} warning If it is a warning or an informational message
- * @return {void}
- */
-function showMessage(text: string, warning: boolean): void {
-	if (warning) {
-		if (!settings.disableMessages) {
-			vscode.window.showWarningMessage(text);
-		}
-	} else if (!settings.disableMessages) {
-		vscode.window.showInformationMessage(text);
-	}
 }
 
 
