@@ -8,6 +8,8 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+import { UserSettings } from "./getConfiguration";
+
 
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
@@ -19,7 +21,7 @@
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageStyles(languageId, settings) {
+export function checkLanguageStyles(languageId: string, settings: UserSettings): boolean {
     if ((languageId === 'css' && !settings.disableCss) ||
         (languageId === 'scss' && !settings.disableScss) ||
         (languageId === 'less' && !settings.disableLess) ||
@@ -40,7 +42,7 @@ export function checkLanguageStyles(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageJson(languageId, settings) {
+export function checkLanguageJson(languageId: string, settings: UserSettings): boolean {
     if ((languageId === 'json' && !settings.disableJson) ||
         (languageId === 'jsonc' && !settings.disableJsonc)) {
         return true;
@@ -59,7 +61,7 @@ export function checkLanguageJson(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageHtmlPhp(languageId, settings) {
+export function checkLanguageHtmlPhp(languageId: string, settings: UserSettings): boolean {
     if ((languageId === 'html' && !settings.disableHtml) ||
         (languageId === 'php')) {
         return true;
@@ -78,7 +80,7 @@ export function checkLanguageHtmlPhp(languageId, settings) {
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageJS(languageId, settings) {
+export function checkLanguageJS(languageId: string, settings: UserSettings): boolean {
     if ((languageId === 'javascript' && !settings.disableJavascript) ||
         (languageId === 'javascriptreact' && !settings.disableJavascriptReact) ||
         (languageId === 'typescript' && !settings.disableTypescript)) {

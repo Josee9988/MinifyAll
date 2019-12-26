@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-class jsonMinifier {
+class JsonMinifier {
     /**
      * Summary Minifier constructor that receives the content.
      *
@@ -44,5 +44,5 @@ class jsonMinifier {
             .replace(/,]/g, ']');
     }
 }
-module.exports = jsonMinifier;
+module.exports = JsonMinifier;
 //# sourceMappingURL=jsonMinifier.js.map

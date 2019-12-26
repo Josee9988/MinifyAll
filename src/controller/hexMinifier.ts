@@ -15,9 +15,7 @@ class HexMinifier {
    *
    * @param {Array} cssContent all the code that will be modified
    */
-  constructor(cssContent) {
-    this.cssContent = cssContent;
-  }
+  constructor(private cssContent: Array<String>) { }
 
   /**
    * Summary shorts hexadecimal 6digits to 3 digits.
@@ -32,7 +30,7 @@ class HexMinifier {
   shortHexMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const hexadecimal = this.cssContent[i].match(/#[0-9a-fA-F]+/ig);
-      if (hexadecimal != null && hexadecimal.toString().length == 7) {
+      if (hexadecimal !== null && hexadecimal.toString().length === 7) {
         const hexadecimalString = hexadecimal.toString();
         const shortHex = this.getShortHexColorCode(hexadecimalString);
         const newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
@@ -54,7 +52,7 @@ class HexMinifier {
   shortRGBMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgb)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
-      if (rgb != null) {
+      if (rgb !== null) {
         const rgbString = rgb.toString();
         const result = this.rgbArrayToObject(rgbString);
         const shortHex = this.rgbToShortHex(result);
@@ -77,10 +75,10 @@ class HexMinifier {
   shortRGBAMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgba)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
-      if (rgb != null) {
+      if (rgb !== null) {
         const rgbaString = rgb.toString();
         const percent = rgbaString.match(/[%]/g);
-        if (percent == null) {
+        if (percent === null) {
           const result = this.rgba2hex(rgbaString);
           const newShortString = this.cssContent[i].replace(rgbaString,
             result.toString().toUpperCase());
@@ -103,7 +101,7 @@ class HexMinifier {
    *
    * @access private
    */
-  rgba2hex(rgba) {
+  rgba2hex(rgba: any) {
     let a;
     const rgb = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i);
     const alpha = (rgb && rgb[4] || '').trim();
@@ -135,7 +133,7 @@ class HexMinifier {
    *
    * @return {Object} rgb r g b integers result with the red, yellow and green.
    */
-  rgbArrayToObject(rgbString) {
+  rgbArrayToObject(rgbString: string) {
     const matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
     const match = matchColors.exec(rgbString);
     return match ? {
@@ -157,7 +155,7 @@ class HexMinifier {
    *
    * @return {String} this.rgbToShortHex(rgb).
    */
-  getShortHexColorCode(code) {
+  getShortHexColorCode(code: string) {
     const rgb = this.hexToRgb(code);
     return this.rgbToShortHex(rgb).toUpperCase();
   }
@@ -175,7 +173,7 @@ class HexMinifier {
    *
    * @return {Object} r g b integers result with the red, yellow and green.
    */
-  hexToRgb(hex) {
+  hexToRgb(hex: string) {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -199,7 +197,7 @@ class HexMinifier {
    *
    * @return {String} with the 3 digit hex value.
    */
-  rgbToShortHex(rgb) {
+  rgbToShortHex(rgb: any) {
     const hexR = Math.round(rgb.r / 17).toString(16);
     const hexG = Math.round(rgb.g / 17).toString(16);
     const hexB = Math.round(rgb.b / 17).toString(16);

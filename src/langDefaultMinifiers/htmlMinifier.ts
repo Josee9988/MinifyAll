@@ -19,9 +19,7 @@ class htmlMinifier {
    *
    * @param {Array} htmlContent all the code that will be minified.
    */
-  constructor(htmlContent) {
-    this.htmlContent = htmlContent;
-  }
+  constructor(private htmlContent: Array<String>) { }
 
   /**
    * Summary getHtmlMinified finds lasts spaces and trim it into just one line.
@@ -60,16 +58,16 @@ class htmlMinifier {
   removeMultipleLineComments() {
     for (let i = 0; i < this.htmlContent.length; i++) {
       const begin = this.htmlContent[i].match(/(<!--)/ig); // first <!-- found
-      if (begin != null) {
+      if (begin !== null) {
         for (let j = 0; j < this.htmlContent.length; j++) {
           const end = this.htmlContent[j].match(/(-->)/g); // found --> end
-          if (end != null) {
+          if (end !== null) {
             for (let k = i; k < j + 1; k++) {
-              if (k == i) {
+              if (k === i) {
                 const FirstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
                 const firstLineToReplace = this.htmlContent[k].substring(0, FirstCharacterToRemove);
                 this.htmlContent[k] = firstLineToReplace;
-              } else if (k == j) {
+              } else if (k === j) {
                 const lastCharacterToRemove = this.htmlContent[k].indexOf('-->');
                 const lastLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2,
                   this.htmlContent[k].length);

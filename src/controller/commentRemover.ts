@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-export default class commentRemover {
+export default class CommentRemover {
   /**
    * Summary Minifier constructor that maps and trims the code.
    *
@@ -16,9 +16,7 @@ export default class commentRemover {
    *
    * @param {Array} lineContent all the code that will be minified.
    */
-  constructor(lineContent) {
-    this.lineContent = lineContent;
-  }
+  constructor(private lineContent: Array<String>) { }
 
   /**
    * Summary getLineRemoved finds lasts spaces and trim it into just one line.
@@ -27,7 +25,7 @@ export default class commentRemover {
    *
    * @return {Array} the line minified.
    */
-  getCommentsRemoved() {
+  getCommentsRemoved(): String | Array<String> {
     return this.lineContent;
   }
 
@@ -50,9 +48,9 @@ export default class commentRemover {
       this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
     }
 
-    this.lineContent = this.removeComments(this.lineContent.join('\n'));
+    const lineContentString: String = this.removeComments(this.lineContent.join('\n'));
 
-    this.lineContent = this.lineContent.split('\n');
+    this.lineContent = lineContentString.split('\n');
   }
 
   /**
@@ -79,9 +77,9 @@ export default class commentRemover {
    * @param {String} str the string to remove the comments.
    */
   // eslint-disable-next-line class-methods-use-this
-  removeComments(str) {
+  removeComments(str: String) {
     const uid = `_${+new Date()}`;
-    const primatives = [];
+    const primatives: Array<String> = [];
     let primIndex = 0;
     return (
       str
@@ -96,6 +94,7 @@ export default class commentRemover {
         .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
         .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
         .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
+        // @ts-ignore
         .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n])
     );
   }

@@ -32,7 +32,7 @@ class HexMinifier {
     shortHexMain() {
         for (let i = 0; i < this.cssContent.length; i++) {
             const hexadecimal = this.cssContent[i].match(/#[0-9a-fA-F]+/ig);
-            if (hexadecimal != null && hexadecimal.toString().length == 7) {
+            if (hexadecimal !== null && hexadecimal.toString().length === 7) {
                 const hexadecimalString = hexadecimal.toString();
                 const shortHex = this.getShortHexColorCode(hexadecimalString);
                 const newShortString = this.cssContent[i].replace(hexadecimalString, shortHex);
@@ -53,7 +53,7 @@ class HexMinifier {
     shortRGBMain() {
         for (let i = 0; i < this.cssContent.length; i++) {
             const rgb = this.cssContent[i].match(/((rgb)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
-            if (rgb != null) {
+            if (rgb !== null) {
                 const rgbString = rgb.toString();
                 const result = this.rgbArrayToObject(rgbString);
                 const shortHex = this.rgbToShortHex(result);
@@ -75,10 +75,10 @@ class HexMinifier {
     shortRGBAMain() {
         for (let i = 0; i < this.cssContent.length; i++) {
             const rgb = this.cssContent[i].match(/((rgba)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
-            if (rgb != null) {
+            if (rgb !== null) {
                 const rgbaString = rgb.toString();
                 const percent = rgbaString.match(/[%]/g);
-                if (percent == null) {
+                if (percent === null) {
                     const result = this.rgba2hex(rgbaString);
                     const newShortString = this.cssContent[i].replace(rgbaString, result.toString().toUpperCase());
                     this.cssContent[i] = newShortString;

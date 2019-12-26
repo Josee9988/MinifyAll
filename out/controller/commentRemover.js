@@ -9,7 +9,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-class commentRemover {
+class CommentRemover {
     /**
      * Summary Minifier constructor that maps and trims the code.
      *
@@ -48,8 +48,8 @@ class commentRemover {
         for (let i = 0; i < this.lineContent.length; i++) {
             this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
         }
-        this.lineContent = this.removeComments(this.lineContent.join('\n'));
-        this.lineContent = this.lineContent.split('\n');
+        const lineContentString = this.removeComments(this.lineContent.join('\n'));
+        this.lineContent = lineContentString.split('\n');
     }
     /**
      * Summary removes most of the '//' comments.
@@ -91,8 +91,9 @@ class commentRemover {
             .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
             .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
             .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
+            // @ts-ignore
             .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n]));
     }
 }
-exports.default = commentRemover;
+exports.default = CommentRemover;
 //# sourceMappingURL=commentRemover.js.map

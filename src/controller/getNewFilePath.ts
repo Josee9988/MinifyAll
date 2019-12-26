@@ -22,7 +22,9 @@
  * @return {String} path2NewFile the path to the new file which will have
  * the minified code.
  */
-export default function getNewFilePath(path, fileName, extensionWithOutDot, prefixUsed = '-min') {
+
+// tslint:disable-next-line: max-line-length
+export default function getNewFilePath(path: any, fileName: string, extensionWithOutDot: string, prefixUsed: string = '-min'): string {
     const filePath = path.dirname(fileName);
     const newName = path.basename(fileName).replace(`.${extensionWithOutDot}`, `${prefixUsed}.${extensionWithOutDot}`);
     const path2NewFile = path.join(filePath, newName);

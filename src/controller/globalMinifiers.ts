@@ -15,17 +15,15 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 export default class GlobalMinifiers {
-    constructor(HexMinifier, commentRemover) {
-        this.HexMinifier = HexMinifier;
-        this.CommentRemover = commentRemover;
-    }
+
+    constructor(private HexMinifier: any, private CommentRemover: any) { }
 
     /**
      * Summary Function that does all the steps to minify all the css code.
      * @param {Array} cssContent css array to be minified.
      * @return {string} string with all the code minified.
      */
-    minifyCssScssLessSass(cssContent) {
+    minifyCssScssLessSass(cssContent: Array<String>) {
         const CssMinifier = require('../langDefaultMinifiers/cssMinifier.js');
         const RemoveComments = this.removeComments(cssContent);
         const hexMinifiedCss = this.HexMinify(RemoveComments);
@@ -38,7 +36,7 @@ export default class GlobalMinifiers {
      * @param {Array} jsonContent css array to be minified.
      * @return {string} string with all the code minified.
      */
-    minifyJsonJsonc(jsonContent) {
+    minifyJsonJsonc(jsonContent: Array<String>) {
         const JsonMinifier = require('../langDefaultMinifiers/jsonMinifier.js');
         const contentWithHexMinified = this.HexMinify(jsonContent);
         const RemoveComments = this.removeComments(contentWithHexMinified);
@@ -51,7 +49,7 @@ export default class GlobalMinifiers {
      * @param {Array} htmlContent css array to be minified.
      * @return {string} string with all the code minified.
      */
-    minifyHtml(htmlContent) {
+    minifyHtml(htmlContent: Array<String>) {
         const HtmlMinifier = require('../langDefaultMinifiers/htmlMinifier.js');
         const minifierHtml = new HtmlMinifier(htmlContent);
         minifierHtml.removeMultipleLineComments();
@@ -75,7 +73,7 @@ export default class GlobalMinifiers {
      *
      * @return {Array} with the colors minified.
      */
-    HexMinify(Content) {
+    HexMinify(Content: Array<String>) {
         let MinifierHex;
         let returnValue;
 
@@ -104,7 +102,7 @@ export default class GlobalMinifiers {
      * @access private
      * @param {Array} content All the content to remove the comments
      */
-    removeComments(content) {
+    removeComments(content: Array<String>) {
         const RemoveComments = new this.CommentRemover(content);
         RemoveComments.removeCommentsMain();
         return RemoveComments.getCommentsRemoved();

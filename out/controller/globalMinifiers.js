@@ -17,9 +17,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 class GlobalMinifiers {
-    constructor(HexMinifier, commentRemover) {
+    constructor(HexMinifier, CommentRemover) {
         this.HexMinifier = HexMinifier;
-        this.CommentRemover = commentRemover;
+        this.CommentRemover = CommentRemover;
     }
     /**
      * Summary Function that does all the steps to minify all the css code.

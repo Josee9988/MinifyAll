@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * @file file that contains the functions that will replace the actual code with the minified one,
  * replace the selected code with the minified one and a function to write the minified text to
@@ -9,7 +10,6 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require('vscode');
 const FileSaver = require('fs');
 const { showMessage, } = require('./../main');
@@ -71,6 +71,7 @@ exports.replaceSelectedCode = replaceSelectedCode;
  * @param {Object} settings     Settings of the user.
  * @return {void}
  */
+// tslint:disable-next-line: max-line-length
 function minifiedTextToNewFile(path2NewFile, modifiedText, settings) {
     FileSaver.writeFile(path2NewFile, modifiedText, () => {
         if (settings.openMinifiedDocument) {

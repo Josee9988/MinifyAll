@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-class jsonMinifier {
+class JsonMinifier {
   /**
    * Summary Minifier constructor that receives the content.
    *
@@ -20,9 +20,7 @@ class jsonMinifier {
    *
    * @param {Array} jsonContent all the code that will be minified .
    */
-  constructor(jsonContent) {
-    this.jsonContent = jsonContent;
-  }
+  constructor(private jsonContent: Array<String>) { }
 
   /**
    * Summary getJSONMinified finds lasts spaces and trim it into just one line.
@@ -45,4 +43,4 @@ class jsonMinifier {
       .replace(/,]/g, ']');
   }
 }
-module.exports = jsonMinifier;
+module.exports = JsonMinifier;
