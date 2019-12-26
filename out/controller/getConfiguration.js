@@ -9,6 +9,13 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
+var PrefixesAvailable;
+(function (PrefixesAvailable) {
+    PrefixesAvailable["hyphenMin"] = "-min";
+    PrefixesAvailable["dotMin"] = ".min";
+    PrefixesAvailable["minifiedHyphen"] = "minified-";
+    PrefixesAvailable["docMinified"] = ".minified";
+})(PrefixesAvailable = exports.PrefixesAvailable || (exports.PrefixesAvailable = {}));
 /**
  * Summary: The function getUserSettings gathers all settings from the user and returns them.
  *
@@ -21,9 +28,6 @@ function getUserSettings() {
     }
     return {
         hexDisabled: conf.get('disableHexadecimalShortener'),
-        statusDisabled: conf.get('disableStatusbarInformation'),
-        priority: conf.get('statusbarPriority'),
-        alignment: conf.get('statusbarAlignment'),
         disableHtml: conf.get('disableHtml'),
         disableCss: conf.get('disableCss'),
         disableScss: conf.get('disableScss'),
@@ -41,5 +45,5 @@ function getUserSettings() {
         openMinifiedDocument: conf.get('openMinifiedDocument'),
     };
 }
-exports.default = getUserSettings;
+exports.getUserSettings = getUserSettings;
 //# sourceMappingURL=getConfiguration.js.map

@@ -69,8 +69,7 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -87,8 +86,7 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -120,29 +118,6 @@
 					"type": "boolean",
 					"default": true,
 					"description": "If you want MinifyAll to stop shortening colors, such as rgb to 3 digit hex, or rgba to hex, or 6 digit hex to 3 digit hex. (True for disabling hex.)"
-				},
-				"MinifyAll.disableStatusbarInformation": {
-					"type": "boolean",
-					"default": false,
-					"description": "If you want MinifyAll to stop showing an status bar with information about the compression after you minify a file. (True for disabling.)"
-				},
-				"MinifyAll.statusbarPriority": {
-					"type": "integer",
-					"default": 0,
-					"description": "Priority of the status bar. 0 Is the greatest."
-				},
-				"MinifyAll.statusbarAlignment": {
-					"type": "string",
-					"default": "Left",
-					"enum": [
-						"Left",
-						"Right"
-					],
-					"enumDescriptions": [
-						"Align the status bar indicator to the left.",
-						"Align the status bar indicator to the right."
-					],
-					"description": "Align the status bar indicator to the left or the right. (Default left)"
 				},
 				"MinifyAll.disableHtml": {
 					"type": "boolean",
@@ -239,8 +214,7 @@
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
 					"group": "MinifyAll"
@@ -256,12 +230,10 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
-					"command": "extension.MinifyAll2OtherDocSelected",
-					"group": "MinifyAll"
-				}
-			]
+			"explorer/context": [{
+				"command": "extension.MinifyAll2OtherDocSelected",
+				"group": "MinifyAll"
+			}]
 		}
 	},
 	"devDependencies": {

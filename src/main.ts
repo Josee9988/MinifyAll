@@ -51,9 +51,9 @@ import {
 import getNewFilePath from './controller/getNewFilePath';
 import commentRemover from './controller/commentRemover';
 import globalMinify from './controller/globalMinifiers';
-import getUserSettings from './controller/getConfiguration';
+import { getUserSettings, UserSettings } from './controller/getConfiguration';
 
-const settings = getUserSettings();
+const settings: UserSettings = getUserSettings();
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {

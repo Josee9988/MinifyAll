@@ -53,7 +53,7 @@ const getNewFilePath_1 = require("./controller/getNewFilePath");
 const commentRemover_1 = require("./controller/commentRemover");
 const globalMinifiers_1 = require("./controller/globalMinifiers");
 const getConfiguration_1 = require("./controller/getConfiguration");
-const settings = getConfiguration_1.default();
+const settings = getConfiguration_1.getUserSettings();
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
     vscode.workspace.onDidSaveTextDocument(() => vscode.commands.executeCommand('extension.MinifyAll'));
