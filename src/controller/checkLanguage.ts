@@ -82,8 +82,7 @@ export function checkLanguageHtmlPhp(languageId: string, settings: UserSettings)
  */
 export function checkLanguageJS(languageId: string, settings: UserSettings): boolean {
     if ((languageId === 'javascript' && !settings.disableJavascript) ||
-        (languageId === 'javascriptreact' && !settings.disableJavascriptReact) ||
-        (languageId === 'typescript' && !settings.disableTypescript)) {
+        (languageId === 'javascriptreact' && !settings.disableJavascriptReact)) {
         return true;
     }
     return false;

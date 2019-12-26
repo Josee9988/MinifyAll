@@ -31,7 +31,6 @@ export interface UserSettings {
     prefix: PrefixesAvailable;
     disableJavascript: boolean;
     disableJavascriptReact: boolean;
-    disableTypescript: boolean;
     openMinifiedDocument: boolean;
 }
 
@@ -60,7 +59,6 @@ export function getUserSettings(): UserSettings {
         prefix: conf.get('PrefixOfNewMinifiedFiles'),
         disableJavascript: conf.get('disableJavascript'),
         disableJavascriptReact: conf.get('disableJavascriptReact'),
-        disableTypescript: conf.get('disableTypescript'),
         openMinifiedDocument: conf.get('openMinifiedDocument'),
     };
 }

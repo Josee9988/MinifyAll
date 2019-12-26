@@ -30,9 +30,9 @@ This class is **not enabled by default** (check settings).
 
 **[getNewFilePath](getNewFilePath.js)** contains the function getNewFilePath.
 
-## **transformSize.js**
+## **showMessage.js**
 
-**[transformSize](transformSize.js)** contains the function transformSize.
+**[showMessage](showMessage.js)** contains the functions to show messages from VSCode.
 
 ## **writeMinifiedCode.js**
 

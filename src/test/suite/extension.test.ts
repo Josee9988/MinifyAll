@@ -14,8 +14,7 @@
 
 import * as assert from 'assert';
 import * as vscode from 'vscode';
-const path = require('path');
-const MinifyAll = require('../../main');
+import path = require('path');
 import GlobalMinifiers from '../../controller/globalMinifiers';
 const globalMinifiers = new GlobalMinifiers(true);
 import HexMinifier from '../../controller/hexMinifier';

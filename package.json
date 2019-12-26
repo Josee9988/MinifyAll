@@ -1,7 +1,7 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, Typescript(testing), and JavaScriptReact(testing). You will love its simplicity!",
+	"description": "Minifier for JSON, CSS, HTML, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
 	"version": "2.0.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
@@ -40,7 +40,6 @@
 		"js",
 		"javascriptreact",
 		"react",
-		"typescript",
 		"ts",
 		"terser"
 	],
@@ -163,11 +162,6 @@
 					"default": true,
 					"description": "If you want MinifyAll to stop minimizing JavaScriptReact. (True for disabling)"
 				},
-				"MinifyAll.disableTypescript": {
-					"type": "boolean",
-					"default": false,
-					"description": "If you want MinifyAll to stop minimizing Typescript. (True for disabling)"
-				},
 				"MinifyAll.disableMessages": {
 					"type": "boolean",
 					"default": false,
@@ -215,17 +209,17 @@
 		"menus": {
 			"editor/context": [{
 					"command": "extension.MinifyAll",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.MinifyAll2OtherDoc",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.MinifyAllSelectedText",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == typescript || editorLangId == php",
+					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == php",
 					"group": "MinifyAll"
 				}
 			],

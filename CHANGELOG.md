@@ -12,11 +12,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 * The project now uses TypeScript.
+* Code is better structured and with less redundant code and way easier to be maintained.
 
 ### Added
 
 * Extension recomendations in the .vscode/extension.json.
 * File showMessage.
+* Information in the controller's readme.md file about the new file showMessage.
+* Multiple changes to make the project use TypeScript.
+* File tsconfig and tslint to manage the TypeScript behaviour.
 
 ### Removed
 
@@ -26,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Setting statusbarPriority.
 * Information about the new minified size.
 * All the settings from the readme.md file.
+* TypeScript minify as it won't help and wasn't working well.
 
 ## [**1.10.1**] - 2019-12-24
 

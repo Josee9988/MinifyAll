@@ -136,7 +136,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript':
 			case 'javascriptreact':
-			case 'typescript':
 
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const Terser = require('terser');
@@ -222,7 +221,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript':
 			case 'javascriptreact':
-			case 'typescript':
 
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile = getNewFilePath(path, vscode.window.activeTextEditor.document.fileName, 'js', settings.prefix);
@@ -306,11 +304,9 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						case 'javascript':
 						case 'javascriptreact':
-						case 'typescript':
 
 							if ((fileUri.path.split('.').pop() === 'javascript' && !settings.disableJavascript) ||
-								(fileUri.path.split('.').pop() === 'javascriptreact' && !settings.disableJavascriptReact) ||
-								(fileUri.path.split('.').pop() === 'typescript' && !settings.disableTypescript)) {
+								(fileUri.path.split('.').pop() === 'javascriptreact' && !settings.disableJavascriptReact)) {
 								const Terser = require('terser');
 								const newNameJs = path.basename(fileUri.path).replace('.js', `${settings.prefix}.js`);
 								const path2NewFileJs = path.join(filePath, newNameJs);
@@ -390,7 +386,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				case 'javascript':
 				case 'javascriptreact':
-				case 'typescript':
 
 					if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 						const Terser = require('terser');
@@ -425,7 +420,7 @@ export default function activate(context: vscode.ExtensionContext): void {
  *
  * @access public
  */
-export function deactivate() { }
+export function deactivate(): void { }
 exports.activate = activate;
 exports.deactivate = deactivate;
 // Exports for tests.

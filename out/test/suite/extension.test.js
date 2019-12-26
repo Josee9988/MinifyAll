@@ -14,8 +14,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
 const vscode = require("vscode");
-const path = require('path');
-const MinifyAll = require('../../main');
+const path = require("path");
 const globalMinifiers_1 = require("../../controller/globalMinifiers");
 const globalMinifiers = new globalMinifiers_1.default(true);
 const hexMinifier_1 = require("../../controller/hexMinifier");

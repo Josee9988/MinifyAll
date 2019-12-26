@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033-->
 # **MinifyAll an extension for VSCode**
 
-VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **Typescript**(alpha), **JavaScript**, **JavaScriptReact**(alpha), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also you can simply minify your **selected text**.
 
@@ -45,10 +45,6 @@ Check our **[changelog](CHANGELOG.md)**.
 
 <img src="https://i.imgur.com/mBABVUM.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
 
-- The output that you will find after you save your document:
-
-<img src="https://i.imgur.com/oYztqCE.png" alt="output" title="output" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
-
 - The first and default command that replaces the actual code with the minified one:
 
 <img src="https://i.imgur.com/bbAhxJj.gif" alt="Preview" title="preview" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
@@ -78,7 +74,6 @@ Check our **[changelog](CHANGELOG.md)**.
 - **HTML** in a *PHP file*
 - **JSON**
 - **JavaScript** With: [Terser](https://github.com/terser/terser)
-- **TypeScript** With: [Terser](https://github.com/terser/terser)
 - **JavaScriptReact** With: [Terser](https://github.com/terser/terser)
 - **JSONC**
 - **LESS**
@@ -184,12 +179,6 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ``` json
 "MinifyAll.disableJavascriptReact": true|false //default 'true' (by default it is disabled)
-```
-
-- Disables **Typescript** minimization //default 'false' (by default it is enabled but it is not on a stable version yet)
-
-``` json
-"MinifyAll.disableTypescript": true|false //default 'true' (by default it is enabled)
 ```
 
 </details>

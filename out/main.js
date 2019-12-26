@@ -123,7 +123,6 @@ function activate(context) {
                 break;
             case 'javascript':
             case 'javascriptreact':
-            case 'typescript':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
                     const Terser = require('terser');
                     const jsContent = vscode.window.activeTextEditor.document.getText();
@@ -188,7 +187,6 @@ function activate(context) {
                 break;
             case 'javascript':
             case 'javascriptreact':
-            case 'typescript':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
                     const path2NewFile = getNewFilePath_1.default(path, vscode.window.activeTextEditor.document.fileName, 'js', exports.settings.prefix);
                     const Terser = require('terser');
@@ -265,10 +263,8 @@ function activate(context) {
                             break;
                         case 'javascript':
                         case 'javascriptreact':
-                        case 'typescript':
                             if ((fileUri.path.split('.').pop() === 'javascript' && !exports.settings.disableJavascript) ||
-                                (fileUri.path.split('.').pop() === 'javascriptreact' && !exports.settings.disableJavascriptReact) ||
-                                (fileUri.path.split('.').pop() === 'typescript' && !exports.settings.disableTypescript)) {
+                                (fileUri.path.split('.').pop() === 'javascriptreact' && !exports.settings.disableJavascriptReact)) {
                                 const Terser = require('terser');
                                 const newNameJs = path.basename(fileUri.path).replace('.js', `${exports.settings.prefix}.js`);
                                 const path2NewFileJs = path.join(filePath, newNameJs);
@@ -337,7 +333,6 @@ function activate(context) {
                 break;
             case 'javascript':
             case 'javascriptreact':
-            case 'typescript':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
                     const Terser = require('terser');
                     const jsContent = selectedText;
