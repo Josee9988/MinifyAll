@@ -8,6 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+// @ts-ignore
 class CssMinifier {
   /**
      * Summary Minifier constructor that receives the content.
@@ -20,7 +21,7 @@ class CssMinifier {
      *
      * @param {Array} cssContent all the code that will be minified.
      */
-  constructor(private cssContent: Array<String>) { }
+  constructor(private cssContent: Array<string>) { }
 
   /**
      * Summary getCssMinified finds lasts spaces and

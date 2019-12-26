@@ -49,7 +49,6 @@ import {
 	checkLanguageJS,
 } from './controller/checkLanguage';
 import getNewFilePath from './controller/getNewFilePath';
-import CommentRemover from './controller/commentRemover';
 import globalMinify from './controller/globalMinifiers';
 import { getUserSettings, UserSettings } from './controller/getConfiguration';
 
@@ -66,9 +65,9 @@ if (settings.minifyOnSaveToNewFile) {
 }
 
 // If the user has hexadecimal shortener enabled it will import it.
-const HexMinifier = !settings.hexDisabled ? require('./controller/hexMinifier') : null;
+const minifyHex: boolean = !settings.hexDisabled ? true : false;
 
-const globalMinifiers = new globalMinify(HexMinifier, CommentRemover);
+const globalMinifiers = new globalMinify(minifyHex);
 
 
 /**

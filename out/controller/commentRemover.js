@@ -74,7 +74,6 @@ class CommentRemover {
      *
      * @param {String} str the string to remove the comments.
      */
-    // eslint-disable-next-line class-methods-use-this
     removeComments(str) {
         const uid = `_${+new Date()}`;
         const primatives = [];

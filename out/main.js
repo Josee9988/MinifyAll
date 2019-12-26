@@ -50,7 +50,6 @@ const vscode = require("vscode");
 const writeMinifiedCode_1 = require("./controller/writeMinifiedCode");
 const checkLanguage_1 = require("./controller/checkLanguage");
 const getNewFilePath_1 = require("./controller/getNewFilePath");
-const commentRemover_1 = require("./controller/commentRemover");
 const globalMinifiers_1 = require("./controller/globalMinifiers");
 const getConfiguration_1 = require("./controller/getConfiguration");
 const settings = getConfiguration_1.getUserSettings();
@@ -62,8 +61,8 @@ if (settings.minifyOnSaveToNewFile) {
     vscode.workspace.onDidSaveTextDocument(() => vscode.commands.executeCommand('extension.MinifyAll2OtherDoc'));
 }
 // If the user has hexadecimal shortener enabled it will import it.
-const HexMinifier = !settings.hexDisabled ? require('./controller/hexMinifier') : null;
-const globalMinifiers = new globalMinifiers_1.default(HexMinifier, commentRemover_1.default);
+const minifyHex = !settings.hexDisabled ? true : false;
+const globalMinifiers = new globalMinifiers_1.default(minifyHex);
 /**
  * Summary main method that is executed when the extension is activated,
  * the extension is activated the very first time the command is executed,

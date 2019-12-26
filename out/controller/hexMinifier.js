@@ -8,6 +8,8 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-ignore
 class HexMinifier {
     /**
      * Summary Minifier constructor that maps and trims the code.
@@ -95,7 +97,7 @@ class HexMinifier {
      *
      * @param {*} rgba original rgba number
      *
-     * @return {String} the hexadecimal value
+     * @return {string} the hexadecimal value
      *
      * @access private
      */
@@ -208,5 +210,5 @@ class HexMinifier {
         return this.cssContent;
     }
 }
-module.exports = HexMinifier;
+exports.default = HexMinifier;
 //# sourceMappingURL=hexMinifier.js.map

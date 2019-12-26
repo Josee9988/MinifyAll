@@ -7,7 +7,9 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-class HexMinifier {
+
+// @ts-ignore
+export default class HexMinifier {
   /**
    * Summary Minifier constructor that maps and trims the code.
    *
@@ -15,7 +17,7 @@ class HexMinifier {
    *
    * @param {Array} cssContent all the code that will be modified
    */
-  constructor(private cssContent: Array<String>) { }
+  constructor(private cssContent: Array<string>) { }
 
   /**
    * Summary shorts hexadecimal 6digits to 3 digits.
@@ -97,7 +99,7 @@ class HexMinifier {
    *
    * @param {*} rgba original rgba number
    *
-   * @return {String} the hexadecimal value
+   * @return {string} the hexadecimal value
    *
    * @access private
    */
@@ -215,5 +217,3 @@ class HexMinifier {
     return this.cssContent;
   }
 }
-
-module.exports = HexMinifier;

@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-class htmlMinifier {
+class HtmlMinifier {
   /**
    * Summary Minifier constructor that receives the content.
    *
@@ -19,7 +19,7 @@ class htmlMinifier {
    *
    * @param {Array} htmlContent all the code that will be minified.
    */
-  constructor(private htmlContent: Array<String>) { }
+  constructor(private htmlContent: Array<string>) { }
 
   /**
    * Summary getHtmlMinified finds lasts spaces and trim it into just one line.
@@ -83,4 +83,4 @@ class htmlMinifier {
     }
   }
 }
-module.exports = htmlMinifier;
+module.exports = HtmlMinifier;

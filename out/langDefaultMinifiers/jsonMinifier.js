@@ -8,6 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
+// @ts-ignore
 class JsonMinifier {
     /**
      * Summary Minifier constructor that receives the content.

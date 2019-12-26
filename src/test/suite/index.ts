@@ -1,13 +1,12 @@
-const path = require('path');
-const Mocha = require('mocha');
-const glob = require('glob');
+import * as path from 'path';
+import * as Mocha from 'mocha';
+import * as glob from 'glob';
 
-function run() {
+export function run(): Promise<void> {
   // Create the mocha test
   const mocha = new Mocha({
     ui: 'tdd',
   });
-  // Use any mocha API
   mocha.useColors(true);
 
   const testsRoot = path.resolve(__dirname, '..');
@@ -19,11 +18,11 @@ function run() {
       }
 
       // Add files to the test suite
-      files.forEach((f) => mocha.addFile(path.resolve(testsRoot, f)));
+      files.forEach(f => mocha.addFile(path.resolve(testsRoot, f)));
 
       try {
         // Run the mocha test
-        mocha.run((failures) => {
+        mocha.run(failures => {
           if (failures > 0) {
             e(new Error(`${failures} tests failed.`));
           } else {
@@ -36,7 +35,3 @@ function run() {
     });
   });
 }
-
-module.exports = {
-  run,
-};

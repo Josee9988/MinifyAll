@@ -12,17 +12,17 @@
  */
 
 
-const assert = require('assert');
-const vscode = require('vscode');
+import * as assert from 'assert';
+import * as vscode from 'vscode';
 const path = require('path');
-const MinifyAll = require('../../src/main');
-const GlobalMinify = require('../../src/controller/globalMinifiers');
-const globalMinifiers = new GlobalMinify(require('../../src/controller/hexMinifier'), require('../../src/controller/commentRemover'));
-const HexMinifier = require('../../src/controller/hexMinifier');
-const getNewFilePath = require('../../src/controller/getNewFilePath');
-const CssMinifier = require('../../src/langDefaultMinifiers/cssMinifier');
-const HtmlMinifier = require('../../src/langDefaultMinifiers/htmlMinifier');
-const JsonMinifier = require('../../src/langDefaultMinifiers/jsonMinifier');
+const MinifyAll = require('../../main');
+import GlobalMinifiers from '../../controller/globalMinifiers';
+const globalMinifiers = new GlobalMinifiers(true);
+import HexMinifier from '../../controller/hexMinifier';
+import getNewFilePath from '../../controller/getNewFilePath';
+const CssMinifier = require('../../langDefaultMinifiers/cssMinifier');
+const HtmlMinifier = require('../../langDefaultMinifiers/htmlMinifier');
+const JsonMinifier = require('../../langDefaultMinifiers/jsonMinifier');
 
 
 suite('MinifyAll Test Suite', () => {
@@ -34,8 +34,8 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 
-	test('Extension can be activated', () => vscode.extensions.getExtension('josee9988.minifyall').activate()
-		.then(() => {
+	test('Extension can be activated', () =>
+		vscode.extensions.getExtension('josee9988.minifyall').activate().then(() => {
 			assert.ok(true);
 		}));
 
@@ -67,16 +67,18 @@ suite('MinifyAll Test Suite', () => {
 	});
 
 
-	test('VSCode registers all MinifyAll commands', () => vscode.commands.getCommands(true).then((commands) => {
-		const COMMANDS = [
-			'extension.MinifyAll',
-			'extension.MinifyAll2OtherDoc',
-			'extension.MinifyAll2OtherDocSelected',
-			'extension.MinifyAllSelectedText',
-		];
-		const foundLiveServerCommands = commands.filter((value) => COMMANDS.indexOf(value) >= 0 || value.startsWith('extension.minifyall.'));
-		assert.equal(foundLiveServerCommands.length, COMMANDS.length);
-	}));
+	test('VSCode registers all MinifyAll commands', () =>
+		vscode.commands.getCommands(true).then((commands) => {
+			const COMMANDS = [
+				'extension.MinifyAll',
+				'extension.MinifyAll2OtherDoc',
+				'extension.MinifyAll2OtherDocSelected',
+				'extension.MinifyAllSelectedText',
+			];
+			const foundLiveServerCommands = commands.filter((value) =>
+				COMMANDS.indexOf(value) >= 0 || value.startsWith('extension.minifyall.'));
+			assert.equal(foundLiveServerCommands.length, COMMANDS.length);
+		}));
 
 
 	test('CSS main Minify (/controller/globalMinifiers.js)', () => {
@@ -250,7 +252,7 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('Function \'getNewFilePath\' works', () => {
-		const result = getNewFilePath.getNewFilePath(path, '/myFile.css', 'css');
+		const result = getNewFilePath(path, '/myFile.css', 'css');
 		assert.deepStrictEqual(result, '/myFile-min.css');
 	});
 
@@ -260,13 +262,5 @@ suite('MinifyAll Test Suite', () => {
 			['const assert; // simple comment.', '// full line', 'console.log(1+1); /* multiLine simple*/', 'let variable; /*comment', 'just a comment', 'stillcomment*/', 'console.log("all done");'],
 		).join('');
 		assert.deepStrictEqual(result, 'const assert; console.log(1+1); let variable; console.log("all done");');
-	});
-
-
-	test('Function \'transformSize\' works', () => {
-		let result = MinifyAll.transformSize(1560);
-		assert.deepStrictEqual(result, '1.52 Kb');
-		result = MinifyAll.transformSize(1560814);
-		assert.deepStrictEqual(result, '1.48 Mb');
 	});
 });

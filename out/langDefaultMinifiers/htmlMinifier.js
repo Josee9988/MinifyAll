@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll repository.
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
-class htmlMinifier {
+class HtmlMinifier {
     /**
      * Summary Minifier constructor that receives the content.
      *
@@ -83,5 +83,5 @@ class htmlMinifier {
         }
     }
 }
-module.exports = htmlMinifier;
+module.exports = HtmlMinifier;
 //# sourceMappingURL=htmlMinifier.js.map

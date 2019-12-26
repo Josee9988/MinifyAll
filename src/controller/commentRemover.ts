@@ -16,7 +16,7 @@ export default class CommentRemover {
    *
    * @param {Array} lineContent all the code that will be minified.
    */
-  constructor(private lineContent: Array<String>) { }
+  constructor(private lineContent: Array<string>) { }
 
   /**
    * Summary getLineRemoved finds lasts spaces and trim it into just one line.
@@ -25,7 +25,7 @@ export default class CommentRemover {
    *
    * @return {Array} the line minified.
    */
-  getCommentsRemoved(): String | Array<String> {
+  getCommentsRemoved(): Array<string> {
     return this.lineContent;
   }
 
@@ -48,7 +48,7 @@ export default class CommentRemover {
       this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
     }
 
-    const lineContentString: String = this.removeComments(this.lineContent.join('\n'));
+    const lineContentString: string = this.removeComments(this.lineContent.join('\n'));
 
     this.lineContent = lineContentString.split('\n');
   }
@@ -76,10 +76,9 @@ export default class CommentRemover {
    *
    * @param {String} str the string to remove the comments.
    */
-  // eslint-disable-next-line class-methods-use-this
-  removeComments(str: String) {
+  removeComments(str: string) {
     const uid = `_${+new Date()}`;
-    const primatives: Array<String> = [];
+    const primatives: Array<string> = [];
     let primIndex = 0;
     return (
       str
