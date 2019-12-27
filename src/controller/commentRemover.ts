@@ -8,6 +8,9 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+/**
+ * class CommentRemover which will remove comments.
+ */
 export default class CommentRemover {
   /**
    * Summary Minifier constructor that maps and trims the code.
@@ -16,7 +19,7 @@ export default class CommentRemover {
    *
    * @param {Array} lineContent all the code that will be minified.
    */
-  constructor(private lineContent: Array<string>) { }
+  constructor(private lineContent: string[]) { }
 
   /**
    * Summary getLineRemoved finds lasts spaces and trim it into just one line.
@@ -25,7 +28,7 @@ export default class CommentRemover {
    *
    * @return {Array} the line minified.
    */
-  getCommentsRemoved(): Array<string> {
+  public getCommentsRemoved(): string[] {
     return this.lineContent;
   }
 
@@ -42,7 +45,7 @@ export default class CommentRemover {
    *
    * @access public
    */
-  removeCommentsMain() {
+  public removeCommentsMain() {
     // Remove multiline comments in the same line
     for (let i = 0; i < this.lineContent.length; i++) {
       this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
@@ -76,9 +79,9 @@ export default class CommentRemover {
    *
    * @param {String} str the string to remove the comments.
    */
-  removeComments(str: string) {
+  public removeComments(str: string) {
     const uid = `_${+new Date()}`;
-    const primatives: Array<string> = [];
+    const primatives: string[] = [];
     let primIndex = 0;
     return (
       str

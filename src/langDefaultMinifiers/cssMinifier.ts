@@ -10,18 +10,19 @@
 
 // @ts-ignore
 class CssMinifier {
+
   /**
-     * Summary Minifier constructor that receives the content.
-     *
-     * Description this is the constructor of the class and it
-     * will receive an array with the content and it will assign it
-     * to a private variable that will be used later on.
-     *
-     * @access public
-     *
-     * @param {Array} cssContent all the code that will be minified.
-     */
-  constructor(private cssContent: Array<string>) { }
+    * Summary Minifier constructor that receives the content.
+    *
+    * Description this is the constructor of the class and it
+    * will receive an array with the content and it will assign it
+    * to a private variable that will be used later on.
+    *
+    * @access public
+    *
+    * @param {Array} cssContent all the code that will be minified.
+    */
+  constructor(private cssContent: string[]) { }
 
   /**
      * Summary getCssMinified finds lasts spaces and
@@ -36,7 +37,7 @@ class CssMinifier {
      *
      * @return {String} the line minified.
      */
-  getCssMinified() {
+  public getCssMinified() {
     return this.cssContent.join('').replace(/\s+/g, ' ') // from multiple spaces to one
       .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1')
       .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep..

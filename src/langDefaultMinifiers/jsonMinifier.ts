@@ -21,7 +21,7 @@ class JsonMinifier {
    *
    * @param {Array} jsonContent all the code that will be minified .
    */
-  constructor(private jsonContent: Array<string>) { }
+  constructor(private jsonContent: string[]) { }
 
   /**
    * Summary getJSONMinified finds lasts spaces and trim it into just one line.
@@ -34,7 +34,7 @@ class JsonMinifier {
    *
    * @return {String} the line minified.
    */
-  getJSONMinified() {
+  public getJSONMinified() {
     return this.jsonContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
       .replace(/\s{2}/g, '')

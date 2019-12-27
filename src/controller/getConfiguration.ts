@@ -13,10 +13,10 @@ export enum PrefixesAvailable {
     hyphenMin = "-min",
     dotMin = ".min",
     minifiedHyphen = "minified-",
-    docMinified = ".minified"
+    docMinified = ".minified",
 }
 
-export interface UserSettings {
+export interface IUserSettings {
     hexDisabled: boolean;
     disableHtml: boolean;
     disableCss: boolean;
@@ -39,7 +39,7 @@ export interface UserSettings {
  *
  * @return {Object} with all the settings.
  */
-export function getUserSettings(): UserSettings {
+export function getUserSettings(): IUserSettings {
     const conf = vscode.workspace.getConfiguration('MinifyAll');
     if (conf.get('minifyOnSaveToNewFIle')) { // if the user is using a deprecated setting.
         vscode.window.showWarningMessage('You are using the deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');

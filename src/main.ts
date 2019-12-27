@@ -1,3 +1,4 @@
+// tslint:disable: variable-name
 /**
  * @file Main file of the extension.
  *
@@ -49,10 +50,10 @@ import {
 } from './controller/checkLanguage';
 import getNewFilePath from './controller/getNewFilePath';
 import globalMinify from './controller/globalMinifiers';
-import { getUserSettings, UserSettings } from './controller/getConfiguration';
+import { getUserSettings, IUserSettings } from './controller/getConfiguration';
 import { showMessage, MessageTypes } from './controller/showMessage';
 
-export const settings: UserSettings = getUserSettings();
+export const settings: IUserSettings = getUserSettings();
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
@@ -72,7 +73,7 @@ const globalMinifiers = new globalMinify(minifyHex);
 
 /**
  * Summary main method that is executed when the extension is activated,
- * the extension is activated the very first time the command is executed, 
+ * the extension is activated the very first time the command is executed,
  * it contains the commandsthe commands 'MinifyAll', 'MinifyAll2OtherDoc'
  * or 'MinifyAll2OtherDocSelected', 'MinifyAllSelectedText'.
  *
@@ -161,7 +162,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 	});
 
 
-	//* ***************************************************************************************
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const MinifyAll2OtherDoc = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
@@ -246,7 +246,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 	});
 
 
-	//* ******************************************************************************************
 	// Command MinifyAll2OtherDocSelected and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDocSelected"
 	const MinifyAll2OtherDocSelected = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {

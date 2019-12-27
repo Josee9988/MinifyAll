@@ -19,7 +19,7 @@ class HtmlMinifier {
    *
    * @param {Array} htmlContent all the code that will be minified.
    */
-  constructor(private htmlContent: Array<string>) { }
+  constructor(private htmlContent: string[]) { }
 
   /**
    * Summary getHtmlMinified finds lasts spaces and trim it into just one line.
@@ -33,7 +33,7 @@ class HtmlMinifier {
    *
    * @return {String} the line minified.
    */
-  getHtmlMinified() {
+  public getHtmlMinified() {
     return this.htmlContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
       .replace(/ {/g, '{')
@@ -55,7 +55,7 @@ class HtmlMinifier {
    *
    * @access public
    */
-  removeMultipleLineComments() {
+  public removeMultipleLineComments() {
     for (let i = 0; i < this.htmlContent.length; i++) {
       const begin = this.htmlContent[i].match(/(<!--)/ig); // first <!-- found
       if (begin !== null) {

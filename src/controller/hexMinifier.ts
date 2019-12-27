@@ -17,7 +17,7 @@ export default class HexMinifier {
    *
    * @param {Array} cssContent all the code that will be modified
    */
-  constructor(private cssContent: Array<string>) { }
+  constructor(private cssContent: string[]) { }
 
   /**
    * Summary shorts hexadecimal 6digits to 3 digits.
@@ -29,7 +29,7 @@ export default class HexMinifier {
    *
    * @access public
    */
-  shortHexMain() {
+  public shortHexMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const hexadecimal = this.cssContent[i].match(/#[0-9a-fA-F]+/ig);
       if (hexadecimal !== null && hexadecimal.toString().length === 7) {
@@ -51,7 +51,7 @@ export default class HexMinifier {
    *
    * @access public
    */
-  shortRGBMain() {
+  public shortRGBMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgb)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
       if (rgb !== null) {
@@ -74,7 +74,7 @@ export default class HexMinifier {
    *
    * @access public
    */
-  shortRGBAMain() {
+  public shortRGBAMain() {
     for (let i = 0; i < this.cssContent.length; i++) {
       const rgb = this.cssContent[i].match(/((rgba)\((\d{1,3}%?,\s?){3}(1|0?\.\d+)\)|(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))/ig);
       if (rgb !== null) {
@@ -103,7 +103,7 @@ export default class HexMinifier {
    *
    * @access private
    */
-  rgba2hex(rgba: any) {
+  public rgba2hex(rgba: any) {
     let a;
     const rgb = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i);
     const alpha = (rgb && rgb[4] || '').trim();
@@ -135,7 +135,7 @@ export default class HexMinifier {
    *
    * @return {Object} rgb r g b integers result with the red, yellow and green.
    */
-  rgbArrayToObject(rgbString: string) {
+  public rgbArrayToObject(rgbString: string) {
     const matchColors = /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/;
     const match = matchColors.exec(rgbString);
     return match ? {
@@ -157,7 +157,7 @@ export default class HexMinifier {
    *
    * @return {String} this.rgbToShortHex(rgb).
    */
-  getShortHexColorCode(code: string) {
+  public getShortHexColorCode(code: string) {
     const rgb = this.hexToRgb(code);
     return this.rgbToShortHex(rgb).toUpperCase();
   }
@@ -175,7 +175,7 @@ export default class HexMinifier {
    *
    * @return {Object} r g b integers result with the red, yellow and green.
    */
-  hexToRgb(hex: string) {
+  public hexToRgb(hex: string) {
     const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -199,7 +199,7 @@ export default class HexMinifier {
    *
    * @return {String} with the 3 digit hex value.
    */
-  rgbToShortHex(rgb: any) {
+  public rgbToShortHex(rgb: any) {
     const hexR = Math.round(rgb.r / 17).toString(16);
     const hexG = Math.round(rgb.g / 17).toString(16);
     const hexB = Math.round(rgb.b / 17).toString(16);
@@ -213,7 +213,7 @@ export default class HexMinifier {
    *
    * @return {Array} the lines minified.
    */
-  getHexMinified() {
+  public getHexMinified() {
     return this.cssContent;
   }
 }

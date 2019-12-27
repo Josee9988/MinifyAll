@@ -1,4 +1,4 @@
-import { UserSettings } from "./getConfiguration";
+import { IUserSettings } from "./getConfiguration";
 
 /**
  * @file file that contains the functions that will replace the actual code with the minified one,
@@ -81,7 +81,7 @@ export function replaceSelectedCode(editor: any, selection: object, modifiedText
  * @return {void}
  */
 // tslint:disable-next-line: max-line-length
-export function minifiedTextToNewFile(path2NewFile: string, modifiedText: string, settings: UserSettings) {
+export function minifiedTextToNewFile(path2NewFile: string, modifiedText: string, settings: IUserSettings) {
     FileSaver.writeFile(path2NewFile, modifiedText, () => {
         if (settings.openMinifiedDocument) {
             vscode.workspace.openTextDocument(path2NewFile).then((doc: any) => {

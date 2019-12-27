@@ -8,7 +8,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import { UserSettings } from "./getConfiguration";
+import { IUserSettings } from "./getConfiguration";
 
 
 /**
@@ -21,7 +21,7 @@ import { UserSettings } from "./getConfiguration";
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageStyles(languageId: string, settings: UserSettings): boolean {
+export function checkLanguageStyles(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'css' && !settings.disableCss) ||
         (languageId === 'scss' && !settings.disableScss) ||
         (languageId === 'less' && !settings.disableLess) ||
@@ -42,7 +42,7 @@ export function checkLanguageStyles(languageId: string, settings: UserSettings):
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageJson(languageId: string, settings: UserSettings): boolean {
+export function checkLanguageJson(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'json' && !settings.disableJson) ||
         (languageId === 'jsonc' && !settings.disableJsonc)) {
         return true;
@@ -61,7 +61,7 @@ export function checkLanguageJson(languageId: string, settings: UserSettings): b
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageHtmlPhp(languageId: string, settings: UserSettings): boolean {
+export function checkLanguageHtmlPhp(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'html' && !settings.disableHtml) ||
         (languageId === 'php')) {
         return true;
@@ -80,7 +80,7 @@ export function checkLanguageHtmlPhp(languageId: string, settings: UserSettings)
  * @return {Boolean} true if the language it is not disabled and the extension will continue
  * or false if the language is disabled by the user.
  */
-export function checkLanguageJS(languageId: string, settings: UserSettings): boolean {
+export function checkLanguageJS(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'javascript' && !settings.disableJavascript) ||
         (languageId === 'javascriptreact' && !settings.disableJavascriptReact)) {
         return true;
