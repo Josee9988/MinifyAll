@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+* Improved semantics in the main.ts file.
+* Improved readability in the main.ts file.
+
+### Removed
+
+* Redundant code from showing messages in the main.ts file.
+
 ## [**2.0.1**] - 2019-12-26
 
 ### Added
