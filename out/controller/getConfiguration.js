@@ -1,12 +1,4 @@
 "use strict";
-/**
- * @file getConfiguration file that contains a fucntion that gathers all the user settings.
- *
- * @author Jose Gracia Berenguer
- * @since 1.8.1.
- * @link https://github.com/Josee9988/MinifyAll repository.
- * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 var PrefixesAvailable;
@@ -16,14 +8,9 @@ var PrefixesAvailable;
     PrefixesAvailable["minifiedHyphen"] = "minified-";
     PrefixesAvailable["docMinified"] = ".minified";
 })(PrefixesAvailable = exports.PrefixesAvailable || (exports.PrefixesAvailable = {}));
-/**
- * Summary: The function getUserSettings gathers all settings from the user and returns them.
- *
- * @return {Object} with all the settings.
- */
 function getUserSettings() {
     const conf = vscode.workspace.getConfiguration('MinifyAll');
-    if (conf.get('minifyOnSaveToNewFIle')) { // if the user is using a deprecated setting.
+    if (conf.get('minifyOnSaveToNewFIle')) {
         vscode.window.showWarningMessage('You are using the deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');
     }
     return {

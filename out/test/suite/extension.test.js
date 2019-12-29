@@ -1,16 +1,4 @@
 "use strict";
-/* eslint-disable no-undef */
-/**
- * @file extension.test.js file that contains all the tests that must pass before releasing
- * any new version of the extension. The extensions run in the suite 'MinifyAll Test Suite',
- * which contains all the tests, ordered by relevancy
- * (top = most relevant test, bottom = not as relevant).
- *
- * @since 1.6.2
- * @author Jose Gracia Berenguer
- * @link https://github.com/Josee9988/MinifyAll repository.
- * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
 const vscode = require("vscode");
@@ -120,7 +108,6 @@ suite('MinifyAll Test Suite', () => {
     });
     test('Hexadecimal Minify (controller/hexMinifier.js)', () => {
         const MinifierHex = new hexMinifier_1.default(['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;']);
-        // Minifier methods
         MinifierHex.shortHexMain();
         MinifierHex.shortRGBMain();
         MinifierHex.shortRGBAMain();
