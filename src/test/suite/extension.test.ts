@@ -13,7 +13,7 @@
 
 
 import * as assert from 'assert';
-import path = require('path');
+import * as path from 'path';
 import * as vscode from 'vscode';
 import GlobalMinifiers from '../../controller/globalMinifiers';
 const globalMinifiers: GlobalMinifiers = new GlobalMinifiers(true);

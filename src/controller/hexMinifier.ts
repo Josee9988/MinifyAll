@@ -106,10 +106,10 @@ export default class HexMinifier {
    * @access private
    */
   public rgba2hex(rgba: any): string {
-    let a;
+    let a: any;
     const rgb: any = rgba.replace(/\s/g, '').match(/^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i);
     const alpha: any = (rgb && rgb[4] || '').trim();
-    let hex = rgb ?
+    let hex: any = rgb ?
       (rgb[1] | 1 << 8).toString(16).slice(1) +
       (rgb[2] | 1 << 8).toString(16).slice(1) +
       (rgb[3] | 1 << 8).toString(16).slice(1) : rgba;

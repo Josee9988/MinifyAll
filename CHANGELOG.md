@@ -7,6 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.0.3**] - 2019-12-30
+
+### Added
+
+* Some missing TypeScript variable declaration types.
+
+### Fixed
+
+* Command MinifyAll2OtherDocSelected wasn't able to detect JavaScript files, now it does.
+
+### Changed
+
+* Variable 'path' from var-require to import-from.
+* Variable 'FileSaver'(fs) from var-require to import-from.
+* Variable 'Terser' from var-require to import-from.
+
 ## [**2.0.2**] - 2019-12-30
 
 ### Added

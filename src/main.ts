@@ -32,7 +32,9 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import FileSaver = require('fs');
+import * as FileSaver from 'fs';
+import * as path from 'path';
+import * as Terser from 'terser';
 import * as vscode from 'vscode';
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { getUserSettings, IUserSettings } from './controller/getConfiguration';
@@ -112,7 +114,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const Terser: any = require('terser');
 					const minifierJs: any = Terser.minify(vscode.window.activeTextEditor.document.getText());
 
 					if (minifierJs.error === undefined) {
@@ -135,7 +136,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
 	const MinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-		const path: any = require('path');
+
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		const SelectedFileName: string = vscode.window.activeTextEditor.document.fileName;
 
@@ -178,7 +179,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile: string = getNewFilePath(path, SelectedFileName, 'js', settings.prefix);
-					const Terser: any = require('terser');
 					const minifierJs: any = Terser.minify(vscode.window.activeTextEditor.document.getText());
 
 					if (minifierJs.error === undefined) {
@@ -205,7 +205,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 			// We get the text from the selected file.
 			FileSaver.readFile(fileUri.path, 'utf8', (error: Error, data: string) => {
 				if (!error) { // if there is not any error
-					const path: any = require('path');
 					const filePath: string = path.dirname(fileUri.path);
 
 					switch (fileUri.path.split('.').pop()) {
@@ -242,10 +241,9 @@ export default function activate(context: vscode.ExtensionContext): void {
 							}
 							break;
 
-						case 'javascript': case 'javascriptreact': // JavaScript
+						case 'js': // JavaScript
 							if ((fileUri.path.split('.').pop() === 'javascript' && !settings.disableJavascript) ||
 								(fileUri.path.split('.').pop() === 'javascriptreact' && !settings.disableJavascriptReact)) {
-								const Terser: any = require('terser');
 								const path2NewFileJs: string = path.join(filePath, path.basename(fileUri.path).replace('.js', `${settings.prefix}.js`));
 								const minifierJs: any = Terser.minify(data);
 
@@ -310,7 +308,6 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				case 'javascript': case 'javascriptreact': // JavaScript
 					if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-						const Terser: any = require('terser');
 						const minifierJs: any = Terser.minify(selectedText);
 
 						if (minifierJs.error === undefined) { // if there is no error

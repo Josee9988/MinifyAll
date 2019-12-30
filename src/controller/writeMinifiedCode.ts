@@ -11,7 +11,7 @@ import { IUserSettings } from "./getConfiguration";
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import FileSaver = require('fs');
+import * as FileSaver from 'fs';
 import * as vscode from 'vscode';
 import { MessageTypes, showMessage } from './showMessage';
 

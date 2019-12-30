@@ -10,6 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FileSaver = require("fs");
+const path = require("path");
+const Terser = require("terser");
 const vscode = require("vscode");
 const checkLanguage_1 = require("./controller/checkLanguage");
 const getConfiguration_1 = require("./controller/getConfiguration");
@@ -62,7 +64,6 @@ function activate(context) {
             case 'javascript':
             case 'javascriptreact':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
-                    const Terser = require('terser');
                     const minifierJs = Terser.minify(vscode.window.activeTextEditor.document.getText());
                     if (minifierJs.error === undefined) {
                         writeMinifiedCode_1.replaceActualCode(minifierJs.code);
@@ -82,7 +83,6 @@ function activate(context) {
         context.subscriptions.push(MinifyAll);
     });
     const MinifyAll2OtherDoc = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
-        const path = require('path');
         const documentText = vscode.window.activeTextEditor.document.getText().split('\n');
         const SelectedFileName = vscode.window.activeTextEditor.document.fileName;
         switch (vscode.window.activeTextEditor.document.languageId) {
@@ -125,7 +125,6 @@ function activate(context) {
             case 'javascriptreact':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
                     const path2NewFile = getNewFilePath_1.default(path, SelectedFileName, 'js', exports.settings.prefix);
-                    const Terser = require('terser');
                     const minifierJs = Terser.minify(vscode.window.activeTextEditor.document.getText());
                     if (minifierJs.error === undefined) {
                         writeMinifiedCode_1.minifiedTextToNewFile(path2NewFile, minifierJs.code, exports.settings);
@@ -148,7 +147,6 @@ function activate(context) {
         if (fileUri !== undefined) {
             FileSaver.readFile(fileUri.path, 'utf8', (error, data) => {
                 if (!error) {
-                    const path = require('path');
                     const filePath = path.dirname(fileUri.path);
                     switch (fileUri.path.split('.').pop()) {
                         case 'css':
@@ -189,11 +187,9 @@ function activate(context) {
                                 showMessage_1.showMessage('We will not format this file type because it is disabled.', showMessage_1.MessageTypes.Warning);
                             }
                             break;
-                        case 'javascript':
-                        case 'javascriptreact':
+                        case 'js':
                             if ((fileUri.path.split('.').pop() === 'javascript' && !exports.settings.disableJavascript) ||
                                 (fileUri.path.split('.').pop() === 'javascriptreact' && !exports.settings.disableJavascriptReact)) {
-                                const Terser = require('terser');
                                 const path2NewFileJs = path.join(filePath, path.basename(fileUri.path).replace('.js', `${exports.settings.prefix}.js`));
                                 const minifierJs = Terser.minify(data);
                                 if (minifierJs.error === undefined) {
@@ -262,7 +258,6 @@ function activate(context) {
             case 'javascript':
             case 'javascriptreact':
                 if (checkLanguage_1.checkLanguageJS(vscode.window.activeTextEditor.document.languageId, exports.settings)) {
-                    const Terser = require('terser');
                     const minifierJs = Terser.minify(selectedText);
                     if (minifierJs.error === undefined) {
                         writeMinifiedCode_1.replaceSelectedCode(editor, selection, minifierJs.code);
