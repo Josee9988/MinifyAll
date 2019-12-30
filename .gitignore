@@ -1,2 +1,3 @@
 # Full folders ignored
 node_modules/
+out/
