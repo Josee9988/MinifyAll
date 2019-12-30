@@ -8,7 +8,9 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-// @ts-ignore
+/**
+ * Class that contain all the functions needed for minify json or jsonc.
+ */
 class JsonMinifier {
   /**
    * Summary Minifier constructor that receives the content.
@@ -32,9 +34,9 @@ class JsonMinifier {
    * unnecessary tabulations and specific things per each language.
    * @access public
    *
-   * @return {String} the line minified.
+   * @return {string} the line minified.
    */
-  public getJSONMinified() {
+  public getJSONMinified(): string {
     return this.jsonContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
       .replace(/\s{2}/g, '')

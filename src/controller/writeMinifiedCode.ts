@@ -14,9 +14,7 @@ import { IUserSettings } from "./getConfiguration";
 
 const vscode = require('vscode');
 const FileSaver = require('fs');
-const {
-    showMessage,
-} = require('./../main');
+const { showMessage } = require('./../main');
 
 
 /**

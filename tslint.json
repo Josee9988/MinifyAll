@@ -1,12 +1,8 @@
 {
 	"extends": "tslint:recommended",
 	"rules": {
-		"no-string-throw": true,
-		"no-unused-expression": true,
-		"no-duplicate-variable": true,
 		"no-duplicate-key": true,
 		"curly": true,
-		"class-name": true,
 		"semicolon": [
 			true,
 			"always"
@@ -14,18 +10,15 @@
 		"completed-docs": true,
 		"ordered-imports": true,
 		"no-consecutive-blank-lines": false,
-		"no-empty": true,
 		"object-literal-sort-keys": false,
-		"jsdoc-format": true,
 		"no-bitwise": false,
 		"variable-name": true,
 		"await-promise": true,
-		"no-var-keyword": true,
-		"prefer-const": true,
 		"quotemark": false,
 		"indent": true,
 		"max-line-length": [false, 100],
-		"triple-equals": true
+		"triple-equals": true,
+		"no-invalid-this": true
 	},
 	"defaultSeverity": "warning"
 }

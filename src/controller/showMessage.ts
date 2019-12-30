@@ -8,9 +8,8 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-
-import { settings } from '../main';
 import * as vscode from 'vscode';
+import { settings } from '../main';
 
 export enum MessageTypes {
     Error = 0,

@@ -8,36 +8,38 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-// @ts-ignore
+/**
+ * Class that contain all the functions needed for minify css.
+ */
 class CssMinifier {
 
   /**
-    * Summary Minifier constructor that receives the content.
-    *
-    * Description this is the constructor of the class and it
-    * will receive an array with the content and it will assign it
-    * to a private variable that will be used later on.
-    *
-    * @access public
-    *
-    * @param {Array} cssContent all the code that will be minified.
-    */
+   * Summary Minifier constructor that receives the content.
+   *
+   * Description this is the constructor of the class and it
+   * will receive an array with the content and it will assign it
+   * to a private variable that will be used later on.
+   *
+   * @access public
+   *
+   * @param {Array} cssContent all the code that will be minified.
+   */
   constructor(private cssContent: string[]) { }
 
   /**
-     * Summary getCssMinified finds lasts spaces and
-     * trim it into just one line.
-     *
-     * Description the method will get the array with all the lines and will
-     * make one String out of all of them; Then it will use REGEX
-     * to replace multiple concurrencies, like removing multiple spaces,
-     * unnecessary tabulations and specific things per each language.
-     *
-     * @access public
-     *
-     * @return {String} the line minified.
-     */
-  public getCssMinified() {
+   * Summary getCssMinified finds lasts spaces and
+   * trim it into just one line.
+   *
+   * Description the method will get the array with all the lines and will
+   * make one String out of all of them; Then it will use REGEX
+   * to replace multiple concurrencies, like removing multiple spaces,
+   * unnecessary tabulations and specific things per each language.
+   *
+   * @access public
+   *
+   * @return {string} the line minified.
+   */
+  public getCssMinified(): string {
     return this.cssContent.join('').replace(/\s+/g, ' ') // from multiple spaces to one
       .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1').replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1')
       .replace(/\/\*(?:.| )*?(?:(?=(\/\*))|\*\/)/g, '$1') // removes nested comments 2 levels deep..

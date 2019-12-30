@@ -12,17 +12,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * TypeScript variable declaration types.
+* TypeScript annotations.
+* TypeScript documentation.
 
 ### Changed
 
 * Improved semantics in the main.ts file.
 * Improved readability in the main.ts file.
+* Typos in the setting descriptions.
 
 ### Removed
 
 * Redundant code from showing messages in the main.ts file.
 * Useless code.
 * About 100 lines length in the main.ts file.
+* Useless tslint rules that were already extended from the recomended tslint options.
 
 ## [**2.0.1**] - 2019-12-26
 

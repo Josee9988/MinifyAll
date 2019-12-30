@@ -17,20 +17,74 @@ export enum PrefixesAvailable {
 }
 
 export interface IUserSettings {
+    /**
+     * disableHexadecimalShortener:
+     * If you want MinifyAll to stop shortening colors,
+     * such as rgb to 3 digit hex, or rgba to hex, or 6
+     * digit hex to 3 digit hex. (True for disabling hex.)
+     */
     hexDisabled: boolean;
+    /**
+     * disableHtml: If you want MinifyAll to stop minimizing HTML. (True for disabling)
+     */
     disableHtml: boolean;
+    /**
+     * disableCss: If you want MinifyAll to stop minimizing CSS. (True for disabling)
+     */
     disableCss: boolean;
+    /**
+     * disableScss: If you want MinifyAll to stop minimizing SCSS. (True for disabling)
+     */
     disableScss: boolean;
+    /**
+     * disableLess: If you want MinifyAll to stop minimizing LESS. (True for disabling)
+     */
     disableLess: boolean;
+    /**
+     * disableSass: If you want MinifyAll to stop minimizing SASS. (True for disabling)
+     */
     disableSass: boolean;
+    /**
+     * disableJson: If you want MinifyAll to stop minimizing JSON. (True for disabling)
+     */
     disableJson: boolean;
+    /**
+     * disableJsonc: If you want MinifyAll to stop minimizing JSONC. (True for disabling)
+     */
     disableJsonc: boolean;
-    disableMessages: boolean;
-    minifyOnSave: boolean;
-    minifyOnSaveToNewFile: boolean;
-    prefix: PrefixesAvailable;
+    /**
+     * disableJavascript: If you want MinifyAll to stop minimizing JavaScript. (True for disabling)
+     */
     disableJavascript: boolean;
+    /**
+     * disableJavascriptReact: If you want MinifyAll to stop
+     * minimizing JavaScriptReact. (True for disabling).
+     */
     disableJavascriptReact: boolean;
+    /**
+     * disableMessages: If you want MinifyAll to stop showing error, warning or
+     * information messages. (True for disabling).
+     */
+    disableMessages: boolean;
+    /**
+     * minifyOnSave: If you want MinifyAll to minify every time you save in
+     * the same file. (True for enabling).
+     */
+    minifyOnSave: boolean;
+    /**
+     * minifyOnSaveToNewFile: If you want MinifyAll to minify every time
+     * you save in other file. (True for enabling).
+     */
+    minifyOnSaveToNewFile: boolean;
+    /**
+     * PrefixOfNewMinifiedFiles: The prefix of the extension of the new file.
+     */
+    prefix: PrefixesAvailable;
+    /**
+     * openMinifiedDocument: If you want MinifyAll to open the new minified
+     * document after you minify. (False for not opening it every time you
+     * create a minified file).
+     */
     openMinifiedDocument: boolean;
 }
 

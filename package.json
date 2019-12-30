@@ -197,7 +197,7 @@
 						"Sets the future filename to example-minified.extension",
 						"Sets the future filename to example.minified.extension"
 					],
-					"description": "The orefix of the extension of the new file. Default -min"
+					"description": "The prefix of the extension of the new file. Default (-min)"
 				},
 				"MinifyAll.openMinifiedDocument": {
 					"type": "boolean",

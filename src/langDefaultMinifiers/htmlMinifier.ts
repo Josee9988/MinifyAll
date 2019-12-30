@@ -8,7 +8,11 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+/**
+ * Class that contain all the functions needed for minify html.
+ */
 class HtmlMinifier {
+
   /**
    * Summary Minifier constructor that receives the content.
    *
@@ -33,7 +37,7 @@ class HtmlMinifier {
    *
    * @return {String} the line minified.
    */
-  public getHtmlMinified() {
+  public getHtmlMinified(): string {
     return this.htmlContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
       .replace(/ {/g, '{')
@@ -64,8 +68,8 @@ class HtmlMinifier {
           if (end !== null) {
             for (let k = i; k < j + 1; k++) {
               if (k === i) {
-                const FirstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
-                const firstLineToReplace = this.htmlContent[k].substring(0, FirstCharacterToRemove);
+                const firstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
+                const firstLineToReplace = this.htmlContent[k].substring(0, firstCharacterToRemove);
                 this.htmlContent[k] = firstLineToReplace;
               } else if (k === j) {
                 const lastCharacterToRemove = this.htmlContent[k].indexOf('-->');
