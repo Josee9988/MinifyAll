@@ -2,27 +2,27 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const commentRemover_1 = require("../controller/commentRemover");
 const hexMinifier_1 = require("../controller/hexMinifier");
+const cssMinifier_1 = require("../langDefaultMinifiers/cssMinifier");
+const htmlMinifier_1 = require("../langDefaultMinifiers/htmlMinifier");
+const jsonMinifier_1 = require("../langDefaultMinifiers/jsonMinifier");
 class GlobalMinifiers {
     constructor(willMinifyHex) {
         this.willMinifyHex = willMinifyHex;
     }
     minifyCssScssLessSass(cssContent) {
-        const CssMinifier = require('../langDefaultMinifiers/cssMinifier');
-        const RemoveComments = this.removeComments(cssContent);
-        const hexMinifiedCss = this.HexMinify(RemoveComments);
-        const minifierCss = new CssMinifier(hexMinifiedCss);
+        const removeComments = this.removeComments(cssContent);
+        const hexMinifiedCss = this.HexMinify(removeComments);
+        const minifierCss = new cssMinifier_1.default(hexMinifiedCss);
         return minifierCss.getCssMinified();
     }
     minifyJsonJsonc(jsonContent) {
-        const JsonMinifier = require('../langDefaultMinifiers/jsonMinifier');
         const contentWithHexMinified = this.HexMinify(jsonContent);
-        const RemoveComments = this.removeComments(contentWithHexMinified);
-        const minifierJson = new JsonMinifier(RemoveComments);
+        const removeComments = this.removeComments(contentWithHexMinified);
+        const minifierJson = new jsonMinifier_1.default(removeComments);
         return minifierJson.getJSONMinified();
     }
     minifyHtml(htmlContent) {
-        const HtmlMinifier = require('../langDefaultMinifiers/htmlMinifier');
-        const minifierHtml = new HtmlMinifier(htmlContent);
+        const minifierHtml = new htmlMinifier_1.default(htmlContent);
         minifierHtml.removeMultipleLineComments();
         return minifierHtml.getHtmlMinified();
     }

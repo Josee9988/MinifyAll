@@ -13,15 +13,15 @@
 
 
 import * as assert from 'assert';
-import * as vscode from 'vscode';
 import path = require('path');
+import * as vscode from 'vscode';
 import GlobalMinifiers from '../../controller/globalMinifiers';
-const globalMinifiers = new GlobalMinifiers(true);
-import HexMinifier from '../../controller/hexMinifier';
+const globalMinifiers: GlobalMinifiers = new GlobalMinifiers(true);
 import getNewFilePath from '../../controller/getNewFilePath';
-const CssMinifier = require('../../langDefaultMinifiers/cssMinifier');
-const HtmlMinifier = require('../../langDefaultMinifiers/htmlMinifier');
-const JsonMinifier = require('../../langDefaultMinifiers/jsonMinifier');
+import HexMinifier from '../../controller/hexMinifier';
+import CssMinifier from '../../langDefaultMinifiers/cssMinifier';
+import HtmlMinifier from '../../langDefaultMinifiers/htmlMinifier';
+import JsonMinifier from '../../langDefaultMinifiers/jsonMinifier';
 
 
 suite('MinifyAll Test Suite', () => {
@@ -68,20 +68,20 @@ suite('MinifyAll Test Suite', () => {
 
 	test('VSCode registers all MinifyAll commands', () =>
 		vscode.commands.getCommands(true).then((commands) => {
-			const COMMANDS = [
+			const COMMANDS: string[] = [
 				'extension.MinifyAll',
 				'extension.MinifyAll2OtherDoc',
 				'extension.MinifyAll2OtherDocSelected',
 				'extension.MinifyAllSelectedText',
 			];
-			const foundLiveServerCommands = commands.filter((value) =>
+			const foundLiveServerCommands: any = commands.filter((value) =>
 				COMMANDS.indexOf(value) >= 0 || value.startsWith('extension.minifyall.'));
 			assert.equal(foundLiveServerCommands.length, COMMANDS.length);
 		}));
 
 
 	test('CSS main Minify (/controller/globalMinifiers.js)', () => {
-		const result = globalMinifiers.minifyCssScssLessSass(
+		const result: string = globalMinifiers.minifyCssScssLessSass(
 			[
 				'@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");',
 				'',
@@ -114,7 +114,7 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('HTML main Minify (/controller/globalMinifiers.js)', () => {
-		const result = globalMinifiers.minifyHtml(
+		const result: string = globalMinifiers.minifyHtml(
 			[
 				'<div class="parallax">',
 				'    <div class="container d-flex justify-content-center align-items-center parallax-content" style="height:100vh;">',
@@ -133,7 +133,7 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('JSON main Minify (/controller/globalMinifiers.js)', () => {
-		const result = globalMinifiers.minifyJsonJsonc(
+		const result: string = globalMinifiers.minifyJsonJsonc(
 			[
 				'"tokenColors": [',
 				'        {',
@@ -155,20 +155,20 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('Hexadecimal Minify (controller/hexMinifier.js)', () => {
-		const MinifierHex = new HexMinifier(
+		const minifierHex: HexMinifier = new HexMinifier(
 			['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;'],
 		);
 		// Minifier methods
-		MinifierHex.shortHexMain();
-		MinifierHex.shortRGBMain();
-		MinifierHex.shortRGBAMain();
-		const result = MinifierHex.getHexMinified().join('');
+		minifierHex.shortHexMain();
+		minifierHex.shortRGBMain();
+		minifierHex.shortRGBAMain();
+		const result: string = minifierHex.getHexMinified().join('');
 		assert.deepStrictEqual(result, 'background-color: #0C0C0CCC;background-color: #111;background-color: #FFF;');
 	});
 
 
 	test('CSS Minify (langDefaultMinifiers/cssMinifier.js)', () => {
-		const cssMinify = new CssMinifier(
+		const cssMinify: CssMinifier = new CssMinifier(
 			[
 				'@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");',
 				'',
@@ -196,13 +196,13 @@ suite('MinifyAll Test Suite', () => {
 				'}',
 			],
 		);
-		const result = cssMinify.getCssMinified();
+		const result: string = cssMinify.getCssMinified();
 		assert.deepStrictEqual(result, '@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");@media(max-width:850px){#tableRoot{font-size:120x}#headRootPanel{font-size:12px}.actionbuttons{margin:2px}}#login-block{-webkit-box-shadow:0 0 45px 0 rgba(0,0,0,.4);-moz-box-shadow:0 0 45px 0 rgba(0,0,0,.4);box-shadow:0 0 45px 0 rgba(0,0,0,.4);z-index:2;}h1,h2{margin:0;}');
 	});
 
 
 	test('HTML Minify (langDefaultMinifiers/htmlMinifier.js)', () => {
-		const htmlMinify = new HtmlMinifier(
+		const htmlMinify: HtmlMinifier = new HtmlMinifier(
 			['<!DOCTYPE html>',
 				'<html lang="es">',
 				'',
@@ -224,13 +224,13 @@ suite('MinifyAll Test Suite', () => {
 			],
 		);
 		htmlMinify.removeMultipleLineComments();
-		const result = htmlMinify.getHtmlMinified();
+		const result: string = htmlMinify.getHtmlMinified();
 		assert.deepStrictEqual(result, '<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet"href=""><script type="text/javascript"src=""></script></head><body></body></html>');
 	});
 
 
 	test('JSON Minify (langDefaultMinifiers/jsonMinifier.js)', () => {
-		const jsonMinify = new JsonMinifier(
+		const jsonMinify: JsonMinifier = new JsonMinifier(
 			['{',
 				'"contributes": {',
 				'"commands": [{',
@@ -245,19 +245,19 @@ suite('MinifyAll Test Suite', () => {
 				'}',
 			],
 		);
-		const result = jsonMinify.getJSONMinified();
+		const result: string = jsonMinify.getJSONMinified();
 		assert.deepStrictEqual(result, '{"contributes":{"commands":[{"title":"Minify this document ⚡"},{"color":"#FAFAFA"}]}}');
 	});
 
 
 	test('Function \'getNewFilePath\' works', () => {
-		const result = getNewFilePath(path, '/myFile.css', 'css');
+		const result: string = getNewFilePath(path, '/myFile.css', 'css');
 		assert.deepStrictEqual(result, '/myFile-min.css');
 	});
 
 
 	test('Function \'removeComments\' works', () => {
-		const result = globalMinifiers.removeComments(
+		const result: string = globalMinifiers.removeComments(
 			['const assert; // simple comment.', '// full line', 'console.log(1+1); /* multiLine simple*/', 'let variable; /*comment', 'just a comment', 'stillcomment*/', 'console.log("all done");'],
 		).join('');
 		assert.deepStrictEqual(result, 'const assert; console.log(1+1); let variable; console.log("all done");');

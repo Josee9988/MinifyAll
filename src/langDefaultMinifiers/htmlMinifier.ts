@@ -11,7 +11,7 @@
 /**
  * Class that contain all the functions needed for minify html.
  */
-class HtmlMinifier {
+export default class HtmlMinifier {
 
   /**
    * Summary Minifier constructor that receives the content.
@@ -59,21 +59,21 @@ class HtmlMinifier {
    *
    * @access public
    */
-  public removeMultipleLineComments() {
+  public removeMultipleLineComments(): void {
     for (let i = 0; i < this.htmlContent.length; i++) {
-      const begin = this.htmlContent[i].match(/(<!--)/ig); // first <!-- found
+      const begin: string[] = this.htmlContent[i].match(/(<!--)/ig); // first <!-- found
       if (begin !== null) {
         for (let j = 0; j < this.htmlContent.length; j++) {
-          const end = this.htmlContent[j].match(/(-->)/g); // found --> end
+          const end: string[] = this.htmlContent[j].match(/(-->)/g); // found --> end
           if (end !== null) {
             for (let k = i; k < j + 1; k++) {
               if (k === i) {
-                const firstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
-                const firstLineToReplace = this.htmlContent[k].substring(0, firstCharacterToRemove);
+                const firstCharacterToRemove: number = this.htmlContent[k].indexOf('<!--');
+                const firstLineToReplace: string = this.htmlContent[k].substring(0, firstCharacterToRemove);
                 this.htmlContent[k] = firstLineToReplace;
               } else if (k === j) {
-                const lastCharacterToRemove = this.htmlContent[k].indexOf('-->');
-                const lastLineToReplace = this.htmlContent[k].substring(lastCharacterToRemove + 2,
+                const lastCharacterToRemove: number = this.htmlContent[k].indexOf('-->');
+                const lastLineToReplace: string = this.htmlContent[k].substring(lastCharacterToRemove + 2,
                   this.htmlContent[k].length);
                 this.htmlContent[k] = lastLineToReplace;
               } else {
@@ -87,4 +87,3 @@ class HtmlMinifier {
     }
   }
 }
-module.exports = HtmlMinifier;

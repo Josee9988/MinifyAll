@@ -18,7 +18,8 @@
 		"indent": true,
 		"max-line-length": [false, 100],
 		"triple-equals": true,
-		"no-invalid-this": true
+		"no-invalid-this": true,
+		"no-console": [true, "log", "warn"]
 	},
 	"defaultSeverity": "warning"
 }

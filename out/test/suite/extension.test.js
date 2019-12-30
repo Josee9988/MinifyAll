@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
-const vscode = require("vscode");
 const path = require("path");
+const vscode = require("vscode");
 const globalMinifiers_1 = require("../../controller/globalMinifiers");
 const globalMinifiers = new globalMinifiers_1.default(true);
-const hexMinifier_1 = require("../../controller/hexMinifier");
 const getNewFilePath_1 = require("../../controller/getNewFilePath");
-const CssMinifier = require('../../langDefaultMinifiers/cssMinifier');
-const HtmlMinifier = require('../../langDefaultMinifiers/htmlMinifier');
-const JsonMinifier = require('../../langDefaultMinifiers/jsonMinifier');
+const hexMinifier_1 = require("../../controller/hexMinifier");
+const cssMinifier_1 = require("../../langDefaultMinifiers/cssMinifier");
+const htmlMinifier_1 = require("../../langDefaultMinifiers/htmlMinifier");
+const jsonMinifier_1 = require("../../langDefaultMinifiers/jsonMinifier");
 suite('MinifyAll Test Suite', () => {
     vscode.window.showInformationMessage('Starting tests.');
     test('Extension is installed', () => {
@@ -107,15 +107,15 @@ suite('MinifyAll Test Suite', () => {
         assert.deepStrictEqual(result, '"tokenColors":[{"name":"Comment","scope":["background","comment","punctuation.definition.comment"],"settings":{"fontStyle":"italic","foreground":"#795"}},');
     });
     test('Hexadecimal Minify (controller/hexMinifier.js)', () => {
-        const MinifierHex = new hexMinifier_1.default(['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;']);
-        MinifierHex.shortHexMain();
-        MinifierHex.shortRGBMain();
-        MinifierHex.shortRGBAMain();
-        const result = MinifierHex.getHexMinified().join('');
+        const minifierHex = new hexMinifier_1.default(['background-color: rgba(12, 12, 12, 0.8);', 'background-color: rgb(12, 12, 12);', 'background-color: #FAFAFA;']);
+        minifierHex.shortHexMain();
+        minifierHex.shortRGBMain();
+        minifierHex.shortRGBAMain();
+        const result = minifierHex.getHexMinified().join('');
         assert.deepStrictEqual(result, 'background-color: #0C0C0CCC;background-color: #111;background-color: #FFF;');
     });
     test('CSS Minify (langDefaultMinifiers/cssMinifier.js)', () => {
-        const cssMinify = new CssMinifier([
+        const cssMinify = new cssMinifier_1.default([
             '@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");',
             '',
             '@media(max-width:850px) {',
@@ -145,7 +145,7 @@ suite('MinifyAll Test Suite', () => {
         assert.deepStrictEqual(result, '@import url("https://fonts.googleapis.com/css?family=Montserrat|Open+Sans");@media(max-width:850px){#tableRoot{font-size:120x}#headRootPanel{font-size:12px}.actionbuttons{margin:2px}}#login-block{-webkit-box-shadow:0 0 45px 0 rgba(0,0,0,.4);-moz-box-shadow:0 0 45px 0 rgba(0,0,0,.4);box-shadow:0 0 45px 0 rgba(0,0,0,.4);z-index:2;}h1,h2{margin:0;}');
     });
     test('HTML Minify (langDefaultMinifiers/htmlMinifier.js)', () => {
-        const htmlMinify = new HtmlMinifier(['<!DOCTYPE html>',
+        const htmlMinify = new htmlMinifier_1.default(['<!DOCTYPE html>',
             '<html lang="es">',
             '',
             '<head>',
@@ -169,7 +169,7 @@ suite('MinifyAll Test Suite', () => {
         assert.deepStrictEqual(result, '<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet"href=""><script type="text/javascript"src=""></script></head><body></body></html>');
     });
     test('JSON Minify (langDefaultMinifiers/jsonMinifier.js)', () => {
-        const jsonMinify = new JsonMinifier(['{',
+        const jsonMinify = new jsonMinifier_1.default(['{',
             '"contributes": {',
             '"commands": [{',
             '"title": "Minify this document ⚡",',

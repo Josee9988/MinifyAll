@@ -45,7 +45,7 @@ export default class CommentRemover {
    *
    * @access public
    */
-  public removeCommentsMain() {
+  public removeCommentsMain(): void {
     // Remove multiline comments in the same line
     for (let i = 0; i < this.lineContent.length; i++) {
       this.lineContent[i] = this.lineContent[i].replace(/\/\*([\s\S]*?)\*\//g, '');
@@ -79,25 +79,25 @@ export default class CommentRemover {
    *
    * @param {String} str the string to remove the comments.
    */
-  public removeComments(str: string) {
-    const uid = `_${+new Date()}`;
+  public removeComments(str: string): string {
+    const uid: string = `_${+new Date()}`;
     const primatives: string[] = [];
-    let primIndex = 0;
+    let primIndex: number = 0;
     return (
       str
         .replace(/(['"])(\\\1|.)+?\1/g, (match) => {
           primatives[primIndex] = match;
           return `${uid}${primIndex++}`;
         })
-        .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
+        .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, ($1, $2) => {
           primatives[primIndex] = $2;
           return `${$1}${uid}${primIndex++}`;
         })
         .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
         .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
         .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
-        // @ts-ignore
-        .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n])
+        // tslint:disable-next-line: variable-name
+        .replace(RegExp(`${uid}(\\d+)`, 'g'), (_match, n) => primatives[n])
     );
   }
 }

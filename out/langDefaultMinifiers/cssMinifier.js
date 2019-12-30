@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class CssMinifier {
     constructor(cssContent) {
         this.cssContent = cssContent;
@@ -13,5 +14,5 @@ class CssMinifier {
             .replace(/\b0(\.\d+)/g, '$1');
     }
 }
-module.exports = CssMinifier;
+exports.default = CssMinifier;
 //# sourceMappingURL=cssMinifier.js.map

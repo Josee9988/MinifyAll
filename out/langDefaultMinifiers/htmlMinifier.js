@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class HtmlMinifier {
     constructor(htmlContent) {
         this.htmlContent = htmlContent;
@@ -21,8 +22,8 @@ class HtmlMinifier {
                     if (end !== null) {
                         for (let k = i; k < j + 1; k++) {
                             if (k === i) {
-                                const FirstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
-                                const firstLineToReplace = this.htmlContent[k].substring(0, FirstCharacterToRemove);
+                                const firstCharacterToRemove = this.htmlContent[k].indexOf('<!--');
+                                const firstLineToReplace = this.htmlContent[k].substring(0, firstCharacterToRemove);
                                 this.htmlContent[k] = firstLineToReplace;
                             }
                             else if (k === j) {
@@ -41,5 +42,5 @@ class HtmlMinifier {
         }
     }
 }
-module.exports = HtmlMinifier;
+exports.default = HtmlMinifier;
 //# sourceMappingURL=htmlMinifier.js.map

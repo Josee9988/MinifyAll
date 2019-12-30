@@ -11,7 +11,7 @@
 /**
  * Class that contain all the functions needed for minify json or jsonc.
  */
-class JsonMinifier {
+export default class JsonMinifier {
   /**
    * Summary Minifier constructor that receives the content.
    *
@@ -46,4 +46,3 @@ class JsonMinifier {
       .replace(/,]/g, ']');
   }
 }
-module.exports = JsonMinifier;

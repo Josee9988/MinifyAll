@@ -7,7 +7,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import vscode = require('vscode');
+import * as vscode from 'vscode';
 
 export enum PrefixesAvailable {
     hyphenMin = "-min",
@@ -94,7 +94,7 @@ export interface IUserSettings {
  * @return {Object} with all the settings.
  */
 export function getUserSettings(): IUserSettings {
-    const conf = vscode.workspace.getConfiguration('MinifyAll');
+    const conf: any = vscode.workspace.getConfiguration('MinifyAll');
     if (conf.get('minifyOnSaveToNewFIle')) { // if the user is using a deprecated setting.
         vscode.window.showWarningMessage('You are using the deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');
     }

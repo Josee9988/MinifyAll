@@ -11,10 +11,9 @@ import { IUserSettings } from "./getConfiguration";
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-
-const vscode = require('vscode');
-const FileSaver = require('fs');
-const { showMessage } = require('./../main');
+import FileSaver = require('fs');
+import * as vscode from 'vscode';
+import { MessageTypes, showMessage } from './showMessage';
 
 
 /**
@@ -28,11 +27,11 @@ const { showMessage } = require('./../main');
  * @param {String} modifiedText the text to replace the original code.
  * @return {void}
  */
-export function replaceActualCode(modifiedText: string) {
-    const editor = vscode.window.activeTextEditor;
-    const firstLineCss = editor.document.lineAt(0);
-    const lastLineCss = editor.document.lineAt(editor.document.lineCount - 1);
-    const textRange = new vscode.Range(0, firstLineCss.range.start.character,
+export function replaceActualCode(modifiedText: string): void {
+    const editor: any = vscode.window.activeTextEditor;
+    const firstLineCss: any = editor.document.lineAt(0);
+    const lastLineCss: any = editor.document.lineAt(editor.document.lineCount - 1);
+    const textRange: vscode.Range = new vscode.Range(0, firstLineCss.range.start.character,
         editor.document.lineCount - 1, lastLineCss.range.end.character);
     editor.edit((builder: any) => {
         builder.replace(textRange, modifiedText);
@@ -53,15 +52,14 @@ export function replaceActualCode(modifiedText: string) {
  *
  * @return {void}
  */
-export function replaceSelectedCode(editor: any, selection: object, modifiedText: string) {
+export function replaceSelectedCode(editor: any, selection: object, modifiedText: string): void {
     editor.edit((builder: any) => {
         builder.replace(selection, modifiedText);
-    })
-        .then(() => {
-            const postion = editor.selection.end;
-            // eslint-disable-next-line no-param-reassign
-            editor.selection = new vscode.Selection(postion, postion);
-        });
+    }).then(() => {
+        const postion: any = editor.selection.end;
+        // eslint-disable-next-line no-param-reassign
+        editor.selection = new vscode.Selection(postion, postion);
+    });
 }
 
 
@@ -79,14 +77,14 @@ export function replaceSelectedCode(editor: any, selection: object, modifiedText
  * @return {void}
  */
 // tslint:disable-next-line: max-line-length
-export function minifiedTextToNewFile(path2NewFile: string, modifiedText: string, settings: IUserSettings) {
+export function minifiedTextToNewFile(path2NewFile: string, modifiedText: string, settings: IUserSettings): void {
     FileSaver.writeFile(path2NewFile, modifiedText, () => {
         if (settings.openMinifiedDocument) {
             vscode.workspace.openTextDocument(path2NewFile).then((doc: any) => {
                 vscode.window.showTextDocument(doc);
             });
             if (!settings.disableMessages) {
-                showMessage(`The minified file has been saved in: ${path2NewFile}`, false);
+                showMessage(`The minified file has been saved in: ${path2NewFile}`, MessageTypes.Informational);
             }
         }
     });

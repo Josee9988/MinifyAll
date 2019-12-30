@@ -56,7 +56,7 @@ if (settings.minifyOnSaveToNewFile) {
 // If the user has hexadecimal shortener enabled it will import it.
 const minifyHex: boolean = !settings.hexDisabled ? true : false;
 
-const globalMinifiers: any = new globalMinify(minifyHex);
+const globalMinifiers: globalMinify = new globalMinify(minifyHex);
 
 
 /**
@@ -83,7 +83,7 @@ const globalMinifiers: any = new globalMinify(minifyHex);
  */
 export default function activate(context: vscode.ExtensionContext): void {
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const MinifyAll = vscode.commands.registerCommand('extension.MinifyAll', () => {
+	const MinifyAll: any = vscode.commands.registerCommand('extension.MinifyAll', () => {
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css': case 'scss': case 'less': case 'sass': // CSS SCSS LESS SASS
@@ -134,7 +134,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
-	const MinifyAll2OtherDoc = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+	const MinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 		const path: any = require('path');
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		const SelectedFileName: string = vscode.window.activeTextEditor.document.fileName;
@@ -200,7 +200,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 	// Command MinifyAll2OtherDocSelected and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDocSelected"
-	const MinifyAll2OtherDocSelected = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
+	const MinifyAll2OtherDocSelected: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
 		if (fileUri !== undefined) {
 			// We get the text from the selected file.
 			FileSaver.readFile(fileUri.path, 'utf8', (error: Error, data: string) => {
@@ -274,7 +274,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const MinifyAllSelectedText = vscode.commands.registerCommand(
+	const MinifyAllSelectedText: any = vscode.commands.registerCommand(
 		'extension.MinifyAllSelectedText', () => {
 			const editor: any = vscode.window.activeTextEditor;
 			const { selection } = editor;

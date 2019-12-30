@@ -7,19 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**2.0.2**] - 2019-12-30
 
 ### Added
 
+* More complete move from JavaScript to TypeScript.
 * TypeScript variable declaration types.
 * TypeScript annotations.
 * TypeScript documentation.
+* Multiple improvements to make it easy to maintain this project in typescript.
 
 ### Changed
 
 * Improved semantics in the main.ts file.
 * Improved readability in the main.ts file.
 * Typos in the setting descriptions.
+* From var-require to import from.
 
 ### Removed
 

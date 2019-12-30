@@ -11,7 +11,7 @@
 /**
  * Class that contain all the functions needed for minify css.
  */
-class CssMinifier {
+export default class CssMinifier {
 
   /**
    * Summary Minifier constructor that receives the content.
@@ -51,5 +51,3 @@ class CssMinifier {
       .replace(/\b0(\.\d+)/g, '$1'); // remove any prefixed 0 from decimal values
   }
 }
-
-module.exports = CssMinifier;

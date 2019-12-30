@@ -23,14 +23,14 @@ class CommentRemover {
             primatives[primIndex] = match;
             return `${uid}${primIndex++}`;
         })
-            .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, (match, $1, $2) => {
+            .replace(/([^/])(\/(?!\*|\/)(\\\/|.)+?\/[gim]{0,3})/g, ($1, $2) => {
             primatives[primIndex] = $2;
             return `${$1}${uid}${primIndex++}`;
         })
             .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
             .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
             .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
-            .replace(RegExp(`${uid}(\\d+)`, 'g'), (match, n) => primatives[n]));
+            .replace(RegExp(`${uid}(\\d+)`, 'g'), (_match, n) => primatives[n]));
     }
 }
 exports.default = CommentRemover;

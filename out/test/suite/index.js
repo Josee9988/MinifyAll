@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const path = require("path");
-const Mocha = require("mocha");
 const glob = require("glob");
+const Mocha = require("mocha");
+const path = require("path");
 function run() {
     const mocha = new Mocha({
         ui: 'tdd',

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class JsonMinifier {
     constructor(jsonContent) {
         this.jsonContent = jsonContent;
@@ -13,5 +14,5 @@ class JsonMinifier {
             .replace(/,]/g, ']');
     }
 }
-module.exports = JsonMinifier;
+exports.default = JsonMinifier;
 //# sourceMappingURL=jsonMinifier.js.map
