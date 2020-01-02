@@ -105,7 +105,9 @@ export default class GlobalMinifiers {
      * removeCommentsMain, Then gets the result with getLineRemoved.
      *
      * @access private
+     *
      * @param {Array} content All the content to remove the comments
+     *
      * @return {string[]}
      */
     public removeComments(content: string[]): string[] {

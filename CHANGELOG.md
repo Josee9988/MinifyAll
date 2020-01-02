@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+* Some variable names that weren't following the tslint rules at the main.ts file.
+
 ## [**2.0.3**] - 2019-12-30
 
 ### Added

@@ -1,4 +1,3 @@
-// tslint:disable: variable-name
 /**
  * @file Main file of the extension.
  *
@@ -82,10 +81,12 @@ const globalMinifiers: globalMinify = new globalMinify(minifyHex);
  * @access public
  *
  * @param {object} context information about VSCode. Ignore.
+ *
+ * @return {void}
  */
 export default function activate(context: vscode.ExtensionContext): void {
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const MinifyAll: any = vscode.commands.registerCommand('extension.MinifyAll', () => {
+	const commandMinifyAll: any = vscode.commands.registerCommand('extension.MinifyAll', () => {
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css': case 'scss': case 'less': case 'sass': // CSS SCSS LESS SASS
@@ -129,21 +130,21 @@ export default function activate(context: vscode.ExtensionContext): void {
 				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
-		context.subscriptions.push(MinifyAll);
+		context.subscriptions.push(commandMinifyAll);
 	});
 
 
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
-	const MinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+	const commandMinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
 
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
-		const SelectedFileName: string = vscode.window.activeTextEditor.document.fileName;
+		const selectedFileName: string = vscode.window.activeTextEditor.document.fileName;
 
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css': case 'scss': case 'less': case 'sass': // CSS SCSS LESS SASS
 				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile: string = getNewFilePath(path, SelectedFileName,
+					const path2NewFile: string = getNewFilePath(path, selectedFileName,
 						vscode.window.activeTextEditor.document.languageId, settings.prefix);
 
 					const modifiedCssText: string = globalMinifiers.minifyCssScssLessSass(documentText);
@@ -155,7 +156,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'json': case 'jsonc': // Json JsonC
 				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile: string = getNewFilePath(path, SelectedFileName, 'json', settings.prefix);
+					const path2NewFile: string = getNewFilePath(path, selectedFileName, 'json', settings.prefix);
 
 					const modifiedJsonText: string = globalMinifiers.minifyJsonJsonc(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
@@ -166,7 +167,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'html': case 'php': // HTML PHP
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile: string = getNewFilePath(path, SelectedFileName,
+					const path2NewFile: string = getNewFilePath(path, selectedFileName,
 						vscode.window.activeTextEditor.document.languageId, settings.prefix);
 
 					const modifiedHtmlText: string = globalMinifiers.minifyHtml(documentText);
@@ -178,7 +179,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const path2NewFile: string = getNewFilePath(path, SelectedFileName, 'js', settings.prefix);
+					const path2NewFile: string = getNewFilePath(path, selectedFileName, 'js', settings.prefix);
 					const minifierJs: any = Terser.minify(vscode.window.activeTextEditor.document.getText());
 
 					if (minifierJs.error === undefined) {
@@ -194,13 +195,13 @@ export default function activate(context: vscode.ExtensionContext): void {
 				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
-		context.subscriptions.push(MinifyAll2OtherDoc);
+		context.subscriptions.push(commandMinifyAll2OtherDoc);
 	});
 
 
 	// Command MinifyAll2OtherDocSelected and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDocSelected"
-	const MinifyAll2OtherDocSelected: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
+	const commandMinifyAll2OtherDocSelected: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
 		if (fileUri !== undefined) {
 			// We get the text from the selected file.
 			FileSaver.readFile(fileUri.path, 'utf8', (error: Error, data: string) => {
@@ -267,12 +268,12 @@ export default function activate(context: vscode.ExtensionContext): void {
 		} else {
 			showMessage("This command must be called from the menu, use instead 'Minify this document ⚡' or 'Minify this document and preserve the original ⛏' but don't call this command through the command palette", MessageTypes.Warning);
 		}
-		context.subscriptions.push(MinifyAll2OtherDocSelected);
+		context.subscriptions.push(commandMinifyAll2OtherDocSelected);
 	});
 
 
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const MinifyAllSelectedText: any = vscode.commands.registerCommand(
+	const commandMinifyAllSelectedText: any = vscode.commands.registerCommand(
 		'extension.MinifyAllSelectedText', () => {
 			const editor: any = vscode.window.activeTextEditor;
 			const { selection } = editor;
@@ -323,7 +324,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 					break;
 			}
-			context.subscriptions.push(MinifyAllSelectedText);
+			context.subscriptions.push(commandMinifyAllSelectedText);
 		});
 }
 
