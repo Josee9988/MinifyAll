@@ -133,6 +133,12 @@ Check our **[changelog](CHANGELOG.md)**.
 "MinifyAll.disableHtml": true|false //default 'false' (by default it is enabled)
 ```
 
+- Disables **php** minimization
+
+``` json
+"MinifyAll.disablePhp": true|false //default 'false' (by default it is enabled)
+```
+
 - Disables **css** minimization
 
 ``` json

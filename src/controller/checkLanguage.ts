@@ -63,7 +63,7 @@ export function checkLanguageJson(languageId: string, settings: IUserSettings): 
  */
 export function checkLanguageHtmlPhp(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'html' && !settings.disableHtml) ||
-        (languageId === 'php')) {
+        (languageId === 'php') && !settings.disablePhp) {
         return true;
     }
     return false;
