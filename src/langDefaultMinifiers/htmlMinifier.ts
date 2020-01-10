@@ -40,9 +40,10 @@ export default class HtmlMinifier {
   public getHtmlMinified(): string {
     return this.htmlContent.join('').replace(/;\}|\s+}/g, '}')
       .replace(/\/\*.*?\*\//g, '').replace(/:\s/g, ':')
-      .replace(/ {/g, '{')
-      .replace(/[\t]/g, '')
-      .replace(/\s{2}/g, '')
+      .replace(/ {/g, '{') // removes spaces before a '{'
+      .replace(/[\t]/g, '') // removes any tab character
+      .replace(/[\s\s]{2,}/g, ' ') // removes two whitespaces into 1
+      .replace(/>[\s]+/g, '>') // removes whitespaces between labels
       .replace(/(>)\1+/g, '>')
       .replace(/"\s/igm, '"');
   }

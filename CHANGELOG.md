@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.1.1**] - 2020-01-10
+
+### Fixed
+
+* Issue #16. HTML removed spaces on line endings causing to join two words into one, the regex was improved and commented in some regex instructions.
+
 ## [**2.1.0**] - 2020-01-06
 
 ### Added
