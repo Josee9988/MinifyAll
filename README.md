@@ -374,6 +374,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
+- ⚠️ The command "Minify the selected document and preserve the original will not work on Windows.
 - ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default VSCode file *might* cause errors.
 - ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be scaped (\/\/).
 
