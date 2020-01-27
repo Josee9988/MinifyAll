@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.1.2**] - 2020-01-27
+
+### Fixed
+
+* Fixed/improved some issues with the JSON minifier. (it wasn't removing some spaces) issue#18
+
 ## [**2.1.1**] - 2020-01-10
 
 ### Fixed

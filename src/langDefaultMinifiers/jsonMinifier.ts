@@ -43,6 +43,9 @@ export default class JsonMinifier {
       .replace(/ {/g, '{')
       .replace(/[\t]/g, '')
       .replace(/,}/g, '}')
-      .replace(/,]/g, ']');
+      .replace(/,]/g, ']')
+      .replace(/\s\,/g, ',')// remove space before a comma ( ,) -> (,)
+      .replace(/\,\s/g, ',')// remove space after a comma (, ) -> (,)
+      .replace(/", /g, '",');
   }
 }
