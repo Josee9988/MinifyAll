@@ -47,7 +47,7 @@ export default class CssMinifier {
       // removes space before or after these chars
       .replace(/ ?([;{}!,>]) ?| ([)])|([:(]) /g, '$1$2$3')
       // remove units from 0 that are allowed to be omitted
-      .replace(/(\b0)(?:\.0+)?(?:r?e[mx]|p[xtc]|[chm]{2}|in|v(?:h|w|min|max)|%)/gi, '$1')
+      .replace(/(\b0)(?:\.0+)?(?:r?e[mx]|p[xtc]|[chm]{2}|in|v(?:h|w|min|max))/gi, '$1')
       .replace(/\b0(\.\d+)/g, '$1'); // remove any prefixed 0 from decimal values
   }
 }
