@@ -89,12 +89,17 @@ export default class CommentRemover {
           primatives[primIndex] = match;
           return `${uid}${primIndex++}`;
         })
-
+        .replace(/https:\/\//g, 'https:/')
+        .replace(/http:\/\//g, 'http:/')
         .replace(/\/\/.*?\/?\*.+?(?=\n|\r|$)|\/\*[\s\S]*?\/\/[\s\S]*?\*\//g, '')
         .replace(/\/\/.+?(?=\n|\r|$)|\/\*[\s\S]+?\*\//g, '')
         .replace(RegExp(`\\/\\*[\\s\\S]+${uid}\\d+`, 'g'), '')
         // tslint:disable-next-line: variable-name
         .replace(RegExp(`${uid}(\\d+)`, 'g'), (_match, n) => primatives[n])
+        .replace(/https:\//g, 'https://')
+        .replace(/http:\//g, 'http://')
+        .replace(/https:\/\/\//g, 'https://')
+        .replace(/http:\/\/\//g, 'http://')
     );
   }
 }

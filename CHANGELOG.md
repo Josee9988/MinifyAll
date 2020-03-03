@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.1.5**] - 2020-03-03
+
+### Fixed
+
+* Fixed problem with CSS minification (HTTPS URLS).
+
 ## [**2.1.4**] - 2020-02-14
 
 ### Fixed
