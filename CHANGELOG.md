@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.1.6**] - 2020-03-14
+
+### Security
+
+* Some dependencies updated to fix one security issue.
+
 ## [**2.1.5**] - 2020-03-03
 
 ### Fixed
