@@ -14,7 +14,7 @@ Do you want to help us improve the extension or did you found a bug?
 
 Check our **[changelog](CHANGELOG.md)**.
 
-> We support up to **10** languages!
+> We support up to **11** languages!
 
 ---
 
@@ -71,6 +71,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 - **CSS**
 - **HTML**
+- **TWIG**
 - **HTML** in a *PHP file*
 - **JSON**
 - **JavaScript** With: [Terser](https://github.com/terser/terser)

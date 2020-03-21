@@ -31,6 +31,11 @@ export interface IUserSettings {
     disableHtml: boolean;
 
     /**
+     * disableTwig: If you want MinifyAll to stop minimizing TWIG. (True for disabling)
+     */
+    disableTwig: boolean;
+
+    /**
      * disableCss: If you want MinifyAll to stop minimizing CSS. (True for disabling)
      */
     disableCss: boolean;
@@ -121,6 +126,7 @@ export function getUserSettings(): IUserSettings {
     return {
         hexDisabled: conf.get('disableHexadecimalShortener'),
         disableHtml: conf.get('disableHtml'),
+        disableTwig: conf.get('disableTwig'),
         disableCss: conf.get('disableCss'),
         disableScss: conf.get('disableScss'),
         disableLess: conf.get('disableLess'),

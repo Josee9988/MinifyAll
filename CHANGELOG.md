@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.2.0**] - 2020-03-21
+
+### Added
+
+* Support for TWIG.
+
+### Changed
+
+* PHP is enabled by default.
+
 ## [**2.1.6**] - 2020-03-14
 
 ### Security
