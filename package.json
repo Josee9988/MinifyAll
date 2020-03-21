@@ -67,7 +67,8 @@
 		"pretest": "npm run compile"
 	},
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -84,7 +85,8 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -217,7 +219,8 @@
 			}
 		},
 		"menus": {
-			"editor/context": [{
+			"editor/context": [
+				{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -233,10 +236,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [{
-				"command": "extension.MinifyAll2OtherDocSelected",
-				"group": "MinifyAll"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				}
+			]
 		}
 	},
 	"devDependencies": {
@@ -245,12 +250,12 @@
 		"@types/node": "^12.12.30",
 		"@types/vscode": "^1.40.0",
 		"glob": "^7.1.5",
-		"mocha": "^6.2.2",
+		"mocha": "^7.1.1",
 		"tslint": "^5.20.0",
 		"typescript": "^3.8.3",
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
-		"terser": "^4.6.6"
+		"terser": "^4.6.7"
 	}
 }
