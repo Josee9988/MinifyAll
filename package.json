@@ -122,6 +122,11 @@
 					"default": false,
 					"description": "If you want MinifyAll to stop minimizing HTML. (True for disabling)"
 				},
+				"MinifyAll.disableTwig": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing TWIG. (True for disabling)"
+				},
 				"MinifyAll.disableCss": {
 					"type": "boolean",
 					"default": false,
@@ -164,7 +169,7 @@
 				},
 				"MinifyAll.disablePhp": {
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"description": "If you want MinifyAll to stop minimizing PHP. (True for disabling)"
 				},
 				"MinifyAll.disableMessages": {
