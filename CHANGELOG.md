@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.2.1**] - 2020-03-28
+
+### Added
+
+* Link to the MinifyAll webpage in the readme.md file.
+
 ## [**2.2.0**] - 2020-03-21
 
 ### Added
