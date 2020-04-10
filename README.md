@@ -12,7 +12,7 @@ For more information check our: **[GitHub repository](https://github.com/Josee99
 Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎
 
 Do you want to help us improve the extension or did you found a bug?
-**[Let us know](https://github.com/Josee9988/MinifyAll/issues)** or contact **[us](jgracia9988@gmail.com)**.
+**[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
 
 Check our **[changelog](CHANGELOG.md)**.
 
