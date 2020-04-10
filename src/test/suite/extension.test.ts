@@ -128,7 +128,7 @@ suite('MinifyAll Test Suite', () => {
 
 			],
 		);
-		assert.deepStrictEqual(result, '<div class="parallax"><div class="container d-flex justify-content-center align-items-center parallax-content"style="height:100vh;"><div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center flex-column"><h1>321 32 </h1></div></div><video class="parallax-background"autoplay=""loop=""muted=""><source src="http://thenewcode.com/assets/videos/polina.mp4"type="video/mp4"wp-acf="[{\'type\':\'url\',\'name\':\'video\',\'label\':\'Video\',\'wrapper\':{\'width\':25}},{\'type\':\'text\',\'name\':\'video_css\',\'label\':\'Video CSS (eg. filters)\',\'wrapper\':{\'width\':25}}]"wp-attr="[{\'target\':\'src\',\'replace\':\'%1\'},{\'target\':\'parent_style\',\'replace\':\'%2\'}]"></video>');
+		assert.deepStrictEqual(result, '<div class="parallax"><div class="container d-flex justify-content-center align-items-center parallax-content" style="height:100vh;"><div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center flex-column"><h1>321 32 </h1></div></div><video class="parallax-background" autoplay="" loop="" muted=""><source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4" wp-acf="[{\'type\':\'url\',\'name\':\'video\',\'label\':\'Video\',\'wrapper\':{\'width\':25}},{\'type\':\'text\',\'name\':\'video_css\',\'label\':\'Video CSS (eg. filters)\',\'wrapper\':{\'width\':25}}]" wp-attr="[{\'target\':\'src\',\'replace\':\'%1\'},{\'target\':\'parent_style\',\'replace\':\'%2\'}]"></video>');
 	});
 
 
@@ -225,7 +225,7 @@ suite('MinifyAll Test Suite', () => {
 		);
 		htmlMinify.removeMultipleLineComments();
 		const result: string = htmlMinify.getHtmlMinified();
-		assert.deepStrictEqual(result, '<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet"href=""><script type="text/javascript"src=""></script></head><body></body></html>');
+		assert.deepStrictEqual(result, '<!DOCTYPE html><html lang="es"><head><title></title><meta charset="utf-8"><link rel="stylesheet" href=""><script type="text/javascript" src=""></script></head><body></body></html>');
 	});
 
 
