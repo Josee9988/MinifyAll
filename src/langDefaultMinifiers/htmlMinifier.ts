@@ -46,7 +46,7 @@ export default class HtmlMinifier {
       .replace(/>[\s]+/g, '>') // removes whitespaces between labels
       .replace(/(>)\1+/g, '>')
       .replace(/"\s/igm, '"')
-      .replace(/content/g, ' content') // meta tag add space before 'content' tag
+      .replace(/"content/g, '" content') // meta tag add space before 'content' tag
       .replace(/\s=/g, '=') // remove space before '='
       .replace(/=\s/g, '=') // remove space after '='
       .replace(/\s\s/g, ' ') // remove two consecutive spaces
