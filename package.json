@@ -242,7 +242,7 @@
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
-		"@types/node": "^12.12.30",
+		"@types/node": "^13.13.5",
 		"@types/vscode": "^1.40.0",
 		"glob": "^7.1.5",
 		"mocha": "^7.1.1",
