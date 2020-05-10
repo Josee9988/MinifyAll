@@ -251,6 +251,6 @@
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
-		"terser": "^4.6.7"
+		"terser": "^4.6.13"
 	}
 }
