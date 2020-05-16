@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.2.4**] - 2020-05-16
+
+### Added
+
+* Link in the readme.md file to the new Minifyall cli package.
+
 ## [**2.2.3**] - 2020-04-10
 
 ### Fixed

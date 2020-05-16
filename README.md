@@ -9,7 +9,7 @@ Go to the extension *settings* and make it as you want, enable or disable: **min
 
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
 
-Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎
+Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎 or the **[MinifyAll cli/package](https://github.com/Josee9988/MinifyAllCli)**.
 
 Do you want to help us improve the extension or did you found a bug?
 **[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
@@ -417,6 +417,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 [Check my VSCode Markdown and Changelog snippets](https://marketplace.visualstudio.com/items?itemName=josee9988.changelog-and-markdown-snippets) 🌟
 
 [Check my MinifyAll online webpage](https://minifyall.jgracia.es/) 😎
+
+[Check my MinifyAll cli/package](https://github.com/Josee9988/MinifyAllCli)
 
 ---
 
