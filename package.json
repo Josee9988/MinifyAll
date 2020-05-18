@@ -243,7 +243,7 @@
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.12.30",
-		"@types/vscode": "^1.40.0",
+		"@types/vscode": "^1.45.1",
 		"glob": "^7.1.5",
 		"mocha": "^7.1.1",
 		"tslint": "^5.20.0",
