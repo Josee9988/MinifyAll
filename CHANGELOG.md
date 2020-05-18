@@ -7,6 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.3.0**] - 2020-05-18
+
+### Added
+
+* MinifyAll core.
+
+### Removed
+
+* Tests that are now included in the MinifyAll core.
+* All the files that now are located in the package MinifyAll core.
+
 ## [**2.2.4**] - 2020-05-16
 
 ### Added

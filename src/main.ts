@@ -31,6 +31,7 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+import { MinifyAllClass } from '@josee9988/minifyall';
 import * as FileSaver from 'fs';
 import * as path from 'path';
 import * as Terser from 'terser';
@@ -38,7 +39,6 @@ import * as vscode from 'vscode';
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { getUserSettings, IUserSettings } from './controller/getConfiguration';
 import getNewFilePath from './controller/getNewFilePath';
-import globalMinify from './controller/globalMinifiers';
 import { MessageTypes, showMessage } from './controller/showMessage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
 
@@ -57,8 +57,7 @@ if (settings.minifyOnSaveToNewFile) {
 // If the user has hexadecimal shortener enabled it will import it.
 const minifyHex: boolean = !settings.hexDisabled ? true : false;
 
-const globalMinifiers: globalMinify = new globalMinify(minifyHex);
-
+const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
 
 /**
  * Summary main method that is executed when the extension is activated,
