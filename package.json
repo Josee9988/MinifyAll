@@ -252,6 +252,6 @@
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.0",
-		"terser": "^4.6.13"
+		"terser": "^4.7.0"
 	}
 }
