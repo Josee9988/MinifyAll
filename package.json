@@ -247,7 +247,7 @@
 		"glob": "^7.1.5",
 		"mocha": "^7.1.2",
 		"tslint": "^5.20.0",
-		"typescript": "^3.9.2",
+		"typescript": "^3.9.3",
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
