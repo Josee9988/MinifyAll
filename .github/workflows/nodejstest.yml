@@ -1,39 +1,43 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
+name: VS Code extension CI
 
 on:
     push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+        branches:
+            - master
+        #tags:
+        #  - v1
+        # file paths to consider in the event. Optional; defaults to all.
+        #paths:
+        #  - 'test/*'
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
 
         strategy:
+            max-parallel: 3
             matrix:
-                os: [ubuntu-20.04]
-                node-version: [12.x]
-                version: ['1.45.1']
+                os: [macos-latest, windows-latest, ubuntu-18.04]
+                node-version: [8.x]
+                #node-version: [8.x, 10.x]
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v1
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: npm ci
-            - run: npm run compile --if-present
+            - name: Install dependencies
+              run: npm install
 
-            - name: Start xvfb
-            if: startsWith(matrix.os, 'ubuntu')
-            run: /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-
-            - name: Run tests
-            env:
-                CODE_VERSION: ${{ matrix.version }}
-                DISPLAY: ':99.0'
-            run: npm test
+            - name: Start xvfb only if it's Linux
+              if: startsWith(matrix.os,'ubuntu')
+              run: |
+                  /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+                  echo ">>> Started xvfb"
+              shell: bash
+            - name: npm install, build, and test
+              run: |
+                  npm test
+              env:
+                  DISPLAY: ':99.0' # Only necessary for linux tests
