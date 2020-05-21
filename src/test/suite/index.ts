@@ -25,14 +25,12 @@ export function run(): Promise<void> {
         mocha.run((failures) => {
           if (failures > 0) {
             e(new Error(`${failures} tests failed.`));
-            process.exit(1);
           } else {
             c();
           }
         });
       } catch (err) {
         e(err);
-        process.exit(1);
       }
     });
   });
