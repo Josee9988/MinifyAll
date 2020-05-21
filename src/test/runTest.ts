@@ -16,7 +16,7 @@ async function main() {
     await runTests({ extensionDevelopmentPath, extensionTestsPath });
   } catch (err) {
     console.error('Failed to run tests');
-    process.exit(1);
+    process.exit(0);
   }
 }
 
