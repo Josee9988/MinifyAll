@@ -62,9 +62,11 @@
 	"main": "./out/main.js",
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile"
+		"compile": "tsc",
+		"watch": "tsc -watch",
+		"pretest": "npm run compile",
+		"test": "node node_modules/mocha/bin/mocha out/test/",
+		"posttest": "rm -R .vscode-test || :"
 	},
 	"contributes": {
 		"commands": [{

@@ -3,6 +3,7 @@
 .github/**
 out/test/**
 src/**
+.vscode-test/**
 
 #Root files ignored.
 **/jsconfig.json

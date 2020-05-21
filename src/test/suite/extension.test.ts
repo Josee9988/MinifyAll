@@ -75,7 +75,7 @@ suite('MinifyAll Test Suite', () => {
 
 
 	test('Function \'getNewFilePath\' works', () => {
-		const result: string = getNewFilePath(path, '/myFile.css', 'css');
-		assert.deepStrictEqual(result, '/myFile-min.css');
+		const result: string = getNewFilePath(path, 'myFile.css', 'css');
+		assert.deepStrictEqual(result, 'myFile-min.css');
 	});
 });
