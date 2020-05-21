@@ -65,7 +65,7 @@
 		"compile": "tsc",
 		"watch": "tsc -watch",
 		"pretest": "npm run compile",
-		"test": "./node_modules/mocha/bin/mocha out/test/",
+		"test": "node_modules/mocha/bin/mocha out/test/",
 		"posttest": "rm -R .vscode-test || :"
 	},
 	"contributes": {
