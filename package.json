@@ -64,7 +64,9 @@
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile"
+		"pretest": "npm run compile",
+		"test": "./node_modules/mocha/bin/mocha out/test/",
+		"posttest": "rm -R .vscode-test || :"
 	},
 	"contributes": {
 		"commands": [{
