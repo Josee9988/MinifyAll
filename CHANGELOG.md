@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* Workflow to test the extension automatically on push/pull-request.
+* Tests from the npm run scripts.
+
 ## [**2.3.0**] - 2020-05-18
 
 ### Added
