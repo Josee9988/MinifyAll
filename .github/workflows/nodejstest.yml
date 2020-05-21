@@ -16,6 +16,7 @@ jobs:
         strategy:
             matrix:
                 node-version: [12.x]
+                version: ['1.45.1']
 
         steps:
             - uses: actions/checkout@v2
@@ -25,4 +26,13 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - run: npm ci
             - run: npm run compile --if-present
-            - run: npm test
+
+            - name: Start xvfb
+            if: startsWith(matrix.os, 'ubuntu')
+            run: /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+            - name: Run tests
+            env:
+                CODE_VERSION: ${{ matrix.version }}
+                DISPLAY: ':99.0'
+            run: npm test
