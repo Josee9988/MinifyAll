@@ -253,7 +253,7 @@
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
-		"@josee9988/minifyall": "^1.1.0",
+		"@josee9988/minifyall": "^1.1.1",
 		"terser": "^4.7.0"
 	}
 }
