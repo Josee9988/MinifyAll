@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**2.3.1**] - 2020-05-26
 
 ### Added
 
@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Fixed
 
 * Test: "Function \'getNewFilePath\' works" fixed to work on Windows.
+* Right click minify on the explorer working for JavaScript and JSX to close #48.
 
 ## [**2.3.0**] - 2020-05-18
 
