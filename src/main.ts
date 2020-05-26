@@ -242,8 +242,8 @@ export default function activate(context: vscode.ExtensionContext): void {
 							break;
 
 						case 'js': // JavaScript
-							if ((fileUri.path.split('.').pop() === 'javascript' && !settings.disableJavascript) ||
-								(fileUri.path.split('.').pop() === 'javascriptreact' && !settings.disableJavascriptReact)) {
+							if ((fileUri.path.split('.').pop() === 'js' && !settings.disableJavascript) ||
+								(fileUri.path.split('.').pop() === 'jsx' && !settings.disableJavascriptReact)) {
 								const path2NewFileJs: string = path.join(filePath, path.basename(fileUri.path).replace('.js', `${settings.prefix}.js`));
 								const minifierJs: any = Terser.minify(data);
 
