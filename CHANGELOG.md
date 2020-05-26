@@ -20,6 +20,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Test: "Function \'getNewFilePath\' works" fixed to work on Windows.
 * Right click minify on the explorer working for JavaScript and JSX to close #48.
 
+### Changed
+
+* From github workflow badge to png to solve vsce problem.
+
 ## [**2.3.0**] - 2020-05-18
 
 ### Added

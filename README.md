@@ -25,7 +25,7 @@ Check our **[changelog](CHANGELOG.md)**.
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-star/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Josee9988/minifyall.svg?style=popout-square)](#minifyall-an-extension-for-vscode)
 [![Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
-![Node.js CI](https://github.com/Josee9988/MinifyAll/workflows/Node.js%20CI/badge.svg)
+![Node.js CI](https://img.shields.io/github/workflow/status/Josee9988/MinifyAll/Node.js%20CI.svg)
 
 ---
 
