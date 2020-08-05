@@ -200,7 +200,7 @@
 					"enum": [
 						"-min",
 						".min",
-						"minified-",
+						"-minified",
 						".minified"
 					],
 					"enumDescriptions": [
