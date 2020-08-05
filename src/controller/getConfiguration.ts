@@ -111,6 +111,12 @@ export interface IUserSettings {
      * create a minified file).
      */
     openMinifiedDocument: boolean;
+
+    /**
+     * If you want MinifyAll(terser) to remove the console log statements
+     * from your minified JavaScript code.
+     */
+    removeJavascriptConsolelogs: boolean;
 }
 
 /**
@@ -141,5 +147,6 @@ export function getUserSettings(): IUserSettings {
         disableJavascript: conf.get('disableJavascript'),
         disableJavascriptReact: conf.get('disableJavascriptReact'),
         openMinifiedDocument: conf.get('openMinifiedDocument'),
+        removeJavascriptConsolelogs: conf.get('removeJavascriptConsolelogs'),
     };
 }

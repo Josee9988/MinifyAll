@@ -12,6 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Terser now removes by default the console logs statements.
+* Setting **removeJavascriptConsolelogs** to choose if removing console.logs or not.
+
+### Removed
+
+* All contributors badge and table.
 
 ## [**2.3.2**] - 2020-07-23
 
