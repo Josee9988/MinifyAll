@@ -12,7 +12,7 @@ import * as vscode from 'vscode';
 export enum PrefixesAvailable {
     hyphenMin = "-min",
     dotMin = ".min",
-    minifiedHyphen = "minified-",
+    minifiedHyphen = "-minified",
     docMinified = ".minified",
 }
 
@@ -103,7 +103,7 @@ export interface IUserSettings {
     /**
      * PrefixOfNewMinifiedFiles: The prefix of the extension of the new file.
      */
-    prefix: PrefixesAvailable;
+    PrefixOfNewMinifiedFiles: PrefixesAvailable;
 
     /**
      * openMinifiedDocument: If you want MinifyAll to open the new minified
@@ -143,7 +143,7 @@ export function getUserSettings(): IUserSettings {
         disableMessages: conf.get('disableMessages'),
         minifyOnSave: conf.get('minifyOnSave'),
         minifyOnSaveToNewFile: conf.get('minifyOnSaveToNewFile') ? true : conf.get('minifyOnSaveToNewFIle'),
-        prefix: conf.get('PrefixOfNewMinifiedFiles'),
+        PrefixOfNewMinifiedFiles: conf.get('PrefixOfNewMinifiedFiles'),
         disableJavascript: conf.get('disableJavascript'),
         disableJavascriptReact: conf.get('disableJavascriptReact'),
         openMinifiedDocument: conf.get('openMinifiedDocument'),

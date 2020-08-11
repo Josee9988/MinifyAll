@@ -7,6 +7,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.4.1**] - 2020-08-11
+
+### Added
+
+* Issue label bot.
+
+### Fixed
+
+* Setting **PrefixOfNewMinifiedFiles** option 'minified-' to -minified'.
+
+### Changed
+
+* Renamed some variables of the setting **PrefixOfNewMinifiedFiles**.
+
+### Removed
+
+* Upcoming features.
+
 ## [**2.4.0**] - 2020-08-05
 
 ### Added
