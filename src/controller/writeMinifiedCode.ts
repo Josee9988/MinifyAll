@@ -11,7 +11,7 @@ import { IUserSettings } from "./getConfiguration";
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import * as FileSaver from 'fs';
+import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { MessageTypes, showMessage } from './showMessage';
 
@@ -78,7 +78,7 @@ export function replaceSelectedCode(editor: any, selection: object, modifiedText
  */
 // tslint:disable-next-line: max-line-length
 export function minifiedTextToNewFile(path2NewFile: string, modifiedText: string, settings: IUserSettings): void {
-    FileSaver.writeFile(path2NewFile, modifiedText, () => {
+    fs.writeFile(path2NewFile, modifiedText, () => {
         if (settings.openMinifiedDocument) {
             vscode.workspace.openTextDocument(path2NewFile).then((doc: any) => {
                 vscode.window.showTextDocument(doc);

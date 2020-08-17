@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.4.2**] - 2020-08-17
+
+### Fixed
+
+* Fixed issue #52. Command MinifyAll2OtherDoc seems to be working in windows and linux.
+
 ## [**2.4.1**] - 2020-08-11
 
 ### Added
