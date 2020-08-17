@@ -32,7 +32,7 @@
  */
 
 import { MinifyAllClass } from '@josee9988/minifyall';
-import * as FileSaver from 'fs';
+import * as fs from 'fs';
 import * as path from 'path';
 import * as Terser from 'terser';
 import * as vscode from 'vscode';
@@ -205,7 +205,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 	const commandMinifyAll2OtherDocSelected: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
 		if (fileUri !== undefined) {
 			// We get the text from the selected file.
-			FileSaver.readFile(fileUri.path, 'utf8', (error: Error, data: string) => {
+			fs.readFile(fileUri.path, 'utf8', (error: Error, data: string) => {
 				if (!error) { // if there is not any error
 					const filePath: string = path.dirname(fileUri.path);
 
