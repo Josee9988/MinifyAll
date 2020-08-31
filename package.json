@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.4.2",
+	"version": "2.4.3",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -258,7 +258,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"@josee9988/minifyall": "^1.1.5",
+		"@josee9988/minifyall": "^1.1.6",
 		"terser": "^4.8.0"
 	}
 }
