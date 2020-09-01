@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.4.3",
+	"version": "2.4.4",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
@@ -69,7 +69,8 @@
 		"posttest": "rm -R .vscode-test || :"
 	},
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -86,7 +87,8 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -224,7 +226,8 @@
 			}
 		},
 		"menus": {
-			"editor/context": [{
+			"editor/context": [
+				{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -240,10 +243,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [{
-				"command": "extension.MinifyAll2OtherDocSelected",
-				"group": "MinifyAll"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				}
+			]
 		}
 	},
 	"devDependencies": {
@@ -258,7 +263,7 @@
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {
-		"@josee9988/minifyall": "^1.1.6",
+		"@josee9988/minifyall": "^1.1.7",
 		"terser": "^4.8.0"
 	}
 }
