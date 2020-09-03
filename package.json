@@ -66,10 +66,12 @@
 		"watch": "tsc -watch",
 		"pretest": "npm run compile",
 		"test": "node node_modules/mocha/bin/mocha out/test/",
-		"posttest": "rm -R .vscode-test || :"
+		"posttest": "rm -R .vscode-test || :",
+		"updateCore": "bash bin/coreUpdater.sh $1"
 	},
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -86,7 +88,8 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -224,7 +227,8 @@
 			}
 		},
 		"menus": {
-			"editor/context": [{
+			"editor/context": [
+				{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -240,10 +244,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [{
-				"command": "extension.MinifyAll2OtherDocSelected",
-				"group": "MinifyAll"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				}
+			]
 		}
 	},
 	"devDependencies": {
