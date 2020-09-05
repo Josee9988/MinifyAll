@@ -5,6 +5,15 @@
 	"version": "2.4.5",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc",
+		"watch": "tsc -watch",
+		"pretest": "npm run compile",
+		"test": "node node_modules/mocha/bin/mocha out/test/",
+		"posttest": "rm -R .vscode-test || :",
+		"update:minifyallcore": "bash bin/coreUpdater.sh"
+	},
 	"author": {
 		"name": "Jose Gracia Berenguer",
 		"email": "jgracia9988@gmail.com"
@@ -60,15 +69,6 @@
 		"*"
 	],
 	"main": "./out/main.js",
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc",
-		"watch": "tsc -watch",
-		"pretest": "npm run compile",
-		"test": "node node_modules/mocha/bin/mocha out/test/",
-		"posttest": "rm -R .vscode-test || :",
-		"updateCore": "bash bin/coreUpdater.sh"
-	},
 	"contributes": {
 		"commands": [{
 				"command": "extension.MinifyAll",

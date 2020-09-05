@@ -1,5 +1,24 @@
 #!/bin/bash
 
+#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
+# SCRIPT:        coreUpdater.sh
+# USAGE:         bash coreUpdater.sh | ./coreUpdater.sh
+# PURPOSE:       Shell script that receives the new version of the package, obtains the actual version, replaces it,
+#                then installs the latest version of the minifyallcli package (minifyall core), writes the basic
+#                changelog and, adds all the changes to a commit and pushes it into a new branch.
+# TITLE:         vecoreUpdatersionUpdater.sh
+# AUTHOR:        Jose Gracia
+# VERSION:       1.0.0
+# NOTES:         This script can be called through an npm script: 'npm run update:minifyallcore'
+#                When publishing, it should be done from the root directory of the repository.
+# BASH_VERSION:  5.0.17(1)-release
+# LICENSE:       see in ../LICENSE (project root) or https://github.com/Josee9988/MinifyAll/blob/master/LICENSE
+# GITHUB:        https://github.com/Josee9988/
+# REPOSITORY:    https://github.com/Josee9988/MinifyAll
+# ISSUES:        https://github.com/Josee9988/MinifyAll/issues
+# MAIL:          jgracia9988@gmail.com
+#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#
+
 if [ -z "$1" ]; then # check if the new package version was supplied.
     echo "Argument \$1 must be supplied with the new package version."
     exit 1
