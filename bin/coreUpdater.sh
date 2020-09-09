@@ -6,7 +6,7 @@
 # PURPOSE:       Shell script that receives the new version of the package, obtains the actual version, replaces it,
 #                then installs the latest version of the minifyallcli package (minifyall core), writes the basic
 #                changelog and, adds all the changes to a commit and pushes it into a new branch.
-# TITLE:         vecoreUpdatersionUpdater.sh
+# TITLE:         coreUpdater.sh
 # AUTHOR:        Jose Gracia
 # VERSION:       1.0.0
 # NOTES:         This script can be called through an npm script: 'npm run update:minifyallcore'
