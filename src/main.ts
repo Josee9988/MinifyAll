@@ -34,7 +34,7 @@
 import { MinifyAllClass } from '@josee9988/minifyall';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as Terser from 'terser';
+import { minify } from "terser";
 import * as vscode from 'vscode';
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { getUserSettings, IUserSettings } from './controller/getConfiguration';
@@ -87,7 +87,7 @@ const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
  */
 export default function activate(context: vscode.ExtensionContext): void {
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
-	const commandMinifyAll: any = vscode.commands.registerCommand('extension.MinifyAll', () => {
+	const commandMinifyAll: any = vscode.commands.registerCommand('extension.MinifyAll', async () => {
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		switch (vscode.window.activeTextEditor.document.languageId) {
 			case 'css': case 'scss': case 'less': case 'sass': // CSS SCSS LESS SASS
@@ -116,7 +116,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const minifierJs: any = Terser.minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
+					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
 
 					if (minifierJs.error === undefined) {
 						replaceActualCode(minifierJs.code);
@@ -137,7 +137,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 	// Command MinifyAll2OtherDoc and writes the result in other file.
 	// It executes if its called the command "extension.MinifyAll2OtherDoc"
-	const commandMinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', () => {
+	const commandMinifyAll2OtherDoc: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDoc', async () => {
 
 		const documentText: string[] = vscode.window.activeTextEditor.document.getText().split('\n');
 		const selectedFileName: string = vscode.window.activeTextEditor.document.fileName;
@@ -181,7 +181,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile: string = getNewFilePath(path, selectedFileName, 'js', settings.PrefixOfNewMinifiedFiles);
-					const minifierJs: any = Terser.minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
+					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
 
 					if (minifierJs.error === undefined) {
 						minifiedTextToNewFile(path2NewFile, minifierJs.code, settings);
@@ -205,7 +205,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 	const commandMinifyAll2OtherDocSelected: any = vscode.commands.registerCommand('extension.MinifyAll2OtherDocSelected', async (fileUri) => {
 		if (fileUri !== undefined) {
 			// We get the text from the selected file.
-			fs.readFile(fileUri._fsPath, 'utf8', (error: Error, data: string) => {
+			fs.readFile(fileUri._fsPath, 'utf8', async (error: Error, data: string) => {
 				if (!error) { // if there is not any error
 					const filePath: string = path.dirname(fileUri._fsPath);
 
@@ -247,7 +247,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 							if ((fileUri._fsPath.split('.').pop() === 'js' && !settings.disableJavascript) ||
 								(fileUri._fsPath.split('.').pop() === 'jsx' && !settings.disableJavascriptReact)) {
 								const path2NewFileJs: string = path.join(filePath, path.basename(fileUri._fsPath).replace('.js', `${settings.PrefixOfNewMinifiedFiles}.js`));
-								const minifierJs: any = Terser.minify(data, terserMinifierOptions);
+								const minifierJs: any = await minify(data, terserMinifierOptions);
 
 								if (minifierJs.error === undefined) {
 									minifiedTextToNewFile(path2NewFileJs, minifierJs.code, settings);
@@ -275,7 +275,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 	// Command MinifyAll. It executes if its called the command "extension.MinifyAll"
 	const commandMinifyAllSelectedText: any = vscode.commands.registerCommand(
-		'extension.MinifyAllSelectedText', () => {
+		'extension.MinifyAllSelectedText', async () => {
 			const editor: any = vscode.window.activeTextEditor;
 			const { selection } = editor;
 			const selectedText: string = vscode.window.activeTextEditor.document.getText(selection);
@@ -310,7 +310,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				case 'javascript': case 'javascriptreact': // JavaScript
 					if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-						const minifierJs: any = Terser.minify(selectedText, terserMinifierOptions);
+						const minifierJs: any = await minify(selectedText, terserMinifierOptions);
 
 						if (minifierJs.error === undefined) { // if there is no error
 							replaceSelectedCode(editor, selection, minifierJs.code);
