@@ -7,6 +7,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.4.10**] - 2020-12-03
+
+### Added
+
+* Specific activation events to improve the VSCode startup time (MinifyAll will only be initialized when the user opens any of the supported file types). Close issue #72
+* Line in the README.md file asking for contributors.
+
 ## [**2.4.9**] - 2020-09-22
 
 ### Fixed
