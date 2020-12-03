@@ -66,7 +66,21 @@
 		"url": "https://github.com/Josee9988/MinifyAll.git"
 	},
 	"activationEvents": [
-		"*"
+		"onLanguage:json",
+		"onLanguage:jsonc",
+		"onLanguage:css",
+		"onLanguage:scss",
+		"onLanguage:less",
+		"onLanguage:sass",
+		"onLanguage:html",
+		"onLanguage:php",
+		"onLanguage:twig",
+		"onLanguage:javascript",
+		"onLanguage:javascriptreact",
+		"onCommand:extension.MinifyAll",
+		"onCommand:extension.MinifyAll2OtherDoc",
+		"onCommand:extension.MinifyAll2OtherDocSelected",
+		"onCommand:extension.MinifyAllSelectedText"
 	],
 	"main": "./out/main.js",
 	"contributes": {
