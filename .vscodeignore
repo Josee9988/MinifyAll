@@ -7,7 +7,6 @@ src/**
 
 #Root files ignored.
 **/jsconfig.json
-**/*.map
 **/.eslintrc.json
 **/.all-contributorsrc
 **/.gitignore
