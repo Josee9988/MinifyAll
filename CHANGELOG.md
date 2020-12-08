@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.4.11**] - 2020-12-08
+
+### Added
+
+* Added the .map files again to the vscode repository (removed "**/*.map" from the .vscodeignore file).
+
 ## [**2.4.10**] - 2020-12-03
 
 ### Added

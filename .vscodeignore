@@ -15,7 +15,6 @@ src/**
 **/tslint.json
 
 # Specific extension
-**/*.map
 **/*.ts
 
 #Screenshots folder. (all but the main icon)
