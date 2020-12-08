@@ -4,6 +4,7 @@
 out/test/**
 src/**
 .vscode-test/**
+bin/**
 
 #Root files ignored.
 **/jsconfig.json
