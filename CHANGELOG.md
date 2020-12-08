@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 * Version 2.4.11 was not uploading .map files.
 
+### Removed
+
+* Errors showing in the VSCode extension profiler due to the missing .maps.
+
 ## [**2.4.11**] - 2020-12-08
 
 ### Added
