@@ -40,7 +40,7 @@ Currently looking for active contributors to maintain and keep the project alive
 
 - **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
 - **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
-- **```"Minify the selected text 🎯```  Or ```CTRL+ALT+. CTRL+ALT+M```**
+- **```Minify the selected text 🎯```  Or ```CTRL+ALT+. CTRL+ALT+M```**
 
 ---
 
