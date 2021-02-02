@@ -45,7 +45,6 @@ import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from '.
 export const settings: IUserSettings = getUserSettings();
 
 const terserMinifierOptions: MinifyOptions = settings.terserMinifyOptions;
-console.debug(settings.terserMinifyOptions.compress);
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {

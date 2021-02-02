@@ -133,10 +133,10 @@ Currently looking for active contributors to maintain and keep the project alive
 "MinifyAll.openMinifiedDocument": true|false //default 'true'
 ```
 
-- Ignores **console.log()** statements //default 'true' (by default Terser removes the console.logs statements from your JavaScript files.)
+- Terser minify options, this setting will allow you to fully customice your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
 
 ``` json
-"MinifyAll.removeJavascriptConsolelogs": true|false //default 'true' (by default Terser removes the console.logs)
+"MinifyAll.terserMinifyOptions": { mangle: true, compress: { drop_console: true, dead_code: false, keep_fnames: false, keep_classnames: false } } // for more information please visit https://github.com/terser/terser#minify-options
 ```
 
 ### **Disabling languages configuration**
