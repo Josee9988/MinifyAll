@@ -34,7 +34,7 @@
 import { MinifyAllClass } from '@josee9988/minifyall';
 import * as fs from 'fs';
 import * as path from 'path';
-import { minify } from "terser";
+import { minify, MinifyOptions } from "terser";
 import * as vscode from 'vscode';
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { getUserSettings, IUserSettings } from './controller/getConfiguration';
@@ -44,7 +44,8 @@ import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from '.
 
 export const settings: IUserSettings = getUserSettings();
 
-const terserMinifierOptions = { compress: { drop_console: settings.removeJavascriptConsolelogs, dead_code: false, keep_fnames: false } };
+const terserMinifierOptions: MinifyOptions = settings.terserMinifyOptions;
+console.debug(settings.terserMinifyOptions.compress);
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
