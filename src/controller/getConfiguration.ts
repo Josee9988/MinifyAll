@@ -7,7 +7,6 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import { config } from 'process';
 import { MinifyOptions } from 'terser';
 import * as vscode from 'vscode';
 
