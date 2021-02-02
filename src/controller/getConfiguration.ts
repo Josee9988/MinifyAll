@@ -7,6 +7,8 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
+import { config } from 'process';
+import { MinifyOptions } from 'terser';
 import * as vscode from 'vscode';
 
 export enum PrefixesAvailable {
@@ -113,10 +115,11 @@ export interface IUserSettings {
     openMinifiedDocument: boolean;
 
     /**
-     * If you want MinifyAll(terser) to remove the console log statements
-     * from your minified JavaScript code.
+     * Object of Terser MinifyOptions.
+     * @see https://github.com/terser/terser#minify-options for more information.
+     * Default value set to: { mangle: true, compress: { drop_console: true, dead_code: false, keep_fnames: false, keep_classnames: false } }
      */
-    removeJavascriptConsolelogs: boolean;
+    terserMinifyOptions: MinifyOptions;
 }
 
 /**
@@ -127,8 +130,14 @@ export interface IUserSettings {
 export function getUserSettings(): IUserSettings {
     const conf: any = vscode.workspace.getConfiguration('MinifyAll');
     if (conf.get('minifyOnSaveToNewFIle')) { // if the user is using a deprecated setting.
-        vscode.window.showWarningMessage('You are using the deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');
+        vscode.window.showWarningMessage('You are using a deprecated setting "minifyOnSaveToNewFIle", please replace it with: "minifyOnSaveToNewFile" (mind the capital letter I)');
     }
+    if (conf.get('removeJavascriptConsolelogs')) { // if the user is using a deprecated setting.
+        vscode.window.showWarningMessage('You are using a deprecated setting "removeJavascriptConsolelogs", please, to use the new JavaScript terser settings use the option "terserMinifyOptions"');
+    }
+
+    const defaultTerserOptions: any = { mangle: true, compress: { drop_console: true, dead_code: false, keep_fnames: false, keep_classnames: false } };
+
     return {
         hexDisabled: conf.get('disableHexadecimalShortener'),
         disableHtml: conf.get('disableHtml'),
@@ -147,6 +156,6 @@ export function getUserSettings(): IUserSettings {
         disableJavascript: conf.get('disableJavascript'),
         disableJavascriptReact: conf.get('disableJavascriptReact'),
         openMinifiedDocument: conf.get('openMinifiedDocument'),
-        removeJavascriptConsolelogs: conf.get('removeJavascriptConsolelogs'),
+        terserMinifyOptions: conf.get('terserMinifyOptions').hasOwnProperty('mangle') ? conf.get('terserMinifyOptions') : defaultTerserOptions,
     };
 }

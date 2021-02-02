@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.4.14",
+	"version": "2.5.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
@@ -233,10 +233,18 @@
 					"default": true,
 					"description": "If you want MinifyAll to open the new minified document after you minify. (False for not opening it every time you create a minified file)"
 				},
-				"MinifyAll.removeJavascriptConsolelogs": {
-					"type": "boolean",
-					"default": true,
-					"description": "If you want MinifyAll(terser) to remove the console log statements from your minified JavaScript code (default true)"
+				"MinifyAll.terserMinifyOptions": {
+					"type": "object",
+					"default": {
+						"mangle": true,
+						"compress": {
+							"drop_console": true,
+							"dead_code": false,
+							"keep_fnames": false,
+							"keep_classnames": false
+						}
+					},
+					"description": "Terser options, please visit: https://github.com/terser/terser#minify-options for more information."
 				}
 			}
 		},
