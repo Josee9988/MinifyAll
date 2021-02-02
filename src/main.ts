@@ -44,7 +44,7 @@ import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from '.
 
 export const settings: IUserSettings = getUserSettings();
 
-const terserMinifierOptions = { compress: { drop_console: settings.removeJavascriptConsolelogs, dead_code: false } };
+const terserMinifierOptions = { compress: { drop_console: settings.removeJavascriptConsolelogs, dead_code: false, keep_fnames: false } };
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
