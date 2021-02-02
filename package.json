@@ -8,6 +8,8 @@
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc",
+		"publish:vscode": "vsce publish",
+		"publish:vsx": "npx ovsx publish --pat $1",
 		"watch": "tsc -watch",
 		"pretest": "npm run compile",
 		"test": "node node_modules/mocha/bin/mocha out/test/",
@@ -265,7 +267,7 @@
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.19.15",
-		"@types/vscode": "^1.52.0",
+		"@types/vscode": "^1.47.0",
 		"glob": "^7.1.5",
 		"mocha": "^7.2.0",
 		"tslint": "^5.20.0",

@@ -7,7 +7,7 @@ You can minify the file and replace all the content with the new minified text, 
 
 Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
-For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)** and **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)**.
+For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)**, **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)** or **[OpenVSX registry](https://open-vsx.org/extension/Josee9988/minifyall)**.
 
 Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎 or the **[MinifyAll cli/package](https://github.com/Josee9988/MinifyAllCli)**.
 
