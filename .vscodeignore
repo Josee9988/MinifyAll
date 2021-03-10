@@ -16,6 +16,7 @@ bin/**
 
 # Specific extension
 **/*.ts
+**/*.js.map
 
 #Screenshots folder. (all but the main icon)
 Screenshots/Preview.gif
