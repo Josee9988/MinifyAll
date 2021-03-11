@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.5.3**] - 2021-03-11
+
+### Added
+
+* Reduced bundle size
+
 ## [**2.5.2**] - 2021-03-10
 
 ### Changed
