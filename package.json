@@ -2,13 +2,13 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.4",
+	"version": "2.5.6",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
 		"publish:vscode": "vsce publish",
 		"publish:vsx": "npm run vscode:prepublish && npx ovsx publish --pat $1 && npm run remove:webpack-trash",
-		"vscode:prepublish": "webpack --mode production && npm run remove:webpack-trash",
+		"vscode:prepublish": "rm -r out/ || : && webpack --mode production && npm run remove:webpack-trash",
 		"webpack": "webpack --mode development",
 		"webpack-dev": "webpack --mode development --watch",
 		"compile:dev": "tsc",
@@ -282,6 +282,7 @@
 		"glob": "^7.1.5",
 		"mocha": "^7.2.0",
 		"ts-loader": "^8.0.17",
+		"tslib": "^1.14.1",
 		"tslint": "^5.20.0",
 		"typescript": "^3.9.7",
 		"vscode-test": "^1.5.0",
@@ -290,7 +291,6 @@
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.10",
-		"terser": "^5.5.1",
-		"tslib": "^1.14.1"
+		"terser": "^5.5.1"
 	}
 }
