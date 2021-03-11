@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Improved extension performance and removed tslib from dev dependencies.
-* Bundle size is now smaller than 5 MB.
+* Bundle size is now ~ 4 MB.
 
 ## [**2.5.3**] - 2021-03-11
 
