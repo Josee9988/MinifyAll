@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [**1.1.11**] - 2021-03-12
+## [**2.5.7**] - 2021-03-12
 
 ### Changed
 

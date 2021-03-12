@@ -39,7 +39,7 @@ ACTUAL_PACKAGE_VERSION=$(cat package.json |
 sed -i -e "s/$ACTUAL_PACKAGE_VERSION/$NEW_PACKAGE_VERSION/g" package.json
 
 # install the latest version of the minifier.
-npm i @josee9988/minifyall --save
+npm i @josee9988/minifyall@latest --save
 
 # # obtain the new version of the MinifyAllCore
 NEW_CORE_VERSION=$(npm view @josee9988/minifyall |
