@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.7",
+	"version": "2.5.8",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
@@ -294,7 +294,7 @@
 		"webpack-cli": "^4.5.0"
 	},
 	"dependencies": {
-		"@josee9988/minifyall": "^1.1.11",
+		"@josee9988/minifyall": "^1.1.12",
 		"terser": "^5.5.1"
 	}
 }
