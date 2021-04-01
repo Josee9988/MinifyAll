@@ -94,7 +94,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyCssScssLessSass(documentText));
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -102,7 +102,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyJsonJsonc(documentText));
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -110,7 +110,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyHtml(documentText));
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -124,11 +124,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 			default:
-				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSave) showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll);
@@ -151,7 +151,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedCssText: string = globalMinifiers.minifyCssScssLessSass(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -162,7 +162,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedJsonText: string = globalMinifiers.minifyJsonJsonc(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -174,7 +174,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedHtmlText: string = globalMinifiers.minifyHtml(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 
@@ -189,11 +189,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else {
-					showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
 				}
 				break;
 			default:
-				showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSaveToNewFile) showMessage('⛔ We can not format this file type yet, use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll2OtherDoc);
