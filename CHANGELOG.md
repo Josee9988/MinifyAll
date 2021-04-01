@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.5.9**] - 2021-04-01
+
+### Fixed
+
+* Removed disabled file types if user has selected the option to minify on save to fix issue #86
+
 ## [**2.5.8**] - 2021-03-15
 
 ### Changed
