@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.9",
+	"version": "2.5.10",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
@@ -88,7 +88,8 @@
 	],
 	"main": "./out/main.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -105,7 +106,8 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [{
+		"keybindings": [
+			{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -251,7 +253,8 @@
 			}
 		},
 		"menus": {
-			"editor/context": [{
+			"editor/context": [
+				{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -267,10 +270,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [{
-				"command": "extension.MinifyAll2OtherDocSelected",
-				"group": "MinifyAll"
-			}]
+			"explorer/context": [
+				{
+					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				}
+			]
 		}
 	},
 	"devDependencies": {
@@ -289,7 +294,7 @@
 		"webpack-cli": "^4.5.0"
 	},
 	"dependencies": {
-		"@josee9988/minifyall": "^1.1.12",
+		"@josee9988/minifyall": "^1.1.13",
 		"terser": "^5.5.1"
 	}
 }
