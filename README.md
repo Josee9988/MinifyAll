@@ -414,6 +414,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 [![Github stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
 [![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
 [![Github forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
+[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=github-sponsors&color=red&style=social)](https://github.com/sponsors/Josee9988)
 
 [Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme) 🧲
 
