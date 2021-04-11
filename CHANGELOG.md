@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.5.14**] - 2021-04-11
+
+### Added
+
+* Recommended project build with webpack from vscode docs.
+
 ## [**2.5.13**] - 2021-04-11
 
 ### Added
