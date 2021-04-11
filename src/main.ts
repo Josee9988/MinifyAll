@@ -212,7 +212,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					switch (fileUri._fsPath.split('.').pop()) {
 						case 'css': case 'scss': case 'less': case 'sass': // CSS SCSS LESS SASS
 							if (checkLanguageStyles(fileUri._fsPath.split('.').pop(), settings)) {
-								const newName: string = path.basename(fileUri._fsPath).replace('.css', `${settings.PrefixOfNewMinifiedFiles}.css`);
+								const newName: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.css`);
 								const path2NewFile: string = path.join(filePath, newName);
 								const modifiedCssText: string = globalMinifiers.minifyCssScssLessSass(data.split('\n'));
 								minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
@@ -223,7 +223,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						case 'json': case 'jsonc': // Json Jsonc
 							if (checkLanguageJson(fileUri._fsPath.split('.').pop(), settings)) {
-								const newNameJson: string = path.basename(fileUri._fsPath).replace('.json', `${settings.PrefixOfNewMinifiedFiles}.json`);
+								const newNameJson: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.json`);
 								const path2NewFileJson: string = path.join(filePath, newNameJson);
 								const modifiedJsonText: string = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings);
@@ -234,7 +234,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						case 'html': case 'php': case 'twig': // HTML PHP
 							if (checkLanguageHtmlPhp(fileUri._fsPath.split('.').pop(), settings)) {
-								const newNameHtml: string = path.basename(fileUri._fsPath).replace('.html', `${settings.PrefixOfNewMinifiedFiles}.html`);
+								const newNameHtml: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.html`);
 								const path2NewFileHtml: string = path.join(filePath, newNameHtml);
 								const modifiedHtmlText: string = globalMinifiers.minifyHtml(data.split('\n'));
 								minifiedTextToNewFile(path2NewFileHtml, modifiedHtmlText, settings);
