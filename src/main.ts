@@ -223,7 +223,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 						case 'json': case 'jsonc': // Json Jsonc
 							if (checkLanguageJson(fileUri._fsPath.split('.').pop(), settings)) {
-								const newNameJson: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.json`);
+								const newNameJson: string = path.basename(fileUri._fsPath).replace('.json', `${settings.PrefixOfNewMinifiedFiles}.json`);
 								const path2NewFileJson: string = path.join(filePath, newNameJson);
 								const modifiedJsonText: string = globalMinifiers.minifyJsonJsonc(data.split('\n'));
 								minifiedTextToNewFile(path2NewFileJson, modifiedJsonText, settings);
