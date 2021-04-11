@@ -128,7 +128,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 			default:
-				if (!settings.minifyOnSave) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '),, use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSave) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll);
@@ -193,7 +193,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 			default:
-				if (!settings.minifyOnSaveToNewFile) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '),, use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSaveToNewFile) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning);
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll2OtherDoc);
@@ -259,7 +259,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 							}
 							break;
 						default:
-							showMessage('⛔ We can not format this file type yet (' + fileUri._fsPath.split('.').pop() + '),, use a valid one.', MessageTypes.Warning);
+							showMessage('⛔ We can not format this file type yet (' + fileUri._fsPath.split('.').pop() + '), use a valid one.', MessageTypes.Warning);
 							break;
 					}
 				} else {
