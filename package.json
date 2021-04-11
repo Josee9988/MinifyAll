@@ -2,20 +2,18 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.12",
+	"version": "2.5.13",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
 		"publish:vscode": "vsce publish",
+		"build": "rm -r out/ || : && tsc && npm run uglifyjs",
 		"publish:vsx": "npx ovsx publish --pat $1",
-		"vscode:prepublish": "rm -r out/ || : && webpack --mode production && npm run remove:webpack-trash",
-		"webpack": "webpack --mode development",
-		"compile:dev": "tsc",
+		"uglifyjs": "uglifyjs-folder out -e -o out -x .js",
 		"watch": "tsc -watch",
 		"pretest": "npm run compile",
 		"test": "node node_modules/mocha/bin/mocha out/test/",
 		"posttest": "rm -R .vscode-test || :",
-		"remove:webpack-trash": "sed -i '1d' out/main.js && rm out/main.js.LICENSE.txt",
 		"update:minifyallcore": "bash bin/coreUpdater.sh"
 	},
 	"author": {
@@ -88,8 +86,7 @@
 	],
 	"main": "./out/main.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -106,8 +103,7 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -253,8 +249,7 @@
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -270,12 +265,10 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
-					"command": "extension.MinifyAll2OtherDocSelected",
-					"group": "MinifyAll"
-				}
-			]
+			"explorer/context": [{
+				"command": "extension.MinifyAll2OtherDocSelected",
+				"group": "MinifyAll"
+			}]
 		}
 	},
 	"devDependencies": {
@@ -289,12 +282,11 @@
 		"tslib": "^1.14.1",
 		"tslint": "^5.20.0",
 		"typescript": "^3.9.7",
-		"vscode-test": "^1.5.0",
-		"webpack": "^5.24.4",
-		"webpack-cli": "^4.5.0"
+		"vscode-test": "^1.5.0"
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.14",
-		"terser": "^5.5.1"
+		"terser": "^5.5.1",
+		"uglifyjs-folder": "^2.0.0"
 	}
 }

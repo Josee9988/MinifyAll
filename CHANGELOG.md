@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.5.13**] - 2021-04-11
+
+### Added
+
+* Uglifyjs command to minimize using terser all the output files having multiple of them to improve performance.
+
+### Removed
+
+* Webpack, as it was giving some errors and performance ways it was minimizing all into a single file, making the extension slower when loading it.
+
 ## [**2.5.12**] - 2021-04-11
 
 ### Added
