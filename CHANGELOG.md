@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.5.12**] - 2021-04-11
+
+### Added
+
+* If the output error 'We can not format this file type yet' occurs, it will tell the file type so it will be easier to understand.
+
 ## [**2.5.11**] - 2021-04-06
 
 ### Changed
@@ -23,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Removed disabled file types if user has selected the option to minify on save to fix issue #86
+* Removed disabled file types if the user has selected the option to minify on save to fix issue #86
 
 ## [**2.5.8**] - 2021-03-15
 
@@ -72,7 +78,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * Package json scripts to publish the extension to VSX and vscode marketplace.
-* Setting "terserMinifyOptions" will allow the users to fully customice their Terser options.
+* Setting "terserMinifyOptions" will allow the users to fully customize their Terser options.
 * Updated the readme to announce the new setting.
 
 ### Removed
