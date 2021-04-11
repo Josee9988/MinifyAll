@@ -2,22 +2,19 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.17",
+	"version": "2.5.18",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
 		"publish:vscode": "vsce publish",
-		"vscode:prepublish": "webpack --mode production",
-		"webpack": "webpack --mode development",
-		"webpack-dev": "webpack --mode development --watch",
-		"test-compile": "tsc -p ./",
+		"vscode:prepublish": "rm -r out/ || : && webpack --mode production",
+		"webpack": "webpack --mode development  && tsc --outDir out/test/",
 		"build": "rm -r out/ || : && tsc",
 		"compile": "npm run build",
 		"publish:vsx": "npx ovsx publish --pat $1",
-		"uglifyjs": "uglifyjs-folder out -e -o out -x .js",
-		"watch": "tsc -watch",
-		"pretest": "npm run compile",
-		"test": "npm run build && node node_modules/mocha/bin/mocha out/test/",
+		"watch": "tsc --watch",
+		"pretest": "npm run build",
+		"test": "node node_modules/mocha/bin/mocha out/test/",
 		"posttest": "rm -R .vscode-test || :",
 		"update:minifyallcore": "bash bin/coreUpdater.sh"
 	},
@@ -289,8 +286,7 @@
 		"typescript": "^3.9.7",
 		"vscode-test": "^1.5.0",
 		"webpack": "^5.31.2",
-		"webpack-cli": "^4.6.0",
-		"uglifyjs-folder": "^2.0.0"
+		"webpack-cli": "^4.6.0"
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.15",
