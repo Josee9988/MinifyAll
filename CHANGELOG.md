@@ -7,11 +7,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [**2.5.17**] - 2021-04-11
+## [Unreleased]
+
+### Added
+
+* List of posts in which the extension has been mentioned or reviewed.
+
+### Removed
+
+* Readme known bugs 'The command "Minify the selected document and preserve the original will not work on Windows'.
+
+## [**2.5.18**] - 2021-04-11
 
 ### Fixed
 
-* Launch scripts and webpack rules.
+* Launch scripts and 'webpack' rules.
+* MinifyAll2OtherDoc 'scss' prefix of file fixed.
 
 ## [**2.5.16**] - 2021-04-11
 

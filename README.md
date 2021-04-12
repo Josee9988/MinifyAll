@@ -3,7 +3,7 @@
 
 Simple VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also you can simply minify your **selected text**.
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**.
 
 Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
@@ -394,21 +394,12 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
-- ⚠️ The command "Minify the selected document and preserve the original will not work on Windows.
 - ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default VSCode file *might* cause errors.
-- ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be scaped (\/\/).
+- ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be escaped (\/\/).
 
 ---
 
-## **Built with** 🛠️🔧
-
-- [Virtual Studio Code](https://code.visualstudio.com/)
-- [Yo code](https://code.visualstudio.com/api/get-started/your-first-extension)
-- [vsce](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
-
----
-
-### Did you enjoyed the minifier? Help us raise these numbers up 🥰 🎉
+### 🎉 Did you enjoyed the minifier? Help us raise these numbers up
 
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
 [![Github stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
@@ -426,6 +417,16 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ---
 
-> ⚠️Remember that this extension does not guarantee a 100% effectiveness and may have some issue at some point. Use it at your own risk and always do backups of your code.⚠️
+### 📚 **Posts where MinifyAll is mentioned**
+
+- [Minify Code Automatically](https://dev.to/aryaziai/minifying-code-shortcut-4d6c)
+- [How I made my personal website 10x faster](https://dev.to/asaoluelijah/how-i-made-my-personal-website-10x-faster-3p6k)
+- [11 plugins indispensables para VSCode](https://www.gitmedio.com/11-plugins-indispensables-para-visual-studio-code-insiders/)
+- [6 VSCode extensions you need to install now](https://it-it.facebook.com/AskHorizons/photos/a.128334975253236/386218132798251/?type=3&eid=ARDn_eorUZWvdCAV4C9taXZ5FFXu7Ib4e80xgui_LS-2y_m6VegoeCrc1JfFt6Bbyy7rXjEnPPSHCqTt)
+- [8 VSCode common extensions (chinnese)](https://www.leunghoyin.hk/vscode-common-extensions)
+
+---
+
+> ⚠️Remember that this extension does not guarantee 100% effectiveness and may have some issue at some point. Use it at your own risk and always do backups of your code.⚠️
 
 _Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)**_
