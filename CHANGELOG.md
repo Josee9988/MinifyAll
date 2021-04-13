@@ -7,11 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**2.5.19**] - 2021-04-13
 
 ### Added
 
 * List of posts in which the extension has been mentioned or reviewed.
+* 'tsc' as a default VSCode build task.
+
+### Changed
+
+* Extension icon
+
+### Removed
+
+* VSCode default watch task.
 
 ### Removed
 
