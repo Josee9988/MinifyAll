@@ -1,7 +1,7 @@
 ---
 name: "🐞 Bug Report"
 about: "Report an issue to help the project improve."
-title: ""
+title: "[Bug] "
 labels: bug
 assignees: Josee9988
 
@@ -26,7 +26,7 @@ Please read our Rules of Conduct at this repository's `.github/CODE_OF_CONDUCT.m
 ---
 
 ### **Is this a regression?**
-<!-- Did this behaviour use to work in the previous version? -->
+<!-- Did this behaviour used to work in the previous version? -->
 <!-- Yes, the previous version in which this bug was not present was: ... -->
 
 ---

@@ -1,4 +1,4 @@
-# Full folders ignored
+###> Josee9988/MinifyAll ###
 node_modules/
 out/
 .idea/
@@ -6,3 +6,4 @@ out/
 
 # Test files ignored
 /*.ignore*
+###< Josee9988/MinifyAll ###

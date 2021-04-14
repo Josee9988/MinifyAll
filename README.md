@@ -399,7 +399,13 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ---
 
-### 🎉 Did you enjoyed the minifier? Help us raise these numbers up
+## 🥰 Donators
+
+Support the project and be the first donator ❤️
+
+---
+
+## 🎉 Did you enjoyed the minifier? Help us raise these numbers up
 
 [![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
 [![Github stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
@@ -417,10 +423,10 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ---
 
-### 📚 **Posts where MinifyAll is mentioned**
+## 📚 **Posts where MinifyAll is mentioned**
 
 - [Minify Code Automatically](https://dev.to/aryaziai/minifying-code-shortcut-4d6c)
-- [How I made my personal website 10x faster](https://dev.to/asaoluelijah/how-i-made-my-personal-website-10x-faster-3p6k)
+- [How I made my website 10x faster](https://dev.to/asaoluelijah/how-i-made-my-personal-website-10x-faster-3p6k)
 - [11 plugins indispensables para VSCode](https://www.gitmedio.com/11-plugins-indispensables-para-visual-studio-code-insiders/)
 - [6 VSCode extensions you need to install now](https://it-it.facebook.com/AskHorizons/photos/a.128334975253236/386218132798251/?type=3&eid=ARDn_eorUZWvdCAV4C9taXZ5FFXu7Ib4e80xgui_LS-2y_m6VegoeCrc1JfFt6Bbyy7rXjEnPPSHCqTt)
 - [8 VSCode common extensions (chinnese)](https://www.leunghoyin.hk/vscode-common-extensions)
