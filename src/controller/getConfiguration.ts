@@ -7,8 +7,9 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import { MinifyOptions } from 'terser';
 import * as vscode from 'vscode';
+
+import { MinifyOptions } from 'terser';
 
 export enum PrefixesAvailable {
     hyphenMin = "-min",

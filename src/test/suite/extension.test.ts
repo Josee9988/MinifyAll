@@ -11,12 +11,11 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-
 import * as assert from 'assert';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import getNewFilePath from '../../controller/getNewFilePath';
 
+import getNewFilePath from '../../controller/getNewFilePath';
 
 suite('MinifyAll Test Suite', () => {
 	vscode.window.showInformationMessage('Starting tests.');

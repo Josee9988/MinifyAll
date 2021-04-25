@@ -10,7 +10,6 @@
 
 import { IUserSettings } from "./getConfiguration";
 
-
 /**
  * Summary: A function that checks the if the language given is not disabled by the user
  * in their settings, if it is not disabled it will return true, if not false.

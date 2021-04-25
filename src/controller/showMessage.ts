@@ -9,6 +9,7 @@
  */
 
 import * as vscode from 'vscode';
+
 import { settings } from '../main';
 
 export enum MessageTypes {

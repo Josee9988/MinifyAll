@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+* Ordered TS imports.
+
 ## [**2.5.21**] - 2021-04-13
 
 ### Changed

@@ -1,5 +1,3 @@
-import { IUserSettings } from "./getConfiguration";
-
 /**
  * @file file that contains the functions that will replace the actual code with the minified one,
  * replace the selected code with the minified one and a function to write the minified text to
@@ -13,8 +11,10 @@ import { IUserSettings } from "./getConfiguration";
 
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+
 import { MessageTypes, showMessage } from './showMessage';
 
+import { IUserSettings } from "./getConfiguration";
 
 /**
  * Summary gets the actual code and replaces it with the minified one.

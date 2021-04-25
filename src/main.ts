@@ -31,16 +31,18 @@
  * @link https://github.com/Josee9988/MinifyAll/issues issues and enhancements.
  */
 
-import { MinifyAllClass } from '@josee9988/minifyall';
 import * as fs from 'fs';
 import * as path from 'path';
-import { minify, MinifyOptions } from "terser";
 import * as vscode from 'vscode';
-import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
-import { getUserSettings, IUserSettings } from './controller/getConfiguration';
-import getNewFilePath from './controller/getNewFilePath';
+
+import { IUserSettings, getUserSettings } from './controller/getConfiguration';
 import { MessageTypes, showMessage } from './controller/showMessage';
+import { MinifyOptions, minify } from "terser";
+import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
+
+import { MinifyAllClass } from '@josee9988/minifyall';
+import getNewFilePath from './controller/getNewFilePath';
 
 export const settings: IUserSettings = getUserSettings();
 
