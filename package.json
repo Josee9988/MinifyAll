@@ -295,6 +295,7 @@
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.16",
-		"terser": "^5.5.1"
+		"terser": "^5.5.1",
+		"zip-lib": "^0.7.2"
 	}
 }
