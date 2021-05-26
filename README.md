@@ -1,9 +1,11 @@
 <!-- markdownlint-disable MD033-->
 # **MinifyAll an extension for VSCode**
 
-Simple VSCode **minifier** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+Simple VSCode **minifier** and **compressor** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**.
+
+MinifyAll is also able to compress files and folders simply by right-clicking them on the menu.
 
 Go to the extension *settings* and make it as you want, enable or disable: **minify on save**, **languages**, **hexadecimal shortener**, **messages**, and much more.
 
@@ -42,6 +44,8 @@ Currently looking for active contributors to maintain and keep the project alive
 - **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
 - **```Minify the selected text 🎯```  Or ```CTRL+ALT+. CTRL+ALT+M```**
 
+We recommend to use them with: "left click" on the document and then select the option you want, either the file in the menu or the opened file. ;)
+
 ---
 
 ## **How does it look with real code?** 📸 😁
@@ -69,6 +73,10 @@ Currently looking for active contributors to maintain and keep the project alive
 - Minify when right-clicking on a file of the menu without opening it!
 
 <img src="https://i.imgur.com/UsO2dbn.gif" alt="rightclickMenu" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+- Compress when right-clicking on a file or folder of the menu.
+
+<img src="https://j.gifs.com/lRYW9l.gif" alt="compressfiles" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
 ---
 

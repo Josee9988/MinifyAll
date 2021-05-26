@@ -1,8 +1,8 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). You will love its simplicity!",
-	"version": "2.5.21",
+	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). Compressor of files and folders. You will love its simplicity!",
+	"version": "2.6.0",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
@@ -84,12 +84,12 @@
 		"onCommand:extension.MinifyAll",
 		"onCommand:extension.MinifyAll2OtherDoc",
 		"onCommand:extension.MinifyAll2OtherDocSelected",
-		"onCommand:extension.MinifyAllSelectedText"
+		"onCommand:extension.MinifyAllSelectedText",
+		"onCommand:extension.Compress"
 	],
 	"main": "./out/main.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -102,12 +102,15 @@
 				"title": "Minify the selected document and preserve the original 💎"
 			},
 			{
+				"command": "extension.Compress",
+				"title": "Compress the selected file/folder 📦"
+			},
+			{
 				"command": "extension.MinifyAllSelectedText",
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -253,8 +256,7 @@
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
 					"group": "MinifyAll"
@@ -270,9 +272,12 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
+			"explorer/context": [{
 					"command": "extension.MinifyAll2OtherDocSelected",
+					"group": "MinifyAll"
+				},
+				{
+					"command": "extension.Compress",
 					"group": "MinifyAll"
 				}
 			]
@@ -295,6 +300,8 @@
 	},
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.16",
-		"terser": "^5.5.1"
+		"terser": "^5.5.1",
+		"zip-a-folder": "^1.0.1",
+		"zip-lib": "^0.7.2"
 	}
 }

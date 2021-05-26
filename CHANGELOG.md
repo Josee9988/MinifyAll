@@ -7,11 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## [Unreleased]
+## [**2.6.0**] - 2021-05-26
+
+### Added
+
+* Compress command. It will be called from the menu and it is able to minify files or folders.
 
 ### Changed
 
 * Ordered TS imports.
+* Updated npm packages.
 
 ## [**2.5.21**] - 2021-04-13
 
