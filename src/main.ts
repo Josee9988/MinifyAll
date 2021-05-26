@@ -34,7 +34,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
+import * as zl from 'zip-lib';
 
+import { COMPRESSION_LEVEL, zip } from 'zip-a-folder';
 import { IUserSettings, getUserSettings } from './controller/getConfiguration';
 import { MessageTypes, showMessage } from './controller/showMessage';
 import { MinifyOptions, minify } from "terser";
@@ -80,6 +82,7 @@ const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
  * a new file with the minified text, 'MinifyAll2OtherDocSelected' makes
  * the same process as 'MinifyAll2OtherDoc' but this command is called
  * from the menu. Also it is called when executing MinifyAllSelectedText.
+ * The command 'Compress' is called from the menu and compresses the selected file/folder.
  *
  * @access public
  *
@@ -329,6 +332,30 @@ export default function activate(context: vscode.ExtensionContext): void {
 			}
 			context.subscriptions.push(commandMinifyAllSelectedText);
 		});
+
+
+	// Command Compress and writes the result in other file.
+	// It executes if its called the command "extension.Compress"
+	const commandCompress: any = vscode.commands.registerCommand('extension.Compress', async (fileUri) => {
+		if (fileUri !== undefined) {
+			if (fs.statSync(fileUri._fsPath).isDirectory()) { // DIRECTORY
+				await zip(fileUri._fsPath, fileUri._fsPath + ".zip", COMPRESSION_LEVEL.high).then(() => {
+					console.log("File compressed at: " + fileUri._fsPath + ".zip");
+				}, (err: any) => {
+					showMessage('⛔ We could not compress your file/folder: ' + err, MessageTypes.Warning);
+				});
+			} else { // FILE
+				zl.archiveFile(fileUri._fsPath, fileUri._fsPath + ".zip").then(() => {
+					console.log("File compressed at: " + fileUri._fsPath + ".zip");
+				}, (err: any) => {
+					showMessage('⛔ We could not compress your file/folder: ' + err, MessageTypes.Warning);
+				})
+			}
+		} else {
+			showMessage('⛔ File/folder path unespecified!', MessageTypes.Warning);
+		}
+		context.subscriptions.push(commandCompress);
+	});
 }
 
 
