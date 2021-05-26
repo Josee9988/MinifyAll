@@ -84,7 +84,8 @@
 		"onCommand:extension.MinifyAll",
 		"onCommand:extension.MinifyAll2OtherDoc",
 		"onCommand:extension.MinifyAll2OtherDocSelected",
-		"onCommand:extension.MinifyAllSelectedText"
+		"onCommand:extension.MinifyAllSelectedText",
+		"onCommand:extension.Compress"
 	],
 	"main": "./out/main.js",
 	"contributes": {
@@ -100,6 +101,10 @@
 			{
 				"command": "extension.MinifyAll2OtherDocSelected",
 				"title": "Minify the selected document and preserve the original 💎"
+			},
+			{
+				"command": "extension.Compress",
+				"title": "Compress the selected file/folder 📦"
 			},
 			{
 				"command": "extension.MinifyAllSelectedText",
@@ -274,6 +279,10 @@
 				{
 					"command": "extension.MinifyAll2OtherDocSelected",
 					"group": "MinifyAll"
+				},
+				{
+					"command": "extension.Compress",
+					"group": "MinifyAll"
 				}
 			]
 		}
@@ -296,6 +305,7 @@
 	"dependencies": {
 		"@josee9988/minifyall": "^1.1.16",
 		"terser": "^5.5.1",
+		"zip-a-folder": "^1.0.1",
 		"zip-lib": "^0.7.2"
 	}
 }
