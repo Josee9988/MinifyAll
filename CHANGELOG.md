@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.7.0**] - 2021-07-15
+
+### Added
+
+* Support for vue files to be treated as HTML files.
+
 ## [**2.6.1**] - 2021-07-01
 
 ### Changed

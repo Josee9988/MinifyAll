@@ -89,6 +89,8 @@ We recommend to use them with: "left click" on the document and then select the 
 - **CSS**
 - **HTML**
 - **TWIG**
+- **VUE**
+- **VUE-HTML**
 - **HTML** in a *PHP file*
 - **JSON**
 - **JavaScript** With: [Terser](https://github.com/terser/terser)
