@@ -111,7 +111,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 
-			case 'html': case 'php': case 'twig': // HTML PHP
+			case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyHtml(documentText));
 				} else {
@@ -171,7 +171,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 
-			case 'html': case 'php': case 'twig': // HTML PHP
+			case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile: string = getNewFilePath(path, selectedFileName,
 						vscode.window.activeTextEditor.document.languageId, settings.PrefixOfNewMinifiedFiles);
@@ -237,7 +237,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 							}
 							break;
 
-						case 'html': case 'php': case 'twig': // HTML PHP
+						case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 							if (checkLanguageHtmlPhp(fileUri._fsPath.split('.').pop(), settings)) {
 								const newNameHtml: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.html`);
 								const path2NewFileHtml: string = path.join(filePath, newNameHtml);
@@ -304,7 +304,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					}
 					break;
 
-				case 'html': case 'php': case 'twig': // HTML PHP
+				case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 					if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 						const modifiedHtmlText: string = globalMinifiers.minifyHtml(selectedText.split('\n'));
 						replaceSelectedCode(editor, selection, modifiedHtmlText);
