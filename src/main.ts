@@ -36,11 +36,11 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as zl from 'zip-lib';
 
+import { minify, MinifyOptions } from "terser";
 import { COMPRESSION_LEVEL, zip } from 'zip-a-folder';
-import { IUserSettings, getUserSettings } from './controller/getConfiguration';
-import { MessageTypes, showMessage } from './controller/showMessage';
-import { MinifyOptions, minify } from "terser";
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
+import { getUserSettings, IUserSettings } from './controller/getConfiguration';
+import { MessageTypes, showMessage } from './controller/showMessage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
 
 import { MinifyAllClass } from '@josee9988/minifyall';
@@ -99,7 +99,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageStyles(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyCssScssLessSass(documentText));
 				} else {
-					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -107,7 +107,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageJson(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyJsonJsonc(documentText));
 				} else {
-					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -115,7 +115,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyHtml(documentText));
 				} else {
-					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -129,11 +129,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else {
-					if (!settings.minifyOnSave) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSave) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 			default:
-				if (!settings.minifyOnSave) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSave) { showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning); }
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll);
@@ -156,7 +156,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedCssText: string = globalMinifiers.minifyCssScssLessSass(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedCssText, settings);
 				} else {
-					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -167,7 +167,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedJsonText: string = globalMinifiers.minifyJsonJsonc(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedJsonText, settings);
 				} else {
-					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -179,7 +179,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					const modifiedHtmlText: string = globalMinifiers.minifyHtml(documentText);
 					minifiedTextToNewFile(path2NewFile, modifiedHtmlText, settings);
 				} else {
-					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 
@@ -194,11 +194,11 @@ export default function activate(context: vscode.ExtensionContext): void {
 						showMessage(`Terser error: ${minifierJs.error}`, MessageTypes.Error);
 					}
 				} else {
-					if (!settings.minifyOnSaveToNewFile) showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning);
+					if (!settings.minifyOnSaveToNewFile) { showMessage('We will not format this file type because it is disabled.', MessageTypes.Warning); }
 				}
 				break;
 			default:
-				if (!settings.minifyOnSaveToNewFile) showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning);
+				if (!settings.minifyOnSaveToNewFile) { showMessage('⛔ We can not format this file type yet (' + vscode.window.activeTextEditor.document.languageId + '), use a valid one.', MessageTypes.Warning); }
 				break;
 		}
 		context.subscriptions.push(commandMinifyAll2OtherDoc);
@@ -339,7 +339,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 	const commandCompress: any = vscode.commands.registerCommand('extension.Compress', async (fileUri) => {
 		if (fileUri !== undefined) {
 			if (fs.statSync(fileUri._fsPath).isDirectory()) { // DIRECTORY
-				await zip(fileUri._fsPath, fileUri._fsPath + ".zip", COMPRESSION_LEVEL.high).then(() => {
+				await zip(fileUri._fsPath, fileUri._fsPath + ".zip", { compression: COMPRESSION_LEVEL.high }).then(() => {
 					console.log("File compressed at: " + fileUri._fsPath + ".zip");
 				}, (err: any) => {
 					showMessage('⛔ We could not compress your file/folder: ' + err, MessageTypes.Warning);
@@ -349,7 +349,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					console.log("File compressed at: " + fileUri._fsPath + ".zip");
 				}, (err: any) => {
 					showMessage('⛔ We could not compress your file/folder: ' + err, MessageTypes.Warning);
-				})
+				});
 			}
 		} else {
 			showMessage('⛔ File/folder path unespecified!', MessageTypes.Warning);
