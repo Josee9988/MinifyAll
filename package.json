@@ -203,6 +203,16 @@
 					"default": false,
 					"description": "If you want MinifyAll to stop showing error, warning or information messages. (True for disabling)"
 				},
+				"MinifyAll.disableCodeContextMenu": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to not showing a context menu when right-clicking in the file explorer. (True for disabling)."
+				},
+				"MinifyAll.disableFileExplorerContextMenu": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to not showing a context menu when right-clicking in the file explorer. (True for disabling).."
+				},
 				"MinifyAll.minifyOnSave": {
 					"type": "boolean",
 					"default": false,
@@ -258,26 +268,28 @@
 		"menus": {
 			"editor/context": [{
 					"command": "extension.MinifyAll",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
+					"when": "!config.MinifyAll.disableCodeContextMenu && editorLangId in extension.supportedFiletypes",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.MinifyAll2OtherDoc",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact",
+					"when": "!config.MinifyAll.disableCodeContextMenu && editorLangId in extension.supportedFiletypes",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.MinifyAllSelectedText",
-					"when": "editorLangId == html || editorLangId == css || editorLangId == scss || editorLangId == less || editorLangId == json || editorLangId == jsonc || editorLangId == javascript || editorLangId == javascriptreact || editorLangId == php",
+					"when": "!config.MinifyAll.disableCodeContextMenu && editorLangId in extension.supportedFiletypes || !config.MinifyAll.disableCodeContextMenu && editorLangId == php",
 					"group": "MinifyAll"
 				}
 			],
 			"explorer/context": [{
 					"command": "extension.MinifyAll2OtherDocSelected",
+					"when": "!config.MinifyAll.disableFileExplorerContextMenu",
 					"group": "MinifyAll"
 				},
 				{
 					"command": "extension.Compress",
+					"when": "!config.MinifyAll.disableFileExplorerContextMenu",
 					"group": "MinifyAll"
 				}
 			]

@@ -65,6 +65,11 @@ const minifyHex: boolean = !settings.hexDisabled ? true : false;
 
 const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
 
+// List of suported Filetypes, can be used in package.json Context
+vscode.commands.executeCommand('setContext', 'extension.supportedFiletypes', [
+	'html', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact'
+]);
+
 /**
  * Summary main method that is executed when the extension is activated,
  * the extension is activated the very first time the command is executed,
