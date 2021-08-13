@@ -208,7 +208,7 @@
 				"MinifyAll.disableCodeContextMenu": {
 					"type": "boolean",
 					"default": false,
-					"description": "If you want MinifyAll to not showing a context menu when right-clicking in the file explorer. (True for disabling)."
+					"description": "If you want MinifyAll to not showing a context menu when right-clicking in your code. (True for disabling)."
 				},
 				"MinifyAll.disableFileExplorerContextMenu": {
 					"type": "boolean",
