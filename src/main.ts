@@ -65,7 +65,7 @@ const minifyHex: boolean = !settings.hexDisabled ? true : false;
 
 const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
 
-// List of suported Filetypes, can be used in package.json Context
+// List of supported filetypes, can be used in package.json Context
 vscode.commands.executeCommand('setContext', 'extension.supportedFiletypes', [
 	'html', 'xml', 'php', 'twig', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact',
 ]);
