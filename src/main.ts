@@ -67,7 +67,7 @@ const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
 
 // List of supported filetypes, can be used in package.json Context
 vscode.commands.executeCommand('setContext', 'extension.supportedFiletypes', [
-	'html', 'xml', 'php', 'twig', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact',
+	'html', 'xml', 'twig', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact',
 ]);
 
 /**
