@@ -36,11 +36,11 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as zl from 'zip-lib';
 
-import { minify, MinifyOptions } from "terser";
 import { COMPRESSION_LEVEL, zip } from 'zip-a-folder';
-import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
-import { getUserSettings, IUserSettings } from './controller/getConfiguration';
+import { IUserSettings, getUserSettings } from './controller/getConfiguration';
 import { MessageTypes, showMessage } from './controller/showMessage';
+import { MinifyOptions, minify } from "terser";
+import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
 
 import { MinifyAllClass } from '@josee9988/minifyall';
@@ -67,7 +67,7 @@ const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
 
 // List of suported Filetypes, can be used in package.json Context
 vscode.commands.executeCommand('setContext', 'extension.supportedFiletypes', [
-	'html', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact'
+	'html', 'xml', 'php', 'twig', 'css', 'scss', 'less', 'json', 'jsonc', 'javascript', 'javascriptreact',
 ]);
 
 /**
@@ -116,7 +116,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 
-			case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
+			case 'html': case 'xml': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					replaceActualCode(globalMinifiers.minifyHtml(documentText));
 				} else {
@@ -176,7 +176,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 				}
 				break;
 
-			case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
+			case 'html': case 'xml': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 				if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile: string = getNewFilePath(path, selectedFileName,
 						vscode.window.activeTextEditor.document.languageId, settings.PrefixOfNewMinifiedFiles);
@@ -242,7 +242,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 							}
 							break;
 
-						case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
+						case 'html': case 'xml': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 							if (checkLanguageHtmlPhp(fileUri._fsPath.split('.').pop(), settings)) {
 								const newNameHtml: string = path.basename(fileUri._fsPath).replace(`.${fileUri._fsPath.split('.').pop()}`, `${settings.PrefixOfNewMinifiedFiles}.html`);
 								const path2NewFileHtml: string = path.join(filePath, newNameHtml);
@@ -309,7 +309,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 					}
 					break;
 
-				case 'html': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
+				case 'html': case 'xml': case 'php': case 'twig': case 'vue': case 'vue-html': // HTML PHP
 					if (checkLanguageHtmlPhp(vscode.window.activeTextEditor.document.languageId, settings)) {
 						const modifiedHtmlText: string = globalMinifiers.minifyHtml(selectedText.split('\n'));
 						replaceSelectedCode(editor, selection, modifiedHtmlText);
