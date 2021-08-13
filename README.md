@@ -123,6 +123,18 @@ We recommend to use them with: "left click" on the document and then select the 
 "MinifyAll.disableMessages": true|false //default 'false' (by default it is allowed)
 ```
 
+- Disables context menu when right-clicking in your code.
+
+``` json
+"MinifyAll.disableCodeContextMenu": true|false //default 'false' (by default it is shown)
+```
+
+- Disables context menu when right-clicking in the file explorer.
+
+``` json
+"MinifyAll.disableFileExplorerContextMenu": true|false //default 'false' (by default it is shown)
+```
+
 - Minify on save (Default command, which will minify your actual code)
 
 ``` json

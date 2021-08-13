@@ -91,6 +91,18 @@ export interface IUserSettings {
     disableMessages: boolean;
 
     /**
+     * disableCodeContextMenu: If you want MinifyAll to not showing a context
+     * menu when right-clicking in your code. (True for disabling).
+     */
+    disableCodeContextMenu: boolean;
+
+    /**
+     * disableFileExplorerContextMenu: If you want MinifyAll to not showing a
+     * context menu when right-clicking in the file explorer. (True for disabling).
+     */
+    disableFileExplorerContextMenu: boolean;
+
+    /**
      * minifyOnSave: If you want MinifyAll to minify every time you save in
      * the same file. (True for enabling).
      */
@@ -150,6 +162,8 @@ export function getUserSettings(): IUserSettings {
         disableJsonc: conf.get('disableJsonc'),
         disablePhp: conf.get('disablePhp'),
         disableMessages: conf.get('disableMessages'),
+        disableCodeContextMenu: conf.get('disableCodeContextMenu'),
+        disableFileExplorerContextMenu: conf.get('disableFileExplorerContextMenu'),
         minifyOnSave: conf.get('minifyOnSave'),
         minifyOnSaveToNewFile: conf.get('minifyOnSaveToNewFile') ? true : conf.get('minifyOnSaveToNewFIle'),
         PrefixOfNewMinifiedFiles: conf.get('PrefixOfNewMinifiedFiles'),

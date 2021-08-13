@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* Configuration options `disableCodeContextMenu` and `disableFileExplorerContextMenu`, which allow the user to disable the respective contextmenus
+
 ## [**2.7.1**] - 2021-07-18
 
 ### Changed
