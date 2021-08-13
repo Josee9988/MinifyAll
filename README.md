@@ -20,7 +20,7 @@ Check our **[changelog](CHANGELOG.md)**.
 
 Currently looking for active contributors to maintain and keep the project alive.
 
-> We support up to **11** languages!
+> We support up to **14** languages/file extensions!
 
 ---
 
@@ -88,6 +88,7 @@ We recommend to use them with: "left click" on the document and then select the 
 
 - **CSS**
 - **HTML**
+- **XML**
 - **TWIG**
 - **VUE**
 - **VUE-HTML**

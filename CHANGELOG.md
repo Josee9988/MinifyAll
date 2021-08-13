@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.9.0**] - 2021-08-13
+
+### Added
+
+* XML support
+
 ## [**2.8.0**] - 2021-08-13
 
 ### Added
