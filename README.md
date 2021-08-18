@@ -3,7 +3,7 @@
 
 Simple VSCode **minifier** and **compressor** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags @preserve and @endpreserve.
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags *@preserve* and *@endpreserve*.
 
 MinifyAll is also able to **compress** files and folders simply by right-clicking them on the menu.
 
@@ -54,7 +54,7 @@ We recommend to use them with: "left click" on the document and then select the 
 
 <img src="https://i.imgur.com/mBABVUM.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
 
-- Preserve your license comments with the tags *@preserve* (at the very top) and *endpreserve*
+- Preserve your license comments with the tags *@preserve* (at the very top) and *@endpreserve*
 
 <img src="https://j.gifs.com/r2R4mB.gif" alt="preserve license" title="preserve license" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
 
@@ -163,7 +163,7 @@ We recommend to use them with: "left click" on the document and then select the 
 - Terser minify options, this setting will allow you to fully customice your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
 
 ``` json
-"MinifyAll.terserMinifyOptions": { mangle: true, compress: { drop_console: true, dead_code: false, keep_fnames: false, keep_classnames: false } } // for more information please visit https://github.com/terser/terser#minify-options
+"MinifyAll.terserMinifyOptions": { "mangle": true, "compress": { "drop_console": true, "dead_code": false, "keep_fnames": false, "keep_classnames": false } } // for more information please visit https://github.com/terser/terser#minify-options
 ```
 
 ### **Disabling languages configuration**
