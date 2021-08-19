@@ -52,35 +52,35 @@ We recommend to use them with: "left click" on the document and then select the 
 
 - The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/command.png?raw=true" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/command.png?raw=true" alt="command" title="command"/>
 
 - Preserve your license comments with the tags *@preserve* (at the very top) and *@endpreserve*
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preserve.gif?raw=true" alt="preserve license" title="preserve license" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preserve.gif?raw=true" alt="preserve license" title="preserve license"/>
 
 - The first and default command that replaces the actual code with the minified one:
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview.gif?raw=true" alt="preview" title="preview" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview.gif?raw=true" alt="preview" title="preview"/>
 
 - The second command that saves the minified text to other file and preserves the original text:
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview2ndcommand.gif?raw=true" alt="preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview2ndcommand.gif?raw=true" alt="preview2nd" title="preview2nd"/>
 
 - Minify only your **selected text**!
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/SelectedText.gif?raw=true" alt="selectedText" title="selectedText" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/SelectedText.gif?raw=true" alt="selectedText" title="selectedText"/>
 
 - Also, minify when right-clicking on the code!
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClick.png?raw=true" alt="rightclickMenu" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClick.png?raw=true" alt="rightclickMenu" title="rightclickMenu"/>
 
 - Minify when right-clicking on a file of the menu without opening it!
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClickMenu.gif?raw=true" alt="rightclickGIF" title="rightclickGIF" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClickMenu.gif?raw=true" alt="rightclickInAction" title="rightclickInAction"/>
 
 - Compress when right-clicking on a file or folder of the menu.
 
-<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/compress.gif?raw=true" alt="compressfiles" title="compressfiles" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/compress.gif?raw=true" alt="compressfiles" title="compressfiles"/>
 
 ---
 
