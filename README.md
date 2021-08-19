@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033-->
 # **MinifyAll an extension for VSCode**
 
-Simple VSCode **minifier** and **compressor** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+Simple VSCode **minifier** and **compressor** for most common filetypes ([See full list below](#languages-available-)). You will love its simplicity!
 
 You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags *@preserve* and *@endpreserve*.
 
