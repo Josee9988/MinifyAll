@@ -1,9 +1,9 @@
 <!-- markdownlint-disable MD033-->
 # **MinifyAll an extension for VSCode**
 
-Simple VSCode **minifier** and **compressor** for  **CSS**, **HTML** ,**JSON**, **JavaScript**, **JavaScriptReact**(beta), **LESS**, **SASS**, **SCSS**, and **JSONC**. you will love its simplicity!
+Simple VSCode **minifier** and **compressor** for most common filetypes ([See full list below](#languages-available-)). You will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags @preserve and @endpreserve.
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags *@preserve* and *@endpreserve*.
 
 MinifyAll is also able to **compress** files and folders simply by right-clicking them on the menu.
 
@@ -52,35 +52,35 @@ We recommend to use them with: "left click" on the document and then select the 
 
 - The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
 
-<img src="https://i.imgur.com/mBABVUM.png" alt="command" title="command" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/command.png?raw=true" alt="command" title="command"/>
 
-- Preserve your license comments with the tags *@preserve* (at the very top) and *endpreserve*
+- Preserve your license comments with the tags *@preserve* (at the very top) and *@endpreserve*
 
-<img src="https://j.gifs.com/r2R4mB.gif" alt="preserve license" title="preserve license" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:50%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preserve.gif?raw=true" alt="preserve license" title="preserve license"/>
 
 - The first and default command that replaces the actual code with the minified one:
 
-<img src="https://i.imgur.com/bbAhxJj.gif" alt="Preview" title="preview" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview.gif?raw=true" alt="preview" title="preview"/>
 
 - The second command that saves the minified text to other file and preserves the original text:
 
-<img src="https://i.imgur.com/RTyX0PZ.gif" alt="Preview2nd" title="preview2nd" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview2ndcommand.gif?raw=true" alt="preview2nd" title="preview2nd"/>
 
 - Minify only your **selected text**!
 
-<img src="https://i.imgur.com/Cym0J2C.gif" alt="rightclick" title="rightclick" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/SelectedText.gif?raw=true" alt="selectedText" title="selectedText"/>
 
 - Also, minify when right-clicking on the code!
 
-<img src="https://i.imgur.com/fXMQTc0.png" alt="selectedText" title="selectedText" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClick.png?raw=true" alt="rightclickMenu" title="rightclickMenu"/>
 
 - Minify when right-clicking on a file of the menu without opening it!
 
-<img src="https://i.imgur.com/UsO2dbn.gif" alt="rightclickMenu" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/RightClickMenu.gif?raw=true" alt="rightclickInAction" title="rightclickInAction"/>
 
 - Compress when right-clicking on a file or folder of the menu.
 
-<img src="https://j.gifs.com/lRYW9l.gif" alt="compressfiles" title="rightclickMenu" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 750px; max-width:750px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+<img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/compress.gif?raw=true" alt="compressfiles" title="compressfiles"/>
 
 ---
 
@@ -163,7 +163,7 @@ We recommend to use them with: "left click" on the document and then select the 
 - Terser minify options, this setting will allow you to fully customice your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
 
 ``` json
-"MinifyAll.terserMinifyOptions": { mangle: true, compress: { drop_console: true, dead_code: false, keep_fnames: false, keep_classnames: false } } // for more information please visit https://github.com/terser/terser#minify-options
+"MinifyAll.terserMinifyOptions": { "mangle": true, "compress": { "drop_console": true, "dead_code": false, "keep_fnames": false, "keep_classnames": false } } // for more information please visit https://github.com/terser/terser#minify-options
 ```
 
 ### **Disabling languages configuration**
