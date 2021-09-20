@@ -234,6 +234,12 @@ We recommend to use them with: "left click" on the document and then select the 
 "MinifyAll.disableJavascriptReact": true|false //default 'true' (by default it is enabled)
 ```
 
+- Disables **XML** minimization //default 'false'
+
+``` json
+"MinifyAll.disableXml": true|false //default 'false'
+```
+
 </details>
 
 ---
