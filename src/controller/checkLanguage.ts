@@ -63,7 +63,9 @@ export function checkLanguageJson(languageId: string, settings: IUserSettings): 
 export function checkLanguageHtmlPhp(languageId: string, settings: IUserSettings): boolean {
     if ((languageId === 'html' && !settings.disableHtml) ||
         (languageId === 'twig' && !settings.disableTwig) ||
-        ((languageId === 'php') && !settings.disablePhp) || languageId === 'vue' || languageId === 'vue-html' || languageId === 'xml') {
+        (languageId === 'php' && !settings.disablePhp) ||
+        (languageId === 'xml' && !settings.disableXml) ||
+        languageId === 'vue' || languageId === 'vue-html') {
         return true;
     }
     return false;
