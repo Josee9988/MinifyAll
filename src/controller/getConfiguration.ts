@@ -91,6 +91,12 @@ export interface IUserSettings {
     disableMessages: boolean;
 
     /**
+     * disableXml: If you want MinifyAll to stop
+     * minimizing XML. (True for disabling).
+     */
+    disableXml: boolean;
+
+    /**
      * disableCodeContextMenu: If you want MinifyAll to not showing a context
      * menu when right-clicking in your code. (True for disabling).
      */
@@ -161,6 +167,7 @@ export function getUserSettings(): IUserSettings {
         disableJson: conf.get('disableJson'),
         disableJsonc: conf.get('disableJsonc'),
         disablePhp: conf.get('disablePhp'),
+        disableXml: conf.get('disableXml'),
         disableMessages: conf.get('disableMessages'),
         disableCodeContextMenu: conf.get('disableCodeContextMenu'),
         disableFileExplorerContextMenu: conf.get('disableFileExplorerContextMenu'),

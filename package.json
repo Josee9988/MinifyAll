@@ -1,7 +1,7 @@
 {
 	"name": "minifyall",
 	"displayName": "MinifyAll",
-	"description": "Minifier for JSON, CSS, HTML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). Compressor of files and folders. You will love its simplicity!",
+	"description": "Minifier for JSON, CSS, HTML, XML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). Compressor of files and folders. You will love its simplicity!",
 	"version": "2.9.2",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
@@ -199,6 +199,11 @@
 					"type": "boolean",
 					"default": false,
 					"description": "If you want MinifyAll to stop minimizing PHP. (True for disabling)"
+				},
+				"MinifyAll.disableXml": {
+					"type": "boolean",
+					"default": false,
+					"description": "If you want MinifyAll to stop minimizing XML. (True for disabling)"
 				},
 				"MinifyAll.disableMessages": {
 					"type": "boolean",
