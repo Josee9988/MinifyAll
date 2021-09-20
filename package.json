@@ -32,13 +32,12 @@
 		"Programming Languages"
 	],
 	"keywords": [
+		"minify",
 		"minifier",
 		"formatter",
 		"format",
 		"compressor",
 		"compress",
-		"minify",
-		"minifier",
 		"css",
 		"json",
 		"jsonc",
