@@ -37,18 +37,18 @@ import * as vscode from 'vscode';
 import * as zl from 'zip-lib';
 
 import { COMPRESSION_LEVEL, zip } from 'zip-a-folder';
-import { IUserSettings, getUserSettings } from './controller/getConfiguration';
-import { MessageTypes, showMessage } from './controller/showMessage';
-import { minify } from "terser";
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
+import { getUserSettings, IUserSettings } from './controller/getConfiguration';
+import { MessageTypes, showMessage } from './controller/showMessage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
 
 import { MinifyAllClass } from '@josee9988/minifyall';
+import { minify } from "terser";
 import getNewFilePath from './controller/getNewFilePath';
 
-export var settings: IUserSettings = getUserSettings();
+export let settings: IUserSettings = getUserSettings();
 // callback handler for when settings are changed by the user:
-vscode.workspace.onDidChangeConfiguration(event => {
+vscode.workspace.onDidChangeConfiguration((event) => {
 	if (event.affectsConfiguration('MinifyAll')) {
 		// These options are special and need a window reload. Promt the user for it:
 		if (
@@ -59,20 +59,18 @@ vscode.workspace.onDidChangeConfiguration(event => {
 			const reload = 'Reload';
 			vscode.window.showInformationMessage(
 				'Reload window in order for changes in extension configuration to take effect.',
-				reload, 'Cancel'
-			).then(selectedAction => {
+				reload, 'Cancel',
+			).then((selectedAction) => {
 				if (selectedAction === reload) {
 					vscode.commands.executeCommand('workbench.action.reloadWindow');
-					//probably never reached:
-					return
+					return null; // probably never reached:
 				}
 			});
-		} else {
-			// Update the settings:
+		} else { // Update the settings:
 			settings = getUserSettings();
 		}
 	}
-})
+});
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
