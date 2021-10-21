@@ -22,7 +22,7 @@ A Folder that contains some modules that are used by multiple languages, and it 
 
 ## **showMessage.js**
 
-**[showMessage](showMessage.js)** contains the functions to show messages from VSCode.
+**[showMessage](showMessage.js)** contains the functions to show messages from VS Code.
 
 ## **writeMinifiedCode.js**
 

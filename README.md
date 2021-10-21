@@ -1,9 +1,9 @@
 <!-- markdownlint-disable MD033-->
-# **MinifyAll an extension for VSCode**
+# **MinifyAll an extension for VS Code**
 
-Simple VSCode **minifier** and **compressor** for most common filetypes ([See full list below](#languages-available-)). You will love its simplicity!
+Simple VS Code **minifier** and **compressor** for most common file types ([See full list below](#languages-available-)). You will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your license comments with the tags *@preserve* and *@endpreserve*.
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your licence comments with the tags *@preserve* and *@endpreserve*.
 
 MinifyAll is also able to **compress** files and folders simply by right-clicking them on the menu.
 
@@ -11,12 +11,12 @@ Go to the extension *settings* and make it as you want, enable or disable: **min
 
 For more information check our: **[GitHub repository](https://github.com/Josee9988/MinifyAll)**, **[VisualStudio Marketplace](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)** or **[OpenVSX registry](https://open-vsx.org/extension/Josee9988/minifyall)**.
 
-Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎 or the **[MinifyAll cli/package](https://github.com/Josee9988/MinifyAllCli)**.
+Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎 or the **[MinifyAllCli/package](https://github.com/Josee9988/MinifyAllCli)**.
 
 Do you want to help us improve the extension or did you found a bug?
 **[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
 
-Check our **[changelog](CHANGELOG.md)**.
+Check our **[CHANGELOG](CHANGELOG.md)**.
 
 Currently looking for active contributors to maintain and keep the project alive.
 
@@ -34,17 +34,17 @@ Currently looking for active contributors to maintain and keep the project alive
 
 ## **Installation** 🔩⚙
 
-- Open the **Command Palette** of VSCode with **Ctrl+P** or **⌘P**
+- Open the **Command Palette** of VS Code with **Ctrl+P** or **⌘P**
 - And type:➡️
 **```ext install josee9988.minifyall```**
 
 ### **Commands** 📐🛡
 
 - **```Minify this document ⚡``` Or ```CTRL+ALT+M```**
-- **```Minify this document and preserve the original ⛏```  Or ```CTRL+ALT+N```**
-- **```Minify the selected text 🎯```  Or ```CTRL+ALT+. CTRL+ALT+M```**
+- **```Minify this document and preserve the original ⛏``` Or ```CTRL+ALT+N```**
+- **```Minify the selected text 🎯``` Or ```CTRL+ALT+. CTRL+ALT+M```**
 
-We recommend to use them with: "left click" on the document and then select the option you want, either the file in the menu or the opened file. ;)
+We recommend using them with: "left click" on the document and then select the option you want, either the file in the menu or the opened file. ;)
 
 ---
 
@@ -54,7 +54,7 @@ We recommend to use them with: "left click" on the document and then select the 
 
 <img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/command.png?raw=true" alt="command" title="command"/>
 
-- Preserve your license comments with the tags *@preserve* (at the very top) and *@endpreserve*
+- Preserve your licence comments with the tags *@preserve* (at the very top) and *@endpreserve*
 
 <img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preserve.gif?raw=true" alt="preserve license" title="preserve license"/>
 
@@ -110,7 +110,7 @@ We recommend to use them with: "left click" on the document and then select the 
 <details>
 <summary>Click to see more info about the configuration settings</summary>
 
-(Remember to restart VSCode after modifying any configuration)
+(Remember to restart VS Code after modifying any configuration)
 
 - If you want MinifyAll to **stop shortening colours**, such as RGB to 3 digit hex, or RGBA to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in colour accuracy
 
@@ -160,7 +160,7 @@ We recommend to use them with: "left click" on the document and then select the 
 "MinifyAll.openMinifiedDocument": true|false //default 'true'
 ```
 
-- Terser minify options, this setting will allow you to fully customice your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
+- Terser minify options, this setting will allow you to fully customize your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
 
 ``` json
 "MinifyAll.terserMinifyOptions": { "mangle": true, "compress": { "drop_console": true, "dead_code": false, "keep_fnames": false, "keep_classnames": false } } // for more information please visit https://github.com/terser/terser#minify-options
@@ -168,55 +168,55 @@ We recommend to use them with: "left click" on the document and then select the 
 
 ### **Disabling languages configuration**
 
-- Disables **html** minimization
+- Disables **HTML** minimization
 
 ``` json
 "MinifyAll.disableHtml": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **twig** minimization
+- Disables **TWIG** minimization
 
 ``` json
 "MinifyAll.disableTwig": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **php** minimization
+- Disables **PHP** minimization
 
 ``` json
 "MinifyAll.disablePhp": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **css** minimization
+- Disables **CSS** minimization
 
 ``` json
 "MinifyAll.disableCss": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **scss** minimization
+- Disables **SCSS** minimization
 
 ``` json
 "MinifyAll.disableScss": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **less** minimization
+- Disables **LESS** minimization
 
 ``` json
 "MinifyAll.disableLess": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **sass** minimization
+- Disables **SASS** minimization
 
 ``` json
 "MinifyAll.disableSass": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **json** minimization
+- Disables **JSON** minimization
 
 ``` json
 "MinifyAll.disableJson": true|false //default 'false' (by default it is enabled)
 ```
 
-- Disables **jsonc** minimization
+- Disables **JSONC** minimization
 
 ``` json
 "MinifyAll.disableJsonc": true|false //default 'false' (by default it is enabled)
@@ -246,7 +246,7 @@ We recommend to use them with: "left click" on the document and then select the 
 
 ## **Examples**
 
-### **Css less sass scss**
+### **CSS LESS SASS SCSS**
 
 <details>
 <summary>Click to see an example of how the extension minifies CSS</summary>
@@ -277,14 +277,14 @@ We recommend to use them with: "left click" on the document and then select the 
 - There are no spaces.
 - There is only one line.
 - Multiline comments removed.
-- Url '//' is not detected as a comment and can be perfectly placed.
+- URL '//' is not detected as a comment and can be perfectly placed.
 - From 0px to 0
 
 ---
 
 </details>
 
-### **Json jsonc**
+### **JSON JSON**
 
 <details>
 <summary>Click to see an example of how the extension minifies JSON</summary>
@@ -370,8 +370,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 - Spaces left are only within quotes (Strings) and variable declarations.
 - If 'OR' and 'AND' are without spaces, the same as if condition or switch cases.
 - All single line and multiline comments removed.
-- Single line comments inside of a String will not be removed. (hello//) (// not a comment).
-- Multi-line comments inside of a String will not be removed. (// not a comment **/\***).
+- Single line comments inside a String will not be removed. (hello//) (// not a comment).
+- Multi-line comments inside a String will not be removed. (// not a comment **/\***).
 - Regex expression with single-line comments will not be removed.
 - No tabs.
 
@@ -379,7 +379,7 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 </details>
 
-### **Html**
+### **HTML**
 
 <details>
 <summary>Click to see an example of how the extension minifies HTML</summary>
@@ -427,8 +427,8 @@ break;default:break;}}let myString="hello//";myString.replace(/\/\//g,'');
 
 ## **Known bugs:** 🛑🗑
 
-- ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default VSCode file *might* cause errors.
-- ⚠️ If you are doing a regex without scaping the '//' it might be deleted as it must be escaped (\/\/).
+- ⚠️ If the file you are trying to minify is **not saved** or is an Untitled default VS Code file *might* cause errors.
+- ⚠️ If you are doing a regex without escaping the '//' it might be deleted as it must be escaped (\/\/).
 
 ---
 
@@ -440,19 +440,19 @@ Support the project and be the first donator ❤️
 
 ## 🎉 Did you enjoyed the minifier? Help us raise these numbers up
 
-[![Github followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
-[![Github stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
-[![Github watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
-[![Github forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
+[![GitHub followers](https://img.shields.io/github/followers/Josee9988.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
+[![GitHub stars](https://img.shields.io/github/stars/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
+[![GitHub watchers](https://img.shields.io/github/watchers/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
+[![GitHub forks](https://img.shields.io/github/forks/Josee9988/MinifyAll.svg?style=social)](#did-you-enjoyed-the-minifier-help-us-raise-these-numbers-up--)
 [![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=github-sponsors&color=red&style=social)](https://github.com/sponsors/Josee9988)
 
-[Check my VSCode theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme) 🧲
+[Check my VS Code theme](https://marketplace.visualstudio.com/items?itemName=josee9988.black-garnet-theme) 🧲
 
-[Check my VSCode Markdown and Changelog snippets](https://marketplace.visualstudio.com/items?itemName=josee9988.changelog-and-markdown-snippets) 🌟
+[Check my VS Code Markdown and Changelog snippets](https://marketplace.visualstudio.com/items?itemName=josee9988.changelog-and-markdown-snippets) 🌟
 
 [Check my MinifyAll online webpage](https://minifyall.jgracia.es/) 😎
 
-[Check my MinifyAll cli/package](https://github.com/Josee9988/MinifyAllCli)
+[Check my MinifyAllCli/package](https://github.com/Josee9988/MinifyAllCli)
 
 ---
 
@@ -460,9 +460,9 @@ Support the project and be the first donator ❤️
 
 - [Minify Code Automatically](https://dev.to/aryaziai/minifying-code-shortcut-4d6c)
 - [How I made my website 10x faster](https://dev.to/asaoluelijah/how-i-made-my-personal-website-10x-faster-3p6k)
-- [11 plugins indispensables para VSCode](https://www.gitmedio.com/11-plugins-indispensables-para-visual-studio-code-insiders/)
-- [6 VSCode extensions you need to install now](https://it-it.facebook.com/AskHorizons/photos/a.128334975253236/386218132798251/?type=3&eid=ARDn_eorUZWvdCAV4C9taXZ5FFXu7Ib4e80xgui_LS-2y_m6VegoeCrc1JfFt6Bbyy7rXjEnPPSHCqTt)
-- [8 VSCode common extensions (chinnese)](https://www.leunghoyin.hk/vscode-common-extensions)
+- [11 plugins indispensables para VS Code](https://www.gitmedio.com/11-plugins-indispensables-para-visual-studio-code-insiders/)
+- [6 VS Code extensions you need to install now](https://it-it.facebook.com/AskHorizons/photos/a.128334975253236/386218132798251/?type=3&eid=ARDn_eorUZWvdCAV4C9taXZ5FFXu7Ib4e80xgui_LS-2y_m6VegoeCrc1JfFt6Bbyy7rXjEnPPSHCqTt)
+- [8 VS Code common extensions (Chinese)](https://www.leunghoyin.hk/vscode-common-extensions)
 
 ---
 
