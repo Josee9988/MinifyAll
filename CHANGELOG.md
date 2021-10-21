@@ -13,6 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Most settings will now be updated silently in the background and not require a manual reload. Some special settings require a reload, in which case
   the user is prompted for it. (as discussed in Issue #132)
 
+### Removed
+
+* The global variable for the `terser` options is removed. The settings are used directly so they actually update.
+
 ## [**2.9.4**] - 2021-10-14
 
 ### Changed

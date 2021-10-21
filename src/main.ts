@@ -39,7 +39,7 @@ import * as zl from 'zip-lib';
 import { COMPRESSION_LEVEL, zip } from 'zip-a-folder';
 import { IUserSettings, getUserSettings } from './controller/getConfiguration';
 import { MessageTypes, showMessage } from './controller/showMessage';
-import { MinifyOptions, minify } from "terser";
+import { minify } from "terser";
 import { checkLanguageHtmlPhp, checkLanguageJS, checkLanguageJson, checkLanguageStyles } from './controller/checkLanguage';
 import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from './controller/writeMinifiedCode';
 
@@ -70,12 +70,9 @@ vscode.workspace.onDidChangeConfiguration(event => {
 		} else {
 			// Update the settings:
 			settings = getUserSettings();
-			terserMinifierOptions = settings.terserMinifyOptions;
 		}
 	}
 })
-
-var terserMinifierOptions: MinifyOptions = settings.terserMinifyOptions;
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
@@ -153,7 +150,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
+					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), settings.terserMinifyOptions);
 
 					if (minifierJs.error === undefined) {
 						replaceActualCode(minifierJs.code);
@@ -218,7 +215,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 			case 'javascript': case 'javascriptreact': // JavaScript
 				if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
 					const path2NewFile: string = getNewFilePath(path, selectedFileName, 'js', settings.PrefixOfNewMinifiedFiles);
-					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), terserMinifierOptions);
+					const minifierJs: any = await minify(vscode.window.activeTextEditor.document.getText(), settings.terserMinifyOptions);
 
 					if (minifierJs.error === undefined) {
 						minifiedTextToNewFile(path2NewFile, minifierJs.code, settings);
@@ -284,7 +281,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 							if ((fileUri._fsPath.split('.').pop() === 'js' && !settings.disableJavascript) ||
 								(fileUri._fsPath.split('.').pop() === 'jsx' && !settings.disableJavascriptReact)) {
 								const path2NewFileJs: string = path.join(filePath, path.basename(fileUri._fsPath).replace('.js', `${settings.PrefixOfNewMinifiedFiles}.js`));
-								const minifierJs: any = await minify(data, terserMinifierOptions);
+								const minifierJs: any = await minify(data, settings.terserMinifyOptions);
 
 								if (minifierJs.error === undefined) {
 									minifiedTextToNewFile(path2NewFileJs, minifierJs.code, settings);
@@ -347,7 +344,7 @@ export default function activate(context: vscode.ExtensionContext): void {
 
 				case 'javascript': case 'javascriptreact': // JavaScript
 					if (checkLanguageJS(vscode.window.activeTextEditor.document.languageId, settings)) {
-						const minifierJs: any = await minify(selectedText, terserMinifierOptions);
+						const minifierJs: any = await minify(selectedText, settings.terserMinifyOptions);
 
 						if (minifierJs.error === undefined) { // if there is no error
 							replaceSelectedCode(editor, selection, minifierJs.code);
