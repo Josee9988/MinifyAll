@@ -85,9 +85,7 @@ if (settings.minifyOnSaveToNewFile) {
 }
 
 // If the user has hexadecimal shortener enabled it will import it.
-const minifyHex: boolean = !settings.hexDisabled ? true : false;
-
-const globalMinifiers: MinifyAllClass = new MinifyAllClass(minifyHex);
+const globalMinifiers: MinifyAllClass = new MinifyAllClass(!settings.hexDisabled);
 
 // List of supported filetypes, can be used in package.json Context
 vscode.commands.executeCommand('setContext', 'extension.supportedFiletypes', [

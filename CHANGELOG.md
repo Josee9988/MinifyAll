@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Removed
 
 * The global variable for the `terser` options is removed. The settings are used directly so they actually update.
+* The global variable `minifyHex` is removed, as it is only ever used once. Now the setting is used directly.
 
 ## [**2.9.4**] - 2021-10-14
 
