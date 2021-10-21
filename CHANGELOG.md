@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log** 📜📝
 
-All notable changes to the "**MinifyAll**" VSCode extension will be documented in this file.
+All notable changes to the "**MinifyAll**" VS Code extension will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -40,7 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Issue #125 (php context menu will only show to minify the selected text)
+* Issue #125 (PHP context menu will only show to minify the selected text)
 
 ## [**2.9.0**] - 2021-08-13
 
@@ -52,7 +52,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Configuration options `disableCodeContextMenu` and `disableFileExplorerContextMenu`, which allow the user to disable the respective contextmenus
+* Configuration options `disableCodeContextMenu` and `disableFileExplorerContextMenu`, which allow the user to disable the respective context menus
 
 ## [**2.7.1**] - 2021-07-18
 
@@ -76,7 +76,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Compress command. It will be called from the menu and it is able to minify files or folders.
+* Compress command. It will be called from the menu, and it is able to minify files or folders.
 
 ### Changed
 
@@ -94,7 +94,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Added
 
 * List of posts in which the extension has been mentioned or reviewed.
-* 'tsc' as a default VSCode build task.
+* 'tsc' as a default VS Code build task.
 
 ### Changed
 
@@ -102,18 +102,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Removed
 
-* VSCode default watch task.
+* VS Code default watch task.
 
 ### Removed
 
-* Readme known bugs 'The command "Minify the selected document and preserve the original will not work on Windows'.
+* README known bugs 'The command "Minify the selected document and preserve the original" will not work on Windows'.
 
 ## [**2.5.18**] - 2021-04-11
 
 ### Fixed
 
 * Launch scripts and 'webpack' rules.
-* MinifyAll2OtherDoc 'scss' prefix of file fixed.
+* MinifyAll2OtherDoc 'SCSS' prefix of file fixed.
 
 ## [**2.5.16**] - 2021-04-11
 
@@ -125,7 +125,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Recommended project build with webpack from vscode docs.
+* Recommended project build with webpack from VS Code docs.
 
 ## [**2.5.13**] - 2021-04-11
 
@@ -141,7 +141,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* If the output error 'We can not format this file type yet' occurs, it will tell the file type so it will be easier to understand.
+* If the output error 'We can not format this file type yet' occurs, it will tell the file type, so it will be easier to understand.
 
 ## [**2.5.11**] - 2021-04-06
 
@@ -190,26 +190,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* Updated minifyall core version to 1.1.10.
+* Updated MinifyAll core version to 1.1.10.
 
 ### Removed
 
-* All CHANGELOGS from version 0.x to 1.x to not make this file that huge.
+* All CHANGELOGs from version 0.x to 1.x to not make this file that huge.
 * .map files to make the bundle size of the extension smaller.
 
 ## [**2.5.1**] - 2021-02-23
 
 ### Changed
 
-* Updated minifyall dependencies.
+* Updated MinifyAll dependencies.
 
 ## [**2.5.0**] - 2021-02-02
 
 ### Added
 
-* Package json scripts to publish the extension to VSX and vscode marketplace.
+* Package json scripts to publish the extension to VSX and VS Code marketplace.
 * Setting "terserMinifyOptions" will allow the users to fully customize their Terser options.
-* Updated the readme to announce the new setting.
+* Updated the README to announce the new setting.
 
 ### Removed
 
@@ -225,7 +225,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Removed
 
-* Bin folder from the vscode extension files.
+* Bin folder from the VS Code extension files.
 
 ## [**2.4.12**] - 2020-12-08
 
@@ -235,19 +235,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Removed
 
-* Errors showing in the VSCode extension profiler due to the missing .maps.
+* Errors showing in the VS Code extension profiler due to the missing .maps.
 
 ## [**2.4.11**] - 2020-12-08
 
 ### Added
 
-* Added the .map files again to the vscode repository (removed "**/*.map" from the .vscodeignore file).
+* Added the .map files again to the VS Code repository (removed "**/*.map" from the .vscodeignore file).
 
 ## [**2.4.10**] - 2020-12-03
 
 ### Added
 
-* Specific activation events to improve the VSCode startup time (MinifyAll will only be initialized when the user opens any of the supported file types). Close issue #72
+* Specific activation events to improve the VS Code startup time (MinifyAll will only be initialized when the user opens any of the supported file types). Close issue #72
 * Line in the README.md file asking for contributors.
 
 ## [**2.4.9**] - 2020-09-22
@@ -260,7 +260,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Github issue templates from [josee's project-template](https://github.com/Josee9988/project-template).
+* GitHub issue templates from [josee's project-template](https://github.com/Josee9988/project-template).
 
 ## [**2.4.7**] - 2020-09-21
 
@@ -331,7 +331,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Fixed multiple JSON problems by updating the MinifyAllCLi to 1.1.5.
+* Fixed multiple JSON problems by updating the MinifyAllCli to 1.1.5.
 
 ## [**2.3.1**] - 2020-05-26
 
@@ -348,7 +348,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Changed
 
-* From github workflow badge to png to solve vsce problem.
+* From GitHub workflow badge to PNG to solve vsce problem.
 
 ## [**2.3.0**] - 2020-05-18
 
@@ -365,7 +365,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Link in the readme.md file to the new Minifyall cli package.
+* Link in the readme.md file to the new MinifyAllCli package.
 
 ## [**2.2.3**] - 2020-04-10
 
@@ -409,7 +409,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Fixed problem with CSS minification (HTTPS URLS).
+* Fixed problem with CSS minification (HTTPS URLs).
 
 ## [**2.1.4**] - 2020-02-14
 
@@ -421,7 +421,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Bug that changed '0%' into -> '0' in the css files.
+* Bug that changed '0%' into -> '0' in the CSS files.
 
 ## [**2.1.2**] - 2020-01-27
 
@@ -443,7 +443,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Fixed
 
-* Some variable names that weren't following the tslint rules at the main.ts file.
+* Some variable names that weren't following the TSLint rules at the main.ts file.
 
 ## [**2.0.3**] - 2019-12-30
 
@@ -483,7 +483,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Redundant code from showing messages in the main.ts file.
 * Useless code.
 * About 100 lines length in the main.ts file.
-* Useless tslint rules that were already extended from the recomended tslint options.
+* Useless TSLint rules that were already extended from the recommended TSLint options.
 
 ## [**2.0.1**] - 2019-12-26
 
@@ -500,11 +500,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-* Extension recomendations in the .vscode/extension.json.
+* Extension recommendations in the .vscode/extension.json.
 * File showMessage.
 * Information in the controller's readme.md file about the new file showMessage.
 * Multiple changes to make the project use TypeScript.
-* File tsconfig and tslint to manage the TypeScript behaviour.
+* File tsconfig and TSLint to manage the TypeScript behaviour.
 
 ### Removed
 
