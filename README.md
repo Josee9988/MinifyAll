@@ -110,8 +110,6 @@ We recommend to use them with: "left click" on the document and then select the 
 <details>
 <summary>Click to see more info about the configuration settings</summary>
 
-(Remember to restart VSCode after modifying any configuration)
-
 - If you want MinifyAll to **stop shortening colours**, such as RGB to 3 digit hex, or RGBA to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in colour accuracy
 
 ``` json

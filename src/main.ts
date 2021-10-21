@@ -46,9 +46,36 @@ import { minifiedTextToNewFile, replaceActualCode, replaceSelectedCode } from '.
 import { MinifyAllClass } from '@josee9988/minifyall';
 import getNewFilePath from './controller/getNewFilePath';
 
-export const settings: IUserSettings = getUserSettings();
+export var settings: IUserSettings = getUserSettings();
+// callback handler for when settings are changed by the user:
+vscode.workspace.onDidChangeConfiguration(event => {
+	if (event.affectsConfiguration('MinifyAll')) {
+		// These options are special and need a window reload. Promt the user for it:
+		if (
+			event.affectsConfiguration('MinifyAll.minifyOnSave') ||
+			event.affectsConfiguration('MinifyAll.minifyOnSaveToNewFile') ||
+			event.affectsConfiguration('MinifyAll.disableHexadecimalShortener')
+		) {
+			const reload = 'Reload';
+			vscode.window.showInformationMessage(
+				'Reload window in order for changes in extension configuration to take effect.',
+				reload, 'Cancel'
+			).then(selectedAction => {
+				if (selectedAction === reload) {
+					vscode.commands.executeCommand('workbench.action.reloadWindow');
+					//probably never reached:
+					return
+				}
+			});
+		} else {
+			// Update the settings:
+			settings = getUserSettings();
+			terserMinifierOptions = settings.terserMinifyOptions;
+		}
+	}
+})
 
-const terserMinifierOptions: MinifyOptions = settings.terserMinifyOptions;
+var terserMinifierOptions: MinifyOptions = settings.terserMinifyOptions;
 
 // If the user has selected to minify its code when saving.
 if (settings.minifyOnSave) {
