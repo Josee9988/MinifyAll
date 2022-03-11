@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**2.11.1**] - 2022-03-11
+
+* Updated some dependencies.
+
 ## [**2.10.0**] - 2021-10-21
 
 ### Fixed

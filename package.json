@@ -2,7 +2,7 @@
 	"name": "minifyall",
 	"displayName": "MinifyAll",
 	"description": "Minifier for JSON, CSS, HTML, XML, TWIG, LESS, SASS, SCSS, JavaScript, JSONC, and JavaScriptReact(testing). Compressor of files and folders. You will love its simplicity!",
-	"version": "2.10.0",
+	"version": "2.10.1",
 	"publisher": "josee9988",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
@@ -90,8 +90,7 @@
 	],
 	"main": "./out/main.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡"
 			},
@@ -112,8 +111,7 @@
 				"title": "Minify the selected text 🎯"
 			}
 		],
-		"keybindings": [
-			{
+		"keybindings": [{
 				"command": "extension.MinifyAll",
 				"title": "Minify this document ⚡",
 				"key": "Ctrl+alt+M",
@@ -274,8 +272,7 @@
 			}
 		},
 		"menus": {
-			"editor/context": [
-				{
+			"editor/context": [{
 					"command": "extension.MinifyAll",
 					"when": "!config.MinifyAll.disableCodeContextMenu && editorLangId in extension.supportedFiletypes",
 					"group": "MinifyAll"
@@ -291,8 +288,7 @@
 					"group": "MinifyAll"
 				}
 			],
-			"explorer/context": [
-				{
+			"explorer/context": [{
 					"command": "extension.MinifyAll2OtherDocSelected",
 					"when": "!config.MinifyAll.disableFileExplorerContextMenu",
 					"group": "MinifyAll"
