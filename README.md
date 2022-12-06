@@ -28,7 +28,7 @@ Currently looking for active contributors to maintain and keep the project alive
 [![Downloads](https://vsmarketplacebadge.apphb.com/downloads/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-star/josee9988.minifyall.svg?style=for-the-badge&logo)](https://marketplace.visualstudio.com/items?itemName=josee9988.minifyall)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Josee9988/minifyall.svg?style=popout-square)](#minifyall-an-extension-for-vscode)
-![Node.js CI](https://img.shields.io/github/workflow/status/Josee9988/MinifyAll/CodeQL.svg)
+![CI](https://img.shields.io/github/workflow/status/Josee9988/MinifyAll/CodeQL.svg)
 
 ---
 
