@@ -3,7 +3,7 @@
 
 Simple VS Code **minifier** and **compressor** for most common file types ([See full list below](#languages-available-)). You will love its simplicity!
 
-You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, you can preserve your licence comments with the tags *@preserve* and *@endpreserve*.
+You can minify the file and replace all the content with the new minified text, **or** you can preserve the original document and get the minified text in another document! Also, you can simply minify your **selected text**, and you can preserve your license comments with the tags *@preserve* and *@endpreserve*.
 
 MinifyAll is also able to **compress** files and folders simply by right-clicking them on the menu.
 
@@ -13,7 +13,7 @@ For more information check our: **[GitHub repository](https://github.com/Josee99
 
 Also check the brand new **[MinifyAll online webpage](https://minifyall.jgracia.es/)** 😎 or the **[MinifyAllCli/package](https://github.com/Josee9988/MinifyAllCli)**.
 
-Do you want to help us improve the extension or did you found a bug?
+Do you want to help us improve the extension or did you find a bug?
 **[Let us know](https://github.com/Josee9988/MinifyAll/issues)**.
 
 Check our **[CHANGELOG](CHANGELOG.md)**.
@@ -50,7 +50,7 @@ We recommend using them with: "left click" on the document and then select the o
 
 ## **How does it look with real code?** 📸 😁
 
-- The two commands available. First directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
+- The two commands available. First, directly minifies the actual document and replaces the original code with the modified one, the second keeps the original document and creates a file with the modified text:
 
 <img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/command.png?raw=true" alt="command" title="command"/>
 
@@ -62,7 +62,7 @@ We recommend using them with: "left click" on the document and then select the o
 
 <img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview.gif?raw=true" alt="preview" title="preview"/>
 
-- The second command that saves the minified text to other file and preserves the original text:
+- The second command that saves the minified text to another file and preserves the original text:
 
 <img src="https://github.com/Josee9988/MinifyAll/blob/master/Screenshots/Preview2ndcommand.gif?raw=true" alt="preview2nd" title="preview2nd"/>
 
@@ -112,55 +112,55 @@ We recommend using them with: "left click" on the document and then select the o
 
 (Remember to restart VS Code after modifying any configuration)
 
-- If you want MinifyAll to **stop shortening colours**, such as RGB to 3 digit hex, or RGBA to hex, or 6 digit hex to 3 digit hex. If you enable it you might see some loss in colour accuracy
+- If you want MinifyAll to **stop shortening colours**, such as RGB to 3-digit hex, RGBA to hex, or 6-digit hex to 3-digit hex. If you enable it, you might see some loss in colour accuracy
 
 ``` json
-"MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default it is disabled)
+"MinifyAll.disableHexadecimalShortener": true|false //default 'true' (by default, it is disabled)
 ```
 
 - Disables warning and information messages
 
 ``` json
-"MinifyAll.disableMessages": true|false //default 'false' (by default it is allowed)
+"MinifyAll.disableMessages": true|false //default 'false' (by default, it is allowed)
 ```
 
 - Disables context menu when right-clicking in your code.
 
 ``` json
-"MinifyAll.disableCodeContextMenu": true|false //default 'false' (by default it is shown)
+"MinifyAll.disableCodeContextMenu": true|false //default 'false' (by default, it is shown)
 ```
 
 - Disables context menu when right-clicking in the file explorer.
 
 ``` json
-"MinifyAll.disableFileExplorerContextMenu": true|false //default 'false' (by default it is shown)
+"MinifyAll.disableFileExplorerContextMenu": true|false //default 'false' (by default, it is shown)
 ```
 
 - Minify on save (Default command, which will minify your actual code)
 
 ``` json
-"MinifyAll.minifyOnSave": true|false //default 'false' (by default it is disabled)
+"MinifyAll.minifyOnSave": true|false //default 'false' (by default, it is disabled)
 ```
 
 - Minify on save (Second command, which will minify your actual code into a new file)
 
 ``` json
-"MinifyAll.minifyOnSaveToNewFile": true|false //default 'false' (by default it is disabled)
+"MinifyAll.minifyOnSaveToNewFile": true|false //default 'false' (by default, it is disabled)
 ```
 
-- Prefix of the new minified file from the command that minifies to other doc.
+- Prefix the new minified file from the command that minifies to another doc.
 
 ``` json
 "MinifyAll.PrefixOfNewMinifiedFiles": '-min'|'.min'|'-minified'|'.minified' //default '-min'
 ```
 
-- If you want MinifyAll to open the new minified document after you minify. (False for not opening it every time you create a minified file).
+- If you want MinifyAll to open the new minified document after you minify. (False for not opening it whenever you create a minified file).
 
 ``` json
 "MinifyAll.openMinifiedDocument": true|false //default 'true'
 ```
 
-- Terser minify options, this setting will allow you to fully customize your Terser behaviour. For more info please check [terser's minify options](https://github.com/terser/terser#minify-options).
+- Terser minify options, this setting will allow you to fully customize your Terser behaviour. For more info, please check [terser's minify options](https://github.com/terser/terser#minify-options).
 
 ``` json
 "MinifyAll.terserMinifyOptions": { "mangle": true, "compress": { "drop_console": true, "dead_code": false, "keep_fnames": false, "keep_classnames": false } } // for more information please visit https://github.com/terser/terser#minify-options
@@ -171,67 +171,67 @@ We recommend using them with: "left click" on the document and then select the o
 - Disables **HTML** minimization
 
 ``` json
-"MinifyAll.disableHtml": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableHtml": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **TWIG** minimization
 
 ``` json
-"MinifyAll.disableTwig": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableTwig": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **PHP** minimization
 
 ``` json
-"MinifyAll.disablePhp": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disablePhp": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **CSS** minimization
 
 ``` json
-"MinifyAll.disableCss": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableCss": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **SCSS** minimization
 
 ``` json
-"MinifyAll.disableScss": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableScss": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **LESS** minimization
 
 ``` json
-"MinifyAll.disableLess": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableLess": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **SASS** minimization
 
 ``` json
-"MinifyAll.disableSass": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableSass": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **JSON** minimization
 
 ``` json
-"MinifyAll.disableJson": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableJson": true|false //default 'false' (by default, it is enabled)
 ```
 
 - Disables **JSONC** minimization
 
 ``` json
-"MinifyAll.disableJsonc": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableJsonc": true|false //default 'false' (by default, it is enabled)
 ```
 
-- Disables **JavaScript** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
+- Disables **JavaScript** minimization //default 'true' (by default, it is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascript": true|false //default 'false' (by default it is enabled)
+"MinifyAll.disableJavascript": true|false //default 'false' (by default, it is enabled)
 ```
 
-- Disables **JavaScriptReact** minimization //default 'true' (by default it is disabled because it is not on a stable version yet)
+- Disables **JavaScriptReact** minimization //default 'true' (by default, it is disabled because it is not on a stable version yet)
 
 ``` json
-"MinifyAll.disableJavascriptReact": true|false //default 'true' (by default it is enabled)
+"MinifyAll.disableJavascriptReact": true|false //default 'true' (by default, it is enabled)
 ```
 
 - Disables **XML** minimization //default 'false'
@@ -272,8 +272,8 @@ We recommend using them with: "left click" on the document and then select the o
 ```
 
 - RGBA is formatted to hexadecimal.
-- RGB is formatted to 3 digit value hexadecimal.
-- 6 digit hexadecimal values are formatted to 3 digit value hexadecimal.
+- RGB is formatted to a 3-digit hexadecimal value.
+- 6-digit hexadecimal values are formatted to 3-digit hexadecimal values.
 - There are no spaces.
 - There is only one line.
 - Multiline comments removed.
